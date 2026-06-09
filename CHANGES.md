@@ -2,13 +2,20 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.2
+Version: 0.1.3
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(memory): add manufacturer batch plan
+
+- Added `/MEMORY/INDEX/AGENTS/MANUFACTURER_CRAWL_AGENT.md` as a navigational fallback because direct root index editing was blocked.
+- Added `/MEMORY/PROPOSALS/MANUFACTURER_BATCH_0001_PC_LAPTOP_2026-06-09.md`.
+- Planned first manufacturer batch: `BATCH-0001_PC_LAPTOP`.
+- No external data batch was executed in this run.
 
 ## docs(agents): add manufacturer agent directive
 
@@ -57,7 +64,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## Review notes
 
-- Some writes were blocked by connector filtering and need follow-up in a later small commit.
+- Direct `/MEMORY/INDEX.md` update was blocked by connector filtering; `/MEMORY/INDEX/AGENTS/MANUFACTURER_CRAWL_AGENT.md` was created instead.
 - No external crawl batch was executed in this run.
 
 # # # # # # # # # # # # #
