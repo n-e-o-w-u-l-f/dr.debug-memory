@@ -2,13 +2,25 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.5
+Version: 0.1.6
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## feat(memory): add Dell family pilot entries
+
+- Added `/MEMORY/MANUFACTURERS/DELL/README.md`.
+- Added `/MEMORY/INDEX/DELL/README.md`.
+- Added `/MEMORY/MANUFACTURERS/DELL/LATITUDE.md`.
+- Added `/MEMORY/MANUFACTURERS/DELL/PRECISION.md`.
+- Added `/MEMORY/MANUFACTURERS/DELL/XPS.md`.
+- Added `/MEMORY/MANUFACTURERS/DELL/INSPIRON.md`.
+- Kept all family entries as pilot skeletons with `STATUS_RESEARCH_REQUIRED`.
+- Used only the official Dell support home as a general entrypoint source.
+- No model-specific Dell driver, firmware, BIOS, lifecycle or repair claims were added.
 
 ## feat(memory): start Dell manufacturer pilot
 
