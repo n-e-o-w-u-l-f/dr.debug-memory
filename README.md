@@ -2,6 +2,24 @@
   <img src="./dr_debug_banner.png" alt="Dr Debug's Mean /MEMORY/ Machine" width="100%">
 </p>
 
+---
+
+# # # # # # # # # # # # # # # #
+# Dr. Debug's Werkstatt #
+# # # # # # # # # # # # # # # #
+
+Hast du auch ein defektes Gerät? Möchtest du ein Gerät reparieren lassen? Oder einfach über Technik philosophieren, planen, debuggen und neue Ideen sortieren?
+
+Dann komm in:
+
+<p align="center">
+  <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>Dr. Debug's Werkstatt</strong></a>
+</p>
+
+Dort geht es um Reparatur, Diagnose, technische Planung, Fehlersuche, Geräteanalyse, kreative Werkstattideen und den Aufbau einer langfristig nützlichen technischen Memory-Basis.
+
+---
+
 # # # # # # # # # # # # #
 # Dr. Debug /MEMORY/ #
 # # # # # # # # # # # # #
@@ -93,24 +111,6 @@ Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
 - [`/UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
 
 Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
-
----
-
-# # # # # # # # # # # # # # # #
-# Dr. Debug's Werkstatt #
-# # # # # # # # # # # # # # # #
-
-Hast du auch ein defektes Gerät? Möchtest du ein Gerät reparieren lassen? Oder einfach über Technik philosophieren, planen, debuggen und neue Ideen sortieren?
-
-Dann komm in:
-
-<p align="center">
-  <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>Dr. Debug's Werkstatt</strong></a>
-</p>
-
-Dort geht es um Reparatur, Diagnose, technische Planung, Fehlersuche, Geräteanalyse, kreative Werkstattideen und den Aufbau einer langfristig nützlichen technischen Memory-Basis.
-
----
 
 # # # # # # # # # # # #
 # Grundprinzipien #
