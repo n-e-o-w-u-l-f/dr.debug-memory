@@ -14,13 +14,33 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 - Added repository hygiene rules through `.gitignore`.
 - Added initial change log.
-- Prepared the repository for the `/MEMORY/` basis structure.
-- Added this file as the mandatory change-history target for future agent runs.
+- Added `UPDATE_PROCESS.md`.
+- Added `/MEMORY/MEMORY.md`.
+- Added `/MEMORY/SCHEMA.md`.
+- Added `/MEMORY/QUALITY_RULES.md`.
+- Added `/MEMORY/SOURCE_REGISTRY.md`.
+- Added `/MEMORY/NAMING_CONVENTIONS.md`.
+- Added `/MEMORY/DEDUPLICATION_RULES.md`.
+- Added `/MEMORY/RESEARCH_RULES.md`.
+- Added `/MEMORY/SOURCES/` source bucket files.
+- Added `/MEMORY/STATE/TODO.md` and `/MEMORY/STATE/CRAWL_STATUS.md`.
 
-## docs(agents): prepare global crawl directive
+## docs(agents): add global crawl directive
 
-- Added the repository target for `/MEMORY/AGENTS/GLOBAL_CRAWL_AGENT.md`.
-- Documented that crawl, curation, deduplication, indexing and validation must be performed in separated gates.
+- Added `/MEMORY/AGENTS/GLOBAL_CRAWL_AGENT.md`.
+- Added `/MEMORY/AGENTS/README.md`.
+- Preserved existing root `/AGENTS.md`; it was read and not overwritten.
+
+## chore(memory): add initial templates
+
+- Added `/MEMORY/TEMPLATES/SOFTWARE_ENTRY_TEMPLATE.md`.
+- Added `/MEMORY/TEMPLATES/SOURCE_ENTRY_TEMPLATE.md`.
+
+## Review notes
+
+- Some writes were blocked by connector safety filtering and need follow-up in a later small commit.
+- Blocked paths included `/MEMORY/INDEX.md`, selected state files, and selected templates.
+- No external crawl batch was executed in this run.
 
 # # # # # # # # # # # # #
 # Maintenance Rules #
