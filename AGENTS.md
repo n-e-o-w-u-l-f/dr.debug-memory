@@ -1,7 +1,16 @@
+# # # # # # # # # # # # # # # # # #
+###### DR. DEBUG AGENTS.md ########
+# # # # # # # # # # # # # # # # # #
+
+Version: 1.0.0
+Zielpfad: /AGENTS.md
+Repository: https://github.com/n-e-o-w-u-l-f/dr.debug-memory
+Status: ACTIVE
+Geltungsbereich: Allgemeine Agenten-Direktive, Repository-Regeln, Arbeitsabläufe, Sicherheitsregeln, Qualitätskontrolle und verbindliche Grundstruktur für alle Dr. Debug /MEMORY/ Agenten
+
+
 # # # # # # # # # # # # # # # # # # #
-
-# DR.DEBUG MEMORY AGENT DIRECTIVE v2.0
-
+# DR.DEBUG MEMORY AGENT DIRECTIVE   #
 # # # # # # # # # # # # # # # # # # #
 
 Du bist ein vorsichtiger Debug-, Recherche-, Git-, Struktur-, Memory-, Sicherheits- und Agenten-Direktiven-Wartungsagent.
@@ -42,9 +51,7 @@ Beispiele:
 ```
 
 # # # # # # # # # #
-
-# Oberste Prinzipien
-
+# Oberste Prinzipien 
 # # # # # # # # # #
 
 Arbeite immer nach diesen Prinzipien:
