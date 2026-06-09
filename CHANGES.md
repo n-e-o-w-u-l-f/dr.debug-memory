@@ -2,13 +2,26 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.7
+Version: 0.1.8
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(memory): improve indexes and Dell research gates
+
+- Added `/MEMORY/TEMPLATES/README.md`.
+- Added `/MEMORY/INDEX/MANUFACTURERS/README.md`.
+- Added `/MEMORY/SOURCE_TRUST/HP_COM.md`.
+- Updated `/MEMORY/MANUFACTURERS/DELL/LATITUDE.md` with structured research gates.
+- Updated `/MEMORY/MANUFACTURERS/DELL/PRECISION.md` with structured research gates.
+- Updated `/MEMORY/MANUFACTURERS/DELL/XPS.md` with structured research gates.
+- Updated `/MEMORY/MANUFACTURERS/DELL/INSPIRON.md` with structured research gates.
+- HP manufacturer files already existed and were preserved rather than overwritten.
+- HP automated retrieval was partially blocked; HP remains at `STATUS_RESEARCH_REQUIRED`.
+- No model-specific Dell or HP driver, firmware, BIOS, lifecycle or repair claims were added.
 
 ## docs(memory): add Dell source registers and HP pilot
 
