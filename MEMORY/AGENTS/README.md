@@ -18,6 +18,39 @@ Chat instructions are temporary unless stored here or in `/AGENTS.md`.
 # # # # # # # # # #
 
 - `GLOBAL_CRAWL_AGENT.md`: global crawl, curation, deduplication, indexing and validation directive.
+- `MANUAL_CATALOG_AGENT.md`: manual, manpage, datasheet, service documentation, recovery guide and technical reference catalog directive.
+
+# # # # # # # # # #
+# Manual Catalog Agent #
+# # # # # # # # # #
+
+For manuals, manpages, service manuals, datasheets, installation guides, recovery guides and technical references, use:
+
+- Specific directive: `/MEMORY/AGENTS/MANUAL_CATALOG_AGENT.md`
+- Canonical manual content: `/MEMORY/MANUALS/`
+- Manual index: `/MEMORY/INDEX/MANUALS/`
+- Manual template: `/MEMORY/TEMPLATES/MANUAL_ENTRY_TEMPLATE.md`
+- Review queue: `/MEMORY/STATE/REVIEW_QUEUE.md`
+- Crawl status: `/MEMORY/STATE/CRAWL_STATUS.md`
+
+Manual content must not be duplicated in software, hardware, service, vendor or error-code files.
+Those files should reference canonical manual entries through `related_manuals`.
+
+Before manual work, read:
+
+- `/AGENTS.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/MANUAL_CATALOG_AGENT.md`
+- `/MEMORY/SOURCE_REGISTRY.md`
+- `/MEMORY/INDEX/MANUALS/README.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SCHEMA.md`
+
+Unclear licenses, proprietary service manuals, schematics, boardviews and restricted manufacturer PDFs are normally:
+
+- `license_status: UNKNOWN` or `RESTRICTED`
+- `content_policy: LINK_ONLY`
+- `status: REVIEW_REQUIRED`
 
 # # # # # # # # # # # #
 # Merge Rules #
