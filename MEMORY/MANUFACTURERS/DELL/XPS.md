@@ -2,7 +2,7 @@
 # DELL XPS PILOT #
 # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: manufacturer_product_family
 Canonical-Path: /MEMORY/MANUFACTURERS/DELL/XPS.md
@@ -55,6 +55,33 @@ sources:
     limitation: General support entrypoint only.
 ```
 
+# # # # # # # # # # # # #
+# Research Gates #
+# # # # # # # # # # # # #
+
+```text
+GATE-XPS-01: Find official Dell XPS routing page.
+GATE-XPS-02: Separate current XPS laptops from older XPS desktops or discontinued lines before storing model facts.
+GATE-XPS-03: Select exactly one current XPS laptop model as consumer-premium pilot only after official page verification.
+GATE-XPS-04: Create separate source entries for support overview, drivers, manuals, diagnostics and BIOS/firmware.
+GATE-XPS-05: Do not generalize display, docking, thermal, sleep, BIOS or GPU issues across XPS models.
+```
+
+# # # # # # # # # # # # #
+# Candidate Sub-Areas #
+# # # # # # # # # # # # #
+
+```yaml
+candidate_subareas:
+  consumer_premium_support: STATUS_RESEARCH_REQUIRED
+  driver_downloads: STATUS_RESEARCH_REQUIRED
+  manuals_documentation: STATUS_RESEARCH_REQUIRED
+  diagnostics: STATUS_RESEARCH_REQUIRED
+  bios_uefi: STATUS_RESEARCH_REQUIRED
+  display_gpu_dock_notes: STATUS_RESEARCH_REQUIRED
+  lifecycle: STATUS_RESEARCH_REQUIRED
+```
+
 # # # # # # # # # # # #
 # Next Research Tasks #
 # # # # # # # # # # # #
@@ -65,6 +92,7 @@ sources:
 3. Locate official XPS manuals and documentation routing page.
 4. Locate official XPS diagnostics routing page.
 5. Identify model-specific subpages only after source-class and crawl-gate checks.
+6. Prefer one current XPS laptop pilot before scaling across the family.
 ```
 
 # # # # # # # # # # #
@@ -75,4 +103,5 @@ sources:
 - Do not store Service Tag values.
 - Do not store driver or firmware binaries.
 - Do not generalize one XPS model's fix to the whole family.
+- Keep display, docking, sleep and BIOS findings model-specific and source-specific.
 ```
