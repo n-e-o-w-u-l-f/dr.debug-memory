@@ -2,13 +2,24 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.2.0
+Version: 0.2.1
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(memory): add index, Inspiron, Dell, HP and Lenovo follow-ups
+
+- Updated `/MEMORY/INDEX/MANUFACTURERS/README.md` with Lenovo navigation.
+- Added `/MEMORY/SOURCES/DELL/INSPIRON_FAMILY_ENTRY.md` as an alternate neutral Inspiron source path.
+- Added `/MEMORY/SOURCES/DELL/LATITUDE_5450_OVERVIEW.md`.
+- Added `/MEMORY/SOURCE_TRUST/LENOVO_COM.md`.
+- Confirmed Lenovo profile and Lenovo README already existed and were preserved.
+- Dell Latitude 5450 now has one dedicated source shell.
+- HP EliteBook 840 G11 remains a review shell because a concrete official HP support path was not verified in this run.
+- No final product-specific facts were added.
 
 ## feat(memory): add source shells and model review shells
 
@@ -37,7 +48,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## Review notes
 
-- Product-specific Dell and HP pages still require separate review before detailed entries are created.
+- Product-specific Dell, HP and Lenovo pages still require separate review before detailed entries are created.
 - Customer-specific values must not be stored.
 - Vendor files must not be mirrored.
 
