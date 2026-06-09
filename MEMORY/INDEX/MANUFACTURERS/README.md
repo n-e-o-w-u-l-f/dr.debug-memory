@@ -11,6 +11,7 @@ Scope: Navigation for manufacturer memory entries
 
 - `/MEMORY/MANUFACTURERS/DELL/`
 - `/MEMORY/MANUFACTURERS/HP/`
+- `/MEMORY/MANUFACTURERS/LENOVO/`
 
 # # # # # # # # # # #
 # Active Index Trees #
@@ -18,6 +19,7 @@ Scope: Navigation for manufacturer memory entries
 
 - `/MEMORY/INDEX/DELL/`
 - `/MEMORY/INDEX/HP/`
+- `/MEMORY/INDEX/LENOVO/`
 
 # # # # # # # # # # #
 # Source Trust #
@@ -25,6 +27,7 @@ Scope: Navigation for manufacturer memory entries
 
 - `/MEMORY/SOURCE_TRUST/DELL_COM.md`
 - `/MEMORY/SOURCE_TRUST/HP_COM.md`
+- `/MEMORY/SOURCE_TRUST/LENOVO_COM.md`
 
 # # # # # # # # # # #
 # Rules #
@@ -32,6 +35,5 @@ Scope: Navigation for manufacturer memory entries
 
 ```text
 - This file is navigation only.
-- Canonical facts live in manufacturer, source, identifier, lifecycle, firmware or security files.
 - Keep each manufacturer tree independently reviewable.
 ```
