@@ -2,7 +2,7 @@
 # DELL PRECISION PILOT #
 # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: manufacturer_product_family
 Canonical-Path: /MEMORY/MANUFACTURERS/DELL/PRECISION.md
@@ -55,6 +55,34 @@ sources:
     limitation: General support entrypoint only.
 ```
 
+# # # # # # # # # # # # #
+# Research Gates #
+# # # # # # # # # # # # #
+
+```text
+GATE-PRECISION-01: Find official Dell Precision routing page.
+GATE-PRECISION-02: Separate Precision mobile workstations from desktop workstations before storing model facts.
+GATE-PRECISION-03: Select exactly one mobile Precision and one desktop Precision pilot only after official page verification.
+GATE-PRECISION-04: Create separate source records for support overview, drivers, manuals, diagnostics and BIOS/firmware.
+GATE-PRECISION-05: Do not generalize workstation GPU, storage, BIOS or dock issues across models.
+```
+
+# # # # # # # # # # # # #
+# Candidate Sub-Areas #
+# # # # # # # # # # # # #
+
+```yaml
+candidate_subareas:
+  mobile_workstation_support: STATUS_RESEARCH_REQUIRED
+  desktop_workstation_support: STATUS_RESEARCH_REQUIRED
+  driver_downloads: STATUS_RESEARCH_REQUIRED
+  manuals_documentation: STATUS_RESEARCH_REQUIRED
+  diagnostics: STATUS_RESEARCH_REQUIRED
+  bios_uefi: STATUS_RESEARCH_REQUIRED
+  gpu_certification_notes: STATUS_RESEARCH_REQUIRED
+  lifecycle: STATUS_RESEARCH_REQUIRED
+```
+
 # # # # # # # # # # # #
 # Next Research Tasks #
 # # # # # # # # # # # #
@@ -65,6 +93,7 @@ sources:
 3. Locate official Precision driver and download routing page.
 4. Locate official Precision manuals and documentation routing page.
 5. Identify model-specific subpages only after source-class and crawl-gate checks.
+6. Prefer one mobile and one desktop Precision pilot before scaling.
 ```
 
 # # # # # # # # # # #
@@ -75,4 +104,5 @@ sources:
 - Do not store Service Tag values.
 - Do not store driver or firmware binaries.
 - Do not generalize workstation driver or BIOS facts across models.
+- Keep workstation fixes model-specific, OS-specific and firmware-version-specific.
 ```
