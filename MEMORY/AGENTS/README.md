@@ -19,6 +19,47 @@ Chat instructions are temporary unless stored here or in `/AGENTS.md`.
 
 - `GLOBAL_CRAWL_AGENT.md`: global crawl, curation, deduplication, indexing and validation directive.
 - `MANUAL_CATALOG_AGENT.md`: manual, manpage, datasheet, service documentation, recovery guide and technical reference catalog directive.
+- `MANUFACTURER_CRAWL_AGENT.md`: manufacturer support, firmware, driver, lifecycle, alias, device identifier, security advisory and vendor-history crawl directive.
+
+# # # # # # # # # # # # # # # # # #
+# Manufacturer Crawl Agent #
+# # # # # # # # # # # # # # # # # #
+
+For manufacturer support portals, public knowledge bases, firmware metadata, driver metadata, error-code records, service bulletins, EOL/EOS data, security advisories, manufacturer histories, aliases and device identifiers, use:
+
+- Specific directive: `/MEMORY/AGENTS/MANUFACTURER_CRAWL_AGENT.md`
+- Manufacturer canonical area: `/MEMORY/MANUFACTURERS/`
+- Firmware canonical area: `/MEMORY/FIRMWARE/`
+- Security canonical area: `/MEMORY/SECURITY/`
+- Alias registry: `/MEMORY/ALIASES/`
+- Device identifier registry: `/MEMORY/DEVICE_IDENTIFIERS/`
+- Lifecycle area: `/MEMORY/LIFECYCLE/`
+- Dependency graph area: `/MEMORY/DEPENDENCIES/`
+- Source trust area: `/MEMORY/SOURCE_TRUST/`
+- Review queue: `/MEMORY/STATE/REVIEW_QUEUE.md`
+- Crawl status: `/MEMORY/STATE/CRAWL_STATUS.md`
+
+Manufacturer work must not duplicate canonical error, firmware, security, manual, alias or device identifier entries inside index files.
+Index files should reference canonical entries only.
+
+Before manufacturer work, read:
+
+- `/AGENTS.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/GLOBAL_CRAWL_AGENT.md`
+- `/MEMORY/AGENTS/MANUFACTURER_CRAWL_AGENT.md`
+- `/MEMORY/SOURCE_REGISTRY.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SCHEMA.md`
+- `/CHANGES.md`
+- `/UPDATE_PROCESS.md`
+
+Manufacturer sources with unclear license, restricted access, login requirements, unknown crawl permission, unsupported binaries or proprietary full-text content are normally:
+
+- `crawl_allowed: false` or `crawl_allowed: limited`
+- `license_status: UNKNOWN` or `RESTRICTED`
+- `content_policy: LINK_ONLY`
+- `status: REVIEW_REQUIRED`
 
 # # # # # # # # # #
 # Manual Catalog Agent #
