@@ -2,7 +2,7 @@
 # LENOVO THINKBOOK PILOT #
 # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: manufacturer_product_family
 Canonical-Path: /MEMORY/MANUFACTURERS/LENOVO/THINKBOOK.md
@@ -20,3 +20,4 @@ Review-Required: true
 manufacturer: Lenovo
 product_family: ThinkBook
 category: business_mainstream
+batch: BATCH-0001B_PC_LAP
