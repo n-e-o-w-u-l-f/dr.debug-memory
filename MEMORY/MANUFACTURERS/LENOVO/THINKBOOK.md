@@ -2,7 +2,7 @@
 # LENOVO THINKBOOK PILOT #
 # # # # # # # # # # #
 
-Version: 0.0.4
+Version: 0.0.5
 Status: STATUS_RESEARCH_REQUIRED
 Family: manufacturer_product_family
 Canonical-Path: /MEMORY/MANUFACTURERS/LENOVO/THINKBOOK.md
@@ -15,4 +15,9 @@ Review-Required: true
 
 Lenovo ThinkBook pilot shell.
 
-Category
+Category: business-mainstream.
+
+Support entrypoint: https://pcsupport.lenovo.com/
+
+# # # # # # # # # # #
+# Next Review
