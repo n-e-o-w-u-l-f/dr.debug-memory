@@ -2,13 +2,25 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.4
+Version: 0.1.5
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## feat(memory): start Dell manufacturer pilot
+
+- Added `/MEMORY/TEMPLATES/MANUFACTURER_PROFILE_TEMPLATE.md`.
+- Added `/MEMORY/TEMPLATES/SOURCE_TRUST_ENTRY_TEMPLATE.md`.
+- Added `/MEMORY/TEMPLATES/DEVICE_IDENTIFIER_ENTRY_TEMPLATE.md`.
+- Added `/MEMORY/MANUFACTURERS/DELL/PROFILE.md`.
+- Added `/MEMORY/SOURCES/DELL/DELL_SUPPORT_HOME.md`.
+- Added `/MEMORY/SOURCE_TRUST/DELL_COM.md`.
+- Added `/MEMORY/DEVICE_IDENTIFIERS/DELL/SERVICE_TAG_TYPE.md`.
+- Used only official public Dell start URLs for pilot skeleton entries.
+- No product-specific Dell crawl was executed in this run.
 
 ## docs(memory): refine manufacturer batch planning
 
@@ -76,7 +88,8 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 ## Review notes
 
 - Direct `/MEMORY/INDEX.md` update was blocked by connector filtering; `/MEMORY/INDEX/AGENTS/MANUFACTURER_CRAWL_AGENT.md` was created instead.
-- No external crawl batch was executed in this run.
+- Product-specific Dell pages still require separate review before creating firmware, driver, BIOS, lifecycle or error-code entries.
+- Real Dell Service Tag values must never be stored.
 
 # # # # # # # # # # # # #
 # Maintenance Rules #
