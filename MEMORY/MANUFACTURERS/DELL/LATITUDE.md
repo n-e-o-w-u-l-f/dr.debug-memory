@@ -2,7 +2,7 @@
 # DELL LATITUDE PILOT #
 # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: manufacturer_product_family
 Canonical-Path: /MEMORY/MANUFACTURERS/DELL/LATITUDE.md
@@ -55,6 +55,33 @@ sources:
     limitation: General support entrypoint only.
 ```
 
+# # # # # # # # # # # # #
+# Research Gates #
+# # # # # # # # # # # # #
+
+```text
+GATE-LATITUDE-01: Find official Dell Latitude routing page.
+GATE-LATITUDE-02: Select exactly one current Latitude model as a pilot only after official page verification.
+GATE-LATITUDE-03: Create separate source entry for the selected model support overview.
+GATE-LATITUDE-04: Create separate source entries for drivers, manuals, diagnostics and BIOS/firmware only if pages are public.
+GATE-LATITUDE-05: Do not create repair or fix entries until model, OS, BIOS/UEFI version and source are known.
+```
+
+# # # # # # # # # # # # #
+# Candidate Sub-Areas #
+# # # # # # # # # # # # #
+
+```yaml
+candidate_subareas:
+  business_support_overview: STATUS_RESEARCH_REQUIRED
+  driver_downloads: STATUS_RESEARCH_REQUIRED
+  manuals_documentation: STATUS_RESEARCH_REQUIRED
+  diagnostics: STATUS_RESEARCH_REQUIRED
+  bios_uefi: STATUS_RESEARCH_REQUIRED
+  warranty_parts: STATUS_RESEARCH_REQUIRED
+  lifecycle: STATUS_RESEARCH_REQUIRED
+```
+
 # # # # # # # # # # # #
 # Next Research Tasks #
 # # # # # # # # # # # #
@@ -65,6 +92,7 @@ sources:
 3. Locate official Latitude manuals and documentation routing page.
 4. Locate official Latitude diagnostics routing page.
 5. Identify model-specific subpages only after source-class and crawl-gate checks.
+6. Prefer one modern Latitude pilot model before scaling across the family.
 ```
 
 # # # # # # # # # # #
@@ -75,4 +103,5 @@ sources:
 - Do not store Service Tag values.
 - Do not store driver or firmware binaries.
 - Do not generalize one Latitude model's fix to the whole family.
+- Keep all model facts at STATUS_RESEARCH_REQUIRED until official product pages are reviewed.
 ```
