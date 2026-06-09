@@ -2,7 +2,7 @@
 # DELL PRECISION SOURCE REGISTER #
 # # # # # # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: source_register
 Canonical-Path: /MEMORY/SOURCES/DELL/PRECISION_SOURCE_REGISTER.md
@@ -69,6 +69,33 @@ Before creating model-specific Precision entries, create separate source files f
 ```
 
 # # # # # # # # # # # # #
+# Source Creation Gates #
+# # # # # # # # # # # # #
+
+```text
+SOURCE-GATE-PRECISION-01: Create a new source file only after the page is official, public and stable enough to cite.
+SOURCE-GATE-PRECISION-02: Split mobile Precision and desktop Precision before storing model facts.
+SOURCE-GATE-PRECISION-03: Store drivers, BIOS and firmware only as metadata references, never as binaries.
+SOURCE-GATE-PRECISION-04: Keep GPU certification or workstation configuration notes model-specific.
+SOURCE-GATE-PRECISION-05: If a page depends on Service Tag lookup, do not store lookup results.
+```
+
+# # # # # # # # # # # #
+# Planned Source Files #
+# # # # # # # # # # # #
+
+```text
+/MEMORY/SOURCES/DELL/PRECISION_FAMILY_SUPPORT.md
+/MEMORY/SOURCES/DELL/PRECISION_MOBILE_SUPPORT.md
+/MEMORY/SOURCES/DELL/PRECISION_DESKTOP_SUPPORT.md
+/MEMORY/SOURCES/DELL/PRECISION_MANUALS.md
+/MEMORY/SOURCES/DELL/PRECISION_DRIVERS_DOWNLOADS.md
+/MEMORY/SOURCES/DELL/PRECISION_DIAGNOSTICS.md
+/MEMORY/SOURCES/DELL/PRECISION_SECURITY.md
+/MEMORY/SOURCES/DELL/PRECISION_LIFECYCLE.md
+```
+
+# # # # # # # # # # # # #
 # Split Requirement #
 # # # # # # # # # # # # #
 
@@ -87,16 +114,4 @@ Mobile Precision and desktop Precision must be separated before storing any prod
 - Do not infer one Precision model from another.
 - Do not store warranty lookups or customer-specific results.
 - Mark all unverified entries as STATUS_RESEARCH_REQUIRED.
-```
-
-# # # # # # # # # # # # #
-# Next Research Tasks #
-# # # # # # # # # # # # #
-
-```text
-1. Locate official Precision family support page.
-2. Locate official Precision mobile workstation source path.
-3. Locate official Precision desktop workstation source path.
-4. Create model-agnostic source entries only after crawl-gate review.
-5. Select first concrete Precision model only after source structure is confirmed.
 ```
