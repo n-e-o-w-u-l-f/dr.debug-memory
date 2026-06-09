@@ -2,7 +2,7 @@
 # DELL XPS SOURCE REGISTER #
 # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: source_register
 Canonical-Path: /MEMORY/SOURCES/DELL/XPS_SOURCE_REGISTER.md
@@ -51,6 +51,31 @@ sources:
 4. XPS diagnostics routing page.
 5. XPS security advisory source entries.
 6. XPS lifecycle or EOL/EOS source entries, only if official and model-specific.
+```
+
+# # # # # # # # # # # # #
+# Source Creation Gates #
+# # # # # # # # # # # # #
+
+```text
+SOURCE-GATE-XPS-01: Create a new source file only after the page is official, public and stable enough to cite.
+SOURCE-GATE-XPS-02: Separate current XPS laptops from older or discontinued XPS forms before storing model facts.
+SOURCE-GATE-XPS-03: Store drivers, BIOS and firmware only as metadata references, never as binaries.
+SOURCE-GATE-XPS-04: Keep display, docking, sleep, GPU and BIOS findings model-specific.
+SOURCE-GATE-XPS-05: If a page depends on Service Tag lookup, do not store lookup results.
+```
+
+# # # # # # # # # # # #
+# Planned Source Files #
+# # # # # # # # # # # #
+
+```text
+/MEMORY/SOURCES/DELL/XPS_FAMILY_SUPPORT.md
+/MEMORY/SOURCES/DELL/XPS_MANUALS.md
+/MEMORY/SOURCES/DELL/XPS_DRIVERS_DOWNLOADS.md
+/MEMORY/SOURCES/DELL/XPS_DIAGNOSTICS.md
+/MEMORY/SOURCES/DELL/XPS_SECURITY.md
+/MEMORY/SOURCES/DELL/XPS_LIFECYCLE.md
 ```
 
 # # # # # # # # # # #
