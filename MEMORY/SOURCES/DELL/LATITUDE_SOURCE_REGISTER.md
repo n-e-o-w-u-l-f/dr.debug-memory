@@ -2,7 +2,7 @@
 # DELL LATITUDE SOURCE REGISTER #
 # # # # # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Status: STATUS_RESEARCH_REQUIRED
 Family: source_register
 Canonical-Path: /MEMORY/SOURCES/DELL/LATITUDE_SOURCE_REGISTER.md
@@ -51,6 +51,31 @@ sources:
 4. Latitude diagnostics routing page.
 5. Latitude security advisory source entries.
 6. Latitude lifecycle or EOL/EOS source entries, only if official and model-specific.
+```
+
+# # # # # # # # # # # # #
+# Source Creation Gates #
+# # # # # # # # # # # # #
+
+```text
+SOURCE-GATE-LATITUDE-01: Create a new source file only after the page is official, public and stable enough to cite.
+SOURCE-GATE-LATITUDE-02: Mark generic family pages as routing sources, not evidence for model facts.
+SOURCE-GATE-LATITUDE-03: Store drivers, BIOS and firmware only as metadata references, never as binaries.
+SOURCE-GATE-LATITUDE-04: Separate model source pages from family source pages.
+SOURCE-GATE-LATITUDE-05: If a page depends on Service Tag lookup, do not store lookup results.
+```
+
+# # # # # # # # # # # #
+# Planned Source Files #
+# # # # # # # # # # # #
+
+```text
+/MEMORY/SOURCES/DELL/LATITUDE_FAMILY_SUPPORT.md
+/MEMORY/SOURCES/DELL/LATITUDE_MANUALS.md
+/MEMORY/SOURCES/DELL/LATITUDE_DRIVERS_DOWNLOADS.md
+/MEMORY/SOURCES/DELL/LATITUDE_DIAGNOSTICS.md
+/MEMORY/SOURCES/DELL/LATITUDE_SECURITY.md
+/MEMORY/SOURCES/DELL/LATITUDE_LIFECYCLE.md
 ```
 
 # # # # # # # # # # #
