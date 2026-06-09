@@ -2,13 +2,29 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.6
+Version: 0.1.7
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(memory): add Dell source registers and HP pilot
+
+- Added `/MEMORY/SOURCES/DELL/README.md`.
+- Added `/MEMORY/SOURCES/DELL/PRECISION_SOURCE_REGISTER.md`.
+- Added `/MEMORY/SOURCES/DELL/LATITUDE_SOURCE_REGISTER.md`.
+- Added `/MEMORY/SOURCES/DELL/XPS_SOURCE_REGISTER.md`.
+- Added `/MEMORY/SOURCES/DELL/INSPIRON_SOURCE_REGISTER.md`.
+- Prioritized Dell Precision as the first workstation source-register pilot.
+- Added `/MEMORY/MANUFACTURERS/HP/PROFILE.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/README.md`.
+- Added `/MEMORY/SOURCES/HP/README.md`.
+- Added `/MEMORY/SOURCES/HP/HP_SUPPORT_HOME.md`.
+- Added `/MEMORY/SOURCES/HP/ZBOOK_SOURCE_REGISTER.md`.
+- Kept all new source registers at entrypoint/planning level with `STATUS_RESEARCH_REQUIRED`.
+- No product-specific driver, firmware, BIOS, lifecycle, warranty or repair claims were added.
 
 ## feat(memory): add Dell family pilot entries
 
@@ -100,8 +116,8 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 ## Review notes
 
 - Direct `/MEMORY/INDEX.md` update was blocked by connector filtering; `/MEMORY/INDEX/AGENTS/MANUFACTURER_CRAWL_AGENT.md` was created instead.
-- Product-specific Dell pages still require separate review before creating firmware, driver, BIOS, lifecycle or error-code entries.
-- Real Dell Service Tag values must never be stored.
+- Product-specific Dell and HP pages still require separate review before creating firmware, driver, BIOS, lifecycle or error-code entries.
+- Real Dell Service Tag values, HP serial numbers, warranty lookup results and customer-specific records must never be stored.
 
 # # # # # # # # # # # # #
 # Maintenance Rules #
