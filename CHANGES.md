@@ -2,13 +2,29 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.8
+Version: 0.1.9
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## feat(memory): add HP family skeletons and improve Dell source registers
+
+- Added `/MEMORY/MANUFACTURERS/HP/ZBOOK.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/ELITEBOOK.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/PROBOOK.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/SPECTRE.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/ENVY.md`.
+- Added `/MEMORY/MANUFACTURERS/HP/PAVILION.md`.
+- Updated `/MEMORY/SOURCES/DELL/LATITUDE_SOURCE_REGISTER.md`.
+- Updated `/MEMORY/SOURCES/DELL/PRECISION_SOURCE_REGISTER.md`.
+- Updated `/MEMORY/SOURCES/DELL/XPS_SOURCE_REGISTER.md`.
+- Updated `/MEMORY/SOURCES/DELL/INSPIRON_SOURCE_REGISTER.md`.
+- Kept HP family files as `STATUS_RESEARCH_REQUIRED` skeletons.
+- Kept Dell source registers as routing/checklist files, not model-specific evidence.
+- No product-specific driver, firmware, BIOS, lifecycle, warranty or repair claims were added.
 
 ## docs(memory): improve indexes and Dell research gates
 
