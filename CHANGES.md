@@ -2,13 +2,24 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.3
+Version: 0.1.4
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(memory): refine manufacturer batch planning
+
+- Updated `/MEMORY/PROPOSALS/MANUFACTURER_BATCH_0001_PC_LAPTOP_2026-06-09.md`.
+- Split `BATCH-0001_PC_LAPTOP` into Consumer, Business, Workstation, Linux-focused and Mini/SFF sub-batches.
+- Kept Dell as first pilot manufacturer.
+- Removed Apple from Batch 0001 and planned it as a separate platform batch.
+- Expanded the manufacturer list.
+- Added `/MEMORY/PROPOSALS/MANUFACTURER_BATCH_0002_APPLE_PLATFORM_2026-06-09.md`.
+- Checked official public start points for Dell, Lenovo and Apple for planning context.
+- No external crawl batch was executed in this run.
 
 ## docs(memory): add manufacturer batch plan
 
