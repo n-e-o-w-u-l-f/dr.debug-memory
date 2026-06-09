@@ -2,7 +2,7 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.0
+Version: 0.1.1
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
@@ -36,10 +36,20 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Added `/MEMORY/TEMPLATES/SOFTWARE_ENTRY_TEMPLATE.md`.
 - Added `/MEMORY/TEMPLATES/SOURCE_ENTRY_TEMPLATE.md`.
 
+## docs(agents): add manual catalog directive
+
+- Added `/MEMORY/AGENTS/MANUAL_CATALOG_AGENT.md`.
+- Added `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`.
+- Updated `/MEMORY/AGENTS/README.md`.
+- Added `/MEMORY/INDEX.md`.
+- Added `/MEMORY/INDEX/MANUALS/README.md`.
+- Added `/MEMORY/STATE/REVIEW_QUEUE.md`.
+- Updated `/MEMORY/STATE/CRAWL_STATUS.md`.
+- Updated `.gitignore`.
+
 ## Review notes
 
-- Some writes were blocked by connector safety filtering and need follow-up in a later small commit.
-- Blocked paths included `/MEMORY/INDEX.md`, selected state files, and selected templates.
+- Some writes were blocked by connector filtering and need follow-up in a later small commit.
 - No external crawl batch was executed in this run.
 
 # # # # # # # # # # # # #
@@ -53,5 +63,5 @@ Every future repository-changing agent run must update this file with:
 3. created files,
 4. changed files,
 5. removed or superseded files,
-6. safety or review notes,
+6. review notes,
 7. suggested or executed commit message.
