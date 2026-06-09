@@ -1,0 +1,38 @@
+# # # # # # # # # #
+# DR. DEBUG .gitignore #
+# # # # # # # # # #
+
+# Temporary crawl/cache data
+.cache/
+BUILD/
+build/
+dist/
+tmp/
+*.tmp
+*.bak
+*.log
+raw-html/
+raw-json/
+crawler-output/
+crawl-cache/
+
+# Dependency and generated directories
+node_modules/
+__pycache__/
+**/__pycache__/
+.venv/
+venv/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Secrets and local environment files
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
