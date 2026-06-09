@@ -13,8 +13,11 @@ tmp/
 *.log
 raw-html/
 raw-json/
+raw-pdf/
+ocr-output/
 crawler-output/
 crawl-cache/
+downloaded-manuals/
 
 # Dependency and generated directories
 node_modules/
