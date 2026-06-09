@@ -2,13 +2,21 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.1.1
+Version: 0.1.2
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # # # # # # # # # #
 # 2026-06-09 #
 # # # # # # # # # #
+
+## docs(agents): add manufacturer agent directive
+
+- Added `/MEMORY/AGENTS/MANUFACTURER_CRAWL_AGENT.md`.
+- Updated `/MEMORY/AGENTS/README.md`.
+- Read and preserved `/AGENTS.md`.
+- No data batch was executed in this run.
+- Follow-up: add `/MEMORY/INDEX.md` navigation entry when possible.
 
 ## chore(memory): bootstrap memory governance files
 
