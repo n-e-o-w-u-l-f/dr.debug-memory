@@ -17,12 +17,39 @@ Chat instructions are temporary unless stored here or in `/AGENTS.md`.
 # Active Directives #
 # # # # # # # # # #
 
+- `MASTER_CONTINUATION_AGENT.md`: master continuation directive for reading the full memory state, coordinating domain subagents and resuming software, PHP error and hardware/device work from current checkpoints.
 - `GLOBAL_CRAWL_AGENT.md`: global crawl, curation, deduplication, indexing and validation directive.
 - `MANUAL_CATALOG_AGENT.md`: manual, manpage, datasheet, service documentation, recovery guide and technical reference catalog directive.
 - `MANUFACTURER_CRAWL_AGENT.md`: manufacturer support, firmware, driver, lifecycle, alias, device identifier, security advisory and vendor-history crawl directive.
 - `DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`: device hardware, manufacturer, model, revision, compatibility and safe diagnostics knowledge ingest directive.
 - `SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md`: software package, distribution, package-manager, command-list and package error-analysis knowledge directive.
 - `TECHNICAL_REFERENCE_SCROBBLE_AGENT.md`: cross-domain directive for manuals, Manualslib metadata, man-db/manpages, device/model errors, errorcodes, troubleshooting references and safe source-based knowledge ingest.
+
+# # # # # # # # # # # # # # # # # # #
+# Master Continuation Agent #
+# # # # # # # # # # # # # # # # # # #
+
+For continuing multi-domain Dr. Debug memory work from the current repository state, use:
+
+- Specific directive: `/MEMORY/AGENTS/MASTER_CONTINUATION_AGENT.md`
+- Software handoff: `software_agent_handoff_current_20260614.md`
+- Software directive: `/MEMORY/AGENTS/SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md`
+- PHP error directive: `/MEMORY/AGENTS/PHP_ERROR_DATABASE_INGEST_AGENT.md`
+- Device hardware directive: `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`
+
+Before master continuation work, read:
+
+- `/AGENTS.md`
+- `/README.md`
+- `/CHANGES.md`
+- `/UPDATE_PROCESS.md`
+- `/MEMORY/INDEX.md`
+- `/MEMORY/SCHEMA.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SOURCE_REGISTRY.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/README.md`
+- `/MEMORY/STATE/`
 
 # # # # # # # # # # # # # # # # # # # # # #
 # Technical Reference Scrobble Agent #
