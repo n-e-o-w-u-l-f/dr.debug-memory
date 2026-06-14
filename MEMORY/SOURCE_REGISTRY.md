@@ -2,7 +2,7 @@
 # DR. DEBUG SOURCE_REGISTRY.md #
 # # # # # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2
 Zielpfad: /MEMORY/SOURCE_REGISTRY.md
 Status: ACTIVE
 Scope: Source registry for Dr. Debug memory entries
@@ -127,6 +127,12 @@ COMMUNITY_SOURCE
 SECONDARY_SOURCE
 HISTORICAL_SOURCE
 VALIDATED_CASE
+TECHNICAL_REFERENCE
+TECHNICAL_MANUAL_REFERENCE
+MANPAGE_REFERENCE
+ERROR_CODE_REFERENCE
+DEVICE_REFERENCE
+SOFTWARE_REFERENCE
 UNSAFE_SOURCE
 REJECTED_SOURCE
 ```
@@ -167,9 +173,9 @@ Ein lokaler Test ist keine allgemeine Herstellerbestaetigung.
 Veraltete Quellen muessen mit Versionsgrenzen markiert werden.
 ```
 
-# # # # # # # # # # #
+# # # # # # # # # #
 # Statusbezug #
-# # # # # # # # # # #
+# # # # # # # # # #
 
 ```text
 STATUS_RESEARCH_REQUIRED
