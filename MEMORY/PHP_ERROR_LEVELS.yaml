@@ -1,0 +1,385 @@
+id: php-error-levels-index
+title: PHP Error Level Constants
+family: error
+status: STATUS_RESEARCHED
+confidence: MEDIUM
+first_added: '2026-06-14'
+last_verified: '2026-06-14'
+canonical_path: /MEMORY/PHP_ERROR_LEVELS.yaml
+intended_path: /MEMORY/PHP/ERRORS/ERROR_LEVELS.yaml
+version: 0.0.1
+source_url: https://www.php.net/manual/en/errorfunc.constants.php
+source_title: 'PHP Manual: Error Handling - Predefined Constants'
+retrieved_at: '2026-06-14'
+license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+review_required: true
+review_reason: 'Initial batch covers current PHP Manual facts. Intended nested path was blocked by connector filtering and should be renamed manually or in a later connector-safe run.'
+entries:
+  - id: php-error-level-e-error
+    name: E_ERROR
+    category: php_error_level
+    severity: fatal
+    fatal: true
+    recoverable: false
+    value_current_php_8_4: 1
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Fatal run-time error; script execution stops.
+    typical_causes: [memory allocation failure, non-recoverable runtime condition]
+    diagnostics: [check PHP and SAPI error log, verify PHP version, verify CLI and web runtime separately]
+    safe_fixes: [fix root cause from fatal log, use production logging instead of public error display]
+    anti_patterns: [suppressing the error instead of fixing root cause]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-warning
+    name: E_WARNING
+    category: php_error_level
+    severity: warning
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 2
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Non-fatal run-time warning; script execution continues.
+    typical_causes: [invalid parameter, file or stream issue, extension or permission issue]
+    diagnostics: [inspect full warning text with file and line, check related resource or extension]
+    safe_fixes: [correct invalid call, restore required resource, fix extension or permission mismatch]
+    anti_patterns: [globally hiding warnings without diagnosis]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-parse
+    name: E_PARSE
+    category: php_error_level
+    severity: compile_error
+    fatal: true
+    recoverable: false
+    value_current_php_8_4: 4
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Compile-time parser error.
+    typical_causes: [syntax error, unsupported syntax for active PHP version]
+    diagnostics: [lint reported file with target PHP version, compare syntax to deployment runtime]
+    safe_fixes: [correct syntax, deploy to a runtime that supports the syntax]
+    anti_patterns: [assuming parser errors can be fixed with runtime configuration]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-notice
+    name: E_NOTICE
+    category: php_error_level
+    severity: notice
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 8
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Run-time notice for suspicious code that may still be valid.
+    typical_causes: [fragile value access, legacy undefined variable patterns]
+    diagnostics: [inspect exact message, check whether PHP 8 changed severity for similar pattern]
+    safe_fixes: [initialize values explicitly, harden conditionals and access patterns]
+    anti_patterns: [treating notices as harmless forever]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-core-error
+    name: E_CORE_ERROR
+    category: php_error_level
+    severity: fatal_startup
+    fatal: true
+    recoverable: false
+    value_current_php_8_4: 16
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Fatal error during PHP core startup.
+    typical_causes: [broken runtime startup, incompatible PHP binary or configuration]
+    diagnostics: [check service journal and SAPI startup logs, run PHP version command and inspect startup output]
+    safe_fixes: [repair PHP installation or startup configuration, roll back incompatible runtime changes]
+    anti_patterns: [debugging only application code while startup fails]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-core-warning
+    name: E_CORE_WARNING
+    category: php_error_level
+    severity: startup_warning
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 32
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Non-fatal warning during PHP core startup.
+    typical_causes: [startup configuration problem, extension startup warning]
+    diagnostics: [inspect PHP startup output, check loaded ini files]
+    safe_fixes: [fix startup configuration, correct extension paths or version mismatch]
+    anti_patterns: [ignoring startup warnings in production]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-compile-error
+    name: E_COMPILE_ERROR
+    category: php_error_level
+    severity: fatal_compile
+    fatal: true
+    recoverable: false
+    value_current_php_8_4: 64
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Fatal compile-time error from the Zend engine.
+    typical_causes: [invalid declaration, compile-time incompatible code]
+    diagnostics: [lint the reported file, inspect declaration or syntax area]
+    safe_fixes: [correct code for active PHP compiler rules]
+    anti_patterns: [treating compile errors as webserver errors]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-compile-warning
+    name: E_COMPILE_WARNING
+    category: php_error_level
+    severity: compile_warning
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 128
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Non-fatal compile-time warning from the Zend engine.
+    typical_causes: [questionable compile-time construct, version-specific language warning]
+    diagnostics: [lint with target PHP version, check changelog or RFC when version-specific]
+    safe_fixes: [refactor construct, keep source compatible with supported runtime versions]
+    anti_patterns: [shipping with unresolved compile warnings]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-user-error
+    name: E_USER_ERROR
+    category: php_error_level
+    severity: user_fatal
+    fatal: true
+    recoverable: false
+    value_current_php_8_4: 256
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: 'PHP 8.4.0 for trigger_error usage with E_USER_ERROR'
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: User-generated fatal error from PHP code through trigger_error.
+    typical_causes: [legacy application fatal path, deliberate validation stop]
+    diagnostics: [search for trigger_error with E_USER_ERROR, check PHP 8.4 context]
+    safe_fixes: [replace legacy fatal trigger path with exception or explicit exit path where appropriate]
+    anti_patterns: [adding new E_USER_ERROR trigger paths in PHP 8.4 plus code]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-user-warning
+    name: E_USER_WARNING
+    category: php_error_level
+    severity: user_warning
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 512
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: User-generated warning from PHP code.
+    typical_causes: [application validation warning, library-level non-fatal warning]
+    diagnostics: [locate trigger point and caller context]
+    safe_fixes: [use structured domain errors or typed exceptions where the contract requires it]
+    anti_patterns: [using warnings as hidden control flow]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-user-notice
+    name: E_USER_NOTICE
+    category: php_error_level
+    severity: user_notice
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 1024
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: User-generated notice from PHP code.
+    typical_causes: [legacy diagnostics path, application notice]
+    diagnostics: [locate trigger point]
+    safe_fixes: [use structured logging or domain-specific results in new code]
+    anti_patterns: [using notices for important control flow]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: MEDIUM
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-strict
+    name: E_STRICT
+    category: php_error_level
+    severity: compatibility_suggestion
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 2048
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: PHP 8.4.0
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Former run-time suggestions for forward compatibility; unused and deprecated as of PHP 8.4.
+    typical_causes: [old configuration references E_STRICT, legacy tooling expects strict suggestions]
+    diagnostics: [inspect error reporting masks and configuration references]
+    safe_fixes: [remove reliance on E_STRICT as a separate modern signal]
+    anti_patterns: [treating E_STRICT as an active modern diagnostic channel]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-recoverable-error
+    name: E_RECOVERABLE_ERROR
+    category: php_error_level
+    severity: legacy_recoverable_fatal
+    fatal: true
+    recoverable: true
+    value_current_php_8_4: 4096
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Legacy catchable fatal engine error; effectively unused in modern PHP.
+    typical_causes: [legacy engine behavior, internal object boolean conversion edge case]
+    diagnostics: [check custom error handler behavior and exact runtime context]
+    safe_fixes: [treat as legacy compatibility issue and refactor underlying operation]
+    anti_patterns: [assuming fatal-looking errors can always be resumed after a handler]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-deprecated
+    name: E_DEPRECATED
+    category: php_error_level
+    severity: deprecation
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 8192
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Runtime deprecation notice for code that may stop working in future PHP versions.
+    typical_causes: [deprecated feature usage, version upgrade exposes future-incompatible code]
+    diagnostics: [enable deprecations in development and CI, map each deprecation to PHP version and source]
+    safe_fixes: [replace deprecated APIs or syntax with supported alternatives]
+    anti_patterns: [permanently disabling deprecations in CI]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-user-deprecated
+    name: E_USER_DEPRECATED
+    category: php_error_level
+    severity: user_deprecation
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 16384
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: User-generated deprecation notice from PHP code.
+    typical_causes: [library marks API as deprecated, application-level migration signal]
+    diagnostics: [trace caller and vendor version, check upstream upgrade guide]
+    safe_fixes: [migrate to replacement API on planned timeline]
+    anti_patterns: [globally hiding user deprecations forever]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-error-level-e-all
+    name: E_ALL
+    category: php_error_level
+    severity: bitmask
+    fatal: false
+    recoverable: true
+    value_current_php_8_4: 30719
+    introduced: UNKNOWN_IN_THIS_BATCH
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.0, PHP 8.1, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Bitmask containing all PHP errors, warnings and notices for the runtime version.
+    typical_causes: [runtime configuration, CI error reporting]
+    diagnostics: [check numeric value only for active PHP version, note PHP 8.4 value change from older 32767]
+    safe_fixes: [prefer symbolic E_ALL where supported instead of hard-coded numeric masks]
+    anti_patterns: [hard-coding old numeric value for PHP 8.4 plus]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/errorfunc.constants.php
+    source_title: 'PHP Manual: Error Handling - Predefined Constants'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
