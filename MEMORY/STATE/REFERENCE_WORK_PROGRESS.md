@@ -14,8 +14,8 @@ owner_agent: /MEMORY/AGENTS/TECHNICAL_REFERENCE_SCROBBLE_AGENT.md
 
 - Arbeitsstand angelegt.
 - Noch kein Fachbereich verarbeitet.
-- Noch keine Einträge erzeugt.
-- Noch keine Indexdatei aus diesem Lauf erweitert.
+- Noch keine Facheinträge erzeugt.
+- Root-Index und Quellenregister wurden in früheren Läufen erweitert.
 
 ## Bereiche
 
@@ -25,6 +25,19 @@ manpage_catalog: pending
 device_model_catalog: pending
 software_command_catalog: pending
 error_reference_catalog: pending
+```
+
+## Aufgaben
+
+```text
+TASK-001: Memory-Struktur lesen
+TASK-002: vorhandene Hardware-Pfade prüfen
+TASK-003: vorhandene Software-Pfade prüfen
+TASK-004: vorhandene Fehler-Pfade prüfen
+TASK-005: Quellenregister prüfen
+TASK-006: ersten kleinen Hardware-Fokus wählen
+TASK-007: ersten kleinen Software-Fokus wählen
+TASK-008: Fortschritt aktualisieren
 ```
 
 ## Nächste Schritte
