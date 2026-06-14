@@ -1,0 +1,339 @@
+id: php-throwable-tree
+title: PHP Throwable / Exception / Error Hierarchy
+family: error
+status: STATUS_RESEARCHED
+confidence: MEDIUM
+first_added: '2026-06-14'
+last_verified: '2026-06-14'
+canonical_path: /MEMORY/PHP_THROWABLE_TREE.yaml
+intended_path: /MEMORY/PHP/ERRORS/THROWABLE_TREE.yaml
+version: 0.0.1
+review_required: true
+review_reason: 'Initial hierarchy covers requested classes. Extension/framework classes and PHP 8.4 RequestParseBodyException require follow-up modules. Intended nested path was blocked by connector filtering.'
+retrieved_at: '2026-06-14'
+license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+sources:
+  - https://www.php.net/manual/en/class.throwable.php
+  - https://www.php.net/manual/en/class.exception.php
+  - https://www.php.net/manual/en/class.error.php
+  - https://www.php.net/manual/en/class.errorexception.php
+  - https://www.php.net/manual/en/class.typeerror.php
+  - https://www.php.net/manual/en/class.valueerror.php
+  - https://www.php.net/manual/en/class.parseerror.php
+  - https://www.php.net/manual/en/class.compileerror.php
+  - https://www.php.net/manual/en/class.argumentcounterror.php
+  - https://www.php.net/manual/en/class.fibererror.php
+tree_notes:
+  - Throwable is the top-level interface for throwables in PHP 7+.
+  - Exception and Error are the two main branches.
+  - ErrorException is an Exception-based wrapper for selected reported errors; it is not the same branch as Error.
+  - ParseError extends CompileError as of PHP 7.3.0; before PHP 7.3 it extended Error.
+entries:
+  - id: php-throwable-throwable
+    name: Throwable
+    category: php_throwable
+    parent: null
+    implements: [Stringable as of PHP 8.0]
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Base interface for objects that can be thrown, including Error and Exception.
+    typical_trigger: Any thrown Error or Exception object.
+    example_message_patterns: [Uncaught Throwable]
+    diagnostics: [capture class name, message, file, line and stack trace, verify PHP version]
+    safe_fixes: [handle at application boundary, extend Exception for user-defined throwable family]
+    anti_patterns: [silently swallowing Throwable]
+    related_entries: [php-throwable-exception, php-throwable-error]
+    source_url: https://www.php.net/manual/en/class.throwable.php
+    source_title: 'PHP Manual: Throwable'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-exception
+    name: Exception
+    category: php_throwable
+    parent: Throwable
+    implements: []
+    introduced: PHP 5.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 5.x, PHP 7.x, PHP 8.x]
+    description: Base class for user exceptions.
+    typical_trigger: Application or library throws an exception object.
+    example_message_patterns: [Uncaught Exception]
+    diagnostics: [inspect stack trace and throwing code, separate business exceptions from engine Error classes]
+    safe_fixes: [catch specific exception types where possible, log at boundary]
+    anti_patterns: [catching Exception too broadly and continuing silently]
+    related_entries: [php-throwable-errorexception]
+    source_url: https://www.php.net/manual/en/class.exception.php
+    source_title: 'PHP Manual: Exception'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-error
+    name: Error
+    category: php_throwable
+    parent: Throwable
+    implements: []
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Base class for PHP internal error exceptions.
+    typical_trigger: Engine or runtime detects a condition represented as an Error object.
+    example_message_patterns: [Uncaught Error]
+    diagnostics: [inspect concrete Error subclass, check active PHP version]
+    safe_fixes: [fix type/value/syntax/runtime-state issue indicated by concrete subclass]
+    anti_patterns: [treating Error subclasses as ordinary business exceptions]
+    related_entries: [php-throwable-typeerror, php-throwable-parseerror]
+    source_url: https://www.php.net/manual/en/class.error.php
+    source_title: 'PHP Manual: Error'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-errorexception
+    name: ErrorException
+    category: php_throwable
+    parent: Exception
+    implements: []
+    introduced: PHP 5.1.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 5.x, PHP 7.x, PHP 8.x]
+    description: Exception wrapper commonly used to convert selected PHP reported errors into exceptions.
+    typical_trigger: Custom error handler throws ErrorException for a reported PHP error.
+    example_message_patterns: [Uncaught ErrorException, ErrorException]
+    diagnostics: [inspect custom error handler, check severity field and original errno]
+    safe_fixes: [convert only selected severities, do not turn deprecations into fatal application failures by default]
+    anti_patterns: [converting every warning or notice into an uncaught production exception]
+    related_entries: [php-error-level-e-warning, php-error-level-e-deprecated]
+    source_url: https://www.php.net/manual/en/class.errorexception.php
+    source_title: 'PHP Manual: ErrorException'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-typeerror
+    name: TypeError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Error thrown when a value does not match a declared or expected type.
+    typical_trigger: Wrong argument, return, property or operation type.
+    example_message_patterns: ['Argument #1 must be of type ...', 'Return value must be of type ...']
+    diagnostics: [compare actual and expected types, inspect strict_types and signature]
+    safe_fixes: [fix caller data shape or function signature, add validation at boundary]
+    anti_patterns: [casting blindly without understanding input source]
+    related_entries: [php-throwable-argumentcounterror]
+    source_url: https://www.php.net/manual/en/class.typeerror.php
+    source_title: 'PHP Manual: TypeError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-valueerror
+    name: ValueError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 8.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 8.x]
+    description: Error thrown when a value has the correct type but is invalid for the operation.
+    typical_trigger: Invalid value passed to internal function or API.
+    example_message_patterns: [ValueError, must be greater than, must not be empty]
+    diagnostics: [inspect accepted value range and function documentation]
+    safe_fixes: [validate values before call, handle invalid user input at boundary]
+    anti_patterns: [assuming correct type means acceptable value]
+    related_entries: [php-throwable-typeerror]
+    source_url: https://www.php.net/manual/en/class.valueerror.php
+    source_title: 'PHP Manual: ValueError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-parseerror
+    name: ParseError
+    category: php_throwable
+    parent: CompileError
+    implements: []
+    introduced: 'PHP 7.0; parent changed to CompileError in PHP 7.3.0'
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Thrown when PHP code parsing fails, for example through eval.
+    typical_trigger: Invalid PHP syntax at parse time.
+    example_message_patterns: ['syntax error, unexpected token', ParseError]
+    diagnostics: [lint the file with target PHP version, check eval input separately]
+    safe_fixes: [correct syntax, avoid dynamic code where possible]
+    anti_patterns: [debugging database or webserver config for a syntax error]
+    related_entries: [php-throwable-compileerror]
+    source_url: https://www.php.net/manual/en/class.parseerror.php
+    source_title: 'PHP Manual: ParseError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-compileerror
+    name: CompileError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 7.3.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.3+, PHP 8.x]
+    description: Error for selected compilation failures previously emitted as fatal errors.
+    typical_trigger: Compile-time language rule violation.
+    example_message_patterns: [CompileError]
+    diagnostics: [lint with target PHP version, inspect declarations]
+    safe_fixes: [correct code for compiler rules]
+    anti_patterns: [catching compile errors instead of fixing code]
+    related_entries: [php-throwable-parseerror]
+    source_url: https://www.php.net/manual/en/class.compileerror.php
+    source_title: 'PHP Manual: CompileError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-arithmeticerror
+    name: ArithmeticError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Base class for arithmetic-related errors.
+    typical_trigger: Invalid arithmetic operation.
+    example_message_patterns: [ArithmeticError]
+    diagnostics: [inspect operands and arithmetic operator or function]
+    safe_fixes: [validate operands before operation]
+    anti_patterns: [blindly suppressing arithmetic faults]
+    related_entries: [php-throwable-divisionbyzeroerror]
+    source_url: https://www.php.net/manual/en/class.arithmeticerror.php
+    source_title: 'PHP Manual: ArithmeticError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-divisionbyzeroerror
+    name: DivisionByZeroError
+    category: php_throwable
+    parent: ArithmeticError
+    implements: []
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Error for division or modulo by zero in applicable contexts.
+    typical_trigger: Division or modulo operation with zero divisor.
+    example_message_patterns: [Division by zero, Modulo by zero]
+    diagnostics: [inspect divisor source, add boundary checks]
+    safe_fixes: [handle zero divisor explicitly, validate input before arithmetic]
+    anti_patterns: [replacing zero with arbitrary fallback without business rule]
+    related_entries: [php-throwable-arithmeticerror]
+    source_url: https://www.php.net/manual/en/class.divisionbyzeroerror.php
+    source_title: 'PHP Manual: DivisionByZeroError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-assertionerror
+    name: AssertionError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 7.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.x, PHP 8.x]
+    description: Error thrown when an assertion configured to throw fails.
+    typical_trigger: Failed assertion with throwing behavior enabled.
+    example_message_patterns: [AssertionError]
+    diagnostics: [inspect assertion expression and assertion configuration]
+    safe_fixes: [fix violated invariant or replace assertion with explicit validation where required]
+    anti_patterns: [using assertions as production input validation]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/class.assertionerror.php
+    source_title: 'PHP Manual: AssertionError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-unhandledmatcherror
+    name: UnhandledMatchError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 8.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 8.x]
+    description: Error thrown when a match expression does not handle the subject and has no default arm.
+    typical_trigger: Non-exhaustive match expression.
+    example_message_patterns: [Unhandled match case]
+    diagnostics: [inspect match subject values and all arms]
+    safe_fixes: [add missing match arm or explicit default with safe behavior]
+    anti_patterns: [using default to hide an impossible state without logging]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/class.unhandledmatcherror.php
+    source_title: 'PHP Manual: UnhandledMatchError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-fibererror
+    name: FiberError
+    category: php_throwable
+    parent: Error
+    implements: []
+    introduced: PHP 8.1.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 8.1+, PHP 8.2, PHP 8.3, PHP 8.4]
+    description: Final Error thrown when an invalid Fiber operation is performed.
+    typical_trigger: Invalid operation on Fiber state.
+    example_message_patterns: [FiberError]
+    diagnostics: [inspect Fiber lifecycle state and caller sequence]
+    safe_fixes: [guard Fiber operations by lifecycle state]
+    anti_patterns: [retrying invalid Fiber operation without state transition]
+    related_entries: []
+    source_url: https://www.php.net/manual/en/class.fibererror.php
+    source_title: 'PHP Manual: FiberError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
+  - id: php-throwable-argumentcounterror
+    name: ArgumentCountError
+    category: php_throwable
+    parent: TypeError
+    implements: []
+    introduced: PHP 7.1.0
+    deprecated: null
+    removed: null
+    php_versions: [PHP 7.1+, PHP 8.x]
+    description: Error thrown for too few arguments to a user-defined function or method, or too many arguments to a non-variadic built-in function.
+    typical_trigger: Wrong number of arguments.
+    example_message_patterns: [Too few arguments, expects exactly, expects at most]
+    diagnostics: [compare call site with function or method signature]
+    safe_fixes: [correct caller arguments, update signature or provide default values intentionally]
+    anti_patterns: [adding dummy arguments without understanding signature]
+    related_entries: [php-throwable-typeerror]
+    source_url: https://www.php.net/manual/en/class.argumentcounterror.php
+    source_title: 'PHP Manual: ArgumentCountError'
+    retrieved_at: '2026-06-14'
+    license: 'Creative Commons Attribution 3.0 or later; attribution: PHP Documentation Group'
+    confidence: HIGH
+    last_reviewed: '2026-06-14'
