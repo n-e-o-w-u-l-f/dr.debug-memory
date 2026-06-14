@@ -21,6 +21,40 @@ Chat instructions are temporary unless stored here or in `/AGENTS.md`.
 - `MANUAL_CATALOG_AGENT.md`: manual, manpage, datasheet, service documentation, recovery guide and technical reference catalog directive.
 - `MANUFACTURER_CRAWL_AGENT.md`: manufacturer support, firmware, driver, lifecycle, alias, device identifier, security advisory and vendor-history crawl directive.
 - `DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`: device hardware, manufacturer, model, revision, compatibility and safe diagnostics knowledge ingest directive.
+- `SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md`: software package, distribution, package-manager, command-list and package error-analysis knowledge directive.
+- `TECHNICAL_REFERENCE_SCROBBLE_AGENT.md`: cross-domain directive for manuals, Manualslib metadata, man-db/manpages, device/model errors, errorcodes, troubleshooting references and safe source-based knowledge ingest.
+
+# # # # # # # # # # # # # # # # # # # # # #
+# Technical Reference Scrobble Agent #
+# # # # # # # # # # # # # # # # # # # # # #
+
+For cross-domain technical reference ingestion from manuals, manpages, Manualslib metadata, man-db, manufacturer support pages, device/model troubleshooting pages, errorcode lists and software command references, use:
+
+- Specific directive: `/MEMORY/AGENTS/TECHNICAL_REFERENCE_SCROBBLE_AGENT.md`
+- Canonical manual area: `/MEMORY/MANUALS/`
+- Canonical hardware/device area: `/MEMORY/HARDWARE/` or the existing device structure if already present
+- Canonical software area: `/MEMORY/SOFTWARE/`
+- Canonical error area: `/MEMORY/ERRORS/` or `/MEMORY/ERROR_CODES/` depending on existing structure
+- Review queue: `/MEMORY/STATE/REVIEW_QUEUE.md`
+- Crawl status: `/MEMORY/STATE/CRAWL_STATUS.md`
+
+This agent must not mass-copy manuals, PDFs, protected tables, diagrams, crawled HTML, raw JSON, OCR output or proprietary service documentation. It may store source links, source metadata, short paraphrased technical facts, license/usage notes, source quality classifications and checkpoint state.
+
+Before technical reference scrobble work, read:
+
+- `/AGENTS.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/README.md`
+- `/MEMORY/AGENTS/TECHNICAL_REFERENCE_SCROBBLE_AGENT.md`
+- `/MEMORY/AGENTS/MANUAL_CATALOG_AGENT.md`
+- `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`
+- `/MEMORY/AGENTS/SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md`
+- `/MEMORY/SOURCE_REGISTRY.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SCHEMA.md`
+- `/MEMORY/INDEX.md`
+- `/CHANGES.md`
+- `/UPDATE_PROCESS.md`
 
 # # # # # # # # # # # # # # # # # #
 # Device Hardware Database Ingest Agent #
@@ -46,9 +80,9 @@ Before hardware ingest work, read:
 - `/CHANGES.md`
 - `/UPDATE_PROCESS.md`
 
-# # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # #
 # Manufacturer Crawl Agent #
-# # # # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # # # #
 
 For manufacturer support portals, public knowledge bases, firmware metadata, driver metadata, error-code records, service bulletins, EOL/EOS data, security advisories, manufacturer histories, aliases and device identifiers, use:
 
