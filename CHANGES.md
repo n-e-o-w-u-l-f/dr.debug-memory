@@ -2,9 +2,25 @@
 # DR. DEBUG CHANGES.md #
 # # # # # # # # # # # #
 
-Version: 0.2.1
+Version: 0.2.2
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
+
+# # # # # # # # # #
+# 2026-06-14 #
+# # # # # # # # # #
+
+## docs(agents): add device hardware database ingestion directive
+
+- Added `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`.
+- Registered the new hardware ingest directive in `/MEMORY/AGENTS/README.md`.
+- Created `/MEMORY/HARDWARE/INDEX.md` and `/MEMORY/HARDWARE/STATE.md` as the first bootstrap files for the hardware memory area.
+- Checked existing repository governance files before writing.
+
+## Review notes
+
+- `/MEMORY/HARDWARE/INGEST_STATE.yaml` still needs to be created in a follow-up run; the write action for YAML state files was blocked by connector filtering in this run.
+- Hardware device records and manufacturer YAML files were not imported in this run to avoid partially committed source records.
 
 # # # # # # # # # #
 # 2026-06-09 #
