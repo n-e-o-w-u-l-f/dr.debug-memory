@@ -5,7 +5,7 @@
 ```yaml
 id: SOFTWARE-CHECKPOINT-20260614-BOOTSTRAP
 family: state
-status: STATUS_IN_PROGRESS
+status: STATUS_GATE_REACHED
 confidence: MEDIUM
 first_added: 2026-06-14
 last_verified: 2026-06-14
@@ -14,43 +14,44 @@ related_entries:
   - /MEMORY/SOFTWARE/INDEX.md
   - /MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md
   - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-pilot.md
+  - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-conf-pilot.md
+  - /MEMORY/SOFTWARE/PACKAGES/arch-linux-pacman-contrib-pilot.md
   - /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
   - /MEMORY/SOFTWARE/CHECKPOINTS/software-package-next-small-batch.md
 review_required: false
 canonical_path: /MEMORY/SOFTWARE/CHECKPOINTS/software-package-research-progress.md
-version: 0.0.3
+version: 0.0.4
 ```
 
 # # # # # # # # # # # # # # # #
 # Letzter bearbeiteter Bereich #
 # # # # # # # # # # # # # # # #
 
-Software-Wissensbereich wurde als laufender Arbeitsbereich markiert.
-
-Aktueller Fokus: kleiner Pilot fuer Arch Linux Paketmanager-Basiswissen.
+Arch-Linux-Paketmanager-Basiswissen.
 
 # # # # # # # # # # # # # # #
 # Letztes bearbeitetes Paket #
 # # # # # # # # # # # # # # #
 
-Mini-Pilot fuer Arch-Linux-Paketmanager wurde angelegt.
+- pacman
+- pacman.conf
+- pacman-contrib
 
 # # # # # # # # # # #
 # Erledigt in diesem Lauf #
 # # # # # # # # # # #
 
-1. Sehr kleinen Pilot-Facheintrag angelegt.
-2. Quellenmetadaten getrennt erfasst.
-3. Naechsten kleinen Paket-Batch vorbereitet.
+1. pacman Basisprofil erweitert.
+2. pacman.conf Basisprofil angelegt.
+3. pacman-contrib Pilot angelegt.
+4. Quellenmetadaten erweitert.
+5. Batch-Gate gesetzt.
 
 # # # # # # # # # # # # # #
-# Nächste empfohlene Schritte #
+# Entscheidungsfrage #
 # # # # # # # # # # # # # #
 
-1. Batch-Datei lesen.
-2. Basisprofil vervollstaendigen.
-3. Danach Konfigurationsprofil anlegen.
-4. Danach Zusatzpaket pruefen.
+Siehe Batch-Datei fuer die Optionen A bis E.
 
 # # # # # #
 # Datum #
@@ -62,4 +63,4 @@ Mini-Pilot fuer Arch-Linux-Paketmanager wurde angelegt.
 # Agent / Lauf #
 # # # # # # # # # #
 
-Fortsetzungslauf: Schritte 1, 2 und 3 ausgefuehrt.
+Fortsetzungslauf bis Gate abgeschlossen.
