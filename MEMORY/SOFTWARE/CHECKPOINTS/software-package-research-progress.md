@@ -20,7 +20,7 @@ related_entries:
   - /MEMORY/SOFTWARE/CHECKPOINTS/software-package-next-small-batch.md
 review_required: false
 canonical_path: /MEMORY/SOFTWARE/CHECKPOINTS/software-package-research-progress.md
-version: 0.0.4
+version: 0.0.5
 ```
 
 # # # # # # # # # # # # # # # #
@@ -41,17 +41,17 @@ Arch-Linux-Paketmanager-Basiswissen.
 # Erledigt in diesem Lauf #
 # # # # # # # # # # #
 
-1. pacman Basisprofil erweitert.
-2. pacman.conf Basisprofil angelegt.
-3. pacman-contrib Pilot angelegt.
+1. pacman Detailbasis erweitert.
+2. pacman.conf Detailbasis erweitert.
+3. pacman-contrib Detailbasis erweitert.
 4. Quellenmetadaten erweitert.
-5. Batch-Gate gesetzt.
+5. Neues Quellen-Gate gesetzt.
 
 # # # # # # # # # # # # # #
 # Entscheidungsfrage #
 # # # # # # # # # # # # # #
 
-Siehe Batch-Datei fuer die Optionen A bis E.
+Siehe Batch-Datei fuer die Optionen D1 bis D3.
 
 # # # # # #
 # Datum #
@@ -63,4 +63,4 @@ Siehe Batch-Datei fuer die Optionen A bis E.
 # Agent / Lauf #
 # # # # # # # # # #
 
-Fortsetzungslauf bis Gate abgeschlossen.
+Master-Fortsetzungslauf bis Quellen-Gate.
