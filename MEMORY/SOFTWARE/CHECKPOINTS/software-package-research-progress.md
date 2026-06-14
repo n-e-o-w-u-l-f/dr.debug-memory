@@ -13,9 +13,12 @@ related_entries:
   - /MEMORY/AGENTS/SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md
   - /MEMORY/SOFTWARE/INDEX.md
   - /MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md
+  - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-pilot.md
+  - /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
+  - /MEMORY/SOFTWARE/CHECKPOINTS/software-package-next-small-batch.md
 review_required: false
 canonical_path: /MEMORY/SOFTWARE/CHECKPOINTS/software-package-research-progress.md
-version: 0.0.2
+version: 0.0.3
 ```
 
 # # # # # # # # # # # # # # # #
@@ -30,15 +33,24 @@ Aktueller Fokus: kleiner Pilot fuer Arch Linux Paketmanager-Basiswissen.
 # Letztes bearbeitetes Paket #
 # # # # # # # # # # # # # # #
 
-Noch kein strukturierter Facheintrag angelegt.
+Mini-Pilot fuer Arch-Linux-Paketmanager wurde angelegt.
 
-# # # # # # # # # # # # # # #
+# # # # # # # # # # #
+# Erledigt in diesem Lauf #
+# # # # # # # # # # #
+
+1. Sehr kleinen Pilot-Facheintrag angelegt.
+2. Quellenmetadaten getrennt erfasst.
+3. Naechsten kleinen Paket-Batch vorbereitet.
+
+# # # # # # # # # # # # # #
 # Nächste empfohlene Schritte #
-# # # # # # # # # # # # # # #
+# # # # # # # # # # # # # #
 
-1. Sehr kleinen Pilot-Facheintrag anlegen.
-2. Danach Quellenmetadaten getrennt erfassen.
-3. Danach naechsten kleinen Paket-Batch vorbereiten.
+1. Batch-Datei lesen.
+2. Basisprofil vervollstaendigen.
+3. Danach Konfigurationsprofil anlegen.
+4. Danach Zusatzpaket pruefen.
 
 # # # # # #
 # Datum #
@@ -50,4 +62,4 @@ Noch kein strukturierter Facheintrag angelegt.
 # Agent / Lauf #
 # # # # # # # # # #
 
-Fortsetzungslauf: Software-Checkpoint vorsichtig aktualisiert.
+Fortsetzungslauf: Schritte 1, 2 und 3 ausgefuehrt.
