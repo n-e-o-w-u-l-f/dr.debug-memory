@@ -59,6 +59,7 @@ This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base
 # Agent Directives #
 # # # # # # # # # # #
 
+- /MEMORY/AGENTS/MASTER_CONTINUATION_AGENT.md
 - /MEMORY/AGENTS/VERSIONED_ERROR_KNOWLEDGE_AGENT.md
 - /MEMORY/AGENTS/PHP_ERROR_DATABASE_INGEST_AGENT.md
 - /MEMORY/AGENTS/PHP_ERROR_DATABASE_VERSIONING_EXTENSION.md
