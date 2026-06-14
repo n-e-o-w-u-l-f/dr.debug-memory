@@ -12,6 +12,8 @@ last_verified: 2026-06-14
 source_type: SOFTWARE_REFERENCE
 related_entries:
   - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-pilot.md
+  - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-conf-pilot.md
+  - /MEMORY/SOFTWARE/PACKAGES/arch-linux-pacman-contrib-pilot.md
 review_required: true
 canonical_path: /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
 ```
@@ -43,6 +45,14 @@ canonical_path: /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
 - Thema: Paketmetadaten
 - Abrufdatum: 2026-06-14
 - Verwendete Information: Repository- und Paketstatus
+
+## Arch package page: pacman-contrib
+
+- Typ: SOFTWARE_REFERENCE
+- Projekt: Arch Linux
+- Thema: Zusatzpaket
+- Abrufdatum: 2026-06-14
+- Verwendete Information: Paketname, Repository-Zuordnung, Paketstatus
 
 # # # # # # # # #
 # Offene Punkte #
