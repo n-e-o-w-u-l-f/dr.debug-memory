@@ -14,6 +14,9 @@ review_required: true
 canonical_path: /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-pilot.md
 related_sources:
   - /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
+related_entries:
+  - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-conf-pilot.md
+  - /MEMORY/SOFTWARE/PACKAGES/arch-linux-pacman-contrib-pilot.md
 ```
 
 # # # # # # # # # #
@@ -33,6 +36,9 @@ Dieser Eintrag ist ein kleiner Pilot fuer Arch-Linux-Paketmanager-Basiswissen.
 - Paket / Projekt: pacman
 - Paketrolle: offizieller Paketmanager
 - Repository-Bereich: core
+- Aktuell gepruefte Paketversion: 7.1.0.r9.g54d9411-2
+- Architektur der geprueften Paketseite: x86_64
+- Lizenz laut Arch-Paketseite: GPL-2.0-or-later
 - Status: Pilot, noch nicht vollstaendig ausgearbeitet
 
 # # # # # # # # # # # #
@@ -43,11 +49,42 @@ Dieser Eintrag ist ein kleiner Pilot fuer Arch-Linux-Paketmanager-Basiswissen.
 
 Die Konfigurationsseite wird getrennt unter `pacman.conf` behandelt, damit Programmwissen und Konfigurationswissen nicht vermischt werden.
 
-# # # # # # # # # # #
-# Abgrenzung #
-# # # # # # # # # # #
+Die offizielle Manpage beschreibt `pacman` als Package-Manager-Utility. Die Arch-Paketseite fuehrt `pacman` als library-based package manager with dependency support.
 
-Dieser Pilot enthaelt noch keine vollstaendige Befehlsreferenz, keine Fehlerdatenbank und keine Reparaturanleitung.
+# # # # # # # # # # # #
+# Sichere Befehlsbereiche #
+# # # # # # # # # # # #
+
+Diese Befehlsbereiche sind fuer spaetere Detailreferenzen geeignet, weil sie primaer lesend oder informationsorientiert sind:
+
+```text
+pacman -Ss <suchbegriff>
+pacman -Si <paket>
+pacman -Q
+pacman -Qi <paket>
+pacman -Ql <paket>
+pacman -Qo <datei>
+pacman -V
+pacman -h
+man pacman
+```
+
+# # # # # # # # # # # # # # #
+# Zurueckgestellte Bereiche #
+# # # # # # # # # # # # # # #
+
+Noch nicht als Handlungsanleitung speichern:
+
+```text
+Paketentfernung
+Systemupgrade
+Force-Optionen
+Datenbankoperationen
+Cache-Bereinigung
+Overwrite-Operationen
+```
+
+Diese Bereiche brauchen eine getrennte Fehler- und Sicherheitspruefung.
 
 # # # # #
 # Quellen #
@@ -59,7 +96,8 @@ Quellenmetadaten werden getrennt erfasst.
 # Offene Punkte #
 # # # # # # # # #
 
-- Versionsdetails weiter ausbauen.
-- Manpage-Struktur spaeter ergaenzen.
-- Befehlsliste erst nach separater Review-Entscheidung anlegen.
+- Manpage-Struktur weiter ausbauen.
+- Paketmetadaten mit Abhaengigkeiten spaeter detaillierter erfassen.
+- Befehlsliste nur mit Sicherheitsklassifikation erweitern.
 - Fehleranalyse erst nach separater Review-Entscheidung anlegen.
+- Status nach Review von `STATUS_DRAFT` auf `STATUS_REVIEWED` oder passend setzen.
