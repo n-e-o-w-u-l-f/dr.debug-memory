@@ -14,6 +14,8 @@ review_required: true
 canonical_path: /MEMORY/SOFTWARE/PACKAGES/arch-linux-pacman-contrib-pilot.md
 related_entries:
   - /MEMORY/SOFTWARE/PACKAGE_MANAGERS/arch-linux-pacman-pilot.md
+related_sources:
+  - /MEMORY/SOURCES/software-arch-linux-pacman-pilot-sources.md
 ```
 
 # # # # # # # # # #
@@ -30,6 +32,9 @@ Kleiner Pilot fuer `pacman-contrib` als separates Arch-Linux-Zusatzpaket rund um
 - Themenbereich: Paketmanager-Zusatzwerkzeuge
 - Paket / Projekt: pacman-contrib
 - Repository-Bereich: extra
+- Aktuell gepruefte Paketversion: 1.13.1-1
+- Architektur der geprueften Paketseite: x86_64
+- Lizenz laut Arch-Paketseite: GPL-2.0-or-later
 - Status: Pilot
 
 # # # # # # # # # # # #
@@ -38,10 +43,21 @@ Kleiner Pilot fuer `pacman-contrib` als separates Arch-Linux-Zusatzpaket rund um
 
 `pacman-contrib` wird als eigenes Paket behandelt und nicht mit dem Kernprofil von `pacman` vermischt.
 
+Die Arch-Paketseite beschreibt `pacman-contrib` als Sammlung beigesteuerter Skripte und Werkzeuge fuer Pacman-Systeme.
+
+# # # # # # # # # # # #
+# Paketbeziehung #
+# # # # # # # # # # # #
+
+- `pacman-contrib` haengt vom Kernpaket `pacman` ab.
+- Optionale Abhaengigkeiten beziehen sich auf einzelne Zusatzwerkzeuge.
+- Einzelwerkzeuge sollen spaeter getrennt und quellenbasiert dokumentiert werden.
+
 # # # # # # # # #
 # Offene Punkte #
 # # # # # # # # #
 
-- Paketinhalt spaeter getrennt auswerten.
+- Paketinhalt getrennt auswerten.
 - Quellenmetadaten getrennt erweitern.
 - Einzelwerkzeuge erst nach Review-Entscheidung dokumentieren.
+- Optionalabhaengigkeiten pro Werkzeug zuordnen.
