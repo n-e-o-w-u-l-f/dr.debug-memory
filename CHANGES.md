@@ -1,10 +1,29 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.2.4
+Version: 0.2.5
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-14
+
+## docs(agents): add versioned knowledge directives
+
+- Added `/MEMORY/AGENTS/VERSIONED_ERROR_KNOWLEDGE_AGENT.md`.
+- Added `/MEMORY/AGENTS/PHP_ERROR_DATABASE_VERSIONING_EXTENSION.md`.
+- Added `/MEMORY/TEMPLATES/VERSIONED_ERROR_ENTRY_TEMPLATE.md`.
+- Updated `/MEMORY/INDEX.md`.
+- The PHP error database now requires per-version behavior, diagnosis, fix, regression and source matrices.
+- The general versioned directive also covers evolving software packages, runtimes, frameworks and device-specific technical components.
+
+## Review notes
+
+- `/MEMORY/AGENTS/README.md` still needs a navigation entry.
+- `/MEMORY/PHP/ERRORS/VERSION_MATRIX/` and `/MEMORY/VERSIONED_KNOWLEDGE/` are target structures for later data imports.
+- No factual PHP error records were imported in this run; this run changed agent governance and templates only.
+
+## Suggested commit message
+
+docs(agents): add versioned error knowledge directives
 
 ## docs(agents): update hardware knowledge directive
 
