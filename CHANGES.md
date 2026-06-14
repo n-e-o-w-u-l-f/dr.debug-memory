@@ -13,6 +13,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Added `/MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md`.
 - Added `/MEMORY/SOFTWARE/CHECKPOINTS/software-package-research-progress.md`.
 - Updated `/MEMORY/INDEX.md` with `/MEMORY/SOFTWARE/` and the software package template.
+- Preserved the root index navigation areas while adding software navigation.
 - Checked existing governance files before writing.
 
 ## Review notes
