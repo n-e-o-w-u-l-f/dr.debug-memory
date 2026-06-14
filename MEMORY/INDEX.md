@@ -3,7 +3,7 @@
 # # # # # # # # # # #
 
 Status: ACTIVE
-Scope: Root navigation index for Dr. Debug /MEMORY/
+Scope: Root navigation index for Dr. Debug /MEMORY/ knowledge base.
 
 # # # # # # # #
 # Purpose #
@@ -41,6 +41,8 @@ This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base
 - /MEMORY/SOURCES/
 - /MEMORY/STATE/
 - /MEMORY/TEMPLATES/
+- /MEMORY/VERSIONED_KNOWLEDGE/ target area for per-version error, fix, regression and compatibility knowledge
+- /MEMORY/PHP/ target area for PHP-specific versioned error knowledge
 
 # # # # # # # # # #
 # Templates #
@@ -51,6 +53,15 @@ This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base
 - /MEMORY/TEMPLATES/PLAYBOOK_TEMPLATE.md
 - /MEMORY/TEMPLATES/MEMORY_PROPOSAL_TEMPLATE.md
 - /MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md
+- /MEMORY/TEMPLATES/VERSIONED_ERROR_ENTRY_TEMPLATE.md
+
+# # # # # # # # # # #
+# Agent Directives #
+# # # # # # # # # # #
+
+- /MEMORY/AGENTS/VERSIONED_ERROR_KNOWLEDGE_AGENT.md
+- /MEMORY/AGENTS/PHP_ERROR_DATABASE_INGEST_AGENT.md
+- /MEMORY/AGENTS/PHP_ERROR_DATABASE_VERSIONING_EXTENSION.md
 
 # # # # # # # # # # #
 # Index Files #
