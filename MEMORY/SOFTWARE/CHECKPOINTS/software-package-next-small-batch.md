@@ -33,27 +33,28 @@ Kleiner Software-Wissensbatch fuer Arch-Linux-Paketmanager-Basiswissen.
 2. pacman.conf Basisprofil angelegt.
 3. pacman-contrib als separates Zusatzpaket angelegt.
 4. Quellenmetadaten erweitert.
+5. Batch-Gate gesetzt.
+6. A+B+C Detailbasis erweitert.
+7. Temporaere Write-Check-Dateien bereinigt.
 
-# # # # # # # # # # #
+# # # # # # # # # #
 # Gate #
-# # # # # # # # # # #
+# # # # # # # # # #
 
-Der kleine Arch-Linux-Paketmanager-Batch ist abgeschlossen.
+Der kleine Arch-Linux-Paketmanager-Batch ist fachlich bis A+B+C erweitert.
 
 Naechste Entscheidung:
 
 ```text
-A) pacman Detailwissen ausbauen
-B) pacman.conf Detailwissen ausbauen
-C) pacman-contrib Einzelwerkzeuge ausbauen
-D) Arch-Linux Paketmanager-Fehlerbilder beginnen
-E) Naechsten Paketmanager-Batch starten
+D1) Arch-Linux Paketmanager-Fehlerbilder mit alternativen offiziellen Quellen beginnen
+D2) Arch-Wiki-Troubleshooting nur als Link-/Review-Quelle markieren
+D3) Fehlerbilder zurueckstellen und naechsten Paketmanager-Batch starten
 ```
 
 # # # # # # # # #
 # Offene Punkte #
 # # # # # # # # #
 
-- Keine vollstaendige Befehlsliste in diesem Batch gespeichert.
-- Keine Fehleranalyse in diesem Batch gespeichert.
-- Keine Reparaturablaeufe in diesem Batch gespeichert.
+- Arch-Wiki-Troubleshooting war beim Lauf durch Schutzsystem nicht lesbar.
+- Keine Fehleranalyse gespeichert, solange die Fehlerquellen nicht sauber lesbar sind.
+- Keine Reparaturablaeufe gespeichert.
