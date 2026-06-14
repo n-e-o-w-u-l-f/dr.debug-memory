@@ -20,6 +20,31 @@ Chat instructions are temporary unless stored here or in `/AGENTS.md`.
 - `GLOBAL_CRAWL_AGENT.md`: global crawl, curation, deduplication, indexing and validation directive.
 - `MANUAL_CATALOG_AGENT.md`: manual, manpage, datasheet, service documentation, recovery guide and technical reference catalog directive.
 - `MANUFACTURER_CRAWL_AGENT.md`: manufacturer support, firmware, driver, lifecycle, alias, device identifier, security advisory and vendor-history crawl directive.
+- `DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`: device hardware, manufacturer, model, revision, compatibility and safe diagnostics knowledge ingest directive.
+
+# # # # # # # # # # # # # # # # # #
+# Device Hardware Database Ingest Agent #
+# # # # # # # # # # # # # # # # # #
+
+For device hardware records, model numbers, revisions, compatibility metadata and safe diagnostics, use:
+
+- Specific directive: `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`
+- Canonical hardware area: `/MEMORY/HARDWARE/`
+- Hardware ingest state: `/MEMORY/HARDWARE/INGEST_STATE.yaml`
+- Hardware run reports: `/MEMORY/HARDWARE/RUNS/`
+
+Hardware work must not duplicate canonical manual, firmware, security, vendor or error-code entries. Index files should reference canonical entries only.
+
+Before hardware ingest work, read:
+
+- `/AGENTS.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`
+- `/MEMORY/SOURCE_REGISTRY.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SCHEMA.md`
+- `/CHANGES.md`
+- `/UPDATE_PROCESS.md`
 
 # # # # # # # # # # # # # # # # # #
 # Manufacturer Crawl Agent #
