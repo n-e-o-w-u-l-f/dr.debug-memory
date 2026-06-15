@@ -201,3 +201,65 @@ Quellenlage, Validierung, Geltungsbereich und Risiko sind ausreichend stabil dok
 Keine Behauptung ohne nachvollziehbare Quelle.
 Keine Quelle ohne Klassifizierung.
 Keine Status-Hochstufung ohne ausreichende Belege.
+
+# # # # # # # # # # # # # # # #
+# Device Source Registrations #
+# # # # # # # # # # # # # # # #
+
+## 2026-06-15 ASUS motherboard starter sources
+
+source_id: asus-device-tuf-gaming-z890-pro-wifi-20260615
+title: ASUS TUF GAMING Z890-PRO WIFI official product page
+url: https://www.asus.com/motherboards-components/motherboards/tuf-gaming/tuf-gaming-z890-pro-wifi/
+source_class: SOURCE_CLASS_A_PRIMARY
+source_type: DEVICE_REFERENCE
+scope: MEMORY/HARDWARE/DEVICES ASUS motherboard verified entry evidence
+systems: ASUS TUF GAMING Z890-PRO WIFI
+versions: not version-specific
+retrieved_or_checked_at: 2026-06-15
+claim_supported: official product identity and product-family evidence for the device entry
+limitations: release year was not imported in the starter round
+crawl_allowed: not recorded in memory entry
+license_or_usage_notes: facts and URLs only; no copied vendor text
+
+source_id: asus-device-prime-z890-p-wifi-20260615
+title: ASUS PRIME Z890-P WIFI official product page
+url: https://www.asus.com/motherboards-components/motherboards/prime/prime-z890-p-wifi/
+source_class: SOURCE_CLASS_A_PRIMARY
+source_type: DEVICE_REFERENCE
+scope: MEMORY/HARDWARE/DEVICES ASUS motherboard verified entry evidence
+systems: ASUS PRIME Z890-P WIFI
+versions: not version-specific
+retrieved_or_checked_at: 2026-06-15
+claim_supported: official product identity and product-family evidence for the device entry
+limitations: release year was not imported in the starter round
+crawl_allowed: not recorded in memory entry
+license_or_usage_notes: facts and URLs only; no copied vendor text
+
+source_id: asus-device-pro-ws-wrx90e-sage-se-20260615
+title: ASUS Pro WS WRX90E-SAGE SE official product page
+url: https://www.asus.com/motherboards-components/motherboards/workstation/pro-ws-wrx90e-sage-se/
+source_class: SOURCE_CLASS_A_PRIMARY
+source_type: DEVICE_REFERENCE
+scope: MEMORY/HARDWARE/DEVICES ASUS motherboard verified entry evidence
+systems: ASUS Pro WS WRX90E-SAGE SE
+versions: not version-specific
+retrieved_or_checked_at: 2026-06-15
+claim_supported: official product identity and product-family evidence for the device entry
+limitations: release year was not imported in the starter round
+crawl_allowed: not recorded in memory entry
+license_or_usage_notes: facts and URLs only; no copied vendor text
+
+source_id: asus-device-ex-b860m-v5-20260615
+title: ASUS EX-B860M-V5 official product page
+url: https://www.asus.com/motherboards-components/motherboards/expedition/ex-b860m-v5/
+source_class: SOURCE_CLASS_A_PRIMARY
+source_type: DEVICE_REFERENCE
+scope: MEMORY/HARDWARE/DEVICES ASUS motherboard verified entry evidence
+systems: ASUS EX-B860M-V5
+versions: not version-specific
+retrieved_or_checked_at: 2026-06-15
+claim_supported: official product identity and product-family evidence for the device entry
+limitations: release year was not imported in the starter round
+crawl_allowed: not recorded in memory entry
+license_or_usage_notes: facts and URLs only; no copied vendor text

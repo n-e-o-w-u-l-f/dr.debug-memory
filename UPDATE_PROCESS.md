@@ -2,7 +2,7 @@
 # DR. DEBUG UPDATE_PROCESS.md #
 # # # # # # # # # # # # # # # #
 
-Version: 0.1.1
+Version: 0.1.2
 Status: ACTIVE
 Scope: Update process for Dr. Debug /MEMORY/
 
@@ -42,9 +42,25 @@ Public distributor pages may be used only for short factual identifiers and sour
 
 Each hardware run must update the relevant index files, the hardware state file and this changelog process when the workflow changes.
 
-# # # # # # # # # # # # #
+# # # # # # # # # # # #
+# Device Catalog Updates #
+# # # # # # # # # # # #
+
+Device records live under `/MEMORY/HARDWARE/DEVICES/` unless a later governance change moves the canonical path.
+
+For every device batch:
+
+1. Read manufacturer records first.
+2. Prefer official product, support, manual or download URLs.
+3. Do not add a verified JSONL line without `source_urls`.
+4. Keep uncertain device names in `candidates_needing_review.md`.
+5. Update manufacturer, category, chipset and alias navigation when applicable.
+6. Record product-source review notes in `device_research_log.md`.
+7. Update `/CHANGES.md` and `/MEMORY/HARDWARE/STATE.md`.
+
+# # # # # # # # # #
 # Safe Update Rules #
-# # # # # # # # # # # # #
+# # # # # # # # # #
 
 - Do not commit raw crawl dumps.
 - Do not commit secrets.
@@ -53,9 +69,9 @@ Each hardware run must update the relevant index files, the hardware state file 
 - Do not mark a fix as tested unless it was actually executed and validated.
 - Do not claim complete global coverage.
 
-# # # # # # # # # # # #
+# # # # # # # # # # #
 # Commit Messages #
-# # # # # # # # # # # #
+# # # # # # # # # # #
 
 Allowed examples:
 
@@ -68,5 +84,6 @@ Allowed examples:
 - feat(memory): add smartphone catalog batch
 - feat(memory): add device chipset manufacturer knowledge
 - feat(memory): add distributor-derived component references
+- feat(memory): add device entries for <manufacturer>
 - docs(memory): update research and quality rules
 - chore(memory): update indexes and source registry

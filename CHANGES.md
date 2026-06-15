@@ -1,54 +1,41 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.2.5
+Version: 0.2.9
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
-# 2026-06-14
+# 2026-06-15
 
-## docs(agents): add versioned knowledge directives
+## feat(memory): update firmware jsonl
 
-- Added `/MEMORY/AGENTS/VERSIONED_ERROR_KNOWLEDGE_AGENT.md`.
-- Added `/MEMORY/AGENTS/PHP_ERROR_DATABASE_VERSIONING_EXTENSION.md`.
-- Added `/MEMORY/TEMPLATES/VERSIONED_ERROR_ENTRY_TEMPLATE.md`.
-- Updated `/MEMORY/INDEX.md`.
-- The PHP error database now requires per-version behavior, diagnosis, fix, regression and source matrices.
-- The general versioned directive also covers evolving software packages, runtimes, frameworks and device-specific technical components.
+- Updated `/MEMORY/FIRMWARE/firmware.jsonl` with verified source-backed entries and checksums.
+- Refreshed minimal firmware navigation files.
+
+## feat(memory): add package metadata areas
+
+- Added new package metadata starter areas.
+- Added first ASUS TUF GAMING Z890-PRO WIFI package metadata lines from official ASUS support source.
+- Updated `/MEMORY/INDEX.md` with the new areas.
+- Concrete ASUS support packages not visible in static source remain in review.
+
+## docs(memory): cleanup ASUS device indexes
+
+- Added `/MEMORY/HARDWARE/DEVICES/devices_by_year.md`.
+- Documented the four ASUS starter-batch devices under a release-year-not-yet-imported section until explicit release-year evidence is verified.
+- Updated `/MEMORY/HARDWARE/DEVICES/device_research_log.md` with the ASUS cleanup pass.
+- Confirmed that each ASUS verified device has direct official ASUS URLs in `devices.jsonl` and Markdown navigation.
+
+## feat(memory): add ASRock device entries
+
+- Added five verified ASRock records to `/MEMORY/HARDWARE/DEVICES/devices.jsonl` from official ASRock product pages.
+- Added Z890 Taichi AQUA, Z890 Taichi, X870E Taichi, B850 Steel Legend WiFi and DeskMini X600 Series.
+- Release years were intentionally left empty pending explicit release-year evidence.
+- Markdown navigation updates for ASRock require a follow-up because connector safety checks blocked the Markdown index replacements in this run.
 
 ## Review notes
 
-- `/MEMORY/AGENTS/README.md` still needs a navigation entry.
-- `/MEMORY/PHP/ERRORS/VERSION_MATRIX/` and `/MEMORY/VERSIONED_KNOWLEDGE/` are target structures for later data imports.
-- No factual PHP error records were imported in this run; this run changed agent governance and templates only.
+- Product-specific download URLs remain a later verification target for ASUS and ASRock models using generic support fallbacks.
 
 ## Suggested commit message
 
-docs(agents): add versioned error knowledge directives
-
-## docs(agents): update hardware knowledge directive
-
-- Updated `/MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md`.
-- Updated `/MEMORY/HARDWARE/INDEX.md`.
-- Updated `/MEMORY/HARDWARE/STATE.md`.
-- Updated `/UPDATE_PROCESS.md`.
-- No factual catalog records were imported in this run.
-
-## docs(software): bootstrap software package knowledge agent
-
-- Added `/MEMORY/AGENTS/SOFTWARE_PACKAGE_KNOWLEDGE_AGENT.md`.
-- Added `/MEMORY/SOFTWARE/INDEX.md`.
-- Added `/MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md`.
-- Added `/MEMORY/SOFTWARE/CHECKPOINTS/software-package-research-progress.md`.
-- Updated `/MEMORY/INDEX.md`.
-- Preserved the root index navigation areas.
-- Checked existing governance files before writing.
-
-## Review notes
-
-- No package data was imported in this bootstrap run.
-- No package database was copied.
-- `MEMORY/AGENTS/README.md` still needs a software-agent navigation entry.
-
-# Maintenance Rules
-
-Every future repository-changing agent run must update this file with date, affected gates, created files, changed files, removed or superseded files, review notes and commit message.
+feat(memory): add ASRock device entries
