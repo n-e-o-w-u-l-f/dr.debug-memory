@@ -6,6 +6,24 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-15
 
+## docs(memory): cleanup ASUS device indexes
+
+- Added `/MEMORY/HARDWARE/DEVICES/devices_by_year.md`.
+- Documented the four ASUS starter-batch devices under a release-year-not-yet-imported section until explicit release-year evidence is verified.
+- Updated `/MEMORY/HARDWARE/DEVICES/device_research_log.md` with the ASUS cleanup pass.
+- Confirmed that each ASUS verified device has direct official ASUS URLs in `devices.jsonl` and Markdown navigation.
+
+## Review notes
+
+- `/MEMORY/SOURCE_REGISTRY.md` still needs a small local follow-up edit for centralized ASUS source-class entries if the full-file replacement path is unavailable.
+- Product-specific download URLs remain a later verification target for ASUS models that currently use the generic ASUS Download Center fallback.
+
+## Suggested commit message
+
+```text
+docs(memory): cleanup ASUS device indexes
+```
+
 ## feat(memory): add device entries for ASUS
 
 - Added `/MEMORY/HARDWARE/DEVICES/README.md`.
@@ -22,7 +40,6 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - ASUS verified records added: TUF GAMING Z890-PRO WIFI, PRIME Z890-P WIFI, Pro WS WRX90E-SAGE SE, EX-B860M-V5.
 - ASUS candidates left for later verification: ProArt Z890-CREATOR WIFI and Pro H810M-C-CSM.
 - Product-specific download URLs were not verified for every ASUS model; the ASUS generic Download Center is stored as fallback lookup URL where needed.
-- The year index remains a later cleanup item because no release years were imported in this starter batch.
 - `/MEMORY/INDEX.md` was shortened during this run and should be reviewed for any navigation lines that should be restored.
 
 ## Suggested commit message
