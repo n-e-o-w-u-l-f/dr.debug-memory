@@ -18,6 +18,23 @@ Diese Datei ist eine kleine Navigations-Ergaenzung fuer den Semiconductor-/SoC-/
 - [MediaTek](https://www.mediatek.com/) — soc, chipset, modem, wifi, bluetooth; Taiwan; SoC, modem, Wi-Fi/Bluetooth, router, Android and embedded platform vendor.
 - [NXP Semiconductors](https://www.nxp.com/) — soc, microcontroller, embedded, industrial, network; Netherlands; embedded processor, MCU, wireless, industrial and connectivity vendor.
 
+# Alias sidecar notes
+
+- nvidia — NVIDIA Corporation; Nvidia; GeForce; Jetson; Mellanox
+- qualcomm — Qualcomm Technologies Inc.; QTI; Snapdragon; Dragonwing
+- mediatek — MediaTek Inc.; MTK; Dimensity; Helio; Genio
+- nxp_semiconductors — NXP; NXP Semiconductors N.V.; Freescale Semiconductor
+
+# Source sidecar notes
+
+- nvidia-manufacturer-home-20260615 — https://www.nvidia.com/ — SOURCE_CLASS_A_PRIMARY; PRIMARY_SOURCE; official vendor homepage.
+- nvidia-manufacturer-support-20260615 — https://www.nvidia.com/en-us/support/ — SOURCE_CLASS_A_PRIMARY; VENDOR_SUPPORT; official vendor support page.
+- nvidia-manufacturer-drivers-20260615 — https://www.nvidia.com/en-us/drivers/ — SOURCE_CLASS_A_PRIMARY; VENDOR_SUPPORT; official vendor driver page.
+- qualcomm-manufacturer-home-20260615 — https://www.qualcomm.com/ — SOURCE_CLASS_A_PRIMARY; PRIMARY_SOURCE; official vendor homepage.
+- qualcomm-manufacturer-support-20260615 — https://www.qualcomm.com/support — SOURCE_CLASS_A_PRIMARY; VENDOR_SUPPORT; official vendor support page.
+- mediatek-manufacturer-home-20260615 — https://www.mediatek.com/ — SOURCE_CLASS_A_PRIMARY; PRIMARY_SOURCE; official vendor homepage.
+- nxp-manufacturer-home-20260615 — https://www.nxp.com/ — SOURCE_CLASS_A_PRIMARY; PRIMARY_SOURCE; official vendor homepage.
+
 # Navigation nach Kategorie
 
 ## android_device
@@ -125,3 +142,7 @@ Diese Datei ist eine kleine Navigations-Ergaenzung fuer den Semiconductor-/SoC-/
 
 - [NVIDIA](https://www.nvidia.com/) — gpu, soc, network, embedded, server
 - [Qualcomm](https://www.qualcomm.com/) — soc, chipset, modem, wifi, bluetooth
+
+# Change note
+
+- 2026-06-15: Sidecar expanded with alias notes and source notes after separate sidecar creation was blocked by the connector safety check.
