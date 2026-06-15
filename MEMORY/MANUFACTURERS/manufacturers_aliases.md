@@ -29,4 +29,5 @@ acer: Acer Inc.; Predator; AOPEN; Altos Computing
 samsung_semiconductor: Samsung Electronics; Samsung Memory; Samsung SSD
 western_digital: WD; Western Digital Corporation; G-DRIVE
 kingston_technology: Kingston; Kingston FURY; HyperX
+seagate_technology: Seagate; Seagate Technology Holdings plc; Maxtor; LaCie
 ```
