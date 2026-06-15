@@ -5,9 +5,7 @@
 Status: ACTIVE
 Scope: Navigation index for `/MEMORY/HARDWARE/`.
 
-# # # # # # # #
-# Purpose #
-# # # # # # # #
+# Purpose
 
 This area stores normalized, source-based hardware knowledge for Dr. Debug.
 
@@ -19,18 +17,20 @@ Canonical agent directive:
 /MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md
 ```
 
-# # # # # # # #
-# Subtrees #
-# # # # # # # #
-
-Expected or planned subtrees:
+# Active subtrees
 
 ```text
-/MEMORY/HARDWARE/MANUFACTURERS/INDEX.md
 /MEMORY/HARDWARE/DEVICES/INDEX.md
+/MEMORY/HARDWARE/MANUFACTURERS/INDEX.md
+/MEMORY/HARDWARE/MODELS/INDEX.md
+/MEMORY/HARDWARE/STATE.md
+```
+
+# Planned subtrees
+
+```text
 /MEMORY/HARDWARE/CHIPSETS/INDEX.md
 /MEMORY/HARDWARE/COMPONENTS/INDEX.md
-/MEMORY/HARDWARE/MODELS/INDEX.md
 /MEMORY/HARDWARE/INTERFACES/INDEX.md
 /MEMORY/HARDWARE/REPAIR/INDEX.md
 /MEMORY/HARDWARE/DATASHEETS/INDEX.md
@@ -48,12 +48,9 @@ Expected or planned subtrees:
 /MEMORY/HARDWARE/SOURCES/datasheet-sources.md
 /MEMORY/HARDWARE/RUNS/INDEX.md
 /MEMORY/HARDWARE/INGEST_STATE.yaml
-/MEMORY/HARDWARE/STATE.md
 ```
 
-# # # # # # # # # #
-# Import Notes #
-# # # # # # # # # #
+# Import Notes
 
 - Prefer official manufacturer and datasheet sources.
 - Treat distributors such as Conrad, Reichelt, Mouser, Digi-Key, Farnell / element14, RS Components, TME and Pollin as factual reference sources only when public technical metadata is visible.
@@ -61,3 +58,7 @@ Expected or planned subtrees:
 - Use distributor records as links, identifiers and short paraphrased evidence notes, not as copied catalog pages.
 - Keep devices, chips, components and manufacturers in separate canonical files.
 - Mark missing or weak evidence as `STATUS_RESEARCH_REQUIRED` or `needs_review: true`.
+
+# Change history
+
+- 2026-06-15: Activated `/MEMORY/HARDWARE/DEVICES/` with first ASUS motherboard batch.
