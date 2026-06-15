@@ -1,19 +1,9 @@
-# # # # # # # # # # #
-# DR. DEBUG /MEMORY/INDEX.md #
-# # # # # # # # # # #
+# MEMORY INDEX
 
 Status: ACTIVE
-Scope: Root navigation index for Dr. Debug /MEMORY/ knowledge base.
+Scope: Root navigation index for /MEMORY/.
 
-# # # # # # # #
-# Purpose #
-# # # # # # # #
-
-This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base.
-
-# # # # # # # # # # # #
-# Core Governance #
-# # # # # # # # # # # #
+# Core Governance
 
 - /MEMORY/SCHEMA.md
 - /MEMORY/SOURCE_REGISTRY.md
@@ -22,42 +12,21 @@ This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base
 - /MEMORY/LIFECYCLE.md
 - /MEMORY/STATUS_REGISTRY.md
 
-# # # # # # # # # # # # #
-# Dr.Debug Agent Family #
-# # # # # # # # # # # # #
-
-- /AGENTS/ACTIVE/DR_DEBUG.md
-- /AGENTS/ACTIVE/DR_DEBUG_MEMORY.md
-- /AGENTS/ACTIVE/DR_DEBUG_CONFIGURATION_AGENT.md
-- /AGENTS/ACTIVE/VERSIONING_HARD_RESET.md
-
-# # # # # # # # # # #
-# Canonical Areas #
-# # # # # # # # # # #
+# Canonical Areas
 
 - /MEMORY/AGENTS/
+- /MEMORY/HARDWARE/
+- /MEMORY/HARDWARE/DEVICES/
+- /MEMORY/MANUFACTURERS/
 - /MEMORY/MANUALS/
 - /MEMORY/SOFTWARE/
 - /MEMORY/SOURCES/
 - /MEMORY/STATE/
 - /MEMORY/TEMPLATES/
-- /MEMORY/VERSIONED_KNOWLEDGE/ target area for per-version error, fix, regression and compatibility knowledge
-- /MEMORY/PHP/ target area for PHP-specific versioned error knowledge
+- /MEMORY/VERSIONED_KNOWLEDGE/
+- /MEMORY/PHP/
 
-# # # # # # # # # #
-# Templates #
-# # # # # # # # # #
-
-- /MEMORY/TEMPLATES/ERROR_CODE_TEMPLATE.md
-- /MEMORY/TEMPLATES/CASE_TEMPLATE.md
-- /MEMORY/TEMPLATES/PLAYBOOK_TEMPLATE.md
-- /MEMORY/TEMPLATES/MEMORY_PROPOSAL_TEMPLATE.md
-- /MEMORY/TEMPLATES/SOFTWARE_PACKAGE_ENTRY_TEMPLATE.md
-- /MEMORY/TEMPLATES/VERSIONED_ERROR_ENTRY_TEMPLATE.md
-
-# # # # # # # # # # #
-# Agent Directives #
-# # # # # # # # # # #
+# Agent Directives
 
 - /MEMORY/AGENTS/MASTER_CONTINUATION_AGENT.md
 - /MEMORY/AGENTS/CORE_REVIEW_RULES.md
@@ -68,11 +37,14 @@ This file is the root navigation index for the Dr. Debug /MEMORY/ knowledge base
 - /MEMORY/AGENTS/PHP_ERROR_DATABASE_VERSIONING_EXTENSION.md
 - /MEMORY/AGENTS/TECHNICAL_REFERENCE_SCROBBLE_AGENT.md
 - /MEMORY/AGENTS/IMPORTED_SOURCE_VERIFICATION_RULE.md
+- /MEMORY/AGENTS/DEVICE_HARDWARE_DATABASE_INGEST_AGENT.md
+- /MEMORY/AGENTS/MANUFACTURER_CRAWL_AGENT.md
 
-# # # # # # # # # # #
-# Index Files #
-# # # # # # # # # # #
+# Index Files
 
 - /MEMORY/INDEX/MANUALS/README.md
+- /MEMORY/HARDWARE/INDEX.md
+- /MEMORY/HARDWARE/DEVICES/INDEX.md
+- /MEMORY/MANUFACTURERS/INDEX.md
 - /MEMORY/SOFTWARE/INDEX.md
 - /MEMORY/INDEX.md
