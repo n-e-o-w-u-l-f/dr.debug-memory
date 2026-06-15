@@ -34,4 +34,13 @@ Candidates left for review:
 - ProArt Z890-CREATOR WIFI
 - Pro H810M-C-CSM
 
+# 2026-06-15 ASUS cleanup pass
+
+Cleanup results:
+
+- Added /MEMORY/HARDWARE/DEVICES/devices_by_year.md.
+- Kept ASUS devices in a release-year-not-yet-imported section until explicit release-year evidence is verified.
+- Confirmed that each ASUS verified device has a direct official ASUS URL in devices.jsonl and Markdown navigation.
+- Central source registry still needs a tiny local follow-up edit if the full-file replacement is unavailable.
+
 Next step: continue with ASRock official product and support pages.
