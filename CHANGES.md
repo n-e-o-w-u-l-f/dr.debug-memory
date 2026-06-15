@@ -25,11 +25,17 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Updated `/MEMORY/HARDWARE/DEVICES/device_research_log.md` with the ASUS cleanup pass.
 - Confirmed that each ASUS verified device has direct official ASUS URLs in `devices.jsonl` and Markdown navigation.
 
+## feat(memory): add ASRock device entries
+
+- Added five verified ASRock records to `/MEMORY/HARDWARE/DEVICES/devices.jsonl` from official ASRock product pages.
+- Added Z890 Taichi AQUA, Z890 Taichi, X870E Taichi, B850 Steel Legend WiFi and DeskMini X600 Series.
+- Release years were intentionally left empty pending explicit release-year evidence.
+- Markdown navigation updates for ASRock require a follow-up because connector safety checks blocked the Markdown index replacements in this run.
+
 ## Review notes
 
-- `/MEMORY/SOURCE_REGISTRY.md` still needs a small local follow-up edit for centralized ASUS source-class entries if the full-file replacement path is unavailable.
-- Product-specific download URLs remain a later verification target for ASUS models that currently use the generic ASUS Download Center fallback.
+- Product-specific download URLs remain a later verification target for ASUS and ASRock models using generic support fallbacks.
 
 ## Suggested commit message
 
-feat(memory): update firmware jsonl
+feat(memory): add ASRock device entries
