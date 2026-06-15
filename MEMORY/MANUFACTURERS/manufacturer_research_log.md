@@ -13,8 +13,8 @@ Canonical-Path: /MEMORY/MANUFACTURERS/manufacturer_research_log.md
 ## Bereits in GitHub committed
 
 ```text
-manufacturers.jsonl contains 16 verified manufacturers.
-Do not re-add those JSONL lines in this patch.
+manufacturers.jsonl contained 16 verified manufacturers before the Seagate follow-up.
+Do not re-add those JSONL lines in follow-up patches.
 ```
 
 ## Verified in manufacturers.jsonl
@@ -36,6 +36,7 @@ Acer
 Samsung Semiconductor
 Western Digital
 Kingston Technology
+Seagate Technology
 ```
 
 ## Nachtraeglich zusammengefuehrte Navigation
@@ -48,10 +49,12 @@ MEMORY/MANUFACTURERS/manufacturers_aliases.md
 MEMORY/MANUFACTURERS/candidates_needing_review.md
 ```
 
-## Offener Kandidat
+## Seagate follow-up
 
 ```text
-Seagate: official-site retrieval produced a redirect-loop during the run; verify separately before adding as manufacturer.
+Seagate Technology was added as a minimal verified storage/manufacturer entry.
+Official Seagate URLs are stored in manufacturers.jsonl.
+The seagate.com fetch redirect-loop from the connector run remains documented in the JSONL evidence note for later browser or local curl recheck.
 ```
 
 ## Schreibregel fuer Folgearbeiten
