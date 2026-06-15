@@ -1,0 +1,195 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+KEY="$HOME/.ssh/id_ed25519_journalgpt"
+PUB="$KEY.pub"
+
+TARGETS=(
+  "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+  "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+)
+
+echo "============================================================"
+echo " JournalGPT SSH-Key Fix"
+echo "============================================================"
+echo
+
+mkdir -p "$HOME/.ssh"
+chmod 700 "$HOME/.ssh"
+
+if [ ! -f "$KEY" ]; then
+  echo "[INFO] Erstelle neuen SSH-Key:"
+  echo "       $KEY"
+  ssh-keygen -t ed25519 -f "$KEY" -N "" -C "JournalGPT steamdeck collector $(hostname)-$(date '+%Y-%m-%d')"
+else
+  echo "[OK] SSH-Key existiert bereits:"
+  echo "     $KEY"
+fi
+
+chmod 600 "$KEY"
+chmod 644 "$PUB"
+
+echo
+echo "============================================================"
+echo " SSH Config ergänzen"
+echo "============================================================"
+
+CONFIG="$HOME/.ssh/config"
+touch "$CONFIG"
+chmod 600 "$CONFIG"
+
+add_host_config() {
+  local alias="$1"
+  local hostname="$2"
+
+  if grep -qE "^Host[[:space:]]+$alias$" "$CONFIG"; then
+    echo "[OK] SSH Config für $alias existiert bereits."
+  else
+    cat >> "$CONFIG" <<CONFIGBLOCK
+
+Host $alias
+    HostName $hostname
+    User andreas
+    IdentityFile ~/.ssh/id_ed25519_journalgpt
+    IdentitiesOnly yes
+    ServerAliveInterval 10
+    ServerAliveCountMax 2
+CONFIGBLOCK
+    echo "[OK] SSH Config für $alias hinzugefügt."
+  fi
+}
+
+add_host_config "journalgpt-archlinux" "__YOUR__IPV4__HERE__"
+add_host_config "journalgpt-debian" "__YOUR__IPV4__HERE__"
+
+echo
+echo "============================================================"
+echo " Public Key auf Zielsysteme kopieren"
+echo "============================================================"
+echo "Hinweis: Du wirst wahrscheinlich EINMAL pro Zielsystem nach dem Passwort gefragt."
+echo
+
+copy_key() {
+  local target="$1"
+
+  echo
+  echo "------------------------------------------------------------"
+  echo "[INFO] Ziel: $target"
+  echo "------------------------------------------------------------"
+
+  if ssh -i "$KEY" -o BatchMode=yes -o ConnectTimeout=8 "$target" true 2>/dev/null; then
+    echo "[OK] Passwortloser Login funktioniert bereits: $target"
+    return 0
+  fi
+
+  if command -v ssh-copy-id >/dev/null 2>&1; then
+    ssh-copy-id -i "$PUB" "$target"
+  else
+    echo "[WARN] ssh-copy-id fehlt. Nutze manuelle authorized_keys Methode."
+    cat "$PUB" | ssh "$target" '
+      set -Eeuo pipefail
+      mkdir -p "$HOME/.ssh"
+      chmod 700 "$HOME/.ssh"
+      touch "$HOME/.ssh/authorized_keys"
+      chmod 600 "$HOME/.ssh/authorized_keys"
+      cat >> "$HOME/.ssh/authorized_keys"
+      sort -u "$HOME/.ssh/authorized_keys" -o "$HOME/.ssh/authorized_keys"
+    '
+  fi
+
+  echo "[TEST] BatchMode-Test für $target ..."
+  ssh -i "$KEY" -o BatchMode=yes -o ConnectTimeout=8 "$target" '
+    echo "OK $(hostname -s 2>/dev/null || hostname)"
+  '
+}
+
+for target in "${TARGETS[@]}"; do
+  copy_key "$target"
+done
+
+echo
+echo "============================================================"
+echo " JournalGPT Collector auf neuen SSH-Key umstellen"
+echo "============================================================"
+
+RUNNER="$HOME/Documents/journalgpt_collect.sh"
+
+if [ ! -f "$RUNNER" ]; then
+  echo "[FEHLER] $RUNNER nicht gefunden."
+  exit 1
+fi
+
+cp -a "$RUNNER" "$RUNNER.backup.$(date '+%Y%m%d-%H%M%S')"
+
+python3 - <<'PY'
+from pathlib import Path
+
+path = Path.home() / "Documents" / "journalgpt_collect.sh"
+s = path.read_text()
+
+old = '''      -o BatchMode=yes \\
+      -o ConnectTimeout=8 \\
+      -o ServerAliveInterval=5 \\
+      -o ServerAliveCountMax=1 \\
+      "$ssh_target" \\'''
+
+new = '''      -i "$HOME/.ssh/id_ed25519_journalgpt" \\
+      -o BatchMode=yes \\
+      -o IdentitiesOnly=yes \\
+      -o ConnectTimeout=8 \\
+      -o ServerAliveInterval=5 \\
+      -o ServerAliveCountMax=1 \\
+      "$ssh_target" \\'''
+
+s = s.replace(old, new)
+
+old2 = '''      -o BatchMode=yes \\
+      -o ConnectTimeout=10 \\
+      -o ServerAliveInterval=10 \\
+      -o ServerAliveCountMax=2 \\
+      "$ssh_target" \\'''
+
+new2 = '''      -i "$HOME/.ssh/id_ed25519_journalgpt" \\
+      -o BatchMode=yes \\
+      -o IdentitiesOnly=yes \\
+      -o ConnectTimeout=10 \\
+      -o ServerAliveInterval=10 \\
+      -o ServerAliveCountMax=2 \\
+      "$ssh_target" \\'''
+
+s = s.replace(old2, new2)
+
+path.write_text(s)
+PY
+
+chmod +x "$RUNNER"
+
+echo "[OK] Collector aktualisiert."
+
+echo
+echo "============================================================"
+echo " Starte Collector erneut"
+echo "============================================================"
+
+systemctl --user start journalgpt-collect.service || true
+
+echo
+echo "============================================================"
+echo " Status"
+echo "============================================================"
+
+systemctl --user status journalgpt-collect.service --no-pager || true
+
+echo
+echo "============================================================"
+echo " Ergebnisdateien"
+echo "============================================================"
+
+ls -lh "$HOME"/Documents/JournalGPT_*.txt || true
+
+echo
+echo "============================================================"
+echo " Controller Log"
+echo "============================================================"
+
+tail -n 100 "$HOME/Documents/JournalGPT_collector_controller.log" || true

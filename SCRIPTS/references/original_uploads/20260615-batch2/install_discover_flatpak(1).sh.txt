@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+echo "=========================================="
+echo "       Flatpak Updater Skript"
+echo "=========================================="
+
+fail() {
+  echo "FEHLER: $*" >&2
+  exit 1
+}
+
+ok() {
+  echo "OK: $*"
+}
+
+step() {
+  echo
+  echo "==> $*"
+}
+
+command -v flatpak >/dev/null 2>&1 || fail "flatpak ist nicht installiert oder nicht im PATH."
+
+step "Flatpak-Version"
+flatpak --version || true
+
+step "Konfigurierte Flatpak-Remotes"
+flatpak remotes --columns=name,options,url || true
+
+step "Appstream-/Discover-Metadaten aktualisieren"
+# Korrekt statt falschem 'flatpak remote-update':
+# Aktualisiert Appstream-Daten für verfügbare Remotes.
+flatpak update --appstream -y || {
+  echo "WARNUNG: Appstream-Update ohne -y erneut versuchen..."
+  flatpak update --appstream || true
+}
+
+step "Flatpak-Paketupdates prüfen"
+if flatpak remote-ls --updates >/tmp/flatpak-updates.$$ 2>/tmp/flatpak-updates-err.$$; then
+  if [[ -s /tmp/flatpak-updates.$$ ]]; then
+    echo "Folgende Flatpak-Updates sind verfügbar:"
+    cat /tmp/flatpak-updates.$$
+  else
+    echo "Keine Flatpak-Updates gelistet."
+  fi
+else
+  echo "Hinweis: 'flatpak remote-ls --updates' konnte keine Update-Liste erzeugen."
+  cat /tmp/flatpak-updates-err.$$ 2>/dev/null || true
+fi
+
+rm -f /tmp/flatpak-updates.$$ /tmp/flatpak-updates-err.$$ 2>/dev/null || true
+
+step "Flatpak-Pakete aktualisieren"
+flatpak update -y
+
+step "Unbenutzte Flatpak-Runtimes entfernen"
+flatpak uninstall --unused -y || true
+
+step "Discover-Hinweis"
+echo "Flatpak ist aktualisiert."
+echo "Falls Discover noch alte Updates anzeigt:"
+echo "  1. Discover schließen"
+echo "  2. Einige Sekunden warten"
+echo "  3. Discover neu öffnen"
+
+ok "Flatpak-Update abgeschlossen."

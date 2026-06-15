@@ -1,0 +1,617 @@
+#!/usr/bin/env bash
+# # # # # # # # # # # # # # # #
+# Neowulf Shellfarbe Installer #
+# # # # # # # # # # # # # # # #
+#
+# Zweck:
+#   Installiert eine sichere Prompt-Farbsteuerung per Befehl:
+#
+#     shellfarbe lila
+#     shellfarbe rot
+#     shellfarbe mint
+#     shellfarbe list
+#
+# Eigenschaften:
+#   - erstellt Backups vor Änderungen
+#   - keine Autostart-Ausgaben
+#   - keine Wrapper für sudo, ssh, pacman, Editoren oder interaktive Programme
+#   - funktioniert auf SteamOS besser, weil shellfarbe am Ende von PROMPT_COMMAND läuft
+#   - schreibt nur in das aktuelle HOME des aktuellen Users
+#
+# Nach Installation:
+#   source ~/.bashrc
+#   shellfarbe lila
+
+set -Eeuo pipefail
+IFS=$'\n\t'
+
+APP_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/neowulf-shell"
+CORE_FILE="$APP_DIR/shellfarbe.bash"
+STATE_FILE="$APP_DIR/current-theme"
+BIN_DIR="$HOME/.local/bin"
+BIN_FILE="$BIN_DIR/shellfarbe"
+BASHRC="$HOME/.bashrc"
+
+MARK_START="# >>> neowulf-shellfarbe >>>"
+MARK_END="# <<< neowulf-shellfarbe <<<"
+
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
+log() {
+    printf '[OK] %s\n' "$*"
+}
+
+warn() {
+    printf '[WARN] %s\n' "$*" >&2
+}
+
+fail() {
+    printf '[FEHLER] %s\n' "$*" >&2
+    exit 1
+}
+
+backup_file() {
+    local file="$1"
+
+    if [ -f "$file" ]; then
+        cp -a "$file" "$file.bak.$STAMP"
+        log "Backup erstellt: $file.bak.$STAMP"
+    fi
+}
+
+safe_mkdir() {
+    local dir="$1"
+    mkdir -p "$dir"
+    chmod 0755 "$dir" 2>/dev/null || true
+}
+
+echo "============================================================"
+echo " Neowulf Shellfarbe Installer"
+echo "============================================================"
+echo "User:  $(id -un)"
+echo "Home:  $HOME"
+echo "Ziel:  $APP_DIR"
+echo
+
+if [ "${EUID:-$(id -u)}" -eq 0 ] && [ "${HOME:-}" = "/root" ]; then
+    warn "Dieses Script läuft als root mit HOME=/root."
+    warn "Wenn du die Shellfarbe für deck willst, beende hier und starte ohne sudo."
+fi
+
+safe_mkdir "$APP_DIR"
+safe_mkdir "$BIN_DIR"
+
+touch "$BASHRC"
+backup_file "$BASHRC"
+backup_file "$CORE_FILE"
+backup_file "$BIN_FILE"
+
+cat > "$CORE_FILE" <<'CORE_EOF'
+# # # # # # # # # # # # # #
+# Neowulf Shellfarbe Core #
+# # # # # # # # # # # # # #
+#
+# Diese Datei wird von ~/.bashrc geladen.
+# Sie erzeugt keine Startausgaben und verändert nur PS1/PROMPT_COMMAND.
+
+__nw_shellfarbe_app_dir="${XDG_CONFIG_HOME:-$HOME/.config}/neowulf-shell"
+__nw_shellfarbe_state="$__nw_shellfarbe_app_dir/current-theme"
+__nw_shellfarbe_default="mint"
+
+__nw_theme_canon() {
+    local raw="${1:-}"
+    raw="${raw,,}"
+
+    case "$raw" in
+        mint|minze)
+            printf '%s\n' "mint"
+            ;;
+        tuerkis|türkis|turkis|cyan)
+            printf '%s\n' "tuerkis"
+            ;;
+        minztuerkis|minztürkis|minttuerkis|mintturkis|mint-cyan|mintcyan)
+            printf '%s\n' "minztuerkis"
+            ;;
+        rot|red)
+            printf '%s\n' "rot"
+            ;;
+        orange)
+            printf '%s\n' "orange"
+            ;;
+        gelb|yellow)
+            printf '%s\n' "gelb"
+            ;;
+        lila|purple|violett|violet)
+            printf '%s\n' "lila"
+            ;;
+        blau|blue)
+            printf '%s\n' "blau"
+            ;;
+        hellblau|lightblue|light-blue)
+            printf '%s\n' "hellblau"
+            ;;
+        gruen|grün|green)
+            printf '%s\n' "gruen"
+            ;;
+        hellgruen|hellgrün|lightgreen|light-green)
+            printf '%s\n' "hellgruen"
+            ;;
+        rosa|rose)
+            printf '%s\n' "rosa"
+            ;;
+        pink|magenta)
+            printf '%s\n' "pink"
+            ;;
+        list|liste|farben|themes|-l|--list)
+            printf '%s\n' "__list__"
+            ;;
+        current|aktuell|-c|--current)
+            printf '%s\n' "__current__"
+            ;;
+        reset|default|standard)
+            printf '%s\n' "$__nw_shellfarbe_default"
+            ;;
+        *)
+            printf '%s\n' "__bad__"
+            ;;
+    esac
+}
+
+__nw_theme_rgb() {
+    local theme="${1:-mint}"
+    local slot="${2:-main}"
+
+    case "$theme:$slot" in
+        mint:main)         printf '39;245;185' ;;
+        mint:light)        printf '118;255;216' ;;
+        mint:dark)         printf '18;130;110' ;;
+
+        tuerkis:main)      printf '0;220;255' ;;
+        tuerkis:light)     printf '112;245;255' ;;
+        tuerkis:dark)      printf '0;120;150' ;;
+
+        minztuerkis:main)  printf '39;255;225' ;;
+        minztuerkis:light) printf '148;255;238' ;;
+        minztuerkis:dark)  printf '0;150;135' ;;
+
+        rot:main)          printf '255;55;80' ;;
+        rot:light)         printf '255;125;145' ;;
+        rot:dark)          printf '150;20;40' ;;
+
+        orange:main)       printf '255;145;35' ;;
+        orange:light)      printf '255;195;105' ;;
+        orange:dark)       printf '170;80;10' ;;
+
+        gelb:main)         printf '255;225;60' ;;
+        gelb:light)        printf '255;245;150' ;;
+        gelb:dark)         printf '170;135;20' ;;
+
+        lila:main)         printf '185;95;255' ;;
+        lila:light)        printf '220;165;255' ;;
+        lila:dark)         printf '95;45;155' ;;
+
+        blau:main)         printf '70;135;255' ;;
+        blau:light)        printf '140;185;255' ;;
+        blau:dark)         printf '35;70;170' ;;
+
+        hellblau:main)     printf '105;205;255' ;;
+        hellblau:light)    printf '180;235;255' ;;
+        hellblau:dark)     printf '40;130;180' ;;
+
+        gruen:main)        printf '70;255;115' ;;
+        gruen:light)       printf '150;255;180' ;;
+        gruen:dark)        printf '20;150;70' ;;
+
+        hellgruen:main)    printf '155;255;95' ;;
+        hellgruen:light)   printf '205;255;165' ;;
+        hellgruen:dark)    printf '85;160;35' ;;
+
+        rosa:main)         printf '255;145;205' ;;
+        rosa:light)        printf '255;195;225' ;;
+        rosa:dark)         printf '170;70;120' ;;
+
+        pink:main)         printf '255;55;210' ;;
+        pink:light)        printf '255;140;235' ;;
+        pink:dark)         printf '165;20;135' ;;
+
+        *)                 printf '39;245;185' ;;
+    esac
+}
+
+__nw_ps1_rgb() {
+    printf '\\[\\e[38;2;%sm\\]' "$1"
+}
+
+__nw_ps1_ansi() {
+    printf '\\[\\e[%sm\\]' "$1"
+}
+
+__nw_current_theme() {
+    local theme=""
+
+    if [ -r "$__nw_shellfarbe_state" ]; then
+        IFS= read -r theme < "$__nw_shellfarbe_state" || true
+    fi
+
+    theme="$(__nw_theme_canon "${theme:-$__nw_shellfarbe_default}")"
+
+    case "$theme" in
+        "__bad__"|"__list__"|"__current__")
+            theme="$__nw_shellfarbe_default"
+            ;;
+    esac
+
+    printf '%s\n' "$theme"
+}
+
+__nw_escape_ps1_literal() {
+    local text="${1:-}"
+
+    text="${text//\\/\\\\}"
+    text="${text//\$/\\\$}"
+    text="${text//\`/\\\`}"
+    text="${text//!/\\!}"
+
+    printf '%s' "$text"
+}
+
+__nw_colored_literal() {
+    local text="${1:-}"
+    local main="${2:-}"
+    local light="${3:-}"
+    local white="${4:-}"
+    local gray="${5:-}"
+    local out=""
+    local color=""
+    local last=""
+    local ch=""
+    local i=0
+
+    for ((i = 0; i < ${#text}; i++)); do
+        ch="${text:i:1}"
+
+        case "$ch" in
+            [0-9])
+                color="$gray"
+                ;;
+            "/"|"."|","|":"|";"|"!"|"?"|"_"|"-"|"+"|"="|"["|"]"|"("|")"|"{"|"}")
+                color="$main"
+                ;;
+            "~")
+                color="$light"
+                ;;
+            *)
+                color="$white"
+                ;;
+        esac
+
+        if [ "$color" != "$last" ]; then
+            out+="$color"
+            last="$color"
+        fi
+
+        out+="$(__nw_escape_ps1_literal "$ch")"
+    done
+
+    printf '%s' "$out"
+}
+
+__nw_short_path() {
+    local path="${PWD:-$HOME}"
+
+    if [ -n "${HOME:-}" ] && [[ "$path" == "$HOME"* ]]; then
+        path="~${path#$HOME}"
+    fi
+
+    printf '%s' "$path"
+}
+
+__nw_prompt_ip() {
+    local now="0"
+    local old="0"
+    local ip=""
+    local cache_file="$__nw_shellfarbe_app_dir/ip-cache"
+    local time_file="$__nw_shellfarbe_app_dir/ip-cache.time"
+
+    now="${EPOCHSECONDS:-$(date +%s 2>/dev/null || printf '0')}"
+
+    if [ -r "$time_file" ] && [ -r "$cache_file" ]; then
+        IFS= read -r old < "$time_file" || old="0"
+
+        if [ "$old" -gt 0 ] 2>/dev/null && [ $((now - old)) -lt 60 ]; then
+            IFS= read -r ip < "$cache_file" || ip=""
+
+            if [ -n "$ip" ]; then
+                printf '%s' "$ip"
+                return 0
+            fi
+        fi
+    fi
+
+    if command -v ip >/dev/null 2>&1; then
+        ip="$(
+            ip -o -4 addr show scope global up 2>/dev/null |
+            awk '{ split($4, a, "/"); print a[1]; exit }'
+        )"
+    elif command -v hostname >/dev/null 2>&1; then
+        ip="$(hostname -I 2>/dev/null | awk '{ print $1; exit }')"
+    fi
+
+    ip="${ip:-no-ip}"
+
+    mkdir -p "$__nw_shellfarbe_app_dir" 2>/dev/null || true
+    printf '%s\n' "$ip" > "$cache_file" 2>/dev/null || true
+    printf '%s\n' "$now" > "$time_file" 2>/dev/null || true
+
+    printf '%s' "$ip"
+}
+
+__nw_build_ps1() {
+    local theme="${1:-$(__nw_current_theme)}"
+
+    local rgb_main=""
+    local rgb_light=""
+    local rgb_dark=""
+
+    local main=""
+    local light=""
+    local dark=""
+    local white=""
+    local gray=""
+    local reset=""
+
+    local user_part=""
+    local host_part=""
+    local ip_part=""
+    local path_part=""
+
+    rgb_main="$(__nw_theme_rgb "$theme" main)"
+    rgb_light="$(__nw_theme_rgb "$theme" light)"
+    rgb_dark="$(__nw_theme_rgb "$theme" dark)"
+
+    main="$(__nw_ps1_rgb "$rgb_main")"
+    light="$(__nw_ps1_rgb "$rgb_light")"
+    dark="$(__nw_ps1_rgb "$rgb_dark")"
+    white="$(__nw_ps1_rgb "245;248;255")"
+    gray="$(__nw_ps1_rgb "135;141;151")"
+    reset="$(__nw_ps1_ansi "0")"
+
+    user_part="$(__nw_colored_literal "${USER:-user}" "$main" "$light" "$white" "$gray")"
+    host_part="$(__nw_colored_literal "${HOSTNAME%%.*}" "$main" "$light" "$white" "$gray")"
+    ip_part="$(__nw_colored_literal "$(__nw_prompt_ip)" "$main" "$light" "$white" "$gray")"
+    path_part="$(__nw_colored_literal "$(__nw_short_path)" "$main" "$light" "$white" "$gray")"
+
+    PS1="${dark}(${reset} "
+    PS1+="$user_part"
+    PS1+="${main}@${reset}"
+    PS1+="$host_part"
+    PS1+=" ${dark}[${reset}"
+    PS1+="$ip_part"
+    PS1+="${dark}]${reset} "
+    PS1+="$path_part"
+    PS1+=" ${dark})${reset} "
+    PS1+="${light}\\$ ${reset}"
+}
+
+__nw_install_prompt_command() {
+    # Wichtig für SteamOS:
+    # SteamOS setzt teilweise selbst eine PROMPT_COMMAND-Funktion,
+    # die PS1 erneut überschreibt. Deshalb muss __nw_build_ps1
+    # am ENDE laufen.
+
+    if declare -p PROMPT_COMMAND >/dev/null 2>&1 && declare -p PROMPT_COMMAND 2>/dev/null | grep -q '^declare \-a'; then
+        local kept=()
+        local cmd=""
+
+        for cmd in "${PROMPT_COMMAND[@]}"; do
+            if [ "$cmd" != "__nw_build_ps1" ] && [ -n "$cmd" ]; then
+                kept+=("$cmd")
+            fi
+        done
+
+        kept+=(__nw_build_ps1)
+        PROMPT_COMMAND=("${kept[@]}")
+        return 0
+    fi
+
+    local pc="${PROMPT_COMMAND:-}"
+
+    pc="${pc//__nw_build_ps1;/}"
+    pc="${pc//;__nw_build_ps1/}"
+
+    if [ "$pc" = "__nw_build_ps1" ]; then
+        pc=""
+    fi
+
+    if [ -n "$pc" ]; then
+        PROMPT_COMMAND="${pc};__nw_build_ps1"
+    else
+        PROMPT_COMMAND="__nw_build_ps1"
+    fi
+}
+
+shellfarbe() {
+    local input="${1:-}"
+    local theme=""
+
+    if [ -z "$input" ]; then
+        input="current"
+    fi
+
+    theme="$(__nw_theme_canon "$input")"
+
+    case "$theme" in
+        "__list__")
+            cat <<'EOF'
+Verfügbare Shellfarben:
+  mint
+  tuerkis
+  minztuerkis
+  rot
+  orange
+  gelb
+  lila
+  blau
+  hellblau
+  gruen
+  hellgruen
+  rosa
+  pink
+
+Beispiele:
+  shellfarbe lila
+  shellfarbe mint
+  shellfarbe tuerkis
+  shellfarbe rot
+  shellfarbe current
+EOF
+            return 0
+            ;;
+        "__current__")
+            printf 'Aktuelle Shellfarbe: %s\n' "$(__nw_current_theme)"
+            return 0
+            ;;
+        "__bad__")
+            printf 'Unbekannte Shellfarbe: %s\n\n' "$input" >&2
+            shellfarbe list
+            return 2
+            ;;
+    esac
+
+    mkdir -p "$__nw_shellfarbe_app_dir"
+    printf '%s\n' "$theme" > "$__nw_shellfarbe_state"
+
+    if [[ $- == *i* ]]; then
+        __nw_build_ps1 "$theme"
+    fi
+
+    printf 'Shellfarbe gesetzt: %s\n' "$theme"
+}
+
+shellcolor() {
+    shellfarbe "$@"
+}
+
+farbe() {
+    shellfarbe "$@"
+}
+
+theme() {
+    shellfarbe "$@"
+}
+
+if [[ $- == *i* ]]; then
+    __nw_install_prompt_command
+    __nw_build_ps1 "$(__nw_current_theme)"
+fi
+CORE_EOF
+
+chmod 0644 "$CORE_FILE"
+
+cat > "$BIN_FILE" <<'BIN_EOF'
+#!/usr/bin/env bash
+core="${XDG_CONFIG_HOME:-$HOME/.config}/neowulf-shell/shellfarbe.bash"
+
+if [ ! -r "$core" ]; then
+    printf 'shellfarbe core nicht gefunden: %s\n' "$core" >&2
+    exit 1
+fi
+
+# Hinweis:
+# Als externer Befehl kann shellfarbe die aktuelle Eltern-Shell nicht direkt ändern.
+# Die Live-Änderung funktioniert, wenn ~/.bashrc den Core geladen hat.
+# Dann ist shellfarbe eine Shell-Funktion.
+
+# shellcheck source=/dev/null
+. "$core"
+
+shellfarbe "$@"
+
+if [[ $- != *i* ]]; then
+    case "${1:-}" in
+        list|liste|farben|themes|-l|--list|current|aktuell|-c|--current|"")
+            ;;
+        *)
+            printf '\nHinweis: Falls sich die aktuelle Prompt nicht sofort ändert:\n'
+            printf '  source ~/.bashrc\n'
+            printf 'Danach erneut ausführen:\n'
+            printf '  shellfarbe %s\n' "$1"
+            ;;
+    esac
+fi
+BIN_EOF
+
+chmod 0755 "$BIN_FILE"
+
+if [ ! -f "$STATE_FILE" ]; then
+    printf '%s\n' "mint" > "$STATE_FILE"
+fi
+
+tmp_file="$(mktemp)"
+
+awk \
+    -v start="$MARK_START" \
+    -v end="$MARK_END" \
+    '
+    $0 == start { skip = 1; next }
+    $0 == end { skip = 0; next }
+    skip != 1 { print }
+    ' "$BASHRC" > "$tmp_file"
+
+cat "$tmp_file" > "$BASHRC"
+rm -f "$tmp_file"
+
+cat >> "$BASHRC" <<'BASHRC_EOF'
+
+# >>> neowulf-shellfarbe >>>
+# Sichere Shellfarben:
+# - keine Autostart-Ausgaben
+# - keine Programm-Wrapper
+# - nur Bash-Prompt-Farben
+# - shellfarbe läuft am Ende von PROMPT_COMMAND, damit SteamOS die Farbe nicht überschreibt
+
+if [ -d "$HOME/.local/bin" ]; then
+    case ":$PATH:" in
+        *":$HOME/.local/bin:"*) ;;
+        *) export PATH="$HOME/.local/bin:$PATH" ;;
+    esac
+fi
+
+if [ -r "${XDG_CONFIG_HOME:-$HOME/.config}/neowulf-shell/shellfarbe.bash" ]; then
+    . "${XDG_CONFIG_HOME:-$HOME/.config}/neowulf-shell/shellfarbe.bash"
+fi
+# <<< neowulf-shellfarbe <<<
+BASHRC_EOF
+
+echo
+echo "============================================================"
+echo " Abschlussprüfung"
+echo "============================================================"
+
+[ -r "$CORE_FILE" ] || fail "Core-Datei wurde nicht erstellt."
+[ -x "$BIN_FILE" ] || fail "Befehl shellfarbe wurde nicht ausführbar erstellt."
+grep -qF "$MARK_START" "$BASHRC" || fail ".bashrc Block fehlt."
+
+log "Installiert: $CORE_FILE"
+log "Installiert: $BIN_FILE"
+log "Aktualisiert: $BASHRC"
+log "Aktuelles Theme: $(cat "$STATE_FILE" 2>/dev/null || printf 'mint')"
+
+echo
+echo "============================================================"
+echo " Jetzt aktivieren"
+echo "============================================================"
+echo "Führe aus:"
+echo
+echo "  source ~/.bashrc"
+echo
+echo "Dann testen:"
+echo
+echo "  shellfarbe lila"
+echo "  shellfarbe rot"
+echo "  shellfarbe mint"
+echo "  shellfarbe list"
+echo
+echo "Falls SteamOS erneut überschreibt, prüfe danach:"
+echo
+echo "  printf '%q\n' \"\$PROMPT_COMMAND\""

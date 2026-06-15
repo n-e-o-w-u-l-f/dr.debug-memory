@@ -1,0 +1,12 @@
+#!/bin/bash
+# 01_flatpak_setup.sh - Steam Deck specific setup
+# Compatible: SteamOS/Linux
+
+set -e
+
+echo "[INFO] Steam Deck setup starting..."
+
+echo "[INFO] Flatpak setup"
+# flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "[OK] Steam Deck setup completed"

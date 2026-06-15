@@ -1,0 +1,59 @@
+#!/bin/bash
+# =========================================
+# Arch Linux Installation mit proot (kein Root)
+# =========================================
+
+# Farben
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+CYAN="\033[36m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+BASE=/home/deck/.local
+ROOT=$BASE/root
+USR=$BASE/usr
+
+echo -e "${CYAN}${BOLD}==> Starte Arch Linux proot Installation${RESET}"
+
+set -euo pipefail
+
+echo -e "${YELLOW}==> Verzeichnisstruktur anlegen...${RESET}"
+mkdir -p $ROOT $USR/bin $USR/lib $BASE/var $BASE/etc $BASE/tmp
+mkdir -p $ROOT/{bin,sbin,etc,proc,sys,dev,usr,var,tmp,home}
+
+echo -e "${YELLOW}==> Arch Bootstrap herunterladen und entpacken...${RESET}"
+cd $ROOT
+wget -c https://mirror.rackspace.com/archlinux/iso/latest/archlinux-bootstrap-2026.06.01-x86_64.tar.gz
+bsdtar -xpf archlinux-bootstrap-2026.06.01-x86_64.tar.gz --strip-components=1
+
+echo -e "${YELLOW}==> Pacman static installieren...${RESET}"
+cd $USR/bin
+wget -c https://archive.archlinux.org/packages/p/pacman-static/pacman-static-6.0.1-x86_64.pkg.tar.zst
+bsdtar -xf pacman-static-6.0.1-x86_64.pkg.tar.zst ./usr/bin/pacman
+chmod +x pacman
+
+echo -e "${YELLOW}==> Dummy sudo installieren (kein Root)${RESET}"
+echo -e '#!/bin/bash\necho "sudo läuft (Dummy)"' > $USR/bin/sudo
+chmod +x $USR/bin/sudo
+
+echo -e "${YELLOW}==> Pacman konfigurieren...${RESET}"
+mkdir -p $BASE/etc
+cat > $BASE/etc/pacman.conf <<EOF
+[options]
+RootDir = $ROOT
+DBPath = $BASE/var/lib/pacman
+CacheDir = $BASE/var/cache/pacman/pkg
+LogFile = $BASE/var/log/pacman.log
+HoldPkg = pacman glibc
+EOF
+
+echo -e "${YELLOW}==> Basis-System installieren (proot)...${RESET}"
+proot -R $ROOT $USR/bin/pacman -Sy --noconfirm base
+
+echo -e "${GREEN}${BOLD}==> Installation abgeschlossen!${RESET}"
+echo -e "${CYAN}Root-Verzeichnis: $ROOT${RESET}"
+echo -e "${CYAN}Pacman: $USR/bin/pacman${RESET}"
+echo -e "${CYAN}Sudo: $USR/bin/sudo${RESET}"
+echo -e "${CYAN}Zum Betreten: proot -R $ROOT /bin/bash${RESET}"

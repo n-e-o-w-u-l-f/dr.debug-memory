@@ -1,0 +1,121 @@
+#!/bin/bash
+# 02_setup_github.sh - Setup GitHub and clone neowulf-backup repository
+# Compatible: SteamOS/Linux (Steam Deck specific)
+
+set -e
+
+echo "=================================================="
+echo "  GitHub Setup & Repository Clone (Steam Deck)"
+echo "=================================================="
+echo ""
+echo "[INFO] Start time: $(date)"
+
+# Steam Deck specific paths
+CURRENT_USER="${SUDO_USER:-$USER}"
+USER_HOME=$(eval echo ~$CURRENT_USER)
+
+echo "[USER] Current user: $CURRENT_USER"
+echo "[HOME] Home directory: $USER_HOME"
+echo ""
+
+# Install Git on SteamOS/Steam Deck
+install_git() {
+    echo "[GIT] Checking Git installation..."
+
+    if command -v git &> /dev/null; then
+        echo "[OK] Git already installed: $(git --version)"
+        return 0
+    fi
+
+    echo "[INSTALL] Installing Git..."
+
+    # SteamOS uses pacman
+    if command -v pacman &> /dev/null; then
+        sudo pacman -Sy --noconfirm git
+    else
+        echo "[ERROR] Could not determine package manager"
+        return 1
+    fi
+
+    echo "[OK] Git installed"
+}
+
+# Install GitHub CLI
+install_github_cli() {
+    echo "[GITHUB CLI] Checking installation..."
+
+    if command -v gh &> /dev/null; then
+        echo "[OK] GitHub CLI already installed"
+        return 0
+    fi
+
+    echo "[INSTALL] Installing GitHub CLI..."
+
+    if command -v pacman &> /dev/null; then
+        sudo pacman -S --noconfirm github-cli
+    else
+        echo "[WARN] Could not install GitHub CLI automatically"
+    fi
+}
+
+# Clone neowulf-repo
+setup_repo() {
+    echo ""
+    echo "[SETUP] Creating Projekte directory..."
+
+    PROJECTS_DIR="$USER_HOME/Projekte"
+    BACKUP_REPO_DIR="$PROJECTS_DIR/neowulf-repo"
+
+    mkdir -p "$PROJECTS_DIR"
+    echo "[OK] Created: $PROJECTS_DIR"
+
+    echo ""
+    echo "[CLONE] Cloning neowulf-repo repository..."
+
+    if [ -d "$BACKUP_REPO_DIR/.git" ]; then
+        echo "[INFO] Repository already exists"
+        cd "$BACKUP_REPO_DIR"
+        echo "[PULL] Pulling latest changes..."
+        git pull origin main 2>/dev/null || git pull origin master 2>/dev/null || true
+    else
+        REPO_URL="https://github.com/n-e-o-w-u-l-f/neowulf-repo.git"
+        git clone "$REPO_URL" "$BACKUP_REPO_DIR"
+        cd "$BACKUP_REPO_DIR"
+    fi
+
+    echo "[OK] Repository ready: $BACKUP_REPO_DIR"
+    echo ""
+    git status
+}
+
+# Configure git
+configure_git() {
+    echo ""
+    echo "[CONFIG] Configure Git (optional)..."
+
+    read -p "GitHub username (skip with Enter): " GIT_USER
+    if [ -n "$GIT_USER" ]; then
+        git config --global user.name "$GIT_USER"
+        echo "[OK] Git name set"
+    fi
+
+    read -p "GitHub email (skip with Enter): " GIT_EMAIL
+    if [ -n "$GIT_EMAIL" ]; then
+        git config --global user.email "$GIT_EMAIL"
+        echo "[OK] Git email set"
+    fi
+}
+
+# Main workflow
+main() {
+    install_git
+    install_github_cli
+    configure_git
+    setup_repo
+
+    echo ""
+    echo "[OK] GitHub setup completed for Steam Deck!"
+    echo "[TIP] Repository location: $BACKUP_REPO_DIR"
+}
+
+main

@@ -1,0 +1,34 @@
+#!/bin/bash
+# =========================================
+# Nix Installer für Steam Deck (Home-Verzeichnis)
+# =========================================
+
+# Farben
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+CYAN="\033[36m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+echo -e "${CYAN}${BOLD}======================================${RESET}"
+echo -e "${GREEN}${BOLD}   Nix Installer für Home-Verzeichnis${RESET}"
+echo -e "${CYAN}${BOLD}======================================${RESET}"
+
+# Zielverzeichnis
+NIX_DIR=/home/deck/.nix
+
+echo -e "${YELLOW}==> Zielverzeichnis: $NIX_DIR${RESET}"
+mkdir -p $NIX_DIR
+
+echo -e "${YELLOW}==> Lade Nix Installer...${RESET}"
+curl -L https://nixos.org/nix/install | sh -s -- --no-daemon --install-dir $NIX_DIR
+
+echo -e "${YELLOW}==> Nix Umgebung initialisieren...${RESET}"
+export NIX_HOME=$NIX_DIR
+export PATH=$NIX_HOME/bin:$PATH
+
+echo -e "${GREEN}${BOLD}==> Nix Installation abgeschlossen!${RESET}"
+echo -e "${CYAN}Füge folgendes zu deiner ~/.bashrc hinzu:${RESET}"
+echo -e "${CYAN}export PATH=\$HOME/.nix/bin:\$PATH${RESET}"
+echo -e "${CYAN}Nix kann jetzt genutzt werden, ohne das System zu verändern.${RESET}"

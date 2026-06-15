@@ -1,0 +1,435 @@
+#!/usr/bin/env bash
+# ============================================================
+# DrDebug Guarded Import v0.0.2: Deutsch Locale Fix Guarded
+# Deutscher Kommentar:
+# Dieses Skript enthaelt eine geschuetzte, importierte Fassung von set_deutsch_arch_steamos.sh.
+# Standard ist Dry-Run. Ausfuehrung nur mit --apply und exakter Bestaetigung.
+# ============================================================
+set +e
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+# shellcheck source=../lib/drdebug-safe-lib.sh
+. "$SCRIPT_DIR/../lib/drdebug-safe-lib.sh"
+
+case "${1:-}" in
+  --apply)
+    export DRDEBUG_APPLY=1
+    shift
+    ;;
+  --dry-run|-n|"")
+    :
+    ;;
+esac
+
+if [ "${DRDEBUG_APPLY:-0}" != "1" ]; then
+  drdebug_header "Deutsch Locale Fix Guarded"
+  drdebug_log "Trockener Lauf: importierte Logik wird nicht gestartet."
+  drdebug_log "Quelle: references/original_uploads/set_deutsch_arch_steamos.sh.txt"
+  drdebug_log "Anwenden: DRDEBUG_APPLY=1 bash $0 --apply"
+  exit 0
+fi
+
+drdebug_prompt STEAMOS_SYSTEM "SteamOS systemweit aendern? 1/0" "0"
+
+cat <<'DRDEBUG_OVERVIEW'
+Aenderungen laut Ursprungsskript: Deutsch/Locale/Zeitzone. Auf SteamOS standardmaessig User-/KDE-/Flatpak-basiert; systemweite SteamOS-Aenderungen nur mit STEAMOS_SYSTEM=1 und weiterer Bestaetigung.
+DRDEBUG_OVERVIEW
+
+if ! drdebug_confirm_exact "RUN_DEUTSCH_LOCALE_IMPORT"; then
+  drdebug_warn "Abbruch: Bestaetigung nicht erhalten."
+  exit 0
+fi
+
+# ============================================================
+# Importierte Ursprungsversion ab hier
+# ============================================================
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# ============================================================
+# Arch Linux / Steam Deck komplett auf Deutsch stellen
+# ============================================================
+# Ziel:
+#   - Arch Linux: Systemweit de_DE.UTF-8, deutsche Tastatur, Berlin-Zeitzone
+#   - SteamOS: Standardmäßig sicher user-/KDE-/Flatpak-basiert
+#   - Keine permanente LC_ALL-Setzung
+#
+# Optional SteamOS-Systemänderung:
+#   STEAMOS_SYSTEM=1 ./set_deutsch_arch_steamos.sh
+#
+# Hinweis:
+#   SteamOS-Rootfs-Änderungen können durch SteamOS-Updates überschrieben werden.
+# ============================================================
+
+TARGET_LOCALE="de_DE.UTF-8"
+TARGET_LOCALE_GEN="de_DE.UTF-8 UTF-8"
+FALLBACK_LOCALE_GEN="en_US.UTF-8 UTF-8"
+TARGET_LANG_SHORT="de"
+TARGET_TIMEZONE="Europe/Berlin"
+BACKUP_ROOT="${HOME}/.local/state/deutsch-locale-backup/$(date +%Y%m%d-%H%M%S)"
+LOG="${BACKUP_ROOT}/set-deutsch.log"
+
+mkdir -p "$BACKUP_ROOT"
+
+log() {
+  printf '%s\n' "$*" | tee -a "$LOG"
+}
+
+warn() {
+  printf 'WARNUNG: %s\n' "$*" | tee -a "$LOG" >&2
+}
+
+fail() {
+  printf 'FEHLER: %s\n' "$*" | tee -a "$LOG" >&2
+  exit 1
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+sudo_ok() {
+  if [[ "${EUID}" -eq 0 ]]; then
+    return 0
+  fi
+  have sudo || return 1
+  sudo -v
+}
+
+run_root() {
+  if [[ "${EUID}" -eq 0 ]]; then
+    "$@"
+  else
+    sudo "$@"
+  fi
+}
+
+backup_file() {
+  local f="$1"
+  if [[ -e "$f" || -L "$f" ]]; then
+    mkdir -p "${BACKUP_ROOT}$(dirname "$f")"
+    cp -a "$f" "${BACKUP_ROOT}${f}" || true
+    log "Backup: $f -> ${BACKUP_ROOT}${f}"
+  fi
+}
+
+write_root_file() {
+  local path="$1"
+  local mode="${2:-0644}"
+  local tmp
+  tmp="$(mktemp)"
+  cat > "$tmp"
+  run_root install -D -m "$mode" "$tmp" "$path"
+  rm -f "$tmp"
+}
+
+is_steamos=0
+is_arch=0
+
+if [[ -r /etc/os-release ]]; then
+  # shellcheck disable=SC1091
+  . /etc/os-release
+  case "${ID:-}" in
+    steamos) is_steamos=1 ;;
+    arch) is_arch=1 ;;
+  esac
+  if [[ "${ID_LIKE:-}" == *arch* ]]; then
+    is_arch=1
+  fi
+fi
+
+log "============================================================"
+log " Deutsch-Setup für Arch Linux / SteamOS"
+log "============================================================"
+log "Backup-Verzeichnis: $BACKUP_ROOT"
+log "Logdatei:           $LOG"
+log "Locale:             $TARGET_LOCALE"
+log "Zeitzone:           $TARGET_TIMEZONE"
+log
+
+if [[ "$is_steamos" -eq 1 ]]; then
+  log "Erkannt: SteamOS / Steam Deck"
+else
+  log "Erkannt: normales Arch-/Arch-ähnliches System"
+fi
+
+log
+log "===== Vorprüfung ====="
+
+if have locale; then
+  log "--- Aktuelle locale-Ausgabe ---"
+  locale 2>&1 | tee -a "$LOG" || true
+fi
+
+if have localectl; then
+  log "--- Aktuelle localectl-Ausgabe ---"
+  localectl status 2>&1 | tee -a "$LOG" || true
+fi
+
+if locale -a 2>/dev/null | grep -Eiq '^(de_DE\.utf8|de_DE\.UTF-8)$'; then
+  log "OK: $TARGET_LOCALE ist bereits generiert."
+  locale_ready=1
+else
+  warn "$TARGET_LOCALE ist aktuell noch nicht generiert."
+  locale_ready=0
+fi
+
+# SteamOS: Systemänderungen nur explizit.
+system_mode=1
+if [[ "$is_steamos" -eq 1 && "${STEAMOS_SYSTEM:-0}" != "1" ]]; then
+  system_mode=0
+  warn "SteamOS erkannt: Systemweite Rootfs-Änderungen werden NICHT automatisch durchgeführt."
+  warn "Es werden sichere User-/KDE-/Flatpak-Einstellungen gesetzt."
+  warn "Für systemweite SteamOS-Änderung bewusst ausführen: STEAMOS_SYSTEM=1 ./set_deutsch_arch_steamos.sh"
+fi
+
+readonly_was_enabled=0
+
+if [[ "$system_mode" -eq 1 ]]; then
+  log
+  log "===== Systemmodus vorbereiten ====="
+  sudo_ok || fail "sudo/root wird für systemweite Änderungen benötigt."
+
+  if [[ "$is_steamos" -eq 1 ]] && have steamos-readonly; then
+    ro_status="$(steamos-readonly status 2>/dev/null || true)"
+    log "SteamOS Readonly-Status: $ro_status"
+
+    if printf '%s\n' "$ro_status" | grep -Eiq 'enabled|aktiviert|read-only'; then
+      readonly_was_enabled=1
+      log "SteamOS Rootfs ist readonly. Für Locale-Generierung wird es temporär schreibbar gemacht."
+      printf 'Zum Fortfahren exakt eingeben: STEAMOS_DEUTSCH_SYSTEM\n> '
+      read -r confirm
+      [[ "$confirm" == "STEAMOS_DEUTSCH_SYSTEM" ]] || fail "Abbruch: Bestätigung nicht erhalten."
+
+      run_root steamos-readonly disable
+    fi
+  fi
+
+  log
+  log "===== Systemdateien sichern ====="
+  backup_file /etc/locale.gen
+  backup_file /etc/locale.conf
+  backup_file /etc/vconsole.conf
+  backup_file /etc/X11/xorg.conf.d/00-keyboard.conf
+  backup_file /etc/localtime
+
+  log
+  log "===== Locale systemweit aktivieren ====="
+
+  if [[ ! -e /etc/locale.gen ]]; then
+    warn "/etc/locale.gen fehlt; Datei wird angelegt."
+    write_root_file /etc/locale.gen 0644 <<EOF_LOCALEGEN
+$TARGET_LOCALE_GEN
+$FALLBACK_LOCALE_GEN
+EOF_LOCALEGEN
+  else
+    tmp_locale_gen="$(mktemp)"
+    cp /etc/locale.gen "$tmp_locale_gen"
+
+    if grep -Eq "^[#[:space:]]*${TARGET_LOCALE_GEN//./\\.}$" "$tmp_locale_gen"; then
+      sed -i -E "s|^[#[:space:]]*(${TARGET_LOCALE_GEN//./\\.})|\1|" "$tmp_locale_gen"
+    else
+      printf '\n%s\n' "$TARGET_LOCALE_GEN" >> "$tmp_locale_gen"
+    fi
+
+    if grep -Eq "^[#[:space:]]*${FALLBACK_LOCALE_GEN//./\\.}$" "$tmp_locale_gen"; then
+      sed -i -E "s|^[#[:space:]]*(${FALLBACK_LOCALE_GEN//./\\.})|\1|" "$tmp_locale_gen"
+    else
+      printf '%s\n' "$FALLBACK_LOCALE_GEN" >> "$tmp_locale_gen"
+    fi
+
+    run_root install -D -m 0644 "$tmp_locale_gen" /etc/locale.gen
+    rm -f "$tmp_locale_gen"
+  fi
+
+  if have locale-gen; then
+    run_root locale-gen 2>&1 | tee -a "$LOG"
+  else
+    fail "locale-gen fehlt. Auf Arch gehört es normalerweise zu glibc."
+  fi
+
+  write_root_file /etc/locale.conf 0644 <<EOF_LOCALECONF
+LANG=$TARGET_LOCALE
+EOF_LOCALECONF
+
+  # Wichtig: LC_ALL nicht dauerhaft setzen.
+  if grep -R "^[[:space:]]*LC_ALL=" /etc/locale.conf /etc/profile /etc/environment /etc/profile.d 2>/dev/null | tee -a "$LOG"; then
+    warn "Es wurden LC_ALL-Einträge gefunden. LC_ALL sollte nur temporär zum Testen gesetzt werden."
+  fi
+
+  log
+  log "===== Deutsche Tastatur und Zeitzone setzen ====="
+
+  if have localectl; then
+    run_root localectl set-locale "LANG=$TARGET_LOCALE" || warn "localectl set-locale fehlgeschlagen; /etc/locale.conf wurde dennoch geschrieben."
+
+    keymap_set=0
+    for km in de-latin1-nodeadkeys de-latin1 de; do
+      if localectl list-keymaps 2>/dev/null | grep -qx "$km"; then
+        run_root localectl --no-convert set-keymap "$km" && keymap_set=1 && log "VC-Keymap gesetzt: $km" && break
+      fi
+    done
+    [[ "$keymap_set" -eq 1 ]] || warn "Keine passende deutsche VC-Keymap per localectl gefunden."
+
+    run_root localectl --no-convert set-x11-keymap de pc105 nodeadkeys || \
+      run_root localectl set-x11-keymap de || \
+      warn "X11-Keymap konnte nicht per localectl gesetzt werden."
+  else
+    warn "localectl fehlt; schreibe Basisdateien direkt."
+    write_root_file /etc/vconsole.conf 0644 <<EOF_VCONSOLE
+KEYMAP=de-latin1-nodeadkeys
+EOF_VCONSOLE
+    write_root_file /etc/X11/xorg.conf.d/00-keyboard.conf 0644 <<EOF_X11
+Section "InputClass"
+    Identifier "system-keyboard"
+    MatchIsKeyboard "on"
+    Option "XkbLayout" "de"
+    Option "XkbModel" "pc105"
+    Option "XkbVariant" "nodeadkeys"
+EndSection
+EOF_X11
+  fi
+
+  if have timedatectl; then
+    run_root timedatectl set-timezone "$TARGET_TIMEZONE" || warn "Zeitzone konnte nicht per timedatectl gesetzt werden."
+    run_root timedatectl set-ntp true || true
+  else
+    if [[ -e "/usr/share/zoneinfo/$TARGET_TIMEZONE" ]]; then
+      run_root ln -sfn "/usr/share/zoneinfo/$TARGET_TIMEZONE" /etc/localtime
+    else
+      warn "Zeitzonendatei fehlt: /usr/share/zoneinfo/$TARGET_TIMEZONE"
+    fi
+  fi
+
+  if [[ "$is_steamos" -eq 1 && "$readonly_was_enabled" -eq 1 ]] && have steamos-readonly; then
+    log
+    log "===== SteamOS Rootfs wieder readonly setzen ====="
+    run_root steamos-readonly enable || warn "Konnte steamos-readonly nicht wieder aktivieren. Bitte manuell prüfen: steamos-readonly status"
+  fi
+fi
+
+log
+log "===== User-/KDE-/Shell-Locale setzen ====="
+
+mkdir -p "${HOME}/.config" "${HOME}/.config/environment.d"
+
+backup_file "${HOME}/.config/locale.conf"
+backup_file "${HOME}/.config/plasma-localerc"
+backup_file "${HOME}/.config/environment.d/10-deutsch-locale.conf"
+
+cat > "${HOME}/.config/locale.conf" <<EOF_USER_LOCALE
+LANG=$TARGET_LOCALE
+EOF_USER_LOCALE
+
+cat > "${HOME}/.config/environment.d/10-deutsch-locale.conf" <<EOF_ENV_D
+LANG=$TARGET_LOCALE
+LANGUAGE=de_DE:de:en_US:en
+LC_MESSAGES=$TARGET_LOCALE
+EOF_ENV_D
+
+cat > "${HOME}/.config/plasma-localerc" <<EOF_PLASMA
+[Formats]
+LANG=$TARGET_LOCALE
+
+[Translations]
+LANGUAGE=de_DE:de:en_US:en
+EOF_PLASMA
+
+log "User-Locale geschrieben: ~/.config/locale.conf"
+log "User-Environment geschrieben: ~/.config/environment.d/10-deutsch-locale.conf"
+log "KDE/Plasma-Sprache geschrieben: ~/.config/plasma-localerc"
+
+log
+log "===== Flatpak-Sprachen setzen ====="
+
+if have flatpak; then
+  # Flatpak nutzt Semikolon-getrennte Sprachcodes für Locale-Extensions.
+  flatpak config --user --set languages "de;en" 2>&1 | tee -a "$LOG" || warn "Flatpak User-Sprachen konnten nicht gesetzt werden."
+
+  if sudo_ok; then
+    run_root flatpak config --system --set languages "de;en" 2>&1 | tee -a "$LOG" || warn "Flatpak System-Sprachen konnten nicht gesetzt werden."
+  fi
+
+  flatpak update -y 2>&1 | tee -a "$LOG" || warn "Flatpak Update hatte Warnungen/Fehler. Nicht zwingend kritisch."
+else
+  log "Flatpak nicht gefunden; überspringe Flatpak-Sprachen."
+fi
+
+log
+log "===== Optionale deutsche Sprachpakete auf normalem Arch ====="
+
+if [[ "$is_steamos" -eq 0 ]] && have pacman && sudo_ok; then
+  pkgs=()
+
+  for p in man-pages-de hunspell-de hyphen-de mythes-de; do
+    if pacman -Si "$p" >/dev/null 2>&1; then
+      pkgs+=("$p")
+    fi
+  done
+
+  if pacman -Q firefox >/dev/null 2>&1 && pacman -Si firefox-i18n-de >/dev/null 2>&1; then
+    pkgs+=("firefox-i18n-de")
+  fi
+
+  if pacman -Q thunderbird >/dev/null 2>&1 && pacman -Si thunderbird-i18n-de >/dev/null 2>&1; then
+    pkgs+=("thunderbird-i18n-de")
+  fi
+
+  if pacman -Q libreoffice-fresh >/dev/null 2>&1 && pacman -Si libreoffice-fresh-de >/dev/null 2>&1; then
+    pkgs+=("libreoffice-fresh-de")
+  fi
+
+  if pacman -Q libreoffice-still >/dev/null 2>&1 && pacman -Si libreoffice-still-de >/dev/null 2>&1; then
+    pkgs+=("libreoffice-still-de")
+  fi
+
+  if [[ "${#pkgs[@]}" -gt 0 ]]; then
+    log "Installiere optionale deutsche Sprachpakete: ${pkgs[*]}"
+    run_root pacman -S --needed --noconfirm "${pkgs[@]}" 2>&1 | tee -a "$LOG" || warn "Optionale Sprachpakete konnten nicht vollständig installiert werden."
+  else
+    log "Keine passenden optionalen deutschen Sprachpakete gefunden."
+  fi
+else
+  if [[ "$is_steamos" -eq 1 ]]; then
+    log "SteamOS erkannt: pacman-Sprachpakete werden absichtlich übersprungen."
+  else
+    log "pacman nicht verfügbar oder kein sudo; optionale Sprachpakete übersprungen."
+  fi
+fi
+
+log
+log "===== Prüfung ====="
+
+if locale -a 2>/dev/null | grep -Eiq '^(de_DE\.utf8|de_DE\.UTF-8)$'; then
+  log "OK: $TARGET_LOCALE ist generiert."
+else
+  warn "$TARGET_LOCALE ist noch nicht systemweit generiert."
+  if [[ "$is_steamos" -eq 1 && "$system_mode" -eq 0 ]]; then
+    warn "Auf SteamOS ist das im sicheren Standardmodus erwartbar. Für vollständige System-Locale: STEAMOS_SYSTEM=1 ./set_deutsch_arch_steamos.sh"
+  fi
+fi
+
+log
+log "--- Neue erwartete User-Locale nach erneutem Login ---"
+LANG="$TARGET_LOCALE" LANGUAGE="de_DE:de:en_US:en" LC_MESSAGES="$TARGET_LOCALE" locale 2>&1 | tee -a "$LOG" || true
+
+if have localectl; then
+  log
+  log "--- localectl status ---"
+  localectl status 2>&1 | tee -a "$LOG" || true
+fi
+
+log
+log "============================================================"
+log " Fertig."
+log "============================================================"
+log "Wichtig:"
+log "  1. Abmelden und wieder anmelden oder neu starten."
+log "  2. In KDE/Steam Deck ggf. Desktop Mode neu starten."
+log "  3. Steam Gaming Mode Sprache ggf. zusätzlich im Steam-Menü prüfen."
+log "  4. LC_ALL dauerhaft NICHT setzen; nur temporär für einzelne Befehle."
+log
+log "Temporärer Test ohne dauerhafte Änderung:"
+log "  LC_ALL=C sort datei.txt"
+log
+log "Backup liegt hier:"
+log "  $BACKUP_ROOT"

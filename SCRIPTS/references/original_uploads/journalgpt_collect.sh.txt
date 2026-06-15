@@ -1,0 +1,215 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+DOCS="$HOME/Documents"
+CTRL_LOG="$DOCS/JournalGPT_collector_controller.log"
+LOCKFILE="${XDG_RUNTIME_DIR:-/tmp}/journalgpt_collect.lock"
+SSH_KEY="$HOME/.ssh/id_ed25519_journalgpt"
+MARKER="__JOURNALGPT_BEGIN__"
+
+mkdir -p "$DOCS"
+umask 077
+
+log() {
+  printf '[%s] %s\n' "$(date '+%Y-%m-%dT%H:%M:%S')" "$*" | tee -a "$CTRL_LOG" >&2
+}
+
+sanitize_name() {
+  printf '%s' "$1" | tr -c 'A-Za-z0-9._-' '_'
+}
+
+ssh_quick() {
+  timeout 20s ssh -T \
+    -i "$SSH_KEY" \
+    -o BatchMode=yes \
+    -o IdentitiesOnly=yes \
+    -o PreferredAuthentications=publickey \
+    -o PasswordAuthentication=no \
+    -o KbdInteractiveAuthentication=no \
+    -o NumberOfPasswordPrompts=0 \
+    -o StrictHostKeyChecking=accept-new \
+    -o ConnectTimeout=8 \
+    -o ConnectionAttempts=1 \
+    -o ServerAliveInterval=5 \
+    -o ServerAliveCountMax=1 \
+    "$@"
+}
+
+ssh_dump() {
+  timeout 900s ssh -T \
+    -i "$SSH_KEY" \
+    -o BatchMode=yes \
+    -o IdentitiesOnly=yes \
+    -o PreferredAuthentications=publickey \
+    -o PasswordAuthentication=no \
+    -o KbdInteractiveAuthentication=no \
+    -o NumberOfPasswordPrompts=0 \
+    -o StrictHostKeyChecking=accept-new \
+    -o ConnectTimeout=10 \
+    -o ConnectionAttempts=1 \
+    -o ServerAliveInterval=15 \
+    -o ServerAliveCountMax=3 \
+    "$@"
+}
+
+strip_until_marker() {
+  awk -v marker="$MARKER" '
+    found == 1 { print }
+    $0 == marker { found = 1 }
+  '
+}
+
+dedupe_journal() {
+  local input_file="$1"
+  local output_file="$2"
+
+  awk '
+    function trim_error(x) {
+      sub(/^[^:]+:[[:space:]]*/, "", x)
+      return x
+    }
+
+    {
+      line = $0
+
+      first = line
+      sub(/[[:space:]].*$/, "", first)
+
+      ts = first
+      sub(/[+-][0-9][0-9][0-9][0-9]$/, "", ts)
+      sub(/[.,][0-9]+$/, "", ts)
+
+      rest = line
+      sub(/^[^[:space:]]+[[:space:]]+/, "", rest)
+
+      host = rest
+      sub(/[[:space:]].*$/, "", host)
+
+      procmsg = rest
+      sub(/^[^[:space:]]+[[:space:]]+/, "", procmsg)
+
+      if (ts !~ /^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]$/ || host == "" || procmsg == "") {
+        next
+      }
+
+      err = trim_error(procmsg)
+      key = host "\034" err
+
+      if (!(key in seen)) {
+        seen[key] = 1
+        print ts " " host " " procmsg
+      }
+    }
+  ' "$input_file" > "$output_file"
+}
+
+collect_local() {
+  local hostname_safe stamp tmp out
+
+  hostname_safe="$(sanitize_name "$(hostname -s 2>/dev/null || hostname || echo steamdeck)")"
+  stamp="$(date '+%d-%m-%Y-%H-%M-%S')"
+  tmp="$(mktemp)"
+  out="$DOCS/JournalGPT_${hostname_safe}_${stamp}.txt"
+
+  log "Sammle lokales journalctl von $hostname_safe ..."
+
+  if timeout 20s sudo -n true >/dev/null 2>&1; then
+    timeout 900s sudo -n journalctl --no-pager --all --quiet -o short-iso > "$tmp"
+  else
+    timeout 900s journalctl --no-pager --all --quiet -o short-iso > "$tmp"
+  fi
+
+  dedupe_journal "$tmp" "$out"
+  rm -f "$tmp"
+
+  log "Fertig: $out"
+}
+
+remote_hostname() {
+  local ssh_target="$1"
+  local raw
+
+  raw="$(ssh_quick "$ssh_target" "printf '%s\n' '$MARKER'; hostname -s 2>/dev/null || hostname 2>/dev/null || echo remote" 2>/dev/null || true)"
+  printf '%s\n' "$raw" | strip_until_marker | awk 'NF { print; exit }'
+}
+
+collect_remote() {
+  local label="$1"
+  local ssh_target="$2"
+  local remote_host hostname_safe stamp raw clean err out
+
+  log "Prüfe SSH: $label => $ssh_target"
+
+  if [ ! -f "$SSH_KEY" ]; then
+    log "FEHLER: SSH-Key fehlt: $SSH_KEY"
+    return 0
+  fi
+
+  if ! ssh_quick "$ssh_target" "printf '%s\n' '$MARKER'; true" >/dev/null 2>&1; then
+    log "FEHLER: SSH Public-Key Login fehlgeschlagen oder Timeout für $ssh_target"
+    log "TEST MANUELL: ssh -i $SSH_KEY -o BatchMode=yes -o IdentitiesOnly=yes $ssh_target true"
+    return 0
+  fi
+
+  remote_host="$(remote_hostname "$ssh_target")"
+  hostname_safe="$(sanitize_name "${remote_host:-$label}")"
+  stamp="$(date '+%d-%m-%Y-%H-%M-%S')"
+
+  raw="$(mktemp)"
+  clean="$(mktemp)"
+  err="$(mktemp)"
+  out="$DOCS/JournalGPT_${hostname_safe}_${stamp}.txt"
+
+  log "Sammle remote journalctl von $hostname_safe über $ssh_target ..."
+
+  if ! ssh_dump "$ssh_target" "
+      printf '%s\n' '$MARKER'
+      if sudo -n true >/dev/null 2>&1; then
+        sudo -n journalctl --no-pager --all --quiet -o short-iso
+      else
+        journalctl --no-pager --all --quiet -o short-iso
+      fi
+    " > "$raw" 2> "$err"; then
+    log "FEHLER: journalctl-Abruf fehlgeschlagen oder Timeout für $ssh_target"
+    if [ -s "$err" ]; then
+      log "SSH/journalctl stderr für $ssh_target:"
+      sed 's/^/[REMOTE-ERR] /' "$err" | tail -n 20 | tee -a "$CTRL_LOG" >&2
+    fi
+    rm -f "$raw" "$clean" "$err"
+    return 0
+  fi
+
+  strip_until_marker < "$raw" > "$clean"
+
+  if [ ! -s "$clean" ]; then
+    log "FEHLER: Keine verwertbaren journalctl-Zeilen nach Marker-Filter für $ssh_target"
+    rm -f "$raw" "$clean" "$err"
+    return 0
+  fi
+
+  dedupe_journal "$clean" "$out"
+  rm -f "$raw" "$clean" "$err"
+
+  log "Fertig: $out"
+}
+
+main() {
+  exec 9>"$LOCKFILE"
+
+  if ! flock -n 9; then
+    log "Abbruch: Collector läuft bereits."
+    exit 0
+  fi
+
+  log "============================================================"
+  log "JournalGPT Sammlung gestartet"
+  log "============================================================"
+
+  collect_local
+  collect_remote "archlinux" "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+  collect_remote "debian" "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+
+  log "JournalGPT Sammlung beendet"
+}
+
+main "$@"

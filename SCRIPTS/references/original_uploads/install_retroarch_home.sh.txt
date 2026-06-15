@@ -1,0 +1,34 @@
+#!/bin/bash
+# =========================================
+# RetroArch Installer für Steam Deck (Home-Verzeichnis)
+# =========================================
+
+# Farben
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+CYAN="\033[36m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+echo -e "${CYAN}${BOLD}======================================${RESET}"
+echo -e "${GREEN}${BOLD}  RetroArch Installer für Home-Verzeichnis${RESET}"
+echo -e "${CYAN}${BOLD}======================================${RESET}"
+
+RETROARCH_DIR=/home/deck/.retroarch
+echo -e "${YELLOW}==> Zielverzeichnis: $RETROARCH_DIR${RESET}"
+mkdir -p $RETROARCH_DIR
+
+echo -e "${YELLOW}==> Lade neueste RetroArch AppImage...${RESET}"
+cd $RETROARCH_DIR
+wget -c https://buildbot.libretro.com/stable/RetroArch/latest/linux/RetroArch.AppImage
+
+echo -e "${YELLOW}==> AppImage ausführbar machen...${RESET}"
+chmod +x RetroArch.AppImage
+
+echo -e "${YELLOW}==> Starte RetroArch einmal, um Konfigurationsdateien zu erzeugen...${RESET}"
+./RetroArch.AppImage --create-config
+
+echo -e "${GREEN}${BOLD}==> RetroArch Installation abgeschlossen!${RESET}"
+echo -e "${CYAN}RetroArch Konfiguration: $RETROARCH_DIR${RESET}"
+echo -e "${CYAN}Zum Starten: $RETROARCH_DIR/RetroArch.AppImage${RESET}"

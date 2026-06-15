@@ -1,0 +1,254 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+DOCS="$HOME/Documents"
+RUNNER="$DOCS/journalgpt_collect.sh"
+LOGFILE="$DOCS/JournalGPT_collector_controller.log"
+SYSTEMD_USER_DIR="$HOME/.config/systemd/user"
+SERVICE_FILE="$SYSTEMD_USER_DIR/journalgpt-collect.service"
+TIMER_FILE="$SYSTEMD_USER_DIR/journalgpt-collect.timer"
+
+mkdir -p "$DOCS" "$SYSTEMD_USER_DIR"
+umask 077
+
+echo "============================================================"
+echo " JournalGPT Collector Installer"
+echo " Ziel: $DOCS"
+echo "============================================================"
+echo
+
+cat > "$RUNNER" <<'RUNNER'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+DOCS="$HOME/Documents"
+CTRL_LOG="$DOCS/JournalGPT_collector_controller.log"
+LOCKFILE="${XDG_RUNTIME_DIR:-/tmp}/journalgpt_collect.lock"
+
+mkdir -p "$DOCS"
+umask 077
+
+log() {
+  printf '[%s] %s\n' "$(date '+%Y-%m-%dT%H:%M:%S')" "$*" | tee -a "$CTRL_LOG" >&2
+}
+
+sanitize_name() {
+  printf '%s' "$1" | tr -c 'A-Za-z0-9._-' '_'
+}
+
+dedupe_journal() {
+  local input_file="$1"
+  local output_file="$2"
+
+  awk '
+    function trim_error(x) {
+      sub(/^[^:]+:[[:space:]]*/, "", x)
+      return x
+    }
+
+    {
+      line = $0
+
+      # Erwartetes journalctl-short-iso Format:
+      # YYYY-MM-DDTHH:MM:SS+0200 HOST PROCESS[PID]: ERROR
+      first = line
+      sub(/[[:space:]].*$/, "", first)
+
+      ts = first
+      sub(/[+-][0-9][0-9][0-9][0-9]$/, "", ts)
+      sub(/[.,][0-9]+$/, "", ts)
+
+      rest = line
+      sub(/^[^[:space:]]+[[:space:]]+/, "", rest)
+
+      host = rest
+      sub(/[[:space:]].*$/, "", host)
+
+      procmsg = rest
+      sub(/^[^[:space:]]+[[:space:]]+/, "", procmsg)
+
+      # Nicht passende Sonderzeilen behalten, z.B. Boot-Trenner.
+      if (ts !~ /^[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]$/ || host == "" || procmsg == "") {
+        print line
+        next
+      }
+
+      err = trim_error(procmsg)
+      key = host "\034" err
+
+      # Duplikat-Regel:
+      # Gleicher HOSTNAME + gleicher ERROR => nur erste Zeile behalten.
+      # PROCESS und PID sind absichtlich NICHT Teil des Keys.
+      if (!(key in seen)) {
+        seen[key] = 1
+        print ts " " host " " procmsg
+      }
+    }
+  ' "$input_file" > "$output_file"
+}
+
+collect_local() {
+  local hostname_safe stamp tmp out
+
+  hostname_safe="$(sanitize_name "$(hostname -s 2>/dev/null || hostname || echo steamdeck)")"
+  stamp="$(date '+%d-%m-%Y-%H-%M-%S')"
+  tmp="$(mktemp)"
+  out="$DOCS/JournalGPT_${hostname_safe}_${stamp}.txt"
+
+  log "Sammle lokales journalctl von $hostname_safe ..."
+
+  if sudo -n true >/dev/null 2>&1; then
+    sudo -n journalctl --no-pager --all --quiet -o short-iso > "$tmp"
+  else
+    journalctl --no-pager --all --quiet -o short-iso > "$tmp"
+  fi
+
+  dedupe_journal "$tmp" "$out"
+  rm -f "$tmp"
+
+  log "Fertig: $out"
+}
+
+remote_hostname() {
+  local ssh_target="$1"
+  ssh \
+    -o BatchMode=yes \
+    -o ConnectTimeout=8 \
+    -o ServerAliveInterval=5 \
+    -o ServerAliveCountMax=1 \
+    "$ssh_target" \
+    'hostname -s 2>/dev/null || hostname 2>/dev/null || echo remote' \
+    2>/dev/null | head -n 1
+}
+
+collect_remote() {
+  local label="$1"
+  local ssh_target="$2"
+  local remote_host hostname_safe stamp tmp out
+
+  log "Prüfe SSH: $label => $ssh_target"
+
+  if ! ssh \
+      -o BatchMode=yes \
+      -o ConnectTimeout=8 \
+      -o ServerAliveInterval=5 \
+      -o ServerAliveCountMax=1 \
+      "$ssh_target" \
+      'true' >/dev/null 2>&1; then
+    log "FEHLER: SSH BatchMode fehlgeschlagen für $ssh_target. Wahrscheinlich fehlt passwortloser SSH-Key."
+    return 0
+  fi
+
+  remote_host="$(remote_hostname "$ssh_target")"
+  hostname_safe="$(sanitize_name "${remote_host:-$label}")"
+  stamp="$(date '+%d-%m-%Y-%H-%M-%S')"
+  tmp="$(mktemp)"
+  out="$DOCS/JournalGPT_${hostname_safe}_${stamp}.txt"
+
+  log "Sammle remote journalctl von $hostname_safe über $ssh_target ..."
+
+  if ! ssh \
+      -o BatchMode=yes \
+      -o ConnectTimeout=10 \
+      -o ServerAliveInterval=10 \
+      -o ServerAliveCountMax=2 \
+      "$ssh_target" \
+      'if sudo -n true >/dev/null 2>&1; then sudo -n journalctl --no-pager --all --quiet -o short-iso; else journalctl --no-pager --all --quiet -o short-iso; fi' \
+      > "$tmp"; then
+    log "FEHLER: journalctl-Abruf fehlgeschlagen für $ssh_target"
+    rm -f "$tmp"
+    return 0
+  fi
+
+  dedupe_journal "$tmp" "$out"
+  rm -f "$tmp"
+
+  log "Fertig: $out"
+}
+
+main() {
+  exec 9>"$LOCKFILE"
+  if ! flock -n 9; then
+    log "Abbruch: Collector läuft bereits."
+    exit 0
+  fi
+
+  log "============================================================"
+  log "JournalGPT Sammlung gestartet"
+  log "============================================================"
+
+  collect_local
+  collect_remote "archlinux" "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+  collect_remote "debian" "__YOUR__USERNAME__HERE__@__YOUR__IPV4__HERE__"
+
+  log "JournalGPT Sammlung beendet"
+}
+
+main "$@"
+RUNNER
+
+chmod +x "$RUNNER"
+
+cat > "$SERVICE_FILE" <<EOF
+[Unit]
+Description=JournalGPT journalctl collector
+
+[Service]
+Type=oneshot
+ExecStart=$RUNNER
+EOF
+
+cat > "$TIMER_FILE" <<'EOF'
+[Unit]
+Description=Run JournalGPT collector every 24 hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=24h
+Persistent=true
+AccuracySec=1min
+Unit=journalgpt-collect.service
+
+[Install]
+WantedBy=timers.target
+EOF
+
+systemctl --user daemon-reload
+systemctl --user enable --now journalgpt-collect.timer
+
+echo
+echo "============================================================"
+echo " Timer aktiviert"
+echo "============================================================"
+systemctl --user list-timers journalgpt-collect.timer --no-pager || true
+
+echo
+echo "============================================================"
+echo " Starte ersten Testlauf jetzt"
+echo "============================================================"
+systemctl --user start journalgpt-collect.service || true
+
+echo
+echo "============================================================"
+echo " Status"
+echo "============================================================"
+systemctl --user status journalgpt-collect.service --no-pager || true
+
+echo
+echo "============================================================"
+echo " Fertig"
+echo "============================================================"
+echo "Script:      $RUNNER"
+echo "Controller:  $LOGFILE"
+echo "Timer:       journalgpt-collect.timer"
+echo
+echo "Logs anzeigen:"
+echo "  ls -lh ~/Documents/JournalGPT_*.txt"
+echo
+echo "Controller-Log:"
+echo "  tail -n 80 ~/Documents/JournalGPT_collector_controller.log"
+echo
+echo "Wichtig:"
+echo "  Für automatische SSH-Abrufe muss SSH-Key-Login ohne Passwort funktionieren."
+echo "  Für vollständige Systemjournale sollte der jeweilige Nutzer journalctl lesen dürfen,"
+echo "  z.B. über Gruppe systemd-journal oder passwortloses sudo für journalctl."

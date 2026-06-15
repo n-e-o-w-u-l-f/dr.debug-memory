@@ -1,0 +1,707 @@
+#!/usr/bin/env bash
+# ============================================================
+# DrDebug Guarded Import v0.0.2: Podman Home Install Guarded
+# Deutscher Kommentar:
+# Dieses Skript enthaelt eine geschuetzte, importierte Fassung von install_podman_home.sh.
+# Standard ist Dry-Run. Ausfuehrung nur mit --apply und exakter Bestaetigung.
+# ============================================================
+set +e
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+# shellcheck source=../lib/drdebug-safe-lib.sh
+. "$SCRIPT_DIR/../lib/drdebug-safe-lib.sh"
+
+case "${1:-}" in
+  --apply)
+    export DRDEBUG_APPLY=1
+    shift
+    ;;
+  --dry-run|-n|"")
+    :
+    ;;
+esac
+
+if [ "${DRDEBUG_APPLY:-0}" != "1" ]; then
+  drdebug_header "Podman Home Install Guarded"
+  drdebug_log "Trockener Lauf: importierte Logik wird nicht gestartet."
+  drdebug_log "Quelle: references/original_uploads/install_podman_home.sh.txt"
+  drdebug_log "Anwenden: DRDEBUG_APPLY=1 bash $0 --apply"
+  exit 0
+fi
+
+drdebug_prompt ARCH_IMAGE "OCI Image optional" "docker.io/library/archlinux:latest"
+drdebug_prompt PULL_ARCH "Arch Image automatisch ziehen? 1/0" "0"
+drdebug_prompt PODMAN_SETUP_SUBUID "/etc/subuid und /etc/subgid aendern? 1/0" "0"
+
+cat <<'DRDEBUG_OVERVIEW'
+Aenderungen laut Ursprungsskript: HOME-only Podman unter ~/.local/usr/bin und Container-Storage unter ~/.local/var. Optional kann PODMAN_SETUP_SUBUID=1 Host-Dateien /etc/subuid und /etc/subgid anfassen; Standard bleibt 0.
+DRDEBUG_OVERVIEW
+
+if ! drdebug_confirm_exact "RUN_PODMAN_HOME_IMPORT"; then
+  drdebug_warn "Abbruch: Bestaetigung nicht erhalten."
+  exit 0
+fi
+
+# ============================================================
+# Importierte Ursprungsversion ab hier
+# ============================================================
+#!/usr/bin/env bash
+###############################################################################
+# Steam Deck Home-only Podman Installer
+#
+# Ziel:
+#   /home/deck/.local/usr/bin/podman
+#   /home/deck/.local/root
+#   /home/deck/.local/usr
+#   /home/deck/.local/var
+#   /home/deck/.local/tmp
+#   /home/deck/.local/run
+#
+# Eigenschaften:
+#   - verändert standardmäßig NICHT das SteamOS-Hauptsystem
+#   - installiert statisches Rootless-Podman nach ~/.local
+#   - Container-Storage nach ~/.local/var/lib/containers/storage
+#   - Runtime nach ~/.local/run
+#   - temporäre Dateien nach ~/.local/tmp
+#   - zieht optional Arch Linux latest OCI image
+#
+# Nutzung:
+#   bash ~/install-local-podman-steamdeck.sh
+#
+# Optional:
+#   PULL_ARCH=0 bash ~/install-local-podman-steamdeck.sh
+#   FORCE_REINSTALL=1 bash ~/install-local-podman-steamdeck.sh
+#
+# Optional mit Host-/etc-Änderung für sauberes Multi-UID rootless:
+#   PODMAN_SETUP_SUBUID=1 bash ~/install-local-podman-steamdeck.sh
+###############################################################################
+
+set +e
+
+USER_NAME="$(id -un)"
+USER_ID="$(id -u)"
+GROUP_NAME="$(id -gn)"
+
+if [ "$USER_NAME" != "deck" ]; then
+    echo "WARNUNG: Dieses Script ist für den Steam-Deck-User 'deck' gedacht."
+    echo "Aktueller User: $USER_NAME"
+    echo "Ich fahre fort, nutze aber dein aktuelles HOME: $HOME"
+    echo
+fi
+
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
+LOCAL="$HOME/.local"
+LOCAL_USR="$LOCAL/usr"
+LOCAL_BIN="$LOCAL/usr/bin"
+LOCAL_USR_LOCAL_BIN="$LOCAL/usr/local/bin"
+LOCAL_ETC="$LOCAL/etc"
+LOCAL_ROOT="$LOCAL/root"
+LOCAL_VAR="$LOCAL/var"
+LOCAL_TMP="$LOCAL/tmp"
+LOCAL_RUN="$LOCAL/run"
+LOCAL_STATE="$LOCAL/state"
+LOCAL_CACHE="$LOCAL/cache"
+
+CONTAINERS_CONFIG="$HOME/.config/containers"
+BACKUP_DIR="$HOME/.local/backups/podman-local-$STAMP"
+
+ARCH_IMAGE="${ARCH_IMAGE:-docker.io/library/archlinux:latest}"
+PULL_ARCH="${PULL_ARCH:-1}"
+FORCE_REINSTALL="${FORCE_REINSTALL:-0}"
+PODMAN_SETUP_SUBUID="${PODMAN_SETUP_SUBUID:-0}"
+
+mkdir -p \
+    "$LOCAL_BIN" \
+    "$LOCAL_USR_LOCAL_BIN" \
+    "$LOCAL_ETC" \
+    "$LOCAL_ROOT" \
+    "$LOCAL_ROOT/archlinux" \
+    "$LOCAL_VAR/lib/containers/storage" \
+    "$LOCAL_VAR/log" \
+    "$LOCAL_TMP" \
+    "$LOCAL_RUN" \
+    "$LOCAL_RUN/user/$USER_ID" \
+    "$LOCAL_STATE" \
+    "$LOCAL_CACHE" \
+    "$CONTAINERS_CONFIG" \
+    "$BACKUP_DIR"
+
+chmod 700 "$LOCAL_TMP" "$LOCAL_RUN/user/$USER_ID"
+
+echo "============================================================"
+echo " Steam Deck Home-only Podman Installer"
+echo "============================================================"
+echo
+echo "User:              $USER_NAME"
+echo "HOME:              $HOME"
+echo "Podman Ziel:        $LOCAL_BIN/podman"
+echo "Lokales Root:       $LOCAL_ROOT"
+echo "Lokales usr:        $LOCAL_USR"
+echo "Lokales var:        $LOCAL_VAR"
+echo "Lokales tmp:        $LOCAL_TMP"
+echo "Lokales run:        $LOCAL_RUN"
+echo "Container Storage:  $LOCAL_VAR/lib/containers/storage"
+echo "Arch Image:         $ARCH_IMAGE"
+echo "Backup:            $BACKUP_DIR"
+echo
+
+###############################################################################
+# 1. Diagnose
+###############################################################################
+
+echo "==> Systemdiagnose"
+if [ -r /etc/os-release ]; then
+    sed -n '1,20p' /etc/os-release
+fi
+
+echo
+echo "==> Kernel / User Namespace"
+uname -a
+if [ -r /proc/sys/kernel/unprivileged_userns_clone ]; then
+    echo "unprivileged_userns_clone=$(cat /proc/sys/kernel/unprivileged_userns_clone)"
+else
+    echo "unprivileged_userns_clone: nicht vorhanden oder nicht lesbar"
+fi
+
+echo
+echo "==> SteamOS Readonly Status"
+if command -v steamos-readonly >/dev/null 2>&1; then
+    steamos-readonly status || true
+else
+    echo "steamos-readonly nicht gefunden"
+fi
+
+###############################################################################
+# 2. Downloader
+###############################################################################
+
+download_file() {
+    local url="$1"
+    local out="$2"
+
+    if command -v curl >/dev/null 2>&1; then
+        curl -fL --retry 3 --connect-timeout 20 -o "$out" "$url"
+        return $?
+    fi
+
+    if command -v wget >/dev/null 2>&1; then
+        wget -O "$out" "$url"
+        return $?
+    fi
+
+    echo "FEHLER: Weder curl noch wget gefunden."
+    return 1
+}
+
+###############################################################################
+# 3. Optional: subuid/subgid Mapping
+###############################################################################
+
+setup_subuid_optional() {
+    if [ "$PODMAN_SETUP_SUBUID" != "1" ]; then
+        echo
+        echo "==> /etc/subuid und /etc/subgid werden NICHT verändert."
+        echo "    Für viele Images reicht der Fallback mit ignore_chown_errors."
+        echo "    Für sauberes Multi-UID/GID rootless später optional:"
+        echo "      PODMAN_SETUP_SUBUID=1 bash ~/install-local-podman-steamdeck.sh"
+        return 0
+    fi
+
+    echo
+    echo "==> Optional: /etc/subuid und /etc/subgid konfigurieren"
+    echo "    Das ist die EINZIGE optionale Host-Änderung in diesem Script."
+
+    if ! command -v sudo >/dev/null 2>&1; then
+        echo "FEHLER: sudo nicht gefunden."
+        return 1
+    fi
+
+    command sudo touch /etc/subuid /etc/subgid
+
+    if ! grep -q "^${USER_NAME}:" /etc/subuid 2>/dev/null; then
+        echo "Füge /etc/subuid hinzu: ${USER_NAME}:100000:65536"
+        echo "${USER_NAME}:100000:65536" | command sudo tee -a /etc/subuid >/dev/null
+    else
+        echo "/etc/subuid enthält bereits einen Eintrag für $USER_NAME"
+    fi
+
+    if ! grep -q "^${USER_NAME}:" /etc/subgid 2>/dev/null; then
+        echo "Füge /etc/subgid hinzu: ${USER_NAME}:100000:65536"
+        echo "${USER_NAME}:100000:65536" | command sudo tee -a /etc/subgid >/dev/null
+    else
+        echo "/etc/subgid enthält bereits einen Eintrag für $USER_NAME"
+    fi
+}
+
+setup_subuid_optional
+
+###############################################################################
+# 4. Alte lokale Podman-Installation sichern
+###############################################################################
+
+echo
+echo "==> Backup bestehender lokaler Podman-Dateien"
+
+for p in \
+    "$LOCAL_BIN/podman" \
+    "$LOCAL_BIN/docker" \
+    "$LOCAL_BIN/podman-local-env" \
+    "$LOCAL_BIN/archlinux-podman" \
+    "$CONTAINERS_CONFIG/containers.conf" \
+    "$CONTAINERS_CONFIG/storage.conf" \
+    "$CONTAINERS_CONFIG/registries.conf"
+do
+    if [ -e "$p" ]; then
+        mkdir -p "$BACKUP_DIR/$(dirname "${p#$HOME/}")"
+        cp -a "$p" "$BACKUP_DIR/${p#$HOME/}"
+        echo "Backup: $p"
+    fi
+done
+
+if [ "$FORCE_REINSTALL" = "1" ]; then
+    echo "==> FORCE_REINSTALL=1: alte lokale Podman-Binaries werden entfernt"
+    rm -f "$LOCAL_BIN/podman" "$LOCAL_BIN/docker"
+    rm -rf "$LOCAL_USR/podman-static"
+fi
+
+###############################################################################
+# 5. podman-static herunterladen
+###############################################################################
+
+echo
+echo "==> Lade aktuelle statische Podman-Binaries"
+
+ARCH="$(uname -m)"
+case "$ARCH" in
+    x86_64|amd64)
+        PODMAN_ARCH="amd64"
+        ;;
+    aarch64|arm64)
+        PODMAN_ARCH="arm64"
+        ;;
+    *)
+        echo "FEHLER: Nicht unterstützte Architektur: $ARCH"
+        exit 1
+        ;;
+esac
+
+TARBALL="$LOCAL_CACHE/podman-linux-${PODMAN_ARCH}.tar.gz"
+URL="https://github.com/mgoltzsche/podman-static/releases/latest/download/podman-linux-${PODMAN_ARCH}.tar.gz"
+
+echo "URL: $URL"
+download_file "$URL" "$TARBALL"
+
+if [ ! -s "$TARBALL" ]; then
+    echo "FEHLER: Download fehlgeschlagen oder Datei leer: $TARBALL"
+    exit 1
+fi
+
+###############################################################################
+# 6. Entpacken nach ~/.local/usr/podman-static
+###############################################################################
+
+echo
+echo "==> Entpacke Podman nach ~/.local/usr/podman-static"
+
+WORK="$LOCAL_TMP/podman-static-install-$STAMP"
+INSTALL_RAW="$LOCAL_USR/podman-static"
+
+rm -rf "$WORK"
+mkdir -p "$WORK"
+
+tar -xzf "$TARBALL" -C "$WORK"
+
+EXTRACT_DIR="$(find "$WORK" -mindepth 1 -maxdepth 1 -type d | head -n1)"
+
+if [ -z "$EXTRACT_DIR" ]; then
+    echo "FEHLER: Konnte entpacktes Verzeichnis nicht finden."
+    exit 1
+fi
+
+if [ -d "$INSTALL_RAW" ]; then
+    mv "$INSTALL_RAW" "$BACKUP_DIR/podman-static.old"
+fi
+
+mkdir -p "$INSTALL_RAW"
+
+# Das Archiv enthält typischerweise usr/ und etc/.
+if [ -d "$EXTRACT_DIR/usr" ]; then
+    cp -a "$EXTRACT_DIR/usr" "$INSTALL_RAW/usr"
+fi
+
+if [ -d "$EXTRACT_DIR/etc" ]; then
+    cp -a "$EXTRACT_DIR/etc" "$INSTALL_RAW/etc"
+fi
+
+# Zusätzlich in ~/.local/usr spiegeln, ohne Host-/usr anzufassen.
+if [ -d "$EXTRACT_DIR/usr" ]; then
+    echo "==> Spiegele usr-Inhalt nach $LOCAL_USR"
+    cp -a "$EXTRACT_DIR/usr/." "$LOCAL_USR/"
+fi
+
+if [ -d "$EXTRACT_DIR/etc" ]; then
+    echo "==> Spiegele etc-Inhalt nach $LOCAL_ETC"
+    cp -a "$EXTRACT_DIR/etc/." "$LOCAL_ETC/"
+fi
+
+###############################################################################
+# 7. Reale Binaries finden
+###############################################################################
+
+find_binary() {
+    local name="$1"
+    find "$LOCAL_USR" "$INSTALL_RAW" -type f -name "$name" -perm -111 2>/dev/null | head -n1
+}
+
+PODMAN_REAL="$(find_binary podman)"
+CONMON_REAL="$(find_binary conmon)"
+CRUN_REAL="$(find_binary crun)"
+RUNC_REAL="$(find_binary runc)"
+FUSE_OVERLAYFS_REAL="$(find_binary fuse-overlayfs)"
+NETAVARK_REAL="$(find_binary netavark)"
+AARDVARK_REAL="$(find_binary aardvark-dns)"
+PASTA_REAL="$(find_binary pasta)"
+
+if [ -z "$PODMAN_REAL" ]; then
+    echo "FEHLER: podman-Binary wurde nach dem Entpacken nicht gefunden."
+    echo "Debug:"
+    find "$LOCAL_USR" "$INSTALL_RAW" -maxdepth 6 -type f -name '*podman*' -ls 2>/dev/null
+    exit 1
+fi
+
+echo
+echo "==> Gefundene Binaries"
+echo "podman:        ${PODMAN_REAL:-FEHLT}"
+echo "conmon:        ${CONMON_REAL:-FEHLT}"
+echo "crun:          ${CRUN_REAL:-FEHLT}"
+echo "runc:          ${RUNC_REAL:-FEHLT}"
+echo "fuse-overlay:  ${FUSE_OVERLAYFS_REAL:-FEHLT}"
+echo "netavark:      ${NETAVARK_REAL:-FEHLT}"
+echo "aardvark-dns:  ${AARDVARK_REAL:-FEHLT}"
+echo "pasta:         ${PASTA_REAL:-FEHLT}"
+
+###############################################################################
+# 8. Container-Konfiguration schreiben
+###############################################################################
+
+echo
+echo "==> Schreibe Rootless-Container-Konfiguration"
+
+HELPER_DIRS=""
+add_helper_dir() {
+    local d="$1"
+    [ -n "$d" ] || return 0
+    [ -d "$d" ] || return 0
+    if [ -z "$HELPER_DIRS" ]; then
+        HELPER_DIRS="\"$d\""
+    else
+        HELPER_DIRS="$HELPER_DIRS, \"$d\""
+    fi
+}
+
+add_helper_dir "$LOCAL_BIN"
+add_helper_dir "$LOCAL_USR_LOCAL_BIN"
+add_helper_dir "$LOCAL_USR/libexec/podman"
+add_helper_dir "$LOCAL_USR/local/libexec/podman"
+add_helper_dir "$(dirname "$PODMAN_REAL")"
+[ -n "$CONMON_REAL" ] && add_helper_dir "$(dirname "$CONMON_REAL")"
+[ -n "$CRUN_REAL" ] && add_helper_dir "$(dirname "$CRUN_REAL")"
+[ -n "$NETAVARK_REAL" ] && add_helper_dir "$(dirname "$NETAVARK_REAL")"
+
+[ -n "$HELPER_DIRS" ] || HELPER_DIRS="\"$LOCAL_BIN\", \"$LOCAL_USR_LOCAL_BIN\""
+
+if [ -z "$CONMON_REAL" ]; then
+    CONMON_REAL="$LOCAL_USR_LOCAL_BIN/conmon"
+fi
+
+if [ -z "$CRUN_REAL" ]; then
+    CRUN_REAL="$LOCAL_USR_LOCAL_BIN/crun"
+fi
+
+if [ -z "$RUNC_REAL" ]; then
+    RUNC_REAL="$LOCAL_USR_LOCAL_BIN/runc"
+fi
+
+if [ -z "$FUSE_OVERLAYFS_REAL" ]; then
+    FUSE_OVERLAYFS_REAL="$LOCAL_USR_LOCAL_BIN/fuse-overlayfs"
+fi
+
+cat > "$CONTAINERS_CONFIG/registries.conf" <<EOF
+# Home-only Podman registries.conf
+unqualified-search-registries = ["docker.io", "quay.io", "ghcr.io"]
+
+[[registry]]
+location = "docker.io"
+
+[[registry]]
+location = "quay.io"
+
+[[registry]]
+location = "ghcr.io"
+EOF
+
+cat > "$CONTAINERS_CONFIG/storage.conf" <<EOF
+# Home-only Podman storage.conf
+[storage]
+driver = "overlay"
+runroot = "$LOCAL_RUN/containers/storage"
+graphroot = "$LOCAL_VAR/lib/containers/storage"
+
+[storage.options]
+# Wichtig für vollständig rootless ohne saubere /etc/subuid-/subgid-Mappings.
+ignore_chown_errors = "true"
+
+[storage.options.overlay]
+mount_program = "$FUSE_OVERLAYFS_REAL"
+mountopt = "nodev,fsync=0"
+EOF
+
+cat > "$CONTAINERS_CONFIG/containers.conf" <<EOF
+# Home-only Podman containers.conf
+[engine]
+events_logger = "file"
+cgroup_manager = "cgroupfs"
+helper_binaries_dir = [$HELPER_DIRS]
+conmon_path = ["$CONMON_REAL"]
+runtime = "crun"
+
+[engine.runtimes]
+crun = ["$CRUN_REAL"]
+runc = ["$RUNC_REAL"]
+
+[network]
+network_backend = "netavark"
+EOF
+
+###############################################################################
+# 9. podman-wrapper in ~/.local/usr/bin/podman
+###############################################################################
+
+echo
+echo "==> Erzeuge Wrapper: $LOCAL_BIN/podman"
+
+cat > "$LOCAL_BIN/podman" <<EOF
+#!/usr/bin/env bash
+###############################################################################
+# Home-only Podman Wrapper für Steam Deck
+###############################################################################
+
+set +e
+
+export HOME="\${HOME:-$HOME}"
+export LOCAL_BASE="\$HOME/.local"
+
+export PATH="\$LOCAL_BASE/usr/bin:\$LOCAL_BASE/usr/local/bin:\$LOCAL_BASE/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:\$PATH"
+
+export TMPDIR="\$LOCAL_BASE/tmp"
+mkdir -p "\$TMPDIR"
+
+if [ -z "\${XDG_RUNTIME_DIR:-}" ] || [ ! -d "\${XDG_RUNTIME_DIR:-/nonexistent}" ]; then
+    export XDG_RUNTIME_DIR="\$LOCAL_BASE/run/user/\$(id -u)"
+    mkdir -p "\$XDG_RUNTIME_DIR"
+    chmod 700 "\$XDG_RUNTIME_DIR"
+fi
+
+export CONTAINERS_CONF="\$HOME/.config/containers/containers.conf"
+export CONTAINERS_STORAGE_CONF="\$HOME/.config/containers/storage.conf"
+export CONTAINERS_REGISTRIES_CONF="\$HOME/.config/containers/registries.conf"
+export REGISTRIES_CONFIG_PATH="\$CONTAINERS_REGISTRIES_CONF"
+
+export PODMAN_IGNORE_CGROUPSV1_WARNING=1
+
+exec "$PODMAN_REAL" "\$@"
+EOF
+
+chmod +x "$LOCAL_BIN/podman"
+
+cat > "$LOCAL_BIN/docker" <<'EOF'
+#!/usr/bin/env bash
+exec "$HOME/.local/usr/bin/podman" "$@"
+EOF
+
+chmod +x "$LOCAL_BIN/docker"
+
+###############################################################################
+# 10. Environment Helper
+###############################################################################
+
+cat > "$LOCAL_BIN/podman-local-env" <<'EOF'
+#!/usr/bin/env bash
+export PATH="$HOME/.local/usr/bin:$HOME/.local/usr/local/bin:$HOME/.local/bin:$PATH"
+export TMPDIR="$HOME/.local/tmp"
+
+if [ -z "${XDG_RUNTIME_DIR:-}" ] || [ ! -d "${XDG_RUNTIME_DIR:-/nonexistent}" ]; then
+    export XDG_RUNTIME_DIR="$HOME/.local/run/user/$(id -u)"
+    mkdir -p "$XDG_RUNTIME_DIR"
+    chmod 700 "$XDG_RUNTIME_DIR"
+fi
+
+export CONTAINERS_CONF="$HOME/.config/containers/containers.conf"
+export CONTAINERS_STORAGE_CONF="$HOME/.config/containers/storage.conf"
+export CONTAINERS_REGISTRIES_CONF="$HOME/.config/containers/registries.conf"
+export REGISTRIES_CONFIG_PATH="$CONTAINERS_REGISTRIES_CONF"
+export PODMAN_IGNORE_CGROUPSV1_WARNING=1
+EOF
+
+chmod +x "$LOCAL_BIN/podman-local-env"
+
+###############################################################################
+# 11. ArchLinux latest helper
+###############################################################################
+
+cat > "$LOCAL_BIN/archlinux-podman" <<'EOF'
+#!/usr/bin/env bash
+###############################################################################
+# Startet aktuelles Arch Linux OCI Image über Home-only Podman.
+###############################################################################
+
+set +e
+
+IMAGE="${ARCH_IMAGE:-docker.io/library/archlinux:latest}"
+
+exec "$HOME/.local/usr/bin/podman" run --rm -it \
+  --name archlinux-local \
+  --hostname archlinux-local \
+  -v "$HOME:$HOME:rw" \
+  -w "$PWD" \
+  "$IMAGE" \
+  /bin/bash
+EOF
+
+chmod +x "$LOCAL_BIN/archlinux-podman"
+
+###############################################################################
+# 12. .bashrc PATH persistent ergänzen
+###############################################################################
+
+echo
+echo "==> Ergänze ~/.bashrc PATH persistent"
+
+BASHRC="$HOME/.bashrc"
+[ -f "$BASHRC" ] && cp -a "$BASHRC" "$BACKUP_DIR/.bashrc.before-podman-local" || true
+
+if ! grep -q 'PODMAN_LOCAL_HOME_ONLY_BEGIN' "$BASHRC" 2>/dev/null; then
+    cat >> "$BASHRC" <<'EOF'
+
+##### PODMAN_LOCAL_HOME_ONLY_BEGIN #####
+# Home-only Podman für Steam Deck
+export PATH="$HOME/.local/usr/bin:$HOME/.local/usr/local/bin:$HOME/.local/bin:$PATH"
+export TMPDIR="$HOME/.local/tmp"
+
+if [ -z "${XDG_RUNTIME_DIR:-}" ] || [ ! -d "${XDG_RUNTIME_DIR:-/nonexistent}" ]; then
+    export XDG_RUNTIME_DIR="$HOME/.local/run/user/$(id -u)"
+    mkdir -p "$XDG_RUNTIME_DIR" 2>/dev/null
+    chmod 700 "$XDG_RUNTIME_DIR" 2>/dev/null
+fi
+
+export CONTAINERS_CONF="$HOME/.config/containers/containers.conf"
+export CONTAINERS_STORAGE_CONF="$HOME/.config/containers/storage.conf"
+export CONTAINERS_REGISTRIES_CONF="$HOME/.config/containers/registries.conf"
+export REGISTRIES_CONFIG_PATH="$CONTAINERS_REGISTRIES_CONF"
+export PODMAN_IGNORE_CGROUPSV1_WARNING=1
+##### PODMAN_LOCAL_HOME_ONLY_END #####
+EOF
+else
+    echo "~/.bashrc enthält bereits PODMAN_LOCAL_HOME_ONLY_BEGIN"
+fi
+
+###############################################################################
+# 13. Diagnose/Test
+###############################################################################
+
+echo
+echo "==> Lade Environment für diese Shell"
+# shellcheck disable=SC1090
+source "$LOCAL_BIN/podman-local-env"
+
+hash -r
+
+echo
+echo "==> Versionstest"
+"$LOCAL_BIN/podman" --version
+PODMAN_VERSION_STATUS="$?"
+
+if [ "$PODMAN_VERSION_STATUS" -ne 0 ]; then
+    echo "FEHLER: podman --version fehlgeschlagen."
+    exit 1
+fi
+
+echo
+echo "==> Podman Info Kurztest"
+"$LOCAL_BIN/podman" info --format 'Host={{.Host.Os}}/{{.Host.Arch}} Rootless={{.Host.Security.Rootless}} Store={{.Store.GraphRoot}} RunRoot={{.Store.RunRoot}}' 2>&1
+INFO_STATUS="$?"
+
+if [ "$INFO_STATUS" -ne 0 ]; then
+    echo
+    echo "WARNUNG: podman info meldet Fehler."
+    echo "Das kann passieren, wenn User-Namespaces, fuse-overlayfs oder UID-Mapping fehlen."
+    echo "Debug:"
+    "$LOCAL_BIN/podman" info 2>&1 | sed -n '1,160p'
+fi
+
+###############################################################################
+# 14. Aktuelles Arch Linux Image ziehen
+###############################################################################
+
+if [ "$PULL_ARCH" = "1" ]; then
+    echo
+    echo "==> Ziehe aktuelles Arch Linux OCI Image:"
+    echo "    $ARCH_IMAGE"
+
+    "$LOCAL_BIN/podman" pull "$ARCH_IMAGE"
+    PULL_STATUS="$?"
+
+    if [ "$PULL_STATUS" -ne 0 ]; then
+        echo
+        echo "WARNUNG: Arch Linux Image konnte nicht gezogen werden."
+        echo "Du kannst später erneut versuchen:"
+        echo "  podman pull $ARCH_IMAGE"
+    fi
+else
+    echo
+    echo "==> PULL_ARCH=0: Arch Linux Image wird nicht automatisch gezogen."
+fi
+
+###############################################################################
+# 15. Abschluss
+###############################################################################
+
+echo
+echo "============================================================"
+echo " Fertig"
+echo "============================================================"
+echo
+echo "Installiert:"
+echo "  $LOCAL_BIN/podman"
+echo "  $LOCAL_BIN/docker"
+echo "  $LOCAL_BIN/archlinux-podman"
+echo
+echo "Datenpfade:"
+echo "  Binaries:          $LOCAL_USR"
+echo "  Root:              $LOCAL_ROOT"
+echo "  Container Storage: $LOCAL_VAR/lib/containers/storage"
+echo "  Runtime:           $LOCAL_RUN"
+echo "  Temp:              $LOCAL_TMP"
+echo "  Config:            $CONTAINERS_CONFIG"
+echo
+echo "Jetzt aktivieren:"
+echo "  source ~/.bashrc"
+echo
+echo "Tests:"
+echo "  podman --version"
+echo "  podman info"
+echo "  podman run --rm docker.io/library/alpine:latest echo hello"
+echo
+echo "Arch Linux latest starten:"
+echo "  archlinux-podman"
+echo
+echo "Arch Linux Image manuell aktualisieren:"
+echo "  podman pull docker.io/library/archlinux:latest"
+echo "  archlinux-podman"
+echo
+echo "Optional, falls Images wegen UID/GID-Mapping scheitern:"
+echo "  PODMAN_SETUP_SUBUID=1 bash ~/install-local-podman-steamdeck.sh"
+echo
+echo "Backup:"
+echo "  $BACKUP_DIR"
+echo

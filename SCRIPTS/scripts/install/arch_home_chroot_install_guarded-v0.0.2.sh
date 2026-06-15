@@ -1,0 +1,1232 @@
+#!/usr/bin/env bash
+# ============================================================
+# DrDebug Guarded Import v0.0.2: Arch Home Chroot Install Guarded
+# Deutscher Kommentar:
+# Dieses Skript enthaelt eine geschuetzte, importierte Fassung von install_arch_chroot.sh.
+# Standard ist Dry-Run. Ausfuehrung nur mit --apply und exakter Bestaetigung.
+# ============================================================
+set +e
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+# shellcheck source=../lib/drdebug-safe-lib.sh
+. "$SCRIPT_DIR/../lib/drdebug-safe-lib.sh"
+
+case "${1:-}" in
+  --apply)
+    export DRDEBUG_APPLY=1
+    shift
+    ;;
+  --dry-run|-n|"")
+    :
+    ;;
+esac
+
+if [ "${DRDEBUG_APPLY:-0}" != "1" ]; then
+  drdebug_header "Arch Home Chroot Install Guarded"
+  drdebug_log "Trockener Lauf: importierte Logik wird nicht gestartet."
+  drdebug_log "Quelle: references/original_uploads/install_arch_chroot.sh.txt"
+  drdebug_log "Anwenden: DRDEBUG_APPLY=1 bash $0 --apply"
+  exit 0
+fi
+
+drdebug_prompt ARCH_HOME_TARGET "Arch-Home Chroot Ziel" "${HOME}/.local/chroot"
+drdebug_prompt ARCH_HOME_BIN "Wrapper-Bin Ordner" "${HOME}/.local/bin"
+
+cat <<'DRDEBUG_OVERVIEW'
+Aenderungen laut Ursprungsskript: HOME-Chroot, ~/.local/bin Wrapper, ~/.profile und ~/.bashrc mit markiertem PATH-Block. Keine SteamOS-Rootfs-Aenderung. Das Ursprungsskript enthaelt bereits eine eigene exakte Bestaetigung.
+DRDEBUG_OVERVIEW
+
+if ! drdebug_confirm_exact "RUN_ARCH_HOME_CHROOT_IMPORT"; then
+  drdebug_warn "Abbruch: Bestaetigung nicht erhalten."
+  exit 0
+fi
+
+# ============================================================
+# Importierte Ursprungsversion ab hier
+# ============================================================
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# ============================================================
+# Arch-Home Chroot Installer für Steam Deck / SteamOS
+# ============================================================
+# Ziel:
+#   - Persistentes Arch Linux unter ~/.local/chroot
+#   - pacman/makepkg/yay/paru Wrapper unter ~/.local/bin
+#   - pacman       -> Arch-Home-Chroot
+#   - arch-pacman  -> Arch-Home-Chroot
+#   - makepkg      -> Arch-Home-Chroot als normaler User
+#   - yay/paru     -> Arch-Home-Chroot als normaler User, falls installiert
+#   - steam-pacman -> SteamOS Host /usr/bin/pacman
+#
+# Dieser Installer ändert NICHT:
+#   - /usr
+#   - /etc
+#   - /var
+#   - SteamOS readonly status
+#   - Host-/usr/bin/pacman
+#
+# Dieser Installer ändert:
+#   - ~/.local/chroot
+#   - ~/.local/bin
+#   - ~/.local/state/arch-home-bootstrap
+#   - ~/.profile und ~/.bashrc nur mit markiertem PATH-Block + Backup
+#
+# Start:
+#   bash ~/install_arch_chroot.sh
+#
+# Frische Neuinstallation, wenn schon ein Chroot existiert:
+#   bash ~/install_arch_chroot.sh --fresh
+#
+# Reparatur/Update eines bestehenden Chroots:
+#   bash ~/install_arch_chroot.sh --repair
+# ============================================================
+
+SCRIPT_VERSION="2026-06-08.1"
+
+ARCH_HOME_TARGET="${ARCH_HOME_TARGET:-$HOME/.local/chroot}"
+ARCH_HOME_BIN="${ARCH_HOME_BIN:-$HOME/.local/bin}"
+ARCH_HOME_STATE="${ARCH_HOME_STATE:-$HOME/.local/state/arch-home-bootstrap}"
+ARCH_HOME_DOWNLOADS="${ARCH_HOME_DOWNLOADS:-$ARCH_HOME_STATE/downloads}"
+ARCH_HOME_REMOTE_CACHE="${ARCH_HOME_REMOTE_CACHE:-$ARCH_HOME_STATE/remote-cache}"
+
+ARCH_BOOTSTRAP_BASE_URL="${ARCH_BOOTSTRAP_BASE_URL:-https://geo.mirror.pkgbuild.com/iso/latest}"
+ARCH_BOOTSTRAP_FILE="${ARCH_BOOTSTRAP_FILE:-archlinux-bootstrap-x86_64.tar.zst}"
+ARCH_BOOTSTRAP_SIG="${ARCH_BOOTSTRAP_SIG:-archlinux-bootstrap-x86_64.tar.zst.sig}"
+ARCH_SHA256SUMS="${ARCH_SHA256SUMS:-sha256sums.txt}"
+ARCH_RELEASE_SIGNER="${ARCH_RELEASE_SIGNER:-pierre@archlinux.org}"
+
+STAMP="$(date +%Y%m%d-%H%M%S)"
+LOG="$ARCH_HOME_STATE/install-arch-chroot-$STAMP.log"
+
+OWNER_USER="$(id -un)"
+OWNER_GROUP="$(id -gn)"
+OWNER_UID="$(id -u)"
+OWNER_GID="$(id -g)"
+
+MODE="install"
+YES=0
+
+for arg in "$@"; do
+  case "$arg" in
+    --fresh)
+      MODE="fresh"
+      ;;
+    --repair)
+      MODE="repair"
+      ;;
+    --yes|-y)
+      YES=1
+      ;;
+    --help|-h)
+      cat <<HELP
+Arch-Home Chroot Installer $SCRIPT_VERSION
+
+Nutzung:
+  bash install_arch_chroot.sh
+  bash install_arch_chroot.sh --fresh
+  bash install_arch_chroot.sh --repair
+  bash install_arch_chroot.sh --yes
+
+Optionen:
+  --fresh   vorhandenes ~/.local/chroot nach Backup verschieben und neu installieren
+  --repair  vorhandenes Arch-Chroot reparieren/aktualisieren, nicht neu extrahieren
+  --yes     Bestätigungsabfrage überspringen
+
+Umgebungsvariablen:
+  ARCH_HOME_TARGET=/pfad/zum/chroot
+  ARCH_HOME_BIN=/pfad/zu/bin
+  ARCH_BOOTSTRAP_BASE_URL=https://geo.mirror.pkgbuild.com/iso/latest
+HELP
+      exit 0
+      ;;
+    *)
+      echo "FAIL: Unbekannte Option: $arg" >&2
+      exit 2
+      ;;
+  esac
+done
+
+mkdir -p "$ARCH_HOME_STATE"
+exec > >(tee -a "$LOG") 2>&1
+
+fail() {
+  echo "FAIL: $*" >&2
+  exit 1
+}
+
+warn() {
+  echo "WARN: $*" >&2
+}
+
+ok() {
+  echo "OK:   $*"
+}
+
+step() {
+  echo
+  echo "============================================================"
+  echo "$*"
+  echo "============================================================"
+}
+
+info() {
+  echo "--- $* ---"
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+is_mountpoint() {
+  mountpoint -q "$1" 2>/dev/null
+}
+
+need_cmd() {
+  have "$1" || fail "Benötigtes Kommando fehlt auf dem Host: $1"
+}
+
+sudo_keepalive_start() {
+  sudo -v
+  while true; do
+    sudo -n true 2>/dev/null || true
+    sleep 45
+  done &
+  SUDO_KEEPALIVE_PID="$!"
+}
+
+sudo_keepalive_stop() {
+  if [[ -n "${SUDO_KEEPALIVE_PID:-}" ]]; then
+    kill "$SUDO_KEEPALIVE_PID" 2>/dev/null || true
+  fi
+}
+
+sed_escape() {
+  printf '%s' "$1" | sed 's/[\/&]/\\&/g'
+}
+
+download_file() {
+  local url="$1"
+  local out="$2"
+
+  mkdir -p "$(dirname "$out")"
+
+  if [[ -s "$out" ]]; then
+    ok "Download bereits vorhanden: $out"
+    return 0
+  fi
+
+  info "Download: $url"
+  if have curl; then
+    curl -fL --retry 5 --retry-delay 3 --connect-timeout 20 -o "$out.part" "$url"
+  elif have wget; then
+    wget -O "$out.part" "$url"
+  else
+    fail "Weder curl noch wget vorhanden."
+  fi
+
+  mv -f "$out.part" "$out"
+  ok "Geladen: $out"
+}
+
+mounted_by_script=()
+
+mount_if_needed() {
+  local kind="$1"
+  local source="$2"
+  local target="$3"
+
+  sudo mkdir -p "$target"
+
+  if is_mountpoint "$target"; then
+    ok "Bereits gemountet: $target"
+    return 0
+  fi
+
+  case "$kind" in
+    self-bind)
+      sudo mount --bind "$source" "$target"
+      sudo mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    proc)
+      sudo mount -t proc proc "$target"
+      ;;
+    rbind)
+      sudo mount --rbind "$source" "$target"
+      sudo mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    bind)
+      sudo mount --bind "$source" "$target"
+      sudo mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    *)
+      fail "Unbekannter Mount-Typ: $kind"
+      ;;
+  esac
+
+  mounted_by_script+=("$target")
+  ok "Gemountet: $target"
+}
+
+unmount_path_loop() {
+  local mp="$1"
+
+  while is_mountpoint "$mp"; do
+    echo "Unmount: $mp"
+    sudo umount -R "$mp" 2>/dev/null || sudo umount -l "$mp" 2>/dev/null || break
+    sleep 0.2
+  done
+}
+
+cleanup_mounts_created_by_script() {
+  local i mp
+
+  for (( i=${#mounted_by_script[@]}-1; i>=0; i-- )); do
+    mp="${mounted_by_script[$i]}"
+    if is_mountpoint "$mp"; then
+      echo "Unmount: $mp"
+      sudo umount -R "$mp" 2>/dev/null || sudo umount -l "$mp" 2>/dev/null || true
+    fi
+  done
+}
+
+cleanup_all_chroot_mounts() {
+  step "Alte temporäre Chroot-Mounts lösen"
+
+  local mp
+  for mp in "$ARCH_HOME_TARGET/run" "$ARCH_HOME_TARGET/dev" "$ARCH_HOME_TARGET/sys" "$ARCH_HOME_TARGET/proc"; do
+    unmount_path_loop "$mp"
+  done
+
+  unmount_path_loop "$ARCH_HOME_TARGET"
+
+  if findmnt -R "$ARCH_HOME_TARGET" >/dev/null 2>&1; then
+    warn "Es sind noch Mounts unter $ARCH_HOME_TARGET aktiv:"
+    findmnt -R "$ARCH_HOME_TARGET" || true
+  else
+    ok "Keine aktiven Mounts unter $ARCH_HOME_TARGET."
+  fi
+}
+
+cleanup() {
+  local rc=$?
+
+  echo
+  step "Cleanup"
+
+  cleanup_mounts_created_by_script || true
+  sudo_keepalive_stop || true
+
+  if [[ $rc -ne 0 ]]; then
+    echo
+    echo "Installation/Reparatur wurde mit Fehler beendet."
+    echo "Log: $LOG"
+  fi
+
+  exit "$rc"
+}
+
+trap cleanup EXIT
+
+backup_path_remove_file() {
+  local path="$1"
+
+  if [[ -e "$path" || -L "$path" ]]; then
+    local backup="${path}.backup.${STAMP}"
+    echo "Backup: $path -> $backup"
+    sudo cp -a "$path" "$backup"
+    sudo rm -f "$path"
+  fi
+}
+
+install_owned_file() {
+  local source="$1"
+  local target="$2"
+  local mode="${3:-0755}"
+
+  backup_path_remove_file "$target"
+  sudo install -o "$OWNER_UID" -g "$OWNER_GID" -m "$mode" "$source" "$target"
+  ok "Installiert: $target"
+}
+
+chroot_run_root() {
+  sudo chroot "$ARCH_HOME_TARGET" /usr/bin/env -i \
+    HOME=/root \
+    USER=root \
+    LOGNAME=root \
+    SHELL=/usr/bin/bash \
+    TERM="${TERM:-xterm-256color}" \
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin \
+    "$@"
+}
+
+prepare_chroot_mounts() {
+  step "Chroot-Mounts korrekt setzen"
+
+  sudo mkdir -p "$ARCH_HOME_TARGET/proc" "$ARCH_HOME_TARGET/sys" "$ARCH_HOME_TARGET/dev" "$ARCH_HOME_TARGET/run"
+
+  mount_if_needed self-bind "$ARCH_HOME_TARGET" "$ARCH_HOME_TARGET"
+  mount_if_needed proc proc "$ARCH_HOME_TARGET/proc"
+  mount_if_needed rbind /sys "$ARCH_HOME_TARGET/sys"
+  mount_if_needed rbind /dev "$ARCH_HOME_TARGET/dev"
+  mount_if_needed bind /run "$ARCH_HOME_TARGET/run"
+
+  step "/etc/mtab und DNS setzen"
+
+  if [[ -e "$ARCH_HOME_TARGET/etc/mtab" && ! -L "$ARCH_HOME_TARGET/etc/mtab" ]]; then
+    sudo cp -a "$ARCH_HOME_TARGET/etc/mtab" "$ARCH_HOME_TARGET/etc/mtab.backup.$STAMP" || true
+  fi
+
+  sudo rm -f "$ARCH_HOME_TARGET/etc/mtab"
+  sudo ln -s /proc/self/mounts "$ARCH_HOME_TARGET/etc/mtab"
+  ok "/etc/mtab -> /proc/self/mounts gesetzt."
+
+  if [[ -f /etc/resolv.conf ]]; then
+    sudo cp -Lf /etc/resolv.conf "$ARCH_HOME_TARGET/etc/resolv.conf"
+    ok "DNS-Konfiguration kopiert."
+  else
+    warn "/etc/resolv.conf fehlt auf Host."
+  fi
+
+  echo
+  findmnt -R "$ARCH_HOME_TARGET" || true
+}
+
+verify_chroot_basics() {
+  step "Chroot-Grundlagen prüfen"
+
+  chroot_run_root /usr/bin/bash -lc '
+set -Eeuo pipefail
+
+echo "--- /proc Test ---"
+test -r /proc/self/mountinfo
+head -n 3 /proc/self/mountinfo
+
+echo
+echo "--- /dev/fd Test ---"
+test -e /dev/fd/0
+ls -lah /dev/fd | head
+
+echo
+echo "--- /etc/mtab Test ---"
+test -e /etc/mtab
+ls -lah /etc/mtab
+head -n 3 /etc/mtab
+
+echo
+echo "--- df / Test ---"
+df -h /
+
+echo
+echo "OK: Chroot-Grundlagen funktionieren."
+'
+}
+
+ensure_chroot_root_owner() {
+  step "Chroot-Root-Owner korrigieren"
+
+  echo "--- Vorher ---"
+  ls -ld "$ARCH_HOME_TARGET"
+
+  sudo chown root:root "$ARCH_HOME_TARGET"
+  sudo chmod 0755 "$ARCH_HOME_TARGET"
+
+  echo "--- Nachher ---"
+  ls -ld "$ARCH_HOME_TARGET"
+
+  ok "Nur der Chroot-Root-Mountpoint wurde auf root:root gesetzt."
+}
+
+configure_locale_timezone_pacman_conf() {
+  step "Basiskonfiguration im Chroot"
+
+  sudo mkdir -p "$ARCH_HOME_TARGET/etc"
+
+  sudo tee "$ARCH_HOME_TARGET/etc/locale.gen" >/dev/null <<'LOCALEGEN'
+de_DE.UTF-8 UTF-8
+en_US.UTF-8 UTF-8
+LOCALEGEN
+
+  sudo tee "$ARCH_HOME_TARGET/etc/locale.conf" >/dev/null <<'LOCALECONF'
+LANG=de_DE.UTF-8
+LC_COLLATE=C
+LOCALECONF
+
+  sudo tee "$ARCH_HOME_TARGET/etc/vconsole.conf" >/dev/null <<'VCONSOLE'
+KEYMAP=de-latin1
+VCONSOLE
+
+  if [[ -e "$ARCH_HOME_TARGET/usr/share/zoneinfo/Europe/Berlin" ]]; then
+    sudo ln -sfn /usr/share/zoneinfo/Europe/Berlin "$ARCH_HOME_TARGET/etc/localtime"
+  fi
+
+  if [[ -f "$ARCH_HOME_TARGET/etc/pacman.conf" ]]; then
+    sudo cp -a "$ARCH_HOME_TARGET/etc/pacman.conf" "$ARCH_HOME_TARGET/etc/pacman.conf.backup.$STAMP" || true
+
+    if ! grep -q '^Color' "$ARCH_HOME_TARGET/etc/pacman.conf"; then
+      sudo sed -i 's/^#Color/Color/' "$ARCH_HOME_TARGET/etc/pacman.conf" || true
+    fi
+
+    if ! grep -q '^ParallelDownloads' "$ARCH_HOME_TARGET/etc/pacman.conf"; then
+      sudo sed -i 's/^#ParallelDownloads.*/ParallelDownloads = 5/' "$ARCH_HOME_TARGET/etc/pacman.conf" || true
+    fi
+
+    if ! grep -q '^CheckSpace' "$ARCH_HOME_TARGET/etc/pacman.conf"; then
+      sudo sed -i '/^\[options\]/a CheckSpace' "$ARCH_HOME_TARGET/etc/pacman.conf" || true
+    fi
+  fi
+
+  ok "Locale, Zeitzone und Pacman-Konfiguration vorbereitet."
+}
+
+download_and_verify_bootstrap() {
+  step "Arch-Bootstrap herunterladen und verifizieren"
+
+  mkdir -p "$ARCH_HOME_DOWNLOADS"
+
+  local tarball="$ARCH_HOME_DOWNLOADS/$ARCH_BOOTSTRAP_FILE"
+  local sig="$ARCH_HOME_DOWNLOADS/$ARCH_BOOTSTRAP_SIG"
+  local sha="$ARCH_HOME_DOWNLOADS/$ARCH_SHA256SUMS"
+
+  download_file "$ARCH_BOOTSTRAP_BASE_URL/$ARCH_BOOTSTRAP_FILE" "$tarball"
+  download_file "$ARCH_BOOTSTRAP_BASE_URL/$ARCH_BOOTSTRAP_SIG" "$sig"
+  download_file "$ARCH_BOOTSTRAP_BASE_URL/$ARCH_SHA256SUMS" "$sha"
+
+  info "SHA256 prüfen"
+  (
+    cd "$ARCH_HOME_DOWNLOADS"
+    if grep -q " $ARCH_BOOTSTRAP_FILE\$" "$ARCH_SHA256SUMS"; then
+      grep " $ARCH_BOOTSTRAP_FILE\$" "$ARCH_SHA256SUMS" | sha256sum -c -
+    else
+      warn "$ARCH_SHA256SUMS enthält keinen Eintrag für $ARCH_BOOTSTRAP_FILE; SHA256-Check wird übersprungen."
+    fi
+  )
+
+  info "PGP-Release-Key per WKD holen"
+  GNUPGHOME="$ARCH_HOME_STATE/gnupg"
+  export GNUPGHOME
+  mkdir -p "$GNUPGHOME"
+  chmod 700 "$GNUPGHOME"
+
+  gpg --auto-key-locate clear,wkd -v --locate-external-key "$ARCH_RELEASE_SIGNER"
+
+  info "PGP-Signatur prüfen"
+  gpg --verify "$sig" "$tarball"
+
+  ok "Bootstrap verifiziert."
+}
+
+extract_bootstrap_if_needed() {
+  step "Arch-Bootstrap extrahieren"
+
+  local tarball="$ARCH_HOME_DOWNLOADS/$ARCH_BOOTSTRAP_FILE"
+
+  if [[ "$MODE" == "fresh" && -e "$ARCH_HOME_TARGET" ]]; then
+    cleanup_all_chroot_mounts || true
+
+    local backup="${ARCH_HOME_TARGET}.backup.$STAMP"
+    echo "Fresh-Modus: vorhandenes Ziel wird verschoben:"
+    echo "  $ARCH_HOME_TARGET -> $backup"
+    sudo mv "$ARCH_HOME_TARGET" "$backup"
+  fi
+
+  if [[ -e "$ARCH_HOME_TARGET/etc/os-release" && -x "$ARCH_HOME_TARGET/usr/bin/pacman" ]]; then
+    if grep -q '^ID=arch' "$ARCH_HOME_TARGET/etc/os-release"; then
+      ok "Vorhandenes Arch-Chroot erkannt. Extraktion wird übersprungen."
+      return 0
+    fi
+  fi
+
+  if [[ -d "$ARCH_HOME_TARGET" && -n "$(find "$ARCH_HOME_TARGET" -mindepth 1 -maxdepth 1 -print -quit 2>/dev/null)" ]]; then
+    fail "Ziel existiert und ist nicht leer, aber kein gültiges Arch-Chroot: $ARCH_HOME_TARGET. Nutze --fresh, wenn es gesichert und ersetzt werden soll."
+  fi
+
+  sudo mkdir -p "$ARCH_HOME_TARGET"
+
+  info "Extrahiere nach $ARCH_HOME_TARGET"
+  sudo tar --numeric-owner -xpf "$tarball" -C "$ARCH_HOME_TARGET"
+
+  if [[ -d "$ARCH_HOME_TARGET/root.x86_64" ]]; then
+    sudo sh -c "dotglob_set=\$(shopt -p dotglob 2>/dev/null || true); shopt -s dotglob; mv '$ARCH_HOME_TARGET/root.x86_64'/* '$ARCH_HOME_TARGET'/; rmdir '$ARCH_HOME_TARGET/root.x86_64'; eval \"\$dotglob_set\" 2>/dev/null || true"
+  fi
+
+  [[ -x "$ARCH_HOME_TARGET/usr/bin/pacman" ]] || fail "Nach Extraktion fehlt Pacman im Chroot."
+
+  ok "Bootstrap extrahiert."
+}
+
+init_keyring_and_packages() {
+  step "Pacman-Keyring und Basissystem installieren"
+
+  chroot_run_root /usr/bin/bash -lc '
+set -Eeuo pipefail
+
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
+echo "--- OS ---"
+cat /etc/os-release
+
+echo
+echo "--- Mount-Test ---"
+test -r /proc/self/mountinfo
+test -e /dev/fd/0
+test -e /etc/mtab
+df -h /
+
+echo
+echo "--- Locale generieren ---"
+if command -v locale-gen >/dev/null 2>&1; then
+  locale-gen
+fi
+
+echo
+echo "--- pacman-key init/populate ---"
+pacman-key --init || true
+pacman-key --populate archlinux
+
+echo
+echo "--- Datenbanken synchronisieren ---"
+pacman -Sy --noconfirm
+
+echo
+echo "--- Keyring/Mirrorlist aktualisieren ---"
+pacman -S --noconfirm --needed archlinux-keyring pacman-mirrorlist
+
+echo
+echo "--- Vollständiges Systemupdate ---"
+pacman -Syu --noconfirm
+
+echo
+echo "--- Basiswerkzeuge installieren ---"
+pacman -S --noconfirm --needed \
+  base \
+  base-devel \
+  sudo \
+  git \
+  openssh \
+  ca-certificates \
+  curl \
+  wget \
+  nano \
+  less \
+  which \
+  fakeroot \
+  debugedit \
+  binutils \
+  gcc \
+  make \
+  pkgconf \
+  patch \
+  diffutils \
+  file \
+  tar \
+  zstd \
+  gzip \
+  xz
+
+echo
+echo "--- Pacman Status ---"
+pacman -Q pacman archlinux-keyring pacman-mirrorlist sudo bash git make fakeroot debugedit
+'
+}
+
+setup_chroot_user() {
+  step "Chroot-User einrichten"
+
+  sudo chroot "$ARCH_HOME_TARGET" /usr/bin/env \
+    CHROOT_USER="$OWNER_USER" \
+    CHROOT_UID="$OWNER_UID" \
+    CHROOT_GID="$OWNER_GID" \
+    /usr/bin/bash -s <<'CHROOT_USER_SETUP'
+set -Eeuo pipefail
+
+echo "--- User Setup ---"
+echo "User: $CHROOT_USER"
+echo "UID:  $CHROOT_UID"
+echo "GID:  $CHROOT_GID"
+
+if ! getent group "$CHROOT_GID" >/dev/null; then
+  groupadd -g "$CHROOT_GID" "$CHROOT_USER"
+fi
+
+GROUP_NAME="$(getent group "$CHROOT_GID" | cut -d: -f1)"
+
+if getent passwd "$CHROOT_USER" >/dev/null; then
+  echo "User existiert bereits: $CHROOT_USER"
+else
+  if getent passwd "$CHROOT_UID" >/dev/null; then
+    echo "FAIL: UID $CHROOT_UID existiert bereits mit anderem Namen:"
+    getent passwd "$CHROOT_UID"
+    exit 1
+  fi
+
+  useradd -m -u "$CHROOT_UID" -g "$GROUP_NAME" -G wheel -s /usr/bin/bash "$CHROOT_USER"
+  echo "User erstellt: $CHROOT_USER"
+fi
+
+mkdir -p "/home/$CHROOT_USER"
+chown -R "$CHROOT_UID:$CHROOT_GID" "/home/$CHROOT_USER"
+
+mkdir -p /etc/sudoers.d
+cat > "/etc/sudoers.d/90-arch-home-$CHROOT_USER" <<SUDOERS
+$CHROOT_USER ALL=(ALL) NOPASSWD: ALL
+SUDOERS
+
+chmod 0440 "/etc/sudoers.d/90-arch-home-$CHROOT_USER"
+
+if command -v visudo >/dev/null 2>&1; then
+  visudo -cf "/etc/sudoers.d/90-arch-home-$CHROOT_USER"
+fi
+
+echo "--- User final ---"
+id "$CHROOT_USER"
+CHROOT_USER_SETUP
+}
+
+write_wrappers() {
+  step "Wrapper erstellen"
+
+  sudo mkdir -p "$ARCH_HOME_BIN"
+  sudo chown "$OWNER_UID:$OWNER_GID" "$ARCH_HOME_BIN" 2>/dev/null || true
+
+  local tmpdir
+  tmpdir="$(mktemp -d)"
+
+  cat > "$tmpdir/arch-home.template" <<'ARCH_HOME_TEMPLATE'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+CHROOT="__CHROOT__"
+DEFAULT_USER="__DEFAULT_USER__"
+STATE="__STATE__"
+LOCK="$STATE/arch-home.lock"
+
+fail() {
+  echo "FAIL: $*" >&2
+  exit 1
+}
+
+usage() {
+  cat <<USAGE
+Arch-Home Chroot Runner
+
+Nutzung:
+  arch-home
+  arch-home --shell
+  arch-home --root-shell
+  arch-home --root <befehl> [args...]
+  arch-home --user <user> <befehl> [args...]
+  arch-home --umount
+
+Beispiele:
+  arch-home --shell
+  arch-home --root /usr/bin/pacman -Syu
+  arch-home --user $DEFAULT_USER /usr/bin/bash -lc 'cd "\$HOME"; pwd'
+USAGE
+}
+
+is_mp() {
+  mountpoint -q "$1" 2>/dev/null
+}
+
+force_umount_all() {
+  local mp
+
+  for mp in "$CHROOT/run" "$CHROOT/dev" "$CHROOT/sys" "$CHROOT/proc"; do
+    while is_mp "$mp"; do
+      umount -R "$mp" 2>/dev/null || umount -l "$mp" 2>/dev/null || break
+      sleep 0.1
+    done
+  done
+
+  while is_mp "$CHROOT"; do
+    umount "$CHROOT" 2>/dev/null || umount -l "$CHROOT" 2>/dev/null || break
+    sleep 0.1
+  done
+}
+
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ "$EUID" -ne 0 ]]; then
+  exec sudo -- "$0" "$@"
+fi
+
+mkdir -p "$STATE"
+
+if command -v flock >/dev/null 2>&1; then
+  exec 9>"$LOCK"
+  flock -x 9
+fi
+
+if [[ "${1:-}" == "--umount" ]]; then
+  force_umount_all
+  exit 0
+fi
+
+[[ -d "$CHROOT" ]] || fail "Chroot fehlt: $CHROOT"
+[[ -x "$CHROOT/usr/bin/bash" ]] || fail "Chroot-Bash fehlt: $CHROOT/usr/bin/bash"
+[[ -x "$CHROOT/usr/bin/pacman" ]] || fail "Chroot-Pacman fehlt: $CHROOT/usr/bin/pacman"
+
+mounted=()
+
+mount_if_needed() {
+  local kind="$1"
+  local source="$2"
+  local target="$3"
+
+  mkdir -p "$target"
+
+  if is_mp "$target"; then
+    return 0
+  fi
+
+  case "$kind" in
+    self-bind)
+      mount --bind "$source" "$target"
+      mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    proc)
+      mount -t proc proc "$target"
+      ;;
+    rbind)
+      mount --rbind "$source" "$target"
+      mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    bind)
+      mount --bind "$source" "$target"
+      mount --make-rslave "$target" 2>/dev/null || true
+      ;;
+    *)
+      fail "Unbekannter Mount-Typ: $kind"
+      ;;
+  esac
+
+  mounted+=("$target")
+}
+
+cleanup() {
+  local i mp
+
+  for (( i=${#mounted[@]}-1; i>=0; i-- )); do
+    mp="${mounted[$i]}"
+    if is_mp "$mp"; then
+      umount -R "$mp" 2>/dev/null || umount -l "$mp" 2>/dev/null || true
+    fi
+  done
+}
+
+trap cleanup EXIT
+
+prepare_chroot() {
+  chown root:root "$CHROOT"
+  chmod 0755 "$CHROOT"
+
+  mount_if_needed self-bind "$CHROOT" "$CHROOT"
+  mount_if_needed proc proc "$CHROOT/proc"
+  mount_if_needed rbind /sys "$CHROOT/sys"
+  mount_if_needed rbind /dev "$CHROOT/dev"
+  mount_if_needed bind /run "$CHROOT/run"
+
+  rm -f "$CHROOT/etc/mtab"
+  ln -s /proc/self/mounts "$CHROOT/etc/mtab"
+
+  if [[ -f /etc/resolv.conf ]]; then
+    cp -Lf /etc/resolv.conf "$CHROOT/etc/resolv.conf" 2>/dev/null || true
+  fi
+}
+
+run_root() {
+  if [[ "$#" -eq 0 ]]; then
+    set -- /usr/bin/bash -l
+  fi
+
+  chroot "$CHROOT" /usr/bin/env -i \
+    HOME=/root \
+    USER=root \
+    LOGNAME=root \
+    SHELL=/usr/bin/bash \
+    TERM="${TERM:-xterm-256color}" \
+    LANG="${LANG:-C.UTF-8}" \
+    LC_ALL="${LC_ALL:-C.UTF-8}" \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin \
+    "$@"
+}
+
+run_user() {
+  local user="$1"
+  shift || true
+
+  chroot "$CHROOT" /usr/bin/id "$user" >/dev/null 2>&1 || fail "User fehlt im Chroot: $user"
+
+  local uid gid home
+  uid="$(chroot "$CHROOT" /usr/bin/id -u "$user")"
+  gid="$(chroot "$CHROOT" /usr/bin/id -g "$user")"
+  home="/home/$user"
+
+  if [[ "$#" -eq 0 ]]; then
+    set -- /usr/bin/bash -lc 'cd "$HOME"; exec /usr/bin/bash -l'
+  fi
+
+  chroot --userspec="$uid:$gid" "$CHROOT" /usr/bin/env -i \
+    HOME="$home" \
+    USER="$user" \
+    LOGNAME="$user" \
+    SHELL=/usr/bin/bash \
+    TERM="${TERM:-xterm-256color}" \
+    LANG="${LANG:-C.UTF-8}" \
+    LC_ALL="${LC_ALL:-C.UTF-8}" \
+    PATH=/home/"$user"/.local/bin:/usr/local/bin:/usr/bin:/bin \
+    "$@"
+}
+
+prepare_chroot
+
+mode="${1:---shell}"
+
+case "$mode" in
+  --shell)
+    shift || true
+    run_user "$DEFAULT_USER" "$@"
+    ;;
+  --root-shell)
+    shift || true
+    run_root /usr/bin/bash -l
+    ;;
+  --root)
+    shift || true
+    run_root "$@"
+    ;;
+  --user)
+    shift || true
+    user="${1:-$DEFAULT_USER}"
+    shift || true
+    run_user "$user" "$@"
+    ;;
+  *)
+    run_user "$DEFAULT_USER" "$@"
+    ;;
+esac
+ARCH_HOME_TEMPLATE
+
+  sed \
+    -e "s/__CHROOT__/$(sed_escape "$ARCH_HOME_TARGET")/g" \
+    -e "s/__DEFAULT_USER__/$(sed_escape "$OWNER_USER")/g" \
+    -e "s/__STATE__/$(sed_escape "$ARCH_HOME_STATE")/g" \
+    "$tmpdir/arch-home.template" > "$tmpdir/arch-home"
+
+  install_owned_file "$tmpdir/arch-home" "$ARCH_HOME_BIN/arch-home" 0755
+
+  cat > "$tmpdir/pacman" <<EOF_PACMAN
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "$ARCH_HOME_BIN/arch-home" --root /usr/bin/pacman "\$@"
+EOF_PACMAN
+  install_owned_file "$tmpdir/pacman" "$ARCH_HOME_BIN/pacman" 0755
+
+  cat > "$tmpdir/arch-pacman" <<EOF_ARCHPACMAN
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "$ARCH_HOME_BIN/arch-home" --root /usr/bin/pacman "\$@"
+EOF_ARCHPACMAN
+  install_owned_file "$tmpdir/arch-pacman" "$ARCH_HOME_BIN/arch-pacman" 0755
+
+  cat > "$tmpdir/makepkg" <<EOF_MAKEPKG
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "$ARCH_HOME_BIN/arch-home" --user "$OWNER_USER" /usr/bin/bash -lc '
+cd "\$HOME"
+if ! command -v makepkg >/dev/null 2>&1; then
+  echo "FAIL: makepkg fehlt im Arch-Home-Chroot." >&2
+  exit 127
+fi
+exec makepkg "\$@"
+' arch-home-makepkg "\$@"
+EOF_MAKEPKG
+  install_owned_file "$tmpdir/makepkg" "$ARCH_HOME_BIN/makepkg" 0755
+
+  cat > "$tmpdir/yay" <<EOF_YAY
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "$ARCH_HOME_BIN/arch-home" --user "$OWNER_USER" /usr/bin/bash -lc '
+cd "\$HOME"
+if ! command -v yay >/dev/null 2>&1; then
+  echo "FAIL: yay ist im Arch-Home-Chroot noch nicht installiert." >&2
+  echo "Hinweis: Starte arch-home --shell und installiere yay dort aus dem AUR." >&2
+  exit 127
+fi
+exec yay "\$@"
+' arch-home-yay "\$@"
+EOF_YAY
+  install_owned_file "$tmpdir/yay" "$ARCH_HOME_BIN/yay" 0755
+
+  cat > "$tmpdir/paru" <<EOF_PARU
+#!/usr/bin/env bash
+set -Eeuo pipefail
+exec "$ARCH_HOME_BIN/arch-home" --user "$OWNER_USER" /usr/bin/bash -lc '
+cd "\$HOME"
+if ! command -v paru >/dev/null 2>&1; then
+  echo "FAIL: paru ist im Arch-Home-Chroot noch nicht installiert." >&2
+  echo "Hinweis: Starte arch-home --shell und installiere paru dort aus dem AUR." >&2
+  exit 127
+fi
+exec paru "\$@"
+' arch-home-paru "\$@"
+EOF_PARU
+  install_owned_file "$tmpdir/paru" "$ARCH_HOME_BIN/paru" 0755
+
+  cat > "$tmpdir/steam-pacman" <<'EOF_STEAMPACMAN'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+HOST_PACMAN="/usr/bin/pacman"
+
+if [[ ! -x "$HOST_PACMAN" ]]; then
+  echo "FAIL: Host-Pacman fehlt: $HOST_PACMAN" >&2
+  exit 127
+fi
+
+first="${1:-}"
+
+case "$first" in
+  -Q*|--query|-T*|--deptest|-V|--version|-h|--help)
+    exec "$HOST_PACMAN" "$@"
+    ;;
+esac
+
+if [[ "$EUID" -eq 0 ]]; then
+  exec "$HOST_PACMAN" "$@"
+else
+  exec sudo "$HOST_PACMAN" "$@"
+fi
+EOF_STEAMPACMAN
+  install_owned_file "$tmpdir/steam-pacman" "$ARCH_HOME_BIN/steam-pacman" 0755
+
+  rm -rf "$tmpdir"
+}
+
+add_path_block() {
+  local file="$1"
+
+  touch "$file"
+
+  if grep -q 'BEGIN ARCH-HOME PATH' "$file"; then
+    ok "PATH-Block bereits vorhanden: $file"
+    return 0
+  fi
+
+  cp -a "$file" "$file.backup.$STAMP"
+
+  cat >> "$file" <<'PATHBLOCK'
+
+# BEGIN ARCH-HOME PATH
+# Deutscher Kommentar:
+# Fügt ~/.local/bin vor den Standard-PATH ein, damit pacman/makepkg/yay/paru
+# zuerst die Arch-Home-Wrapper nutzen. Es wird kein Output beim Shellstart erzeugt.
+case ":$PATH:" in
+  *":$HOME/.local/bin:"*) ;;
+  *) export PATH="$HOME/.local/bin:$PATH" ;;
+esac
+# END ARCH-HOME PATH
+PATHBLOCK
+
+  ok "PATH-Block eingefügt: $file"
+  echo "Backup: $file.backup.$STAMP"
+}
+
+setup_path() {
+  step "PATH dauerhaft setzen"
+
+  add_path_block "$HOME/.profile"
+  add_path_block "$HOME/.bashrc"
+
+  export PATH="$ARCH_HOME_BIN:$PATH"
+  hash -r || true
+
+  ok "PATH für aktuelle Shell gesetzt."
+}
+
+final_tests() {
+  step "Finaltests"
+
+  echo "--- command -v ---"
+  command -v "$ARCH_HOME_BIN/pacman" || true
+  "$ARCH_HOME_BIN/pacman" -Q pacman archlinux-keyring pacman-mirrorlist
+
+  echo
+  echo "--- Arch-Home User Test ---"
+  "$ARCH_HOME_BIN/arch-home" --user "$OWNER_USER" /usr/bin/bash -lc 'cd "$HOME"; echo "USER=$USER HOME=$HOME PWD=$PWD"; id'
+
+  echo
+  echo "--- SteamOS Host pacman Query Test ---"
+  "$ARCH_HOME_BIN/steam-pacman" -Q pacman || true
+
+  echo
+  echo "--- Wrapper-Dateien ---"
+  ls -lah \
+    "$ARCH_HOME_BIN/arch-home" \
+    "$ARCH_HOME_BIN/pacman" \
+    "$ARCH_HOME_BIN/arch-pacman" \
+    "$ARCH_HOME_BIN/makepkg" \
+    "$ARCH_HOME_BIN/yay" \
+    "$ARCH_HOME_BIN/paru" \
+    "$ARCH_HOME_BIN/steam-pacman"
+}
+
+confirm_or_exit() {
+  step "Installationsübersicht"
+
+  cat <<OVERVIEW
+Script-Version: $SCRIPT_VERSION
+Modus:          $MODE
+
+Ziel-Chroot:    $ARCH_HOME_TARGET
+Wrapper-Bin:    $ARCH_HOME_BIN
+State:          $ARCH_HOME_STATE
+Downloads:      $ARCH_HOME_DOWNLOADS
+Remote-Cache:   $ARCH_HOME_REMOTE_CACHE
+Log:            $LOG
+
+Host-User:      $OWNER_USER:$OWNER_GROUP ($OWNER_UID:$OWNER_GID)
+
+Dieses Script ändert NICHT:
+  /usr
+  /etc
+  /var
+  SteamOS readonly status
+  Host-/usr/bin/pacman
+
+Dieses Script erstellt/ändert:
+  $ARCH_HOME_TARGET
+  $ARCH_HOME_BIN
+  $ARCH_HOME_STATE
+  ~/.profile
+  ~/.bashrc
+
+Wrapper nach Abschluss:
+  pacman       -> Arch-Home-Chroot
+  arch-pacman  -> Arch-Home-Chroot
+  makepkg      -> Arch-Home-Chroot als $OWNER_USER
+  yay/paru     -> Arch-Home-Chroot als $OWNER_USER, falls installiert
+  steam-pacman -> SteamOS Host /usr/bin/pacman
+OVERVIEW
+
+  if [[ "$YES" -eq 1 ]]; then
+    ok "--yes gesetzt, Bestätigung übersprungen."
+    return 0
+  fi
+
+  echo
+  echo "Zum Fortfahren exakt eingeben:"
+  echo "INSTALL_ARCH_HOME_CHROOT"
+  read -r answer
+
+  [[ "$answer" == "INSTALL_ARCH_HOME_CHROOT" ]] || fail "Abbruch: Bestätigung war nicht exakt."
+}
+
+host_preflight() {
+  step "Host-Sicherheitsprüfungen"
+
+  [[ "$(uname -m)" == "x86_64" ]] || fail "Nur x86_64 wird unterstützt. Gefunden: $(uname -m)"
+
+  need_cmd sudo
+  need_cmd tar
+  need_cmd awk
+  need_cmd sed
+  need_cmd grep
+  need_cmd findmnt
+  need_cmd mountpoint
+  need_cmd sha256sum
+  need_cmd gpg
+
+  if ! have curl && ! have wget; then
+    fail "curl oder wget wird benötigt."
+  fi
+
+  if ! sudo -n true 2>/dev/null; then
+    echo "sudo-Passwort wird benötigt."
+  fi
+
+  sudo_keepalive_start
+
+  mkdir -p "$ARCH_HOME_DOWNLOADS" "$ARCH_HOME_REMOTE_CACHE"
+  sudo mkdir -p "$ARCH_HOME_BIN"
+  sudo chown "$OWNER_UID:$OWNER_GID" "$ARCH_HOME_STATE" "$ARCH_HOME_DOWNLOADS" "$ARCH_HOME_REMOTE_CACHE" "$ARCH_HOME_BIN" 2>/dev/null || true
+
+  echo "--- Speicherplatz HOME ---"
+  df -h "$HOME" || true
+
+  local avail_kib
+  avail_kib="$(df -Pk "$HOME" | awk 'NR==2{print $4}')"
+  if [[ -n "$avail_kib" && "$avail_kib" -lt 4194304 ]]; then
+    fail "Weniger als 4 GiB frei in HOME. Frei KiB: $avail_kib"
+  fi
+
+  ok "Host-Vorprüfung abgeschlossen."
+}
+
+main() {
+  echo "============================================================"
+  echo " Arch-Home Chroot Installer"
+  echo "============================================================"
+  echo "Version: $SCRIPT_VERSION"
+  echo "Log:     $LOG"
+  echo
+
+  confirm_or_exit
+  host_preflight
+
+  cleanup_all_chroot_mounts || true
+
+  if [[ "$MODE" != "repair" ]]; then
+    download_and_verify_bootstrap
+    extract_bootstrap_if_needed
+  else
+    [[ -x "$ARCH_HOME_TARGET/usr/bin/pacman" ]] || fail "--repair gewählt, aber Chroot-Pacman fehlt: $ARCH_HOME_TARGET/usr/bin/pacman"
+    ok "Repair-Modus: Download/Extraktion übersprungen."
+  fi
+
+  ensure_chroot_root_owner
+  prepare_chroot_mounts
+  verify_chroot_basics
+  configure_locale_timezone_pacman_conf
+  init_keyring_and_packages
+  setup_chroot_user
+  write_wrappers
+  setup_path
+  final_tests
+
+  step "Fertig"
+
+  cat <<DONE
+Arch-Home-Chroot ist eingerichtet.
+
+Direkt nutzbar in dieser Shell:
+  export PATH="\$HOME/.local/bin:\$PATH"
+  hash -r
+  pacman -Q pacman
+  steam-pacman -Q pacman
+  arch-home --shell
+
+In neuen Terminals sollte der PATH automatisch greifen.
+
+Wichtige Befehle:
+  pacman -Syu              # Arch-Home-Chroot
+  pacman -S paketname      # installiert ins Arch-Home-Chroot
+  makepkg                  # läuft im Chroot als $OWNER_USER
+  yay                      # Chroot-yay, falls installiert
+  paru                     # Chroot-paru, falls installiert
+  steam-pacman -Q pacman   # SteamOS Host-Pacman
+  arch-home --shell        # Arch-Home Shell
+  arch-home --umount       # eventuell verbliebene Chroot-Mounts lösen
+
+Log:
+  $LOG
+DONE
+}
+
+main "$@"

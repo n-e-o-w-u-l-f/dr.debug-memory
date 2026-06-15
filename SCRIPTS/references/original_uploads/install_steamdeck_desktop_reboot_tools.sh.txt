@@ -1,0 +1,359 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# ============================================================
+# Steam Deck Desktop-Reboot Tools Installer
+# ============================================================
+# Installiert:
+#   ~/.local/bin/reboot-to-desktop-mode
+#   ~/.local/bin/boot-gaming-mode-default
+#   ~/.local/bin/return-to-gaming-mode
+#
+# Desktop-Starter:
+#   ~/Desktop/Reboot to Desktop Mode.desktop
+#   ~/Desktop/Boot Gaming Mode Default.desktop
+#   ~/Desktop/Return to Gaming Mode.desktop
+#
+# Ziel:
+#   - Aus Desktop Mode heraus rebooten
+#   - Nach Reboot wieder im Desktop Mode landen
+#   - Optional wieder Gaming Mode als Standard setzen
+#
+# Keine Rootfs-Änderung.
+# Kein steamos-readonly disable.
+# ============================================================
+
+INSTALL_BIN="${HOME}/.local/bin"
+DESKTOP_DIR="${HOME}/Desktop"
+STATE_DIR="${HOME}/.local/state/steamdeck-desktop-reboot-tools"
+BACKUP_DIR="${STATE_DIR}/backup-$(date +%Y%m%d-%H%M%S)"
+LOG="${STATE_DIR}/install-$(date +%Y%m%d-%H%M%S).log"
+
+mkdir -p "$INSTALL_BIN" "$DESKTOP_DIR" "$STATE_DIR" "$BACKUP_DIR"
+
+log() {
+  printf '%s\n' "$*" | tee -a "$LOG"
+}
+
+warn() {
+  printf 'WARNUNG: %s\n' "$*" | tee -a "$LOG" >&2
+}
+
+fail() {
+  printf 'FEHLER: %s\n' "$*" | tee -a "$LOG" >&2
+  exit 1
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+backup_if_exists() {
+  local file="$1"
+  if [[ -e "$file" || -L "$file" ]]; then
+    cp -a "$file" "$BACKUP_DIR/" || true
+    log "Backup erstellt: $file -> $BACKUP_DIR/"
+  fi
+}
+
+write_executable() {
+  local path="$1"
+  cat > "$path"
+  chmod 0755 "$path"
+  log "Installiert: $path"
+}
+
+write_desktop_file() {
+  local path="$1"
+  cat > "$path"
+  chmod 0755 "$path"
+  log "Desktop-Starter installiert: $path"
+}
+
+log "============================================================"
+log " Steam Deck Desktop-Reboot Tools Installer"
+log "============================================================"
+log "Installationspfad: $INSTALL_BIN"
+log "Desktop-Pfad:      $DESKTOP_DIR"
+log "Backup-Pfad:       $BACKUP_DIR"
+log "Logdatei:          $LOG"
+log
+
+log "===== Systemprüfung ====="
+
+if [[ -r /etc/os-release ]]; then
+  log "--- /etc/os-release ---"
+  sed -n '1,20p' /etc/os-release | tee -a "$LOG"
+else
+  warn "/etc/os-release nicht lesbar."
+fi
+
+if have steamos-session-select; then
+  log "OK: steamos-session-select gefunden: $(command -v steamos-session-select)"
+else
+  warn "steamos-session-select wurde nicht gefunden."
+  warn "Das Reboot-to-Desktop-Tool wird installiert, kann aber ohne diesen SteamOS-Befehl nicht persistent in den Desktop Mode booten."
+fi
+
+if have qdbus6; then
+  log "OK: qdbus6 gefunden: $(command -v qdbus6)"
+elif have qdbus; then
+  log "OK: qdbus gefunden: $(command -v qdbus)"
+else
+  warn "qdbus/qdbus6 nicht gefunden. Return-to-Gaming-Mode per KDE-Logout könnte fehlen."
+fi
+
+if have systemctl; then
+  log "OK: systemctl gefunden: $(command -v systemctl)"
+else
+  warn "systemctl nicht gefunden. Reboot-Funktion könnte fehlen."
+fi
+
+log
+log "===== Vorhandene Desktop-Starter sichern ====="
+
+backup_if_exists "${DESKTOP_DIR}/Reboot to Desktop Mode.desktop"
+backup_if_exists "${DESKTOP_DIR}/Boot Gaming Mode Default.desktop"
+backup_if_exists "${DESKTOP_DIR}/Return to Gaming Mode.desktop"
+
+log
+log "===== Kommandos installieren ====="
+
+write_executable "${INSTALL_BIN}/reboot-to-desktop-mode" <<'SCRIPT'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+log() {
+  printf '%s\n' "$*"
+}
+
+warn() {
+  printf 'WARNUNG: %s\n' "$*" >&2
+}
+
+fail() {
+  printf 'FEHLER: %s\n' "$*" >&2
+  exit 1
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+try_session_select() {
+  local arg="$1"
+
+  if ! have steamos-session-select; then
+    return 127
+  fi
+
+  log "Teste SteamOS Session-Befehl: steamos-session-select $arg"
+
+  if steamos-session-select "$arg"; then
+    log "OK: Session-Ziel gesetzt: $arg"
+    return 0
+  fi
+
+  return 1
+}
+
+log "============================================================"
+log " Reboot to Desktop Mode"
+log "============================================================"
+
+if ! have steamos-session-select; then
+  fail "steamos-session-select fehlt. Kann Desktop-Boot nicht setzen."
+fi
+
+selected=""
+
+# Moderne SteamOS-/Wayland-Variante zuerst.
+for candidate in \
+  "plasma-wayland-persistent" \
+  "plasma-persistent" \
+  "plasma-wayland" \
+  "plasma"
+do
+  if try_session_select "$candidate"; then
+    selected="$candidate"
+    break
+  fi
+done
+
+if [[ -z "$selected" ]]; then
+  fail "Keiner der bekannten Desktop-Session-Befehle funktionierte."
+fi
+
+log
+log "Gesetztes Ziel: $selected"
+
+case "$selected" in
+  *persistent)
+    log "Persistent-Modus aktiv: Das Steam Deck sollte nach dem Reboot wieder im Desktop Mode starten."
+    ;;
+  *)
+    warn "Nur nicht-persistenter Desktop-Modus funktionierte."
+    warn "Der Reboot kann eventuell wieder im Gaming Mode landen."
+    ;;
+esac
+
+log
+log "Starte Reboot..."
+
+if have systemctl; then
+  systemctl reboot
+elif have reboot; then
+  reboot
+else
+  fail "Weder systemctl noch reboot gefunden."
+fi
+SCRIPT
+
+write_executable "${INSTALL_BIN}/boot-gaming-mode-default" <<'SCRIPT'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+log() {
+  printf '%s\n' "$*"
+}
+
+fail() {
+  printf 'FEHLER: %s\n' "$*" >&2
+  exit 1
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+log "============================================================"
+log " Boot Gaming Mode Default"
+log "============================================================"
+
+if ! have steamos-session-select; then
+  fail "steamos-session-select fehlt. Kann Gaming Mode Default nicht setzen."
+fi
+
+# Ohne Argument setzt steamos-session-select auf Gaming Mode zurück,
+# besonders nachdem ein persistent Desktop-Ziel gesetzt wurde.
+steamos-session-select
+
+log "Gaming Mode wurde als Standard-Session gesetzt."
+log "Du kannst jetzt normal rebooten oder dich vom Desktop abmelden."
+SCRIPT
+
+write_executable "${INSTALL_BIN}/return-to-gaming-mode" <<'SCRIPT'
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+log() {
+  printf '%s\n' "$*"
+}
+
+warn() {
+  printf 'WARNUNG: %s\n' "$*" >&2
+}
+
+fail() {
+  printf 'FEHLER: %s\n' "$*" >&2
+  exit 1
+}
+
+have() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+log "============================================================"
+log " Return to Gaming Mode"
+log "============================================================"
+
+# Erst versuchen: SteamOS-Session zurück auf Gaming Mode setzen.
+if have steamos-session-select; then
+  steamos-session-select || warn "steamos-session-select ohne Argument fehlgeschlagen."
+fi
+
+# Danach KDE/Plasma-Logout auslösen. Das entspricht funktional dem Desktop-Link
+# „Return to Gaming Mode“.
+if have qdbus6; then
+  qdbus6 org.kde.Shutdown /Shutdown org.kde.Shutdown.logout
+elif have qdbus; then
+  qdbus org.kde.Shutdown /Shutdown org.kde.Shutdown.logout
+else
+  fail "qdbus6/qdbus fehlt. Bitte manuell abmelden oder Gaming Mode über SteamOS-Menü wählen."
+fi
+SCRIPT
+
+log
+log "===== Desktop-Starter installieren ====="
+
+write_desktop_file "${DESKTOP_DIR}/Reboot to Desktop Mode.desktop" <<EOF_DESKTOP
+[Desktop Entry]
+Name=Reboot to Desktop Mode
+Comment=Steam Deck neu starten und wieder in den Desktop Mode booten
+Exec=${INSTALL_BIN}/reboot-to-desktop-mode
+Icon=system-reboot
+Terminal=true
+Type=Application
+StartupNotify=false
+Categories=System;
+EOF_DESKTOP
+
+write_desktop_file "${DESKTOP_DIR}/Boot Gaming Mode Default.desktop" <<EOF_DESKTOP
+[Desktop Entry]
+Name=Boot Gaming Mode Default
+Comment=Gaming Mode wieder als Standard-Bootziel setzen
+Exec=${INSTALL_BIN}/boot-gaming-mode-default
+Icon=steam
+Terminal=true
+Type=Application
+StartupNotify=false
+Categories=System;
+EOF_DESKTOP
+
+write_desktop_file "${DESKTOP_DIR}/Return to Gaming Mode.desktop" <<EOF_DESKTOP
+[Desktop Entry]
+Name=Return to Gaming Mode
+Comment=Zur Steam Deck Gaming-Oberfläche zurückkehren
+Exec=${INSTALL_BIN}/return-to-gaming-mode
+Icon=steamdeck-gaming-return
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=System;
+EOF_DESKTOP
+
+log
+log "===== PATH-Hinweis prüfen ====="
+
+case ":${PATH}:" in
+  *":${INSTALL_BIN}:"*)
+    log "OK: ${INSTALL_BIN} ist bereits im PATH."
+    ;;
+  *)
+    warn "${INSTALL_BIN} ist aktuell nicht im PATH dieser Shell."
+    warn "Die Desktop-Starter funktionieren trotzdem."
+    warn "Für Terminal-Nutzung nach erneutem Login prüfen:"
+    warn "  command -v reboot-to-desktop-mode"
+    ;;
+esac
+
+log
+log "============================================================"
+log " Fertig."
+log "============================================================"
+log
+log "Nutzung:"
+log "  reboot-to-desktop-mode"
+log "      Reboot und danach möglichst wieder Desktop Mode."
+log
+log "  boot-gaming-mode-default"
+log "      Gaming Mode wieder als Standard setzen."
+log
+log "  return-to-gaming-mode"
+log "      Aus Desktop Mode zurück in Gaming Mode."
+log
+log "Desktop-Icons liegen unter:"
+log "  ${DESKTOP_DIR}"
+log
+log "Backup alter Starter:"
+log "  ${BACKUP_DIR}"
