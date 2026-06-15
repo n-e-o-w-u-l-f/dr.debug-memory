@@ -10,7 +10,7 @@ Canonical-Path: /MEMORY/MANUFACTURERS/candidates_needing_review.md
 
 # 2026-06-15
 
-- Seagate — official-site retrieval produced a redirect-loop during the storage round. Re-check with an official support or download URL before moving to `manufacturers.jsonl`.
+No open manufacturer candidates after the Seagate follow-up pass.
 
 # Cleared in this pass
 
@@ -25,4 +25,5 @@ Acer
 Samsung Semiconductor
 Western Digital
 Kingston Technology
+Seagate Technology
 ```
