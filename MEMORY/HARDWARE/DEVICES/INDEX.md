@@ -27,4 +27,9 @@ Navigation:
 - device_research_log.md
 - candidates_needing_review.md
 
+Cleanup status:
+
+- ASUS year index exists.
+- Central source registry still needs follow-up source-class entries.
+
 Next manufacturer: ASRock
