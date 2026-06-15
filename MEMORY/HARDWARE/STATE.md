@@ -1,40 +1,41 @@
 # Hardware State
 
-Last run: 2026-06-14
+Last run: 2026-06-15
 
 Agent: device_hardware_database_ingest_agent
 
-Current phase: first starter records.
+Current phase: ASUS device starter records.
 
 ## Completed
 
-- Manufacturer index added.
-- Valve manufacturer record added.
-- Samsung manufacturer draft record added.
-- Model index added.
-- Valve OLED starter record added.
-- Valve LCD starter record added.
+- Hardware device subtree added under `/MEMORY/HARDWARE/DEVICES/`.
+- ASUS motherboard starter records added to `devices.jsonl`.
+- Device navigation by manufacturer, category, chipset and aliases added.
+- Candidate list added for ASUS models needing direct URL verification.
+
+## Latest verified ASUS device records
+
+- TUF GAMING Z890-PRO WIFI
+- PRIME Z890-P WIFI
+- Pro WS WRX90E-SAGE SE
+- EX-B860M-V5
 
 ## Continuation status
 
-Previous hardware bootstrap was detected and continued.
+Last completed area: ASUS motherboard starter records.
 
-Last completed area: Valve starter records.
-
-Next useful start point: add fuller Valve technical fields in small batches, then add Samsung tablet records if repository tooling accepts the individual files.
+Next useful start point: ASRock official product and support pages.
 
 ## Source review notes
 
-- Valve official pages were reviewed and are suitable for Steam Deck starter facts.
-- Samsung official support pages were reviewed and confirm model names and model numbers for SM-T580, SM-T585 and SM-T235.
-
-## Tooling notes
-
-Some longer or more detailed files were blocked by repository tooling during this run. The accepted records are intentionally short starter records.
+- Official ASUS product pages were reviewed for the verified starter records.
+- PRIME Z890-P WIFI support page was reached directly.
+- Generic ASUS Download Center URL is used as fallback where product-specific download pages were not verified.
+- ProArt Z890-CREATOR WIFI and Pro H810M-C-CSM remain candidates until product-specific URLs are verified.
 
 ## Open items
 
-- Add fuller model records in smaller batches.
-- Add Samsung tablet records in a later pass.
-- Add source index records when repository tooling accepts them.
-- Keep incomplete entries marked for review.
+- Add release years only from explicit sources.
+- Add product-specific download URLs for each ASUS model.
+- Continue ASRock device entries.
+- Review `/MEMORY/INDEX.md` after the shortened update in this run.
