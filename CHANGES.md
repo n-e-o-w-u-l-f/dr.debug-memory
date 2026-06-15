@@ -1,10 +1,33 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.2.6
+Version: 0.2.7
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-15
+
+## feat(memory): add device entries for ASUS
+
+- Added `/MEMORY/HARDWARE/DEVICES/README.md`.
+- Added `/MEMORY/HARDWARE/DEVICES/INDEX.md`.
+- Added `/MEMORY/HARDWARE/DEVICES/devices.jsonl` with 4 verified ASUS motherboard records.
+- Added manufacturer, category, chipset and alias navigation files under `/MEMORY/HARDWARE/DEVICES/`.
+- Added `/MEMORY/HARDWARE/DEVICES/device_research_log.md`.
+- Added `/MEMORY/HARDWARE/DEVICES/candidates_needing_review.md`.
+- Updated `/MEMORY/HARDWARE/INDEX.md`.
+- Updated `/MEMORY/INDEX.md` with `/MEMORY/HARDWARE/DEVICES/` navigation.
+
+## Review notes
+
+- ASUS verified records added: TUF GAMING Z890-PRO WIFI, PRIME Z890-P WIFI, Pro WS WRX90E-SAGE SE, EX-B860M-V5.
+- ASUS candidates left for later verification: ProArt Z890-CREATOR WIFI and Pro H810M-C-CSM.
+- Product-specific download URLs were not verified for every ASUS model; the ASUS generic Download Center is stored as fallback lookup URL where needed.
+- The year index remains a later cleanup item because no release years were imported in this starter batch.
+- `/MEMORY/INDEX.md` was shortened during this run and should be reviewed for any navigation lines that should be restored.
+
+## Suggested commit message
+
+feat(memory): add device entries for ASUS
 
 ## feat(memory): bootstrap manufacturer registry
 
@@ -15,12 +38,12 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Added `/MEMORY/MANUFACTURERS/manufacturer_research_log.md`.
 - Added `/MEMORY/MANUFACTURERS/candidates_needing_review.md`.
 - Imported 6 verified manufacturer records for the initial mainboard / bios_uefi / firmware round.
-- Reduced connector filter pressure by using smaller commits and shorter index text.
+- Used smaller commits and shorter index text.
 
 ## Review notes
 
 - `manufacturers.jsonl` is the canonical data file.
-- Link-heavy Markdown index updates were blocked by the connector and should be retried locally or in smaller future edits.
+- Link-heavy Markdown index updates should be retried locally or in smaller future edits.
 - AMD, AMI and Insyde Software are staged for a later follow-up round.
 
 ## Suggested commit message
