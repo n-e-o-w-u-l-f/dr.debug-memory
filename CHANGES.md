@@ -6,6 +6,21 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-15
 
+## chore(memory): merge recovered uncommitted ChatGPT follow-ups
+
+- Added combined follow-up patch notes under `/MEMORY/STATE/chatgpt_uncommitted_merge_20260615.md`.
+- Completed manufacturer navigation sidecars for the 16 already committed verified manufacturers.
+- Left the existing operating-system starter area untouched; local files already existed during patch application.
+- Added Archive.org bootstrap recovery notes because the prior branch/PR state could not be fetched directly here.
+- Added source sidecars instead of replacing the large root source registry.
+
+## docs(memory): complete manufacturer navigation follow-up
+
+- Added `/MEMORY/MANUFACTURERS/manufacturers_by_category.md`.
+- Added `/MEMORY/MANUFACTURERS/manufacturers_by_country.md`.
+- Expanded `/MEMORY/MANUFACTURERS/INDEX.md` and `manufacturers_aliases.md` for all 16 verified manufacturers already present in `manufacturers.jsonl`.
+- Added Seagate to manufacturer review candidates pending a stable official support/download source check.
+
 ## feat(memory): update firmware jsonl
 
 - Updated `/MEMORY/FIRMWARE/firmware.jsonl` with verified source-backed entries and checksums.

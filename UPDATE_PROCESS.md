@@ -58,6 +58,18 @@ For every device batch:
 6. Record product-source review notes in `device_research_log.md`.
 7. Update `/CHANGES.md` and `/MEMORY/HARDWARE/STATE.md`.
 
+# # # # # # # # # # # # # # # # # #
+# Connector Safe Write Strategy #
+# # # # # # # # # # # # # # # # # #
+
+For GitHub connector-limited runs:
+
+1. Prefer tiny JSONL commits with one to three entries.
+2. Do not replace large root files when a sidecar file can preserve the evidence.
+3. Keep root indexes short and canonical files authoritative.
+4. If a Markdown navigation update is blocked, store the canonical JSONL first and add a follow-up sidecar patch.
+5. If a source registry replacement is blocked, create a dated file under `/MEMORY/SOURCES/` and link it later.
+
 # # # # # # # # # #
 # Safe Update Rules #
 # # # # # # # # # #
