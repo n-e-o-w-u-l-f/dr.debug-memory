@@ -38,17 +38,24 @@ GIGABYTE
 MSI
 BIOSTAR
 Intel
+AMI
+Insyde Software
+AMD
 ```
 
-## Gate / Filterreduzierung
+## Schreibregel fuer Folgearbeiten
 
-Groessere Markdown-Linklisten und einzelne Support-Link-Payloads wurden vom Connector blockiert. Deshalb wurde die Direktschreib-Runde reduziert: kleine Commits, JSONL zuerst, Kandidaten separat.
+```text
+Kleine JSONL Updates bevorzugen.
+Maximal wenige Hersteller pro Commit.
+Markdown Linklisten nur kurz halten.
+Bestehende grosse Indexdateien nicht unnoetig komplett ersetzen.
+Wenn ein Eintrag hakt, erst auf eine offizielle Hauptquelle reduzieren und spaeter ergaenzen.
+```
 
 ## Naechste Runde
 
 ```text
-AMI
-Insyde Software
 weitere firmware/mainboard Hersteller
 USB Vendor IDs
 PCI Vendor IDs
