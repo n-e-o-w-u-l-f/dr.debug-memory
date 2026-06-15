@@ -1,8 +1,31 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.2.5
+Version: 0.2.6
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
+
+# 2026-06-15
+
+## feat(memory): bootstrap manufacturer registry
+
+- Added `/MEMORY/MANUFACTURERS/README.md`.
+- Added `/MEMORY/MANUFACTURERS/INDEX.md`.
+- Added `/MEMORY/MANUFACTURERS/manufacturers.jsonl`.
+- Added `/MEMORY/MANUFACTURERS/manufacturers_aliases.md`.
+- Added `/MEMORY/MANUFACTURERS/manufacturer_research_log.md`.
+- Added `/MEMORY/MANUFACTURERS/candidates_needing_review.md`.
+- Imported 6 verified manufacturer records for the initial mainboard / bios_uefi / firmware round.
+- Reduced connector filter pressure by using smaller commits and shorter index text.
+
+## Review notes
+
+- `manufacturers.jsonl` is the canonical data file.
+- Link-heavy Markdown index updates were blocked by the connector and should be retried locally or in smaller future edits.
+- AMD, AMI and Insyde Software are staged for a later follow-up round.
+
+## Suggested commit message
+
+feat(memory): bootstrap manufacturer registry
 
 # 2026-06-14
 
