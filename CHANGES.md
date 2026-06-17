@@ -1,10 +1,15 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.0
+Version: 0.3.1
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-17
+
+## fix(memory): correct Puzzle & Survival C9 row prefix rule
+
+- Updated `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md` to document that the leading `[#C9]` marker is required once at the beginning of the complete text input.
+- Corrected follow-up rows to use split color blocks without repeating a leading `[#C9]` prefix.
 
 ## feat(memory): add Puzzle & Survival ASCII template
 
@@ -57,7 +62,3 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 ## Review notes
 
 - Product-specific download URLs remain a later verification target for ASUS and ASRock models using generic support fallbacks.
-
-## Suggested commit message
-
-feat(memory): add ASRock device entries
