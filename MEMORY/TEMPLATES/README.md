@@ -30,9 +30,15 @@ This file lists reusable templates for structured Dr.Debug /MEMORY/ entries.
 - `/MEMORY/TEMPLATES/SOURCE_TRUST_ENTRY_TEMPLATE.md`
 - `/MEMORY/TEMPLATES/DEVICE_IDENTIFIER_ENTRY_TEMPLATE.md`
 
-# # # # # # # # # # #
+# # # # # # # # # # # # # #
+# Game Chat Templates #
+# # # # # # # # # # # # # #
+
+- `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md`
+
+# # # # # # # # # #
 # Rules #
-# # # # # # # # # # #
+# # # # # # # # # #
 
 ```text
 - Templates are structure references only.
