@@ -3,6 +3,7 @@
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 id: TEMPLATE-PNS-ASCII-CHAT-001
+identifier: minions
 title: Puzzle & Survival color chat ASCII template
 family: playbook
 status: STATUS_NEW
@@ -15,7 +16,24 @@ related_entries:
   - /MEMORY/TEMPLATES/README.md
 review_required: true
 canonical_path: /MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md
-version: 0.0.2
+version: 0.0.3
+
+# # # # # # # # # # # # #
+# Retrieval Identifiers #
+# # # # # # # # # # # # #
+
+Use this template when the user asks for one of these identifiers or aliases:
+
+```text
+identifier: minions
+primary_retrieval_phrases:
+- PNS Chat Minions
+- Puzzle and Survival Chat Minions
+- Puzzle & Survival Chat Minions
+- PNS Minions
+- zeig mir alle PNS Chat Templates
+- alle PNS Chat Templates
+```
 
 # # # # # # #
 # Purpose #
@@ -29,6 +47,7 @@ Scope:
 - Puzzle & Survival chat decoration template.
 - Designed for compact 3-line ASCII art.
 - Uses the observed [#C9] split color format.
+- Retrieval identifier: minions.
 ```
 
 # # # # # # # # # # # # #
