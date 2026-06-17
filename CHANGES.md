@@ -1,8 +1,15 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.2.9
+Version: 0.3.0
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
+
+# 2026-06-17
+
+## feat(memory): add Puzzle & Survival ASCII template
+
+- Added `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md` as a reusable Puzzle & Survival ASCII/color-format template.
+- Added the new template to `/MEMORY/TEMPLATES/README.md`.
 
 # 2026-06-15
 
