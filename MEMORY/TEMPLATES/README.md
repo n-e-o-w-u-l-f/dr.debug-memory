@@ -35,6 +35,8 @@ This file lists reusable templates for structured Dr.Debug /MEMORY/ entries.
 # # # # # # # # # # # # # #
 
 - `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md`
+  - identifier: `minions`
+  - retrieval phrases: `PNS Chat Minions`, `alle PNS Chat Templates`, `zeig mir alle PNS Chat Templates`
 
 # # # # # # # # # #
 # Rules #
