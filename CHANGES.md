@@ -1,10 +1,15 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.1
+Version: 0.3.2
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-17
+
+## docs(templates): add PNS minions template identifier
+
+- Added `identifier: minions` to `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md`.
+- Updated `/MEMORY/TEMPLATES/README.md` with retrieval phrases for `PNS Chat Minions` and `alle PNS Chat Templates`.
 
 ## fix(memory): correct Puzzle & Survival C9 row prefix rule
 
