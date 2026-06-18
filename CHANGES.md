@@ -1,69 +1,34 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.2
+Version: 0.3.3-owner-admin-gate-proposal
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
-# 2026-06-17
+# 2026-06-18
 
-## docs(templates): add PNS minions template identifier
+## docs(agents): add owner-gated public GitHub write model
 
-- Added `identifier: minions` to `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md`.
-- Updated `/MEMORY/TEMPLATES/README.md` with retrieval phrases for `PNS Chat Minions` and `alle PNS Chat Templates`.
+- Updated repository governance drafts so Dr.Debug public may use GitHub write tools only in OWNER_ADMIN_MODE.
+- Added the required owner flag: `DRDEBUG_OWNER_ADMIN=TRUE`.
+- Added the admin command prefix: `!dd`.
+- Added dry-run default; real write actions require `--apply`.
+- Added destructive action gate: `DRDEBUG_DESTRUCTIVE=TRUE`.
+- Preserved that repository maintenance, merge, commit, push, status maintenance and fixed database intake belong exclusively to the owner in the chat.
+- Replaced unconditional public-write bans in Public proposal policy files with owner-gated write rules.
+- Added admin help command requirements.
 
-## fix(memory): correct Puzzle & Survival C9 row prefix rule
+## Affected repository override files in this ZIP
 
-- Updated `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md` to document that the leading `[#C9]` marker is required once at the beginning of the complete text input.
-- Corrected follow-up rows to use split color blocks without repeating a leading `[#C9]` prefix.
-
-## feat(memory): add Puzzle & Survival ASCII template
-
-- Added `/MEMORY/TEMPLATES/PUZZLE_AND_SURVIVAL_ASCII_CHAT_TEMPLATE.md` as a reusable Puzzle & Survival ASCII/color-format template.
-- Added the new template to `/MEMORY/TEMPLATES/README.md`.
-
-# 2026-06-15
-
-## chore(memory): merge recovered uncommitted ChatGPT follow-ups
-
-- Added combined follow-up patch notes under `/MEMORY/STATE/chatgpt_uncommitted_merge_20260615.md`.
-- Completed manufacturer navigation sidecars for the 16 already committed verified manufacturers.
-- Left the existing operating-system starter area untouched; local files already existed during patch application.
-- Added Archive.org bootstrap recovery notes because the prior branch/PR state could not be fetched directly here.
-- Added source sidecars instead of replacing the large root source registry.
-
-## docs(memory): complete manufacturer navigation follow-up
-
-- Added `/MEMORY/MANUFACTURERS/manufacturers_by_category.md`.
-- Added `/MEMORY/MANUFACTURERS/manufacturers_by_country.md`.
-- Expanded `/MEMORY/MANUFACTURERS/INDEX.md` and `manufacturers_aliases.md` for all 16 verified manufacturers already present in `manufacturers.jsonl`.
-- Added Seagate to manufacturer review candidates pending a stable official support/download source check.
-
-## feat(memory): update firmware jsonl
-
-- Updated `/MEMORY/FIRMWARE/firmware.jsonl` with verified source-backed entries and checksums.
-- Refreshed minimal firmware navigation files.
-
-## feat(memory): add package metadata areas
-
-- Added new package metadata starter areas.
-- Added first ASUS TUF GAMING Z890-PRO WIFI package metadata lines from official ASUS support source.
-- Updated `/MEMORY/INDEX.md` with the new areas.
-- Concrete ASUS support packages not visible in static source remain in review.
-
-## docs(memory): cleanup ASUS device indexes
-
-- Added `/MEMORY/HARDWARE/DEVICES/devices_by_year.md`.
-- Documented the four ASUS starter-batch devices under a release-year-not-yet-imported section until explicit release-year evidence is verified.
-- Updated `/MEMORY/HARDWARE/DEVICES/device_research_log.md` with the ASUS cleanup pass.
-- Confirmed that each ASUS verified device has direct official ASUS URLs in `devices.jsonl` and Markdown navigation.
-
-## feat(memory): add ASRock device entries
-
-- Added five verified ASRock records to `/MEMORY/HARDWARE/DEVICES/devices.jsonl` from official ASRock product pages.
-- Added Z890 Taichi AQUA, Z890 Taichi, X870E Taichi, B850 Steel Legend WiFi and DeskMini X600 Series.
-- Release years were intentionally left empty pending explicit release-year evidence.
-- Markdown navigation updates for ASRock require a follow-up because connector safety checks blocked the Markdown index replacements in this run.
-
-## Review notes
-
-- Product-specific download URLs remain a later verification target for ASUS and ASRock models using generic support fallbacks.
+- `/AGENTS.md`
+- `/AGENTS/ACTIVE/DR_DEBUG.md`
+- `/AGENTS/ACTIVE/DR_DEBUG_MEMORY.md`
+- `/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_permission_policy_BATCH6_PROPOSAL_ONLY.md`
+- `/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_policy_BUILD4_SAFE_PROPOSAL_ONLY.md`
+- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
+- `/MEMORY/AGENTS/README.md`
+- `/MEMORY/QUALITY_RULES.md`
+- `/MEMORY/SCHEMA.md`
+- `/MEMORY/LIFECYCLE.md`
+- `/MEMORY/STATUS_REGISTRY.md`
+- `/UPDATE_PROCESS.md`
+- `/CHANGES.md`
