@@ -1,0 +1,13 @@
+{"key":"manufacturers","label":"Hersteller","entity_type":"manufacturer","include_in_readme":true,"sort_order":10}
+{"key":"devices","label":"Geräte","entity_type":"device","include_in_readme":true,"sort_order":20}
+{"key":"models","label":"ModelNr","entity_type":"model","include_in_readme":true,"sort_order":30}
+{"key":"firmware","label":"Firmware","entity_type":"firmware","include_in_readme":true,"sort_order":40}
+{"key":"drivers","label":"Driver","entity_type":"driver","include_in_readme":true,"sort_order":50}
+{"key":"programs","label":"Programme","entity_type":"program","include_in_readme":true,"sort_order":60}
+{"key":"filesystems","label":"Filesystems","entity_type":"filesystem","include_in_readme":true,"sort_order":70}
+{"key":"networking","label":"Netzwerk","entity_type":"networking","include_in_readme":true,"sort_order":80}
+{"key":"builds","label":"Builds","entity_type":"build","include_in_readme":true,"sort_order":90}
+{"key":"scripts","label":"Scripts","entity_type":"script","include_in_readme":true,"sort_order":100}
+{"key":"error_codes","label":"Error Codes","entity_type":"error_code","include_in_readme":true,"sort_order":110}
+{"key":"solutions","label":"Lösungen","entity_type":"fix","include_in_readme":true,"sort_order":120}
+{"key":"user_verified","label":"Von Usern bestätigt","special_count":"user_verified_fix","include_in_readme":true,"sort_order":130}
