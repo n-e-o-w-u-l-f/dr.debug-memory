@@ -1,0 +1,486 @@
+{
+  "package": "dr_debug_memory_research_batch4_2026-06-18",
+  "created": "2026-06-17T23:48:47.759903Z",
+  "files": [
+    {
+      "path": "AGENTS/PROPOSALS/dr_debug_public_unknown_entity_policy_BUILD4_SAFE_PROPOSAL_ONLY.md",
+      "bytes": 1830,
+      "sha256": "6eb9c69959ed57a40e59255ac89cac5d40b20b6c7b388c18aa603150326de533"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/AGENTS/PROPOSALS/dr_debug_safe_unknown_entity_addendum_PROPOSAL_ONLY.md",
+      "bytes": 2157,
+      "sha256": "56677ba8448c8e793b78de77aecbc6c4abb7be854ff56f579b93c0677d35490f"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/ERROR_CODES/error_code_families_seed_batch2.jsonl",
+      "bytes": 4918,
+      "sha256": "3b93c036899ce3ea6426f82f02db003876f1dc8bd3de302f5dec58a9ed664a70"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/FIRMWARE/firmware_sources_seed_batch2.jsonl",
+      "bytes": 11104,
+      "sha256": "5858ddb1f7048ca0b258549f76328995c2d691e7cf755bf52c6d657a047dbed1"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/HARDWARE/device_identifier_source_plan_batch2.jsonl",
+      "bytes": 2626,
+      "sha256": "601fd432f4f831820938eeb30450229ede551edd0d514009f1ab4eae5dd79312"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/MANUFACTURERS/manufacturer_source_matrix_batch2.md",
+      "bytes": 9394,
+      "sha256": "8503724d5717ae97d5606dd158a16bd6ad5515d1caa5cb8d0d83597f9b3c67aa"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/MANUFACTURERS/manufacturers_research_seed_batch2.jsonl",
+      "bytes": 14490,
+      "sha256": "e542cb2e8de60c4769de9d89eccfbf57a4d1305cb3f933ad20c36c048ee03fc3"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/PATCHES/patches_fixes_research_model.md",
+      "bytes": 1668,
+      "sha256": "968a17ec5f4a98ed352eefea029714cefbd26377993bb19601634d81fcd217ca"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/SOFTWARE/os_versioning_rules_seed_batch2.jsonl",
+      "bytes": 5538,
+      "sha256": "bd52f43e7e35af719eedd838f2eddba91d19304ba2c3b29940dbdee6eb21dd27"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/SOFTWARE/tools_programs_seed_batch2.jsonl",
+      "bytes": 6039,
+      "sha256": "33c5c583387407faa6bea46f7530ee73a1c8173dea31bf011bf78323849ba726"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/MEMORY/SOURCES/source_registry_additions_batch2.jsonl",
+      "bytes": 22655,
+      "sha256": "8946b715ccf7e30fcc405ff40f52888d443127332b737cd14894ecdab1ae0e85"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/README_IMPORTANT.md",
+      "bytes": 1596,
+      "sha256": "16c45a02cf56842924dcdc4cef5c186e63569af37e9b20f496bff0c2e0c13b71"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/REPORTS/batch2_summary.md",
+      "bytes": 1372,
+      "sha256": "bb4d2a6b1971a15679ceb75a403f49cdb4d4fb808188c9c4a3d86ed859c5e8e9"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/RESEARCH_BACKLOG.md",
+      "bytes": 1892,
+      "sha256": "902367504fbc025b0883fe1dd5abd569d80d5a22478338a20c6d05685e850ccf"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/SCRIPTS/validate_jsonl.py",
+      "bytes": 1187,
+      "sha256": "4d87f95648555ddc3ce96d354f392a8a8005ce8961e0bea4ee9c62cb1872e222"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/SHA256SUMS.txt",
+      "bytes": 113,
+      "sha256": "52a0893480647334a10d8f9e242ce6415a526f135d9cf3508a45a343c2a81e3c"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch2_2026-06-18/dr_debug_memory_research_batch2_2026-06-18/SOURCES_RESEARCHED.md",
+      "bytes": 15182,
+      "sha256": "93e624c7311639d45b282999f53d0e85243e039be2a67e738dc1840eb9c1b7ce"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_write_policy_SAFE_REVISION_PROPOSAL_ONLY.md",
+      "bytes": 1919,
+      "sha256": "334c39a02fd9bde6fd2247312ceea253d7bcda3ea531b4cfebeab72a63e0315c"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/AGENTS/PROPOSALS/dr_debug_safe_unknown_entity_addendum_PROPOSAL_ONLY.md",
+      "bytes": 2157,
+      "sha256": "56677ba8448c8e793b78de77aecbc6c4abb7be854ff56f579b93c0677d35490f"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/ANDROID/android_adb_fastboot_rooting_knowledge_seed.md",
+      "bytes": 2175,
+      "sha256": "f8de258136ba08e79debc1b778097c07c6c3e1247ba0b1c4c0216dd63698af4f"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/DEVICE_IDENTIFIERS/device_identifier_registries_seed.jsonl",
+      "bytes": 3899,
+      "sha256": "50d41d798cd6c7e56c705143700519f40d1225ff6193fe171908cb3ab52794a7"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/DEVICE_IDENTIFIERS/pci_usb_lvfs_fwupd_notes.md",
+      "bytes": 1557,
+      "sha256": "657f7586f19ca29a126a030192c205ce344b78ab0a65a3883a1ee1be0c9b5772"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/ERROR_CODES/error_code_families_seed_batch2.jsonl",
+      "bytes": 4918,
+      "sha256": "3b93c036899ce3ea6426f82f02db003876f1dc8bd3de302f5dec58a9ed664a70"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/FILESYSTEMS/filesystem_identification_repair_matrix.md",
+      "bytes": 2535,
+      "sha256": "9027c58bc046ed89595b73c26eb1b5f76c7f6d1605ef1aefc62de9782dc01319"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/FILESYSTEMS/filesystem_recovery_safety_playbook.md",
+      "bytes": 1059,
+      "sha256": "c41888db93b1e3104eb446b4e4939ea5d2c60df813d623c878e727c7fb86b8c1"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/FILESYSTEMS/filesystems_research_seed.jsonl",
+      "bytes": 11863,
+      "sha256": "02a0ab139be34640b762a3d24fd8350a80c6ee2ffe41f4ae4b49b41cf8cf3721"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/FIRMWARE/firmware_sources_seed_batch2.jsonl",
+      "bytes": 11104,
+      "sha256": "5858ddb1f7048ca0b258549f76328995c2d691e7cf755bf52c6d657a047dbed1"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/FIRMWARE/firmware_taxonomy_batch3.md",
+      "bytes": 1884,
+      "sha256": "3cf092f26de168e1406937ed4f8151fd7d453e039f376db53d67c60911c6a806"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/HARDWARE/device_identifier_source_plan_batch2.jsonl",
+      "bytes": 2626,
+      "sha256": "601fd432f4f831820938eeb30450229ede551edd0d514009f1ab4eae5dd79312"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/MANUFACTURERS/manufacturer_source_matrix_batch2.md",
+      "bytes": 9394,
+      "sha256": "8503724d5717ae97d5606dd158a16bd6ad5515d1caa5cb8d0d83597f9b3c67aa"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/MANUFACTURERS/manufacturers_research_seed_batch2.jsonl",
+      "bytes": 14490,
+      "sha256": "e542cb2e8de60c4769de9d89eccfbf57a4d1305cb3f933ad20c36c048ee03fc3"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/MODDING_SAFETY/jailbreak_console_ios_safety_taxonomy.md",
+      "bytes": 2055,
+      "sha256": "dea366b5197b75fc51904d98e95e9f3e1be92235acb6a0c7fa4598bb01233c77"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/MODDING_SAFETY/jtag_boundary_scan_knowledge_seed.md",
+      "bytes": 1459,
+      "sha256": "6d1dbc29e7a249a72d41c228ca0eaaba56e9468afdcdfd8c96b75470e39f3cd8"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/PATCHES/patches_fixes_research_model.md",
+      "bytes": 1668,
+      "sha256": "968a17ec5f4a98ed352eefea029714cefbd26377993bb19601634d81fcd217ca"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/PROPOSALS/structure_batch3_highest_state_proposal.md",
+      "bytes": 1318,
+      "sha256": "d73651ae816968cea50b5cf28bc4a0376fd3c443b4d934e42503b7c1aadd8836"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SOFTWARE/os_versioning_rules_seed_batch2.jsonl",
+      "bytes": 5538,
+      "sha256": "bd52f43e7e35af719eedd838f2eddba91d19304ba2c3b29940dbdee6eb21dd27"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SOFTWARE/tools_programs_seed_batch2.jsonl",
+      "bytes": 6039,
+      "sha256": "33c5c583387407faa6bea46f7530ee73a1c8173dea31bf011bf78323849ba726"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SOURCES/source_registry_additions_batch2.jsonl",
+      "bytes": 22655,
+      "sha256": "8946b715ccf7e30fcc405ff40f52888d443127332b737cd14894ecdab1ae0e85"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SOURCES/source_registry_additions_batch3.jsonl",
+      "bytes": 15674,
+      "sha256": "8513bad5b323ce00b1a35f860eb936079eb3d1b66c33b0166648d31db9771777"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/SPECS_SCHEMA.md",
+      "bytes": 1890,
+      "sha256": "1da7c6cb08b6c5dcc9dcb2d1d3e68a61a5641f346670e0e19dae22c85c71a2a3"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/samsung_android_model_seed.jsonl",
+      "bytes": 4275,
+      "sha256": "e7b890a37c53c22e9ebb6f09f434c465f2b4b92226655feb0ece044511242916"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/samsung_android_specs_source_plan.md",
+      "bytes": 2135,
+      "sha256": "9cd2947a54f7bc5d5a45916002d7eb4900258173d239825a7223672c9ba0e8b2"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/spec_field_registry_seed.jsonl",
+      "bytes": 1864,
+      "sha256": "6a988f5a73122edd8c990b44e70e7129b51bc174d18d8dc50a957fbc22539bbf"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/spec_source_priority.md",
+      "bytes": 1347,
+      "sha256": "2e733fdf4e686da9c0636a9a57246c78e2819ba1772d8bbc90646f62107805cc"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/SPECS/specs_schema_v1.json",
+      "bytes": 3426,
+      "sha256": "64f5a9ab817643d879249066859d3899d7ee3e79baf02283505ba1472a823f18"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/UNLICENSED/sega_mega_drive_clone_preservation_seed.jsonl",
+      "bytes": 1644,
+      "sha256": "5e0730acf3b116892fae5ef9b88b31da14339024503e5db073cc0ad2176cd0fa"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/MEMORY/UNLICENSED/unlicensed_software_hardware_taxonomy.md",
+      "bytes": 1381,
+      "sha256": "afd977a6cdaae1ca16985692403665b919308e1364292c49d20567332adedfcb"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/README_IMPORTANT.md",
+      "bytes": 2514,
+      "sha256": "d7cdb57e309141b2e924492ed0a02dbc20f10ddb4aaf3fdf78d81280590496cb"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/REPORTS/batch2_summary.md",
+      "bytes": 1372,
+      "sha256": "bb4d2a6b1971a15679ceb75a403f49cdb4d4fb808188c9c4a3d86ed859c5e8e9"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/REPORTS/batch3_summary.md",
+      "bytes": 1841,
+      "sha256": "7a8a826ab55d3676d77583ff82ef8b2fd637b1e51e3f75879a2c89fea5b6b7f1"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/RESEARCH_BACKLOG.md",
+      "bytes": 1892,
+      "sha256": "902367504fbc025b0883fe1dd5abd569d80d5a22478338a20c6d05685e850ccf"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/RESEARCH_BACKLOG_BATCH3.md",
+      "bytes": 1972,
+      "sha256": "d7ee30faffa2a6c46a16bd19d6e57e855420e039c09cbd4f1027c2722a4b9d15"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/SCRIPTS/validate_batch3.py",
+      "bytes": 864,
+      "sha256": "4bf6f6f93595d57cdb917bde9f48923854a38a18d6c1bc24b31f45deb8c1f436"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/SCRIPTS/validate_jsonl.py",
+      "bytes": 1187,
+      "sha256": "4d87f95648555ddc3ce96d354f392a8a8005ce8961e0bea4ee9c62cb1872e222"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/SHA256SUMS.txt",
+      "bytes": 4448,
+      "sha256": "04c0956f61e0a0711a5c952c669555979b3980004c88437fc9ec832ea17408f9"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/SOURCES_RESEARCHED.md",
+      "bytes": 15182,
+      "sha256": "93e624c7311639d45b282999f53d0e85243e039be2a67e738dc1840eb9c1b7ce"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_research_batch3_2026-06-18/dr_debug_memory_research_batch3_2026-06-18/SOURCES_RESEARCHED_BATCH3.md",
+      "bytes": 4468,
+      "sha256": "36d3c668bceed7e3b034bf7f2be68cb13778de0cfcacd56d071928d0e81544dc"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/AGENTS/ACTIVE/DR_DEBUG_PUBLIC_SAFE_UNKNOWN_ENTITY_ADDENDUM.md",
+      "bytes": 1859,
+      "sha256": "80743084d1122c8469b90f7ce11259c54edefb196e2212a1fd112660d08bf9b9"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/MANUFACTURERS/README.md",
+      "bytes": 466,
+      "sha256": "2a7124a791d693c48c894f00b0430ae96af46c80bf2e0be59fe3c1eddfab6da4"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/MANUFACTURERS/manufacturers_seed_from_visible_repo.jsonl",
+      "bytes": 17848,
+      "sha256": "77169812e92988261283d9b9eec1cd82c2252b893c77f96e28a823945d56efd4"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/SOFTWARE/ERRORS/ARCH_LINUX_PACMAN/pacman_error_families_seed.md",
+      "bytes": 1328,
+      "sha256": "02c35a738cc5ae5bfc65c9f467ff462909bbf38c8998326acc79f25de44efb44"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/SOFTWARE/OPERATING_SYSTEMS/OS_VERSIONING_RULES_SEED.md",
+      "bytes": 2546,
+      "sha256": "e6389b1d05f630a01cc5d8cafae329c1db750c6838d0d2fa8e06974d6dcf4f96"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/SOFTWARE/OPERATING_SYSTEMS/operating_system_versioning_seed.jsonl",
+      "bytes": 3268,
+      "sha256": "3c154cc93049485bd62800bda635a2516cf4793be078a27eea85453e25519fde"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/TEMPLATES/MEMORY_PROPOSAL_TEMPLATE_UNKNOWN_ENTITY.md",
+      "bytes": 649,
+      "sha256": "b56e2412f7d17fd7428dde8ac00235d869c26c1d074d7297239650ea5f0be244"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/MEMORY_PROPOSAL/TEMPLATES/entity_record_schema_seed.json",
+      "bytes": 803,
+      "sha256": "917c1af1cf8d59f73cf66e5b073997399fcc4a731245c4793a1784c01dd19558"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/OBSERVED_REPOSITORY_STRUCTURE.json",
+      "bytes": 2274,
+      "sha256": "421f5421973b1f38d19e0960746fcabcf2f8af0a78d8ad51a829cbeaa84f9983"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/README_IMPORTANT.md",
+      "bytes": 802,
+      "sha256": "57538d340c5ddd1aca8222bf05cf4eed145e6ef235aa6edcf6609b72f7a9ca80"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/RESEARCH_BACKLOG/REQUESTED_ITEMS_RESEARCH_BACKLOG.md",
+      "bytes": 2342,
+      "sha256": "ca783ac402ab3b5403bfed8c76b0d1af9463160059658244b15f3d52b97ea888"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/SCRIPTS/validate_jsonl.sh",
+      "bytes": 557,
+      "sha256": "374f77c1506a194955c44ee99bbb4ecddeaa9594f182fa465eb4d6a9ce888110"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/SHA256SUMS.txt",
+      "bytes": 1548,
+      "sha256": "a4d2c2ea5f187f2f60f43ecfdf9616dcb66881028d49ba1614d11fa1cd0cd2b4"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/extracted/dr_debug_memory_safe_research_proposal_2026-06-18/dr_debug_memory_safe_research_proposal_2026-06-18/SOURCES_RESEARCHED.md",
+      "bytes": 971,
+      "sha256": "f72dc39a3298065b73531d7cbee094b415974d611c1379fdaa883d02dc5b1fde"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/original_zips/dr_debug_memory_research_batch2_2026-06-18.zip",
+      "bytes": 31098,
+      "sha256": "1730a035e7a91826c9aab9c8d4c4bc7c77797d3ffc4430b3bcb84f90cfca6dae"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/original_zips/dr_debug_memory_research_batch3_2026-06-18.zip",
+      "bytes": 68959,
+      "sha256": "759deeed75c4181f02138f6a43fe2d9fb762059920c3b50c670aaf17a3cb8d36"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/original_zips/dr_debug_memory_safe_research_proposal_2026-06-18.zip",
+      "bytes": 15162,
+      "sha256": "95843aa5f7594f5a9b5574b0b0b80254d9879b3f9c2e39ddb4eef9fed599b683"
+    },
+    {
+      "path": "IMPORTED_PREVIOUS_BATCHES/previous_batches_manifest.json",
+      "bytes": 748,
+      "sha256": "f0f7420c38dfd8cc5db8b6d8997ad087d3258296a853a974268c88a60ddee901"
+    },
+    {
+      "path": "MEMORY/ANDROID/android_firmware_sources_sammobile_samfw_xda_matrix.md",
+      "bytes": 1877,
+      "sha256": "81f35ecbb7a9fe3f05f0528c0be9d37b9ab5905c68b89348d9e964580a3b68ba"
+    },
+    {
+      "path": "MEMORY/ANDROID/custom_rom_recovery_projects_seed_batch4.jsonl",
+      "bytes": 2271,
+      "sha256": "6c3463d07b3ec185182487aecb379f5b69684274849176e41cbe1cbaaae01bb5"
+    },
+    {
+      "path": "MEMORY/BUILDS/android_builds_identity_rules_seed.jsonl",
+      "bytes": 1773,
+      "sha256": "6bd38c8bf92c280651cb3fff0609336ddd42c4cd3d9228f98b84b378234ad993"
+    },
+    {
+      "path": "MEMORY/BUILDS/samsung_firmware_build_schema.md",
+      "bytes": 1734,
+      "sha256": "44d110661188c93d310cdb847e119f8fd1eef5e605368fabf48aec33ed2afca0"
+    },
+    {
+      "path": "MEMORY/BUILDS/samsung_source_build_examples_seed.jsonl",
+      "bytes": 2040,
+      "sha256": "735ac6ed9ad97a0f5c65faeb9608713a8f81a3aedfee0bd2c4359708bce13545"
+    },
+    {
+      "path": "MEMORY/BUILDS/windows_builds_seed_2026-06-18.jsonl",
+      "bytes": 3655,
+      "sha256": "2b04a215a632c41295f44e5495cc28efbadc08c2c41b8402e5ce4f98c6891300"
+    },
+    {
+      "path": "MEMORY/DEVICE_IDENTIFIERS/device_identifier_expansion_batch4.jsonl",
+      "bytes": 2031,
+      "sha256": "beb2e37baf52d2e9bb124a5c459ddd1d360041b2283d72d33c4559ef012a3f2b"
+    },
+    {
+      "path": "MEMORY/HARDWARE/network_components_seed_batch4.jsonl",
+      "bytes": 2054,
+      "sha256": "ecaf5bd3a35add2ef679702ca1110803753644f2c8d3f9839bc5fad2e9d670ee"
+    },
+    {
+      "path": "MEMORY/MANUFACTURERS/manufacturer_device_category_map_batch4.jsonl",
+      "bytes": 7817,
+      "sha256": "04c8dfac452cc58a80760c0dc1a72aa1055a2ab88091fd0852377b1f979fd04f"
+    },
+    {
+      "path": "MEMORY/NETWORKING/nat_cgnat_ipv4_ipv6_firewall_playbook.md",
+      "bytes": 2119,
+      "sha256": "1009da7bd5dfbae860543c35031bf71180b21a6639079b4103a80c399da18d82"
+    },
+    {
+      "path": "MEMORY/NETWORKING/network_error_families_seed_batch4.jsonl",
+      "bytes": 2857,
+      "sha256": "fb26d61ed276f3c6cdac9b129b6402fbe8d0515a594118f1711182e35f0b58fb"
+    },
+    {
+      "path": "MEMORY/NETWORKING/network_protocols_seed_batch4.jsonl",
+      "bytes": 5362,
+      "sha256": "6d6c61bc2ef522cb4a044db6a8453c47d31c6630be6a5f07a85767dc70991550"
+    },
+    {
+      "path": "MEMORY/NETWORKING/service_ports_seed_batch4.jsonl",
+      "bytes": 1637,
+      "sha256": "ac230b76b21c698b435d9c77c0443eb619e3d71082366c8d32be7bf56f3fced9"
+    },
+    {
+      "path": "MEMORY/NETWORKING/smb_samba_netbios_diagnostics.md",
+      "bytes": 1407,
+      "sha256": "06d82e71e7c08f1fb14f82322832494e45d3754790c51fe25c1c91ef66966312"
+    },
+    {
+      "path": "MEMORY/SCHEMAS/build_identity_record.schema.json",
+      "bytes": 1515,
+      "sha256": "8879a9c8c2aa935a4fafe5194e8ddb9a6575798ca82edd44aa32118709779b0a"
+    },
+    {
+      "path": "MEMORY/SOURCES/source_registry_additions_batch4.jsonl",
+      "bytes": 3156,
+      "sha256": "192209eb4a6ff68a6424b5a6f6c70a04b86b31fcf9d8c43149866db4dbf3e65d"
+    },
+    {
+      "path": "MEMORY/SOURCES/user_requested_websites_technical_evaluation_batch4.jsonl",
+      "bytes": 11844,
+      "sha256": "4c02c312d5c2aebb71fa7d352b409be440504ba4ef5eb79b56a42a06c306d272"
+    },
+    {
+      "path": "README_IMPORTANT.md",
+      "bytes": 1893,
+      "sha256": "e0bdc17c7681f798188f2c2c89f4b910ba1f84764dcba28b0a195b7f5fd6d494"
+    },
+    {
+      "path": "REPORTS/batch4_summary.md",
+      "bytes": 1893,
+      "sha256": "924b86b54e36a116b8bedfce1a0f3ff66b72225e6298aa7708c87cd73cf5d6dc"
+    },
+    {
+      "path": "SCRIPTS/validate_jsonl.py",
+      "bytes": 727,
+      "sha256": "fa9049f584ece7b79fd9c7c5fba961153a3fd9f765bafb8c4a51a85a6e52c46c"
+    },
+    {
+      "path": "SOURCES_RESEARCHED_BATCH4.md",
+      "bytes": 2412,
+      "sha256": "5dfbfed58465e60eb7663999e116d4d9bcb537d5c02e3f4fa1965bcbf5486245"
+    }
+  ]
+}
