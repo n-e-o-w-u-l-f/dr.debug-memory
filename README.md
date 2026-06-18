@@ -61,21 +61,27 @@ Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise,
 Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
 
 ---
-
+<!-- DRDEBUG_DATABASE_STATUS_START -->
 # # # # # # # # # # # #
 # Datenbank-Stand #
 # # # # # # # # # # # #
 
 Meine Datenbank beinhaltet aktuell:
 
-| Bereich | Anzahl |
+| Kategorie | Anzahl |
 |---|---:|
-| Error Codes | `$n` |
-| Geräte | `$n` |
-| Lösungen | `$n` |
-| Davon von Usern bestätigt | `$n` |
+| Hersteller | 0 |
+| Geräte | 0 |
+| ModelNr | 0 |
+| Firmware | 0 |
+| Driver | 0 |
+| Programme | 0 |
+| Error Codes | 0 |
+| Lösungen | 0 |
+| Von Usern bestätigt | 0 |
 
-> Die Werte sind Platzhalter für spätere automatische Zählung, zum Beispiel per Script, CI-Job oder Agentenlauf. Bestätigte Lösungen sollten nur gezählt werden, wenn sie im jeweiligen Memory-Eintrag nachvollziehbar als bestätigt markiert sind.
+_Last updated: AUTO_
+<!-- DRDEBUG_DATABASE_STATUS_END -->
 
 ---
 
