@@ -1,0 +1,26 @@
+{
+  "batch": "batch9",
+  "created_utc": "2026-06-18T00:00:00Z",
+  "base": "batch8",
+  "new_jsonl_records_minimum": 61092,
+  "bounded_completion": {
+    "scope": "tcp_udp_port_diagnostic_slots",
+    "covered_ports_across_batches": "0-65535",
+    "transports": [
+      "tcp",
+      "udp"
+    ],
+    "total_slots_across_batches": 131072,
+    "new_slots_batch9": 61072
+  },
+  "new_files": [
+    "MEMORY/NETWORKING/iana_service_port_diagnostic_slots_batch9_complete_remaining_61072.jsonl",
+    "MEMORY/NETWORKING/iana_port_range_policy_batch9.jsonl",
+    "MEMORY/REGISTRIES/registry_import_targets_batch9.jsonl",
+    "MEMORY/PROTOCOLS/protocol_diagnostic_matrix_batch9.jsonl",
+    "MEMORY/SECURITY/tls_registry_policy_notes_batch9.jsonl",
+    "MEMORY/ANDROID/android_build_and_recovery_rules_batch9.jsonl",
+    "MEMORY/SOURCES/source_registry_additions_batch9.jsonl",
+    "MEMORY/SCHEMAS/network_port_diagnostic_slot.schema.batch9.json"
+  ]
+}

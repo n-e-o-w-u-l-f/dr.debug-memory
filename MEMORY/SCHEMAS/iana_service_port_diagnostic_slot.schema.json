@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IANA service port diagnostic slot proposal",
+  "type": "object",
+  "required": [
+    "record_type",
+    "status",
+    "port_number",
+    "transport_protocol",
+    "iana_range_category",
+    "source_urls"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "iana_service_port_diagnostic_slot"
+    },
+    "status": {
+      "type": "string"
+    },
+    "port_number": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "transport_protocol": {
+      "enum": [
+        "tcp",
+        "udp",
+        "sctp",
+        "dccp"
+      ]
+    },
+    "iana_range_category": {
+      "enum": [
+        "system_port",
+        "user_port",
+        "dynamic_or_private_port"
+      ]
+    },
+    "service_name_hint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "purpose": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "do_not_treat_as_final_assignment": {
+      "type": "boolean"
+    },
+    "acceptance_rule": {
+      "type": "string"
+    },
+    "source_authority": {
+      "type": "string"
+    },
+    "source_urls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

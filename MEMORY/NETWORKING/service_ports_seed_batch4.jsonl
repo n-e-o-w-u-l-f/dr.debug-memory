@@ -1,0 +1,9 @@
+{"description": "FTP default data channel", "ports": [{"port": 20, "transport": "tcp"}], "service": "ftp-data", "source": "IANA service-names-port-numbers; RFC959", "status": "RESEARCH_SEED"}
+{"description": "FTP control channel", "ports": [{"port": 21, "transport": "tcp"}], "service": "ftp", "source": "IANA service-names-port-numbers; RFC959", "status": "RESEARCH_SEED"}
+{"description": "Secure Shell protocol", "ports": [{"port": 22, "transport": "tcp"}], "service": "ssh", "source": "IANA service-names-port-numbers; RFC4251", "status": "RESEARCH_SEED"}
+{"description": "HTTP cleartext default", "ports": [{"port": 80, "transport": "tcp"}], "service": "http", "source": "IANA; RFC9110", "status": "RESEARCH_SEED"}
+{"description": "HTTP over TLS default", "ports": [{"port": 443, "transport": "tcp"}], "service": "https", "source": "IANA; RFC9110/RFC8446 context", "status": "RESEARCH_SEED"}
+{"description": "NetBIOS Name Service", "ports": [{"port": 137, "transport": "udp"}], "service": "netbios-ns", "source": "IANA; RFC1001/RFC1002", "status": "RESEARCH_SEED"}
+{"description": "NetBIOS Datagram Service", "ports": [{"port": 138, "transport": "udp"}], "service": "netbios-dgm", "source": "IANA; RFC1001/RFC1002", "status": "RESEARCH_SEED"}
+{"description": "NetBIOS Session Service", "ports": [{"port": 139, "transport": "tcp"}], "service": "netbios-ssn", "source": "IANA; RFC1001/RFC1002", "status": "RESEARCH_SEED"}
+{"description": "SMB over TCP / Microsoft Directory Services", "ports": [{"port": 445, "transport": "tcp"}], "service": "microsoft-ds", "source": "IANA; Microsoft SMB docs; Samba docs", "status": "RESEARCH_SEED"}

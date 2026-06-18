@@ -1,0 +1,13 @@
+{
+  "date": "2026-06-18",
+  "loop_request": "research until at least 5000 additions before zip",
+  "result": "threshold_met_with_5000_proposal_only_networking_identifier_slots",
+  "next_research_targets": [
+    "private import of exact IANA CSV/XML rows",
+    "private import of PCI raw pci.ids after license review",
+    "private import of USB raw usb.ids after license review",
+    "Samsung firmware/build source triangulation by model/CSC",
+    "manufacturer-to-device expansion using official support portals"
+  ],
+  "safety_boundary": "Public does not perform repository mass changes or grant itself GitHub write rights."
+}

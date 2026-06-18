@@ -1,0 +1,21 @@
+{
+  "base": "dr_debug_memory_research_batch7_2026-06-18.zip",
+  "batch": "batch8",
+  "date": "2026-06-18",
+  "new_addition_count_policy": "Counts only JSONL proposal records in iana_service_port_diagnostic_slots_batch8_50000.jsonl. Other source/protocol seeds are extra and not included in the 50,000 threshold.",
+  "new_additions_count": 50000,
+  "new_files": [
+    "MEMORY/NETWORKING/iana_service_port_diagnostic_slots_batch8_50000.jsonl",
+    "MEMORY/SOURCES/source_registry_additions_batch8.jsonl",
+    "MEMORY/PROTOCOLS/application_protocol_diagnostics_seed_batch8.jsonl",
+    "REPORTS/batch8_summary.md",
+    "README_IMPORTANT_BATCH8.md",
+    "RESEARCH_BACKLOG_BATCH8.md",
+    "SCRIPTS/validate_batch8.py",
+    "MANIFESTS/batch8_additions_manifest.json"
+  ],
+  "public_mode_limitation": "No GitHub commit, merge, status decision, or direct write permission is granted to Dr.Debug public.",
+  "schema": "dr_debug.memory.batch_manifest.v1",
+  "source_policy": "Primary registries preferred; every generated port/protocol slot is marked PROPOSAL_ONLY_REQUIRES_PRIVATE_REVIEW and is not a claim of assignment or benign traffic.",
+  "target_zip": "dr_debug_memory_research_batch8_2026-06-18.zip"
+}

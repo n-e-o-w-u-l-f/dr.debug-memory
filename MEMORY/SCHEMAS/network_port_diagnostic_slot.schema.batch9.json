@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dr.Debug MEMORY network_port_diagnostic_slot proposal schema",
+  "type": "object",
+  "required": [
+    "record_type",
+    "status",
+    "batch",
+    "port",
+    "transport",
+    "normalized_key",
+    "safe_interpretation",
+    "sources"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "network_port_diagnostic_slot"
+    },
+    "status": {
+      "type": "string"
+    },
+    "batch": {
+      "type": "string"
+    },
+    "port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "transport": {
+      "enum": [
+        "tcp",
+        "udp",
+        "dccp",
+        "sctp"
+      ]
+    },
+    "iana_port_range": {
+      "type": "string"
+    },
+    "normalized_key": {
+      "type": "string"
+    },
+    "safe_interpretation": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}
