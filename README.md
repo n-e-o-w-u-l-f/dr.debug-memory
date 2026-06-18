@@ -62,9 +62,7 @@ Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräte
 
 ---
 <!-- DRDEBUG_DATABASE_STATUS_START -->
-# # # # # # # # # # # #
-# Datenbank-Stand #
-# # # # # # # # # # # #
+# Datenbank-Stand
 
 Meine Datenbank beinhaltet aktuell:
 
@@ -76,11 +74,15 @@ Meine Datenbank beinhaltet aktuell:
 | Firmware | 0 |
 | Driver | 0 |
 | Programme | 0 |
+| Filesystems | 0 |
+| Netzwerk | 0 |
+| Builds | 0 |
+| Scripts | 0 |
 | Error Codes | 0 |
 | Lösungen | 0 |
 | Von Usern bestätigt | 0 |
 
-_Last updated: AUTO_
+_Last updated: 2026-06-18_
 <!-- DRDEBUG_DATABASE_STATUS_END -->
 
 ---
