@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DrDebug Build Identity Record",
+  "type": "object",
+  "required": [
+    "record_id",
+    "build_family",
+    "vendor",
+    "product",
+    "version_identity",
+    "source_status",
+    "sources"
+  ],
+  "properties": {
+    "record_id": {
+      "type": "string"
+    },
+    "build_family": {
+      "enum": [
+        "windows",
+        "android_aosp",
+        "samsung_firmware",
+        "lineageos",
+        "twrp",
+        "router_firmware",
+        "linux_distribution",
+        "application"
+      ]
+    },
+    "vendor": {
+      "type": "string"
+    },
+    "product": {
+      "type": "string"
+    },
+    "device_model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hardware_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region_or_csc": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version_identity": {
+      "type": "object"
+    },
+    "diagnostic_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repair_relevance": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_status": {
+      "enum": [
+        "PRIMARY_VERIFIED",
+        "SECONDARY_REVIEW_REQUIRED",
+        "USER_CLAIM_ONLY",
+        "MIXED"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

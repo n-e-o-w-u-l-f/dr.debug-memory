@@ -1,0 +1,36 @@
+{"url": "https://www.ipc-computer.de/acer/", "source_class": "parts_vendor", "technical_memory_use": "Acer laptop parts/model relationships, display/keyboard/battery identification", "caution": "Cross-check exact model and part number; vendor listing only."}
+{"url": "https://8bit-museum.de/", "source_class": "retro_archive", "technical_memory_use": "Retro computer identification and historical model context", "caution": "Use preservation/identification only; verify with manuals."}
+{"url": "https://www.alternate.de/", "source_class": "retailer", "technical_memory_use": "Current retail specs and model variants when user asks current purchase/availability", "caution": "Not a primary technical authority; prices change."}
+{"url": "https://www.amazon.de/", "source_class": "marketplace", "technical_memory_use": "User-visible SKU/variant clues, ASIN-only context", "caution": "Never use reviews/listings as authoritative specs without manufacturer source."}
+{"url": "https://www.manualslib.com/", "source_class": "manual_aggregator", "technical_memory_use": "Manuals, spec tables, error LEDs/codes, service procedures if exact manual matches", "caution": "Do not copy manuals verbatim; verify revision/page."}
+{"url": "https://www.makeuseof.com/", "source_class": "blog", "technical_memory_use": "General user-facing troubleshooting ideas", "caution": "Weak source; only use after primary docs."}
+{"url": "https://lifehacker.com/", "source_class": "blog", "technical_memory_use": "General user-facing troubleshooting context", "caution": "Weak source; not for authoritative fixes."}
+{"url": "https://www.addictivetips.com/", "source_class": "blog", "technical_memory_use": "General Windows/Linux/Android troubleshooting context", "caution": "Weak source; verify commands and versions."}
+{"url": "https://www.cnet.com/", "source_class": "media", "technical_memory_use": "Product history/reviews", "caution": "Not a repair authority."}
+{"url": "https://de.ifixit.com/", "source_class": "repair_specialist", "technical_memory_use": "Teardowns, repair guides, parts/tools, repairability", "caution": "Verify exact model and guide revision."}
+{"url": "https://www.ipc-computer.eu/", "source_class": "parts_vendor", "technical_memory_use": "Laptop spare parts and compatibility", "caution": "Secondary only."}
+{"url": "https://geniusparts.co.uk/", "source_class": "parts_vendor", "technical_memory_use": "Replacement parts and part numbers", "caution": "Secondary only."}
+{"url": "https://www.heise.de/ct", "source_class": "technical_media", "technical_memory_use": "German technical reporting, security/repair context", "caution": "Cite article-specific; not a registry."}
+{"url": "https://www.chip.de/", "source_class": "consumer_media", "technical_memory_use": "Consumer software/device context", "caution": "Weak for technical memory unless exact technical data."}
+{"url": "https://www.datacenter-insider.de/", "source_class": "technical_media", "technical_memory_use": "Datacenter/network/storage/vendor context", "caution": "Cite article-specific."}
+{"url": "https://www.conrad.de/", "source_class": "retailer", "technical_memory_use": "Parts/SKU/spec hints", "caution": "Not authority; availability/prices volatile."}
+{"url": "https://archive.org/", "source_class": "archive", "technical_memory_use": "Historical manuals/software/driver preservation", "caution": "Licensing/provenance vary; no illegal distribution guidance."}
+{"url": "https://archive.org/details/texts", "source_class": "archive_texts", "technical_memory_use": "Manual/text preservation", "caution": "Avoid verbatim copyrighted import."}
+{"url": "https://archive.org/details/software", "source_class": "archive_software", "technical_memory_use": "Historical software preservation", "caution": "Legal safety required; no piracy support."}
+{"url": "https://developer.samsung.com/galaxy-emulator-skin/archive.html", "source_class": "vendor_developer_archive", "technical_memory_use": "Samsung Galaxy emulator skins/model dimensions", "caution": "Useful for UI/dev specs, not firmware repair."}
+{"url": "https://developer.android.com/studio/emulator_archive?hl=de", "source_class": "vendor_developer_archive", "technical_memory_use": "Android Emulator version archive", "caution": "Useful for dev environment build/version troubleshooting."}
+{"url": "https://www.betaarchive.com/", "source_class": "software_archive", "technical_memory_use": "Beta software history", "caution": "Membership/licensing constraints; use metadata only unless lawful access."}
+{"url": "https://flashpointarchive.org/", "source_class": "software_preservation", "technical_memory_use": "Web game preservation, runtime dependencies", "caution": "Preservation only; no copyrighted extraction guidance."}
+{"url": "https://fossies.org/", "source_class": "source_archive", "technical_memory_use": "Open-source release archives, diffs", "caution": "Good for source/version lookup when upstream unavailable."}
+{"url": "https://easy-software.com/en/easy-archive/", "source_class": "vendor_product", "technical_memory_use": "Enterprise archiving product documentation context", "caution": "Use only product-specific docs."}
+{"url": "https://www.kodinerds.net/", "source_class": "community_forum", "technical_memory_use": "Kodi/streaming device troubleshooting", "caution": "Community source; verify."}
+{"url": "https://developer.amazon.com/", "source_class": "vendor_developer_docs", "technical_memory_use": "Fire TV/Alexa/app/device developer docs", "caution": "Good primary source for Amazon developer APIs/device specs."}
+{"url": "https://www.aftvnews.com/", "source_class": "specialized_media", "technical_memory_use": "Fire TV device history/build/software context", "caution": "Secondary; cross-check Amazon docs/device output."}
+{"url": "https://de.aliexpress.com/", "source_class": "marketplace", "technical_memory_use": "Clone board/part listing clues", "caution": "Not authoritative; clone listings can be inaccurate."}
+{"url": "https://de.wikipedia.org/wiki/3dfx", "source_class": "encyclopedia", "technical_memory_use": "3dfx history and model overview", "caution": "Secondary; cross-check specialist/archival sources."}
+{"url": "https://wiki.ubuntuusers.de/Archiv/Grafikkarten/3dfx/", "source_class": "community_wiki", "technical_memory_use": "Linux/3dfx legacy driver context", "caution": "Archived; useful for historical context."}
+{"url": "http://www.tdfx.de/ger/grafikkarten_alle.shtml", "source_class": "retro_specialist", "technical_memory_use": "3dfx card model/spec list", "caution": "Secondary specialist; cite specific card pages if available."}
+{"url": "https://dusty-voodoo.com/", "source_class": "retro_specialist", "technical_memory_use": "3dfx/retro hardware preservation", "caution": "Secondary; verify."}
+{"url": "https://www.mappit.de/", "source_class": "unknown_or_context_needed", "technical_memory_use": "Needs specific technical target before ingestion", "caution": "Do not import without relevant technical page."}
+{"url": "https://liretro.com/", "source_class": "retro_specialist", "technical_memory_use": "Retro hardware/software preservation", "caution": "Secondary."}
+{"url": "https://retro-sanctuary.com/", "source_class": "retro_specialist", "technical_memory_use": "Retro console/software context", "caution": "Use only technical/preservation context."}

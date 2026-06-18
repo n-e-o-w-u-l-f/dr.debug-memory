@@ -1,0 +1,27 @@
+{
+  "batch": "batch6",
+  "date": "2026-06-18",
+  "status": "PROPOSAL_ONLY_REQUIRES_PRIVATE_REVIEW",
+  "base_batch": "batch5",
+  "requested_threshold": 5000,
+  "threshold_met": true,
+  "counted_additions": [
+    {
+      "path": "MEMORY/NETWORKING/iana_service_port_diagnostic_slots_batch6_5000.jsonl",
+      "records": 5000,
+      "counting_basis": "proposal-only IANA service-port diagnostic slots, ports 0-2499 for tcp+udp",
+      "not_final_assignment_facts": true
+    }
+  ],
+  "additional_seed_files": [
+    "MEMORY/NETWORKING/network_standards_expansion_batch6.jsonl",
+    "MEMORY/DEVICE_IDENTIFIERS/device_identifier_import_targets_batch6.jsonl",
+    "MEMORY/SCHEMAS/iana_service_port_diagnostic_slot.schema.json"
+  ],
+  "permissions": {
+    "directories": "0755",
+    "normal_files": "0644",
+    "scripts": "0755",
+    "github_account_or_repo_write_permissions_changed": false
+  }
+}

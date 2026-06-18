@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/n-e-o-w-u-l-f/dr.debug-memory/MEMORY/SCHEMAS/build_identity_record_v2.schema.json",
+  "title": "Dr.Debug Build Identity Record v2",
+  "type": "object",
+  "required": [
+    "record_type",
+    "name",
+    "platform_family",
+    "source_strength",
+    "sources"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "build_identity"
+    },
+    "name": {
+      "type": "string"
+    },
+    "platform_family": {
+      "type": "string",
+      "examples": [
+        "Windows",
+        "Android",
+        "LineageOS",
+        "TWRP",
+        "Linux distribution",
+        "Firmware"
+      ]
+    },
+    "vendor": {
+      "type": "string"
+    },
+    "device_model": {
+      "type": "string"
+    },
+    "device_codename": {
+      "type": "string"
+    },
+    "marketing_name": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "build_number": {
+      "type": "string"
+    },
+    "build_id": {
+      "type": "string"
+    },
+    "build_fingerprint": {
+      "type": "string"
+    },
+    "region_or_csc": {
+      "type": "string"
+    },
+    "bootloader_binary": {
+      "type": "string"
+    },
+    "kernel_version": {
+      "type": "string"
+    },
+    "baseband_version": {
+      "type": "string"
+    },
+    "security_patch_level": {
+      "type": "string"
+    },
+    "release_date": {
+      "type": "string"
+    },
+    "support_status": {
+      "type": "string"
+    },
+    "source_strength": {
+      "enum": [
+        "primary_vendor",
+        "primary_project",
+        "standards_registry",
+        "secondary_index",
+        "community",
+        "user_claim"
+      ]
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "diagnostic_value": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "risk_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "review_status": {
+      "enum": [
+        "proposal",
+        "needs_review",
+        "validated",
+        "deprecated"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dr.Debug network identifier proposal record",
+  "type": "object",
+  "required": [
+    "id",
+    "record_type",
+    "source_id",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "record_type": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": [
+        "string",
+        "array"
+      ]
+    },
+    "status": {
+      "type": "string"
+    },
+    "diagnostic_use": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "batch": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
