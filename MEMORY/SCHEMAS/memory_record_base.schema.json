@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "memory_record_base.schema.json",
+  "title": "Dr.Debug MEMORY Base Record",
+  "type": "object",
+  "required": [
+    "id",
+    "entity_type",
+    "status",
+    "validation_status",
+    "source_strength",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": [
+        "manufacturer",
+        "device",
+        "model",
+        "firmware",
+        "driver",
+        "program",
+        "error_code",
+        "fix",
+        "filesystem",
+        "build",
+        "script"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CANONICAL",
+        "PROPOSAL_ONLY",
+        "DEPRECATED",
+        "SUPERSEDED"
+      ]
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": [
+        "UNVERIFIED",
+        "SOURCE_VERIFIED",
+        "USER_VERIFIED_FIX"
+      ]
+    },
+    "source_strength": {
+      "type": "string",
+      "enum": [
+        "official",
+        "vendor",
+        "registry",
+        "community",
+        "user_provided"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "additionalProperties": true
+}
