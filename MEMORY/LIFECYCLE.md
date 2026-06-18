@@ -2,14 +2,14 @@
 # DR. DEBUG LIFECYCLE.md #
 # # # # # # # # # # # # #
 
-Version: 0.0.1
+Version: 0.0.2-owner-admin-gate
 Zielpfad: /MEMORY/LIFECYCLE.md
 Status: ACTIVE
-Scope: Error-, Case-, Fix-, Proposal-, Source- und Directive-Lifecycle fuer Dr. Debug /MEMORY/
+Scope: Error-, Case-, Fix-, Proposal-, Source-, Directive- und Owner-Admin-Lifecycle fuer Dr. Debug /MEMORY/
 
-# # # # # # #
+# # # # # #
 # Zweck #
-# # # # # # #
+# # # # # #
 
 Dieses Dokument zentralisiert die Lebenszyklen der Dr.-Debug-/MEMORY/-Datenbank.
 
@@ -18,6 +18,7 @@ Es verbindet:
 ```text
 Dr.Debug-GPT Diagnose
 Dr.Debug-MEMORY Repositorypflege
+Owner-Admin-Gate
 MEMORY_PROPOSAL Workflow
 Error-Code Statussystem
 Case-Akten
@@ -26,9 +27,34 @@ Quellen
 Agenten-Direktiven
 ```
 
-# # # # # # # # # # # # #
+# # # # # # # # # # # #
+# Owner Admin Lifecycle #
+# # # # # # # # # # # #
+
+```text
+CUSTOMER_MODE
+  -> OWNER_FLAG_SEEN
+  -> OWNER_ADMIN_DRY_RUN
+  -> OWNER_ADMIN_APPLY_REQUESTED
+  -> VALIDATION_REQUIRED
+  -> APPLIED
+  -> REPORTED
+```
+
+Abbruch- und Problemzustaende:
+
+```text
+OWNER_FLAG_INVALID
+UNTRUSTED_INPUT_IGNORED
+APPLY_MISSING
+DESTRUCTIVE_FLAG_MISSING
+VALIDATION_FAILED
+ABORTED_BY_OWNER
+```
+
+# # # # # # # # # # # #
 # Error Lifecycle #
-# # # # # # # # # # # # #
+# # # # # # # # # # # #
 
 ```text
 STATUS_NEW
@@ -52,31 +78,11 @@ STATUS_DANGEROUS_REQUIRES_CONFIRMATION
 STATUS_UNKNOWN
 ```
 
-# # # # # # # # # # #
-# Case Lifecycle #
-# # # # # # # # # # #
+Statuswechsel aus Dr.Debug public benoetigen OWNER_ADMIN_MODE, wenn sie ins Repository geschrieben werden.
 
-```text
-OPEN
-  -> NEEDS_MORE_DATA
-  -> RESEARCHING
-  -> EXPERIMENTAL_FIX_OFFERED
-  -> USER_VALIDATED
-  -> CLOSED
-```
-
-Alternative Endzustaende:
-
-```text
-CLOSED_NO_REPRODUCTION
-CLOSED_OUT_OF_SCOPE
-CLOSED_UNSAFE
-ARCHIVED
-```
-
-# # # # # # # # # # # # # # #
+# # # # # # # # # # # # # #
 # MEMORY_PROPOSAL Lifecycle #
-# # # # # # # # # # # # # # #
+# # # # # # # # # # # # # #
 
 ```text
 PROPOSED
@@ -84,6 +90,7 @@ PROPOSED
   -> DEDUP_REQUIRED
   -> RESEARCH_REQUIRED
   -> READY_FOR_MEMORY
+  -> OWNER_REVIEW_REQUIRED
   -> MERGED_TO_MEMORY
 ```
 
@@ -109,39 +116,11 @@ HYPOTHESIS
   -> CONFIRMED_FIX
 ```
 
-Fehlschlaege:
+A `USER_VALIDATED_FIX` may be captured from user evidence, but fixed database intake remains owner-controlled when the write is initiated through Dr.Debug public.
 
-```text
-FAILED_FIX
-PARTIAL_FIX
-REGRESSION
-SIDE_EFFECTS_FOUND
-```
-
-# # # # # # # # # # # # #
-# Source Lifecycle #
-# # # # # # # # # # # # #
-
-```text
-SOURCE_DISCOVERED
-  -> SOURCE_CLASSIFIED
-  -> SOURCE_REVIEWED
-  -> SOURCE_LINKED
-  -> SOURCE_VERIFIED
-```
-
-Problemzustaende:
-
-```text
-SOURCE_STALE
-SOURCE_CONFLICTS
-SOURCE_REJECTED
-SOURCE_UNAVAILABLE
-```
-
-# # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # #
 # Directive Lifecycle #
-# # # # # # # # # # # # # # # #
+# # # # # # # # # # # # # # #
 
 ```text
 DRAFT
@@ -157,11 +136,12 @@ Sonderzustaende:
 CONFLICT_REVIEW_REQUIRED
 DELETED_WITH_REASON
 REJECTED_UNSAFE
+OWNER_REVIEW_REQUIRED
 ```
 
-# # # # # # # # # # # # # #
+# # # # # # # # # # # # #
 # Supersede Lifecycle #
-# # # # # # # # # # # # # #
+# # # # # # # # # # # # #
 
 Beim Ersetzen eines Eintrags muss dokumentiert werden:
 
@@ -173,6 +153,7 @@ Datum
 Agent
 Risiko
 Rollback oder Legacy-Hinweis
+Owner-Admin-Freigabe, falls aus Dr.Debug public geschrieben
 ```
 
 # # # # # # # #
@@ -180,6 +161,11 @@ Rollback oder Legacy-Hinweis
 # # # # # # # #
 
 Kein Statuswechsel ohne Grund.
+
 Kein bestaetigter Fix ohne Validierung.
+
 Kein Supersede ohne Ersatzpfad oder Begruendung.
+
 Kein Lifecycle-Endzustand ohne dokumentierten Abschluss.
+
+Keine aus Dr.Debug public ausgeloeste Repository-Schreibaktion ohne OWNER_ADMIN_MODE.
