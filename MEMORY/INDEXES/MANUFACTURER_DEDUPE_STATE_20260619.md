@@ -151,10 +151,38 @@ Batch 005 proposal-only names:
 - UltiMaker
 - Goodram
 
+Batch 006 proposal-only names:
+
+- Philips
+- TCL
+- Hisense
+- Sharp
+- Denon
+- Marantz
+- Yamaha
+- Shure
+- Audio-Technica
+- Focusrite
+- PreSonus
+- Steinberg
+- Native Instruments
+- Akai Professional
+- M-Audio
+- RODE
+- Blackmagic Design
+- DJI
+- GoPro
+- Insta360
+- Ring
+- Arlo
+- Belkin
+- Kensington
+- Polar
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 006 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 007 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
