@@ -95,10 +95,66 @@ Batch 003 proposal-only names:
 - Framework
 - StarTech.com
 
+Batch 004 proposal-only names:
+
+- Supermicro
+- Hewlett Packard Enterprise
+- IBM
+- Oracle
+- Fujitsu
+- NEC
+- Dynabook
+- PNY
+- ZOTAC
+- EVGA
+- be quiet!
+- Noctua
+- ARCTIC
+- SilverStone
+- Thermaltake
+- Fractal Design
+- NZXT
+- Lian Li
+- ViewSonic
+- BenQ
+- AOC
+- Wacom
+- Huion
+- XPPen
+- ELEGOO
+
+Batch 005 proposal-only names:
+
+- Transcend
+- ADATA
+- SK hynix
+- KIOXIA
+- Patriot Memory
+- TEAMGROUP
+- Sabrent
+- Lexar
+- Silicon Power
+- AVM
+- Teltonika Networks
+- Peplink
+- GL.iNet
+- Tenda
+- Grandstream Networks
+- Yealink
+- Snom
+- Axis Communications
+- Reolink
+- Bambu Lab
+- Creality
+- Anycubic
+- Formlabs
+- UltiMaker
+- Goodram
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 004 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 006 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
