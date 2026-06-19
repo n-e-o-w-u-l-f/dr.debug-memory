@@ -13,7 +13,7 @@ Raw crawl dumps: none
 
 ## Purpose
 
-Eighth continued bounded manufacturer-ingest batch. This batch focuses on industrial automation, power/UPS, enterprise edge/networking, barcode/mobile-computing and diagnostic-tool manufacturers after reading the active resume/dedupe state.
+Eighth continued bounded manufacturer-ingest batch. This batch focuses on barcode/POS, UPS/power, industrial automation, industrial computing, security-key and smart-home manufacturers after reading the active resume/dedupe state.
 
 ## Mandatory resume/dedupe inputs for this batch
 
@@ -50,40 +50,41 @@ binary_policy: "NO_DOWNLOADS_NO_REHOSTING"
 
 | Candidate ID | Canonical name candidate | Aliases | Official home | Support/source URL | Category candidates | Source status |
 |---|---|---|---|---|---|---|
-| `SCHNEIDER_ELECTRIC` | Schneider Electric | APC lineage, EcoStruxure | https://www.se.com/ | https://www.se.com/ww/en/download/ | power_ups, industrial_pc, networking, software_games, smart_home | OFFICIAL_SEARCH_CONFIRMED |
-| `EATON` | Eaton | Eaton Power Quality | https://www.eaton.com/ | https://www.eaton.com/us/en-us/support.html | power_ups, networking, industrial_pc, cooling_power | OFFICIAL_URL_SEED |
-| `VERTIV` | Vertiv | Liebert lineage | https://www.vertiv.com/ | https://www.vertiv.com/en-us/support/ | power_ups, cooling_power, server_oems, industrial_pc | OFFICIAL_URL_SEED |
-| `CYBERPOWER` | CyberPower | CyberPower Systems | https://www.cyberpowersystems.com/ | https://www.cyberpowersystems.com/support/ | power_ups, cooling_power, smart_home | OFFICIAL_URL_SEED |
-| `TRIPP_LITE` | Tripp Lite | Eaton Tripp Lite | https://tripplite.eaton.com/ | https://tripplite.eaton.com/support | power_ups, peripherals, networking, cooling_power | OFFICIAL_URL_SEED |
-| `SIEMENS` | Siemens | Siemens Industry, SiePortal | https://www.siemens.com/ | https://support.industry.siemens.com/ | industrial_pc, networking, software_games, automotive_diagnostic_devices | OFFICIAL_SEARCH_CONFIRMED |
-| `PHOENIX_CONTACT` | Phoenix Contact | Phoenix Contact GmbH | https://www.phoenixcontact.com/ | https://www.phoenixcontact.com/en-us/service-and-support | industrial_pc, networking, radio_iot, power_ups | OFFICIAL_URL_SEED |
-| `WAGO` | WAGO | WAGO Kontakttechnik | https://www.wago.com/ | https://www.wago.com/global/support | industrial_pc, networking, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `BECKHOFF` | Beckhoff Automation | Beckhoff | https://www.beckhoff.com/ | https://www.beckhoff.com/en-en/support/ | industrial_pc, networking, software_games | OFFICIAL_URL_SEED |
-| `MOXA` | Moxa | Moxa Technologies | https://www.moxa.com/ | https://www.moxa.com/en/support | networking, industrial_pc, radio_iot, software_games | OFFICIAL_URL_SEED |
+| `ZEBRA_TECHNOLOGIES` | Zebra Technologies | Zebra, Zebra Enterprise | https://www.zebra.com/ | https://www.zebra.com/us/en/support-downloads.html | printer_scanner, barcode_pos, industrial_pc, networking, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `HONEYWELL` | Honeywell | Honeywell Productivity, Honeywell Sensing | https://www.honeywell.com/ | https://sps-support.honeywell.com/ | barcode_pos, industrial_pc, sensors, networking, security | OFFICIAL_URL_SEED |
+| `DATALOGIC` | Datalogic | Datalogic S.p.A. | https://www.datalogic.com/ | https://www.datalogic.com/eng/support-services/automatic-data-capture/downloads-utilities-dw-82.html | barcode_pos, printer_scanner, industrial_pc, software_games | OFFICIAL_URL_SEED |
+| `SOCKET_MOBILE` | Socket Mobile | SocketScan | https://www.socketmobile.com/ | https://www.socketmobile.com/support | barcode_pos, peripherals, software_games | OFFICIAL_URL_SEED |
+| `STAR_MICRONICS` | Star Micronics | Star, Star Micronics America | https://www.starmicronics.com/ | https://starmicronics.com/support/ | barcode_pos, printer_scanner, peripherals | OFFICIAL_URL_SEED |
+| `SCHNEIDER_ELECTRIC` | Schneider Electric | APC, APC by Schneider Electric | https://www.se.com/ | https://www.se.com/ww/en/download/ | cooling_power, industrial_pc, networking, smart_home, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `EATON` | Eaton | Eaton Power Quality | https://www.eaton.com/ | https://www.eaton.com/us/en-us/support.html | cooling_power, networking, industrial_pc, software_games | OFFICIAL_URL_SEED |
+| `CYBERPOWER_SYSTEMS` | CyberPower Systems | CyberPower | https://www.cyberpowersystems.com/ | https://www.cyberpowersystems.com/support/ | cooling_power, networking, software_games | OFFICIAL_URL_SEED |
+| `VERTIV` | Vertiv | Liebert lineage | https://www.vertiv.com/ | https://www.vertiv.com/en-us/support/ | cooling_power, networking, industrial_pc, software_games | OFFICIAL_URL_SEED |
+| `SIEMENS` | Siemens | Siemens Industry, Siemens Digital Industries | https://www.siemens.com/ | https://support.industry.siemens.com/ | industrial_pc, networking, automation, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `ADVANTECH` | Advantech | Advantech Co., Ltd. | https://www.advantech.com/ | https://www.advantech.com/en/support | industrial_pc, embedded_sbc, networking, software_games | OFFICIAL_URL_SEED |
+| `AAEON` | AAEON | AAEON Technology | https://www.aaeon.com/ | https://www.aaeon.com/en/support | industrial_pc, embedded_sbc, networking | OFFICIAL_URL_SEED |
+| `BECKHOFF` | Beckhoff Automation | Beckhoff | https://www.beckhoff.com/ | https://www.beckhoff.com/en-en/support/ | industrial_pc, automation, networking, software_games | OFFICIAL_URL_SEED |
+| `PHOENIX_CONTACT` | Phoenix Contact | Phoenix Contact GmbH | https://www.phoenixcontact.com/ | https://www.phoenixcontact.com/en-us/service-and-support | industrial_pc, networking, automation, cooling_power | OFFICIAL_URL_SEED |
+| `WAGO` | WAGO | WAGO Kontakttechnik | https://www.wago.com/ | https://www.wago.com/global/support | industrial_pc, automation, networking, software_games | OFFICIAL_URL_SEED |
+| `MOXA` | Moxa | Moxa Inc. | https://www.moxa.com/ | https://www.moxa.com/en/support | networking, industrial_pc, automation, software_games | OFFICIAL_URL_SEED |
 | `HMS_NETWORKS` | HMS Networks | Anybus, Ewon, Ixxat | https://www.hms-networks.com/ | https://www.hms-networks.com/support | networking, industrial_pc, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `TELIT_CINTERION` | Telit Cinterion | Telit, Cinterion | https://www.telit.com/ | https://www.telit.com/support/ | radio_iot, networking, embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `CRADLEPOINT` | Cradlepoint | Ericsson Cradlepoint | https://cradlepoint.com/ | https://customer.cradlepoint.com/s/ | networking, router_wifi, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `ZEBRA_TECHNOLOGIES` | Zebra Technologies | Zebra | https://www.zebra.com/ | https://www.zebra.com/us/en/support-downloads.html | printer_scanner, peripherals, networking, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `HONEYWELL` | Honeywell | Honeywell Productivity Solutions and Services | https://sps.honeywell.com/ | https://sps-support.honeywell.com/ | printer_scanner, peripherals, industrial_pc, smart_home, software_games | OFFICIAL_URL_SEED |
-| `DATALOGIC` | Datalogic | Datalogic ADC | https://www.datalogic.com/ | https://www.datalogic.com/eng/support-89.html | printer_scanner, peripherals, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `BLUEBIRD` | Bluebird | Bluebird Inc. | https://www.bluebirdcorp.com/ | https://www.bluebirdcorp.com/support | smartphone_tablet, peripherals, industrial_pc | OFFICIAL_URL_SEED |
-| `UNITECH` | Unitech | Unitech Electronics | https://www.ute.com/ | https://www.ute.com/support | peripherals, printer_scanner, industrial_pc | OFFICIAL_URL_SEED |
-| `SOCKET_MOBILE` | Socket Mobile | SocketScan | https://www.socketmobile.com/ | https://www.socketmobile.com/support | peripherals, printer_scanner, smartphone_tablet | OFFICIAL_URL_SEED |
-| `PROGLOVE` | ProGlove | Workaround GmbH | https://www.proglove.com/ | https://www.proglove.com/support/ | peripherals, industrial_pc, wearable_scanner | OFFICIAL_URL_SEED |
-| `AUTEL` | Autel | Autel Automotive, Autel Robotics not alias | https://www.autel.com/ | https://www.autel.com/support/ | automotive_diagnostic_devices, software_games | OFFICIAL_URL_SEED |
-| `LAUNCH_TECH` | LAUNCH Tech | LAUNCH, Launch X431 | https://www.cnlaunch.com/ | https://en.cnlaunch.com/support/ | automotive_diagnostic_devices, software_games | OFFICIAL_URL_SEED |
-| `TOPDON` | TOPDON | TOPDON Technology | https://www.topdon.com/ | https://www.topdon.com/pages/support | automotive_diagnostic_devices, power_ups, software_games | OFFICIAL_URL_SEED |
-| `SCANTOOL_NET` | ScanTool.net | OBDLink | https://www.scantool.net/ | https://www.scantool.net/downloads/ | automotive_diagnostic_devices, software_games | OFFICIAL_URL_SEED |
-| `HIKVISION` | Hikvision | Hangzhou Hikvision Digital Technology | https://www.hikvision.com/ | https://www.hikvision.com/en/support/ | camera_imaging, networking, security, software_games | OFFICIAL_URL_SEED |
+| `YUBICO` | Yubico | YubiKey | https://www.yubico.com/ | https://www.yubico.com/support/download/ | security, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `NITROKEY` | Nitrokey | Nitrokey GmbH | https://www.nitrokey.com/ | https://support.nitrokey.com/ | security, peripherals, software_games | OFFICIAL_URL_SEED |
+| `SHELLY` | Shelly | Shelly Group, Allterco Robotics lineage | https://www.shelly.com/ | https://support.shelly.cloud/ | smart_home, radio_iot, networking, software_games | OFFICIAL_URL_SEED |
+| `ITEAD` | ITEAD | SONOFF, ITEAD Studio | https://itead.cc/ | https://sonoff.tech/support/ | smart_home, radio_iot, embedded_sbc, software_games | OFFICIAL_URL_SEED |
+| `AQARA` | Aqara | Lumi United, Aqara Home | https://www.aqara.com/ | https://www.aqara.com/en/support/ | smart_home, radio_iot, sensors, software_games | OFFICIAL_URL_SEED |
+| `LUTRON` | Lutron | Lutron Electronics | https://www.lutron.com/ | https://support.lutron.com/ | smart_home, lighting, radio_iot, software_games | OFFICIAL_URL_SEED |
+| `ECOBEE` | ecobee | Ecobee Inc. | https://www.ecobee.com/ | https://support.ecobee.com/ | smart_home, sensors, software_games | OFFICIAL_URL_SEED |
+| `NETATMO` | Netatmo | Netatmo by Legrand | https://www.netatmo.com/ | https://helpcenter.netatmo.com/ | smart_home, sensors, camera_imaging, software_games | OFFICIAL_URL_SEED |
 
 ## Per-candidate limitations
 
-- `SCHNEIDER_ELECTRIC`, `EATON` and `TRIPP_LITE`: brand and acquisition lineage can overlap. Keep APC, Eaton and Tripp Lite support scopes explicit until alias registry review.
-- `SIEMENS`, `PHOENIX_CONTACT`, `WAGO`, `BECKHOFF`, `MOXA`, `HMS_NETWORKS` and `TELIT_CINTERION`: industrial products often include firmware, fieldbus stacks and safety-relevant configurations. Store link-only metadata until product/model/version review is complete.
-- `CRADLEPOINT`: support/download access may be account-gated. Store only public metadata unless authorized evidence is available.
-- `ZEBRA_TECHNOLOGIES`, `HONEYWELL`, `DATALOGIC`, `BLUEBIRD`, `UNITECH`, `SOCKET_MOBILE` and `PROGLOVE`: scanner/mobile-computing facts require exact model, OS, firmware and regional support scope.
-- `AUTEL`, `LAUNCH_TECH`, `TOPDON` and `SCANTOOL_NET`: automotive diagnostic tooling can involve vehicle safety, licensing, subscriptions and firmware updates. Keep claims product/version-specific.
-- `HIKVISION`: camera/security products require privacy/security-sensitive handling, region scoping and no unsafe bypass guidance.
+- `ZEBRA_TECHNOLOGIES`, `DATALOGIC`, `SOCKET_MOBILE` and `STAR_MICRONICS`: barcode/POS devices often expose firmware, driver, SDK and configuration-tool downloads. Store link-only metadata until model/version scope is reviewed.
+- `HONEYWELL`: Honeywell has multiple product divisions. Keep safety, building, sensing and productivity/barcode scopes separate.
+- `SCHNEIDER_ELECTRIC`: APC is a Schneider Electric brand; do not create separate canonical APC facts unless an alias/brand record explicitly scopes them.
+- `EATON`, `CYBERPOWER_SYSTEMS`, `VERTIV` and Schneider/APC UPS products may include firmware update paths; do not store firmware facts without exact model and revision scope.
+- `SIEMENS`, `BECKHOFF`, `PHOENIX_CONTACT`, `WAGO`, `MOXA`, `ADVANTECH`, `AAEON` and `HMS_NETWORKS`: industrial automation devices may be production-critical. Any repair/update plan requires platform gate, backup, rollback and maintenance-window checks.
+- `YUBICO` and `NITROKEY`: security-key tools may affect credentials. Store no secrets and avoid credential-handling instructions in factual records.
+- `SHELLY`, `ITEAD`, `AQARA`, `LUTRON`, `ECOBEE` and `NETATMO`: smart-home devices can expose privacy/security-sensitive data. Store model metadata only, no account or user-home data.
 - Entries marked `OFFICIAL_URL_SEED` need fresh direct retrieval or product-line verification before promotion.
 
 ## Promotion gate
@@ -92,7 +93,7 @@ Promotion from this proposal to canonical records requires:
 
 1. Search exact name, normalized name, aliases, official domains, support URLs and canonical IDs.
 2. Add source records using the source registry fields.
-3. Verify product/model/device-line facts only from official product/model sources.
+3. Verify product/model-level facts only from product/model-level official sources.
 4. Preserve aliases as pointers to canonical records; do not create second truths.
 5. Keep driver, firmware, BIOS, installer and vendor-tool binaries out of the repository by default.
 6. Record review actor, validation status and rollback before canonical promotion.
