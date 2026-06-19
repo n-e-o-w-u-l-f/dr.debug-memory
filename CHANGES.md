@@ -1,9 +1,14 @@
-# DR. DEBUG CHANGES.md
-Version: 0.4.1-split-manufacturer-relationship-proposals
-Status: ACTIVE
-Scope: Repository change history for Dr. Debug /MEMORY/
+# DR. DEBUG CHANGES.md Version: 0.4.2-initial-seed-all-manufacturers Status: ACTIVE Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
+
+## proposal(manufacturers): add initial seed all-manufacturers batch 001
+
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-initial-seed-all-manufacturers-batch-001.md` as the first resumable broad manufacturer seed batch.
+- Stored 25 official-source manufacturer candidates across networking, NAS/storage, print/scan, mobile, SBC/embedded, IoT, AV and smart-home categories.
+- Kept all records as `RESEARCH_SEED` / `MEMORY_PROPOSAL`.
+- No canonical promotion, binary download, firmware download, manual download, installer download or rehosting was performed.
+- No project directive rewrite was needed for this batch.
 
 ## memory(manufacturers): split manufacturer relationship review into five proposals
 
@@ -49,7 +54,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## memory(manufacturers): promote Corsair and Crucial canonical manufacturer records
 
-- Promoted Corsair and Crucial as individually reviewed manufacturer records from the manufacturer proposal batch.
+- Promoted Corsair and Crucial canonical manufacturer records.
 - Added Corsair and Crucial manufacturer profiles and official source records.
 - No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
