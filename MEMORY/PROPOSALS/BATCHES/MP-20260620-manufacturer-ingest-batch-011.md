@@ -13,7 +13,7 @@ Raw crawl dumps: none
 
 ## Purpose
 
-Tenth continued bounded manufacturer-ingest batch. This batch focuses on audio, video capture, camera support, lighting, streaming, docks and creator-hardware vendors after reading the active resume/dedupe state.
+Tenth continued bounded manufacturer-ingest batch. This batch focuses on label/POS printer vendors, laboratory/test instrument vendors, thermal imaging and desktop fabrication/laser/3D-printer manufacturers after reading the active resume/dedupe state.
 
 ## Mandatory resume/dedupe inputs for this batch
 
@@ -50,38 +50,39 @@ binary_policy: "NO_DOWNLOADS_NO_REHOSTING"
 
 | Candidate ID | Canonical name candidate | Aliases | Official home | Support/source URL | Category candidates | Source status |
 |---|---|---|---|---|---|---|
-| `SONOS` | Sonos | Sonos Inc. | https://www.sonos.com/ | https://support.sonos.com/ | audio, smart_home, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `BANG_OLUFSEN` | Bang & Olufsen | B&O, Bang and Olufsen | https://www.bang-olufsen.com/ | https://support.bang-olufsen.com/ | audio, tv_av, smart_home | OFFICIAL_URL_SEED |
-| `FIIO` | FiiO | FiiO Electronics Technology | https://www.fiio.com/ | https://www.fiio.com/supports | audio, peripherals, software_games | OFFICIAL_URL_SEED |
-| `CREATIVE_TECHNOLOGY` | Creative Technology | Creative Labs, Sound Blaster | https://www.creative.com/ | https://support.creative.com/ | audio, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `AVERMEDIA` | AVerMedia | AVerMedia Technologies | https://www.avermedia.com/ | https://www.avermedia.com/support/download | video_capture, camera_imaging, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `MAGEWELL` | Magewell | Magewell Electronics | https://www.magewell.com/ | https://www.magewell.com/support-contacts | video_capture, networking, audio, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `EPIPHAN_VIDEO` | Epiphan Video | Epiphan Systems | https://www.epiphan.com/ | https://www.epiphan.com/support/ | video_capture, networking, software_games | OFFICIAL_URL_SEED |
-| `DATAVIDEO` | Datavideo | Datavideo Technologies | https://www.datavideo.com/ | https://www.datavideo.com/us/support | video_capture, camera_imaging, audio, software_games | OFFICIAL_URL_SEED |
-| `HOLLYLAND` | Hollyland | Hollyland Technology | https://www.hollyland.com/ | https://www.hollyland.com/support-home | video_capture, audio, camera_imaging, radio_iot | OFFICIAL_SEARCH_CONFIRMED |
-| `ZHIYUN` | Zhiyun | ZHIYUN-Tech | https://www.zhiyun-tech.com/ | https://www.zhiyun-tech.com/en/downloads | camera_imaging, stabilizer_gimbal, lighting, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `FEIYUTECH` | FeiyuTech | Guilin Feiyu Technology | https://www.feiyu-tech.com/ | https://www.feiyu-tech.com/support.html | camera_imaging, stabilizer_gimbal, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `GODOX` | Godox | Godox Photo Equipment | https://www.godox.com/ | https://www.godox.com/firmware-continuous-light/ | camera_imaging, lighting, audio, software_games | OFFICIAL_URL_SEED |
-| `APUTURE` | Aputure | Aputure Imaging Industries, amaran | https://www.aputure.com/ | https://www.aputure.com/support/ | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
-| `NANLITE` | Nanlite | Nanlite Global | https://www.nanlite.com/ | https://www.nanlite.com/support | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
-| `SMALLRIG` | SmallRig | SmallRig Technology | https://www.smallrig.com/ | https://www.smallrig.com/de/support | camera_imaging, peripherals, lighting | OFFICIAL_SEARCH_CONFIRMED |
-| `TILTA` | Tilta | Tilta Technology | https://www.tilta.com/ | https://www.tilta.com/support/ | camera_imaging, peripherals | OFFICIAL_URL_SEED |
-| `MANFROTTO` | Manfrotto | Manfrotto Imaging, Videndum lineage | https://www.manfrotto.com/ | https://www.manfrotto.com/global-de/customer-service/kontakt/ | camera_imaging, peripherals, tripod_support | OFFICIAL_SEARCH_CONFIRMED |
-| `JOBY` | JOBY | Joby, GorillaPod | https://joby.com/ | https://joby.com/global/customer-service/contact/ | camera_imaging, peripherals, tripod_support | OFFICIAL_URL_SEED |
-| `ELINCHROM` | Elinchrom | Elinchrom SA | https://www.elinchrom.com/ | https://support.elinchrom.com/ | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
-| `PROFOTO` | Profoto | Profoto AB | https://profoto.com/ | https://profoto.com/support | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
-| `NISSIN_DIGITAL` | Nissin Digital | Nissin Japan, Nissin Flash | https://www.nissindigital.com/ | https://www.nissindigital.com/firmware | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
-| `ATOMOS` | Atomos | Atomos Global | https://www.atomos.com/ | https://www.atomos.com/support/ | video_capture, monitor_display, camera_imaging, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `FEELWORLD` | FEELWORLD | Feelworld Technology | https://feelworld.ltd/ | https://feelworld.ltd/pages/download | monitor_display, video_capture, camera_imaging, software_games | OFFICIAL_URL_SEED |
-| `LOUPEDECK` | Loupedeck | Loupedeck Creative Tool | https://loupedeck.com/ | https://support.loupedeck.com/ | peripherals, video_capture, audio, software_games | OFFICIAL_URL_SEED |
-| `CALDIGIT` | CalDigit | CalDigit Inc. | https://www.caldigit.com/ | https://www.caldigit.com/support/ | peripherals, docking, storage, networking, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `TSC_AUTO_ID` | TSC Auto ID | TSC Printers, Printronix Auto ID lineage | https://www.tscprinters.com/ | https://emea.tscprinters.com/en | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `SATO` | SATO | SATO Global, SATO America, SATO Europe | https://www.sato-global.com/ | https://www.sato-global.com/support/drivers/ | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `CITIZEN_SYSTEMS` | Citizen Systems | Citizen, Citizen Printers | https://www.citizen-systems.com/ | https://www.citizen-systems.com/en/support | barcode_pos, printer_scanner, peripherals | OFFICIAL_URL_SEED |
+| `BIXOLON` | BIXOLON | Bixolon Co., Ltd. | https://bixolon.com/ | https://bixolon.com/download/ | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_URL_SEED |
+| `GODEX` | GoDEX | GoDEX International | https://www.godexintl.com/ | https://www.godexintl.com/support | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_URL_SEED |
+| `BRADY` | Brady | Brady Corporation | https://www.bradyid.com/ | https://www.bradyid.com/support | barcode_pos, printer_scanner, industrial_pc, software_games | OFFICIAL_URL_SEED |
+| `DYMO` | DYMO | Dymo, Newell Brands DYMO | https://www.dymo.com/ | https://www.dymo.com/support | printer_scanner, barcode_pos, peripherals, software_games | OFFICIAL_URL_SEED |
+| `METTLER_TOLEDO` | Mettler Toledo | METTLER TOLEDO | https://www.mt.com/ | https://www.mt.com/home/library/software-downloads.html | test_measurement, lab_equipment, industrial_pc, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `OHAUS` | OHAUS | OHAUS Corporation | https://www.ohaus.com/ | https://www.ohaus.com/en-us/support | test_measurement, lab_equipment, software_games | OFFICIAL_URL_SEED |
+| `SARTORIUS` | Sartorius | Sartorius AG | https://www.sartorius.com/ | https://www.sartorius.com/en/service-support | test_measurement, lab_equipment, software_games | OFFICIAL_URL_SEED |
+| `THERMO_FISHER` | Thermo Fisher Scientific | Thermo Scientific, Fisher Scientific | https://www.thermofisher.com/ | https://www.thermofisher.com/support | lab_equipment, test_measurement, medical_consumer_devices, software_games | OFFICIAL_URL_SEED |
+| `HACH` | Hach | Hach Company | https://www.hach.com/ | https://support.hach.com/ | test_measurement, lab_equipment, sensors, software_games | OFFICIAL_URL_SEED |
+| `HANNA_INSTRUMENTS` | Hanna Instruments | Hanna | https://www.hannainst.com/ | https://www.hannainst.com/hanna-support | test_measurement, lab_equipment, sensors | OFFICIAL_URL_SEED |
+| `TELEDYNE_FLIR` | Teledyne FLIR | FLIR, FLIR Systems | https://www.flir.com/ | https://www.flir.com/support/ | thermal_imaging, camera_imaging, test_measurement, software_games | OFFICIAL_URL_SEED |
+| `EXTECH` | Extech | Extech Instruments, Teledyne FLIR Extech | https://www.extech.com/ | https://www.extech.com/support | test_measurement, thermal_imaging, software_games | OFFICIAL_URL_SEED |
+| `SNAPMAKER` | Snapmaker | Snapmaker 2.0, Snapmaker Artisan, Snapmaker Luban | https://www.snapmaker.com/ | https://support.snapmaker.com/hc/en-us/categories/360005617793-Downloads | 3d_printer, laser_cnc, software_games, embedded_sbc | OFFICIAL_SEARCH_CONFIRMED |
+| `XTOOL` | xTool | xTool Creative Space, Makeblock xTool | https://www.xtool.com/ | https://support.xtool.com/download | laser_cnc, software_games, camera_imaging | OFFICIAL_SEARCH_CONFIRMED |
+| `GLOWFORGE` | Glowforge | Glowforge Inc. | https://glowforge.com/ | https://support.glowforge.com/ | laser_cnc, software_games, camera_imaging | OFFICIAL_URL_SEED |
+| `ORTUR` | Ortur | Ortur Laser | https://ortur.net/ | https://ortur.net/pages/download-center | laser_cnc, software_games | OFFICIAL_URL_SEED |
+| `SCULPFUN` | Sculpfun | SCULPFUN Laser | https://www.sculpfun.com/ | https://www.sculpfun.com/pages/download | laser_cnc, software_games | OFFICIAL_URL_SEED |
+| `ATOMSTACK` | Atomstack | Atomstack Laser | https://atomstack.com/ | https://atomstack.com/pages/download | laser_cnc, software_games | OFFICIAL_URL_SEED |
+| `FLASHFORGE` | Flashforge | Zhejiang Flashforge 3D Technology | https://www.flashforge.com/ | https://flashforge.com/pages/download-center | 3d_printer, software_games | OFFICIAL_URL_SEED |
+| `QIDI_TECH` | QIDI Tech | QIDI, Qidi Technology | https://qidi3d.com/ | https://qidi3d.com/pages/software-firmware | 3d_printer, software_games | OFFICIAL_URL_SEED |
+| `RAISE3D` | Raise3D | Raise3D Technologies | https://www.raise3d.com/ | https://www.raise3d.com/download/ | 3d_printer, software_games | OFFICIAL_URL_SEED |
+| `TIERTIME` | Tiertime | Beijing Tiertime Technology, UP printers | https://www.tiertime.com/ | https://www.tiertime.com/download | 3d_printer, software_games | OFFICIAL_URL_SEED |
 
 ## Per-candidate limitations
 
-- `CREATIVE_TECHNOLOGY`, `AVERMEDIA`, `MAGEWELL`, `ATOMOS`, `FEELWORLD`, `LOUPEDECK` and `CALDIGIT`: vendor pages may contain drivers, firmware, SDKs, control apps or updater tools. Store link-only metadata until product/model/version scope is reviewed.
-- `ZHIYUN`, `FEIYUTECH`, `GODOX`, `APUTURE`, `NANLITE`, `ELINCHROM`, `PROFOTO` and `NISSIN_DIGITAL`: lighting and gimbal pages may expose firmware/configuration utilities. Do not download or rehost binaries.
-- `MANFROTTO`, `JOBY`, `SMALLRIG` and `TILTA`: mostly mechanical/creator accessories; do not invent software/firmware relevance unless official product-level evidence exists.
-- `BANG_OLUFSEN`, `SONOS` and `FIIO`: audio ecosystems can involve region-specific apps, firmware and account-linked services. Store no user account or household data.
+- `TSC_AUTO_ID`, `SATO`, `CITIZEN_SYSTEMS`, `BIXOLON`, `GODEX`, `BRADY` and `DYMO`: printer and barcode devices often expose drivers, firmware, SDKs and label-design tools. Store link-only metadata until exact model/version scope is reviewed.
+- `METTLER_TOLEDO`, `OHAUS`, `SARTORIUS`, `THERMO_FISHER`, `HACH` and `HANNA_INSTRUMENTS`: lab and measurement devices may be regulated or calibration-sensitive. Do not store calibration, medical or compliance claims without exact model, document version and official source scope.
+- `TELEDYNE_FLIR` and `EXTECH`: thermal imaging and measurement tools may include firmware/software downloads. Store no binaries and do not generalize camera/tool facts across product families.
+- `SNAPMAKER`, `XTOOL`, `GLOWFORGE`, `ORTUR`, `SCULPFUN`, `ATOMSTACK`, `FLASHFORGE`, `QIDI_TECH`, `RAISE3D` and `TIERTIME`: 3D-printer/laser/CNC tooling often includes firmware, slicers, drivers and safety-relevant procedures. Keep link-only metadata and require exact model/version/safety review before canonical promotion.
+- `XTOOL`: distinguish xTool laser/craft equipment from Shenzhen Xtooltech automotive diagnostic products; do not merge based on name similarity.
 - Entries marked `OFFICIAL_URL_SEED` need fresh direct retrieval or product-line verification before promotion.
 
 ## Promotion gate
