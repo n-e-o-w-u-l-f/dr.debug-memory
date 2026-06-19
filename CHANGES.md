@@ -1,14 +1,17 @@
-# DR. DEBUG CHANGES.md Version: 0.3.4-evga-manufacturer-promotion Status: ACTIVE Scope: Repository change history for Dr. Debug /MEMORY/
+# DR. DEBUG CHANGES.md
+Version: 0.3.4-manufacturer-proposal-seed-batch-002
+Status: ACTIVE
+Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
 
-## manufacturers: promote EVGA official-source profile
+## proposal(manufacturers): add broad official-source seed batch 002
 
-- Promoted EVGA from the PC component manufacturer proposal batch as one reviewed manufacturer record.
-- Added `MEMORY/MANUFACTURERS/EVGA/PROFILE.md` with official homepage, support, download center and manuals references.
-- Added `MEMORY/SOURCES/EVGA/EVGA_OFFICIAL_SOURCES.md` with official source records.
-- Dedupe result: EVGA was not found in the visible canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl` content during review.
-- No driver, BIOS, firmware, installer, manual or binary was downloaded or rehosted.
+- Added proposal-only manufacturer seed batch `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-002.md`.
+- Added/updated manufacturer proposal navigation index `MEMORY/PROPOSALS/MANUFACTURERS/INDEX.md`.
+- Scope is official-source seed URLs only for 25 broad hardware manufacturers across OEM, mobile, TV/AV, printer/scanner, NAS, networking, embedded/SBC, peripherals, gaming, camera/audio, wearable/navigation and smart-home adjacent categories.
+- No canonical manufacturer records, source registry records, binaries, manuals, firmware files, external uploads or rehosting were created.
+- Rollback: remove the batch 002 proposal file and this changelog/index entry only.
 
 # 2026-06-18
 
