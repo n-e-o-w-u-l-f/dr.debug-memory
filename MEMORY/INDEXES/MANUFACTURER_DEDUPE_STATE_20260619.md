@@ -59,10 +59,12 @@ Batch 010 proposal-only names: Autel, Launch Tech, TOPDON, Innova Electronics, S
 
 Batch 011 proposal-only names: Fujifilm, Nikon, Leica Camera, OM Digital Solutions, Sigma, Tamron, Tokina, Samyang Optics, Viltrox, Zhiyun, FeiyuTech, Godox, Aputure, Nanlite, SmallRig, Tilta, Atomos, Elinchrom, Profoto, Manfrotto, Gitzo, JOBY, Peak Design, Venus Optics, Hasselblad.
 
+Batch 012 proposal-only names: Trotec Laser, Epilog Laser, Glowforge, xTool, Snapmaker, Shaper Tools, Carbide 3D, Bantam Tools, OpenBuilds, Inventables, Roland DG, Mimaki, Graphtec, Cricut, Silhouette America, Revopoint, Shining 3D, Creaform, FARO, Hexagon, Artec 3D, Flashforge, Raise3D, LulzBot, QIDI Tech.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 012 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 013 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
