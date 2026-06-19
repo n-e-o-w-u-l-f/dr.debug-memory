@@ -1,0 +1,39 @@
+id: puzzles_and_survival_chat_color_syntax_validation
+family: game_chat_formatting_validation
+category: puzzles_and_survival
+title: Puzzle and Survival Chat Color Syntax Validation Expansion
+status: PROPOSAL_READY_FOR_REVIEW
+confidence: medium
+validation_status: NOT_TESTED
+source_status: USER_PROVIDED_UNVERIFIED
+
+character_limit_validation:
+  confirmed_working:
+    - 230
+  pending_tests:
+    - 231
+    - 232
+    - 233
+    - 234
+    - 235
+    - 236
+    - 237
+    - 238
+    - 239
+    - 240
+    - 241
+    - 242
+    - 243
+    - 244
+    - 245
+    - 246
+    - 247
+    - 248
+    - 249
+    - 250
+    - 251
+    - 252
+    - 253
+    - 254
+    - 255
+    - 256
