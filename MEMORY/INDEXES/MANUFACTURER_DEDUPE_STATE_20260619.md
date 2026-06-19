@@ -51,10 +51,12 @@ Batch 006 proposal-only names: Philips, TCL, Hisense, Sharp, Denon, Marantz, Yam
 
 Batch 007 proposal-only names: Huawei, Xiaomi, OPPO, OnePlus, vivo, Motorola Mobility, HMD Global, Honor, Nothing, Google, Meta, HTC VIVE, Valve, Pimax, Varjo, SteelSeries, Turtle Beach, Thrustmaster, Fanatec, 8BitDo, Keychron, Glorious, CHERRY, Jabra, Rapoo.
 
+Batch 008 proposal-only names: Fluke, Tektronix, Keysight, RIGOL, SIGLENT, Saleae, Pico Technology, Seeed Studio, Adafruit, SparkFun, Waveshare, Espressif Systems, Nordic Semiconductor, STMicroelectronics, Texas Instruments, Microchip Technology, NXP Semiconductors, Silicon Labs, Renesas Electronics, Infineon Technologies, Quectel, u-blox, Semtech, Digi International, Bosch Sensortec.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 008 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 009 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
