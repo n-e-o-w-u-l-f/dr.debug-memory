@@ -1,9 +1,22 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.5-corsair-crucial-manufacturer-promotions
+Version: 0.3.6-gskill-seasonic-manufacturer-promotions
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
+
+## memory(manufacturers): promote G.SKILL and Seasonic canonical manufacturer records
+
+- Promoted G.SKILL as an individually reviewed PC component manufacturer from the manufacturer proposal batch after official-source retry.
+- Added `MEMORY/MANUFACTURERS/GSKILL/PROFILE.md` as the G.SKILL canonical manufacturer profile.
+- Added `MEMORY/SOURCES/GSKILL/GSKILL_OFFICIAL_SOURCES.md` with official G.SKILL source records for home and technical support pages.
+- G.SKILL limitation: the direct `https://www.gskill.com/downloads` fetch returned an internal error in this tool run, so download/binary-specific records require a later retry.
+- Promoted Seasonic as an individually reviewed PSU/accessory manufacturer from the manufacturer proposal batch.
+- Added `MEMORY/MANUFACTURERS/SEASONIC/PROFILE.md` as the Seasonic canonical manufacturer profile.
+- Added `MEMORY/SOURCES/SEASONIC/SEASONIC_OFFICIAL_SOURCES.md` with official Seasonic source records for home, support and documents pages.
+- Added explicit Seasonic PSU safety limitation: no open-PSU, mains/high-voltage or protection-bypass guidance from the manufacturer profile alone.
+- Dedupe note: G.SKILL and Seasonic were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible records such as ASUS, ASRock, GIGABYTE, MSI, BIOSTAR, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital, Seagate Technology, EVGA, Corsair and Crucial were not duplicated.
+- No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote Corsair and Crucial canonical manufacturer records
 
@@ -14,7 +27,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Added `MEMORY/MANUFACTURERS/CRUCIAL/PROFILE.md` as the Crucial canonical manufacturer profile.
 - Added `MEMORY/SOURCES/CRUCIAL/CRUCIAL_OFFICIAL_SOURCES.md` with official Crucial source records for home, support and SSD firmware/support pages.
 - Dedupe note: Corsair and Crucial were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible records such as ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital, Seagate Technology and EVGA were not duplicated.
-- G.SKILL remains review-only in this pass because direct support/download page fetches returned internal errors; the official G.SKILL home page still shows Support and Download navigation and should be retried later.
+- G.SKILL remained review-only in that pass because direct support/download page fetches returned internal errors.
 - No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote EVGA canonical manufacturer record
