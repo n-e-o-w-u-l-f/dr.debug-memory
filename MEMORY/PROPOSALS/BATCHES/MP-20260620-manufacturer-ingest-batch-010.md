@@ -13,7 +13,7 @@ Raw crawl dumps: none
 
 ## Purpose
 
-Ninth continued bounded manufacturer-ingest batch. This batch focuses on industrial embedded-computing vendors, maker-board vendors and single-board-computer ecosystems after reading the active resume/dedupe state.
+Ninth continued bounded manufacturer-ingest batch. This batch focuses on automotive diagnostics/key tools, portable power stations, robot vacuums, smart-home platforms and security-camera vendors after reading the active resume/dedupe state.
 
 ## Mandatory resume/dedupe inputs for this batch
 
@@ -50,39 +50,40 @@ binary_policy: "NO_DOWNLOADS_NO_REHOSTING"
 
 | Candidate ID | Canonical name candidate | Aliases | Official home | Support/source URL | Category candidates | Source status |
 |---|---|---|---|---|---|---|
-| `ADVANTECH` | Advantech | Advantech Co., Ltd. | https://www.advantech.com/ | https://www.advantech.com/en-us/support | industrial_pc, embedded_sbc, networking, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `AAEON` | AAEON | AAEON Technology | https://www.aaeon.com/ | https://www.aaeon.com/en/support | industrial_pc, embedded_sbc, networking, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `ADLINK` | ADLINK Technology | ADLINK | https://www.adlinktech.com/ | https://www.adlinktech.com/Products/downloadarea | industrial_pc, embedded_sbc, software_games, networking | OFFICIAL_SEARCH_CONFIRMED |
-| `KONTRON` | Kontron | Kontron Embedded Computers | https://www.kontron.com/ | https://www.kontron.com/en/support-and-services/kontron-north-america/support/downloads | industrial_pc, embedded_sbc, server_oems, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `ONLOGIC` | OnLogic | Logic Supply lineage | https://www.onlogic.com/ | https://www.onlogic.com/support/ | industrial_pc, embedded_sbc, networking | OFFICIAL_URL_SEED |
-| `VECOW` | Vecow | Vecow Co., Ltd. | https://www.vecow.com/ | https://www.vecow.com/dispPageBox/vecow/VecowDownloads.aspx | industrial_pc, embedded_sbc, networking | OFFICIAL_URL_SEED |
-| `DFI` | DFI | DFI Inc. | https://www.dfi.com/ | https://www.dfi.com/support/downloadcenter | industrial_pc, embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `AXIOMTEK` | Axiomtek | Axiomtek Co., Ltd. | https://www.axiomtek.com/ | https://www.axiomtek.com/Default.aspx?MenuId=Download | industrial_pc, embedded_sbc, networking | OFFICIAL_URL_SEED |
-| `PORTWELL` | Portwell | American Portwell Technology | https://www.portwell.com/ | https://www.portwell.com/support/download-center | industrial_pc, embedded_sbc, networking | OFFICIAL_URL_SEED |
-| `SECO` | SECO | SECO SpA | https://www.seco.com/ | https://www.seco.com/support/ | industrial_pc, embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `CONGATEC` | congatec | congatec AG | https://www.congatec.com/ | https://www.congatec.com/en/support/ | embedded_sbc, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `TORADEX` | Toradex | Toradex AG | https://www.toradex.com/ | https://developer.toradex.com/ | embedded_sbc, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `VARISCITE` | Variscite | Variscite Ltd. | https://www.variscite.com/ | https://www.variscite.com/support/ | embedded_sbc, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `OLIMEX` | Olimex | Olimex Ltd. | https://www.olimex.com/ | https://www.olimex.com/wiki/Main_Page | embedded_sbc, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `PINE64` | PINE64 | Pine Store, PinePhone, Pinebook | https://www.pine64.org/ | https://wiki.pine64.org/ | embedded_sbc, smartphone_tablet, software_games | OFFICIAL_URL_SEED |
-| `HARDKERNEL` | Hardkernel | ODROID | https://www.hardkernel.com/ | https://wiki.odroid.com/ | embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `KHADAS` | Khadas | Khadas Technology | https://www.khadas.com/ | https://docs.khadas.com/ | embedded_sbc, audio, software_games | OFFICIAL_URL_SEED |
-| `RADXA` | Radxa | Radxa Computer | https://radxa.com/ | https://docs.radxa.com/ | embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `FRIENDLYELEC` | FriendlyElec | FriendlyARM, NanoPi | https://www.friendlyelec.com/ | https://wiki.friendlyelec.com/ | embedded_sbc, networking, software_games | OFFICIAL_URL_SEED |
-| `LATTEPANDA` | LattePanda | DFRobot LattePanda | https://www.lattepanda.com/ | https://docs.lattepanda.com/ | embedded_sbc, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `DFROBOT` | DFRobot | DFRobot Gravity | https://www.dfrobot.com/ | https://wiki.dfrobot.com/ | embedded_sbc, sensors, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `M5STACK` | M5Stack | M5Stack Technology | https://m5stack.com/ | https://docs.m5stack.com/ | embedded_sbc, sensors, radio_iot, software_games | OFFICIAL_URL_SEED |
-| `PIMORONI` | Pimoroni | Pimoroni Ltd. | https://shop.pimoroni.com/ | https://learn.pimoroni.com/ | embedded_sbc, sensors, software_games | OFFICIAL_URL_SEED |
-| `BEAGLEBOARD` | BeagleBoard.org | BeagleBoard Foundation, BeagleBone | https://www.beagleboard.org/ | https://docs.beagleboard.org/ | embedded_sbc, software_games | OFFICIAL_URL_SEED |
-| `SIFIVE` | SiFive | SiFive Inc. | https://www.sifive.com/ | https://www.sifive.com/support | semiconductor, embedded_sbc, software_games | OFFICIAL_URL_SEED |
+| `AUTEL` | Autel | Autel Intelligent Technology, Autel Automotive | https://www.autel.com/ | https://support.autel.com/ | automotive_diagnostic_devices, battery_service, key_programming, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `LAUNCH_TECH` | Launch Tech | LAUNCH, Launch X431 | https://www.cnlaunch.com/ | https://en.cnlaunch.com/support/ | automotive_diagnostic_devices, battery_service, key_programming, software_games | OFFICIAL_URL_SEED |
+| `TOPDON` | TOPDON | TOPDON Incorporated | https://www.topdon.com/ | https://service.topdon.com/portal/en/home | automotive_diagnostic_devices, battery_service, thermal_imaging, software_games | OFFICIAL_SEARCH_CONFIRMED |
+| `INNOVA_ELECTRONICS` | Innova Electronics | Innova, RepairSolutions | https://www.innova.com/ | https://www.innova.com/pages/support | automotive_diagnostic_devices, software_games | OFFICIAL_URL_SEED |
+| `SCANTOOL_NET` | ScanTool.net | OBDLink, ScanTool | https://www.scantool.net/ | https://www.scantool.net/downloads/ | automotive_diagnostic_devices, networking, software_games | OFFICIAL_URL_SEED |
+| `XHORSE` | Xhorse | VVDI, Xhorse Electronics | https://xhorse.com/ | https://www.xhorse.com/ | automotive_diagnostic_devices, key_programming, security, software_games | OFFICIAL_SEARCH_CONFIRMED_LIMITED |
+| `ECOFLOW` | EcoFlow | EcoFlow DELTA, EcoFlow RIVER | https://www.ecoflow.com/ | https://www.ecoflow.com/us/support/download/index | cooling_power, smart_home, software_games, solar_energy | OFFICIAL_SEARCH_CONFIRMED |
+| `BLUETTI` | BLUETTI | PowerOak lineage | https://www.bluettipower.com/ | https://www.bluettipower.com/pages/user-guides | cooling_power, smart_home, solar_energy, software_games | OFFICIAL_URL_SEED |
+| `JACKERY` | Jackery | Jackery Inc. | https://www.jackery.com/ | https://www.jackery.com/pages/support | cooling_power, solar_energy, smart_home | OFFICIAL_URL_SEED |
+| `GOAL_ZERO` | Goal Zero | Goal Zero Yeti | https://www.goalzero.com/ | https://www.goalzero.com/pages/support | cooling_power, solar_energy, smart_home | OFFICIAL_URL_SEED |
+| `ROBOROCK` | Roborock | Beijing Roborock Technology | https://global.roborock.com/ | https://global.roborock.com/pages/support | smart_home, robotics, vacuum_cleaner, software_games | OFFICIAL_URL_SEED |
+| `ECOVACS` | ECOVACS | Ecovacs Robotics, DEEBOT | https://www.ecovacs.com/ | https://www.ecovacs.com/global/support | smart_home, robotics, vacuum_cleaner, software_games | OFFICIAL_URL_SEED |
+| `IROBOT` | iRobot | Roomba, Braava | https://www.irobot.com/ | https://homesupport.irobot.com/ | smart_home, robotics, vacuum_cleaner, software_games | OFFICIAL_URL_SEED |
+| `DREAME` | Dreame | Dreame Technology | https://www.dreametech.com/ | https://www.dreametech.com/pages/support | smart_home, robotics, vacuum_cleaner | OFFICIAL_URL_SEED |
+| `NARWAL` | Narwal | Narwal Robotics | https://www.narwal.com/ | https://www.narwal.com/pages/support | smart_home, robotics, vacuum_cleaner | OFFICIAL_URL_SEED |
+| `WYZE` | Wyze | Wyze Labs | https://www.wyze.com/ | https://support.wyze.com/ | smart_home, camera_imaging, security, software_games | OFFICIAL_URL_SEED |
+| `GOVEE` | Govee | Govee Home, Shenzhen Intellirocks | https://www.govee.com/ | https://support.govee.com/ | smart_home, lighting, sensors, software_games | OFFICIAL_URL_SEED |
+| `MEROSS` | Meross | Meross Technology | https://www.meross.com/ | https://www.meross.com/support | smart_home, networking, lighting, software_games | OFFICIAL_URL_SEED |
+| `SWITCHBOT` | SwitchBot | Wonderlabs, SwitchBot | https://www.switch-bot.com/ | https://support.switch-bot.com/ | smart_home, robotics, sensors, software_games | OFFICIAL_URL_SEED |
+| `TUYA` | Tuya | Tuya Smart, Smart Life | https://www.tuya.com/ | https://support.tuya.com/ | smart_home, radio_iot, software_games, networking | OFFICIAL_URL_SEED |
+| `YEELIGHT` | Yeelight | Qingdao Yeelink, Yeelight Pro | https://www.yeelight.com/ | https://www.yeelight.com/en_US/support | smart_home, lighting, software_games | OFFICIAL_URL_SEED |
+| `EZVIZ` | EZVIZ | EZVIZ Inc. | https://www.ezviz.com/ | https://support.ezviz.com/ | camera_imaging, smart_home, security, networking | OFFICIAL_URL_SEED |
+| `HIKVISION` | Hikvision | Hangzhou Hikvision Digital Technology | https://www.hikvision.com/ | https://www.hikvision.com/en/support/ | camera_imaging, security, networking, software_games | OFFICIAL_URL_SEED |
+| `DAHUA` | Dahua Technology | Dahua | https://www.dahuasecurity.com/ | https://www.dahuasecurity.com/support | camera_imaging, security, networking, software_games | OFFICIAL_URL_SEED |
+| `UNI_T` | UNI-T | Uni-Trend Technology | https://www.uni-trend.com/ | https://meters.uni-trend.com/download | test_measurement, software_games | OFFICIAL_URL_SEED |
 
 ## Per-candidate limitations
 
-- `ADVANTECH`, `AAEON`, `ADLINK`, `KONTRON`, `VECOW`, `DFI`, `AXIOMTEK`, `PORTWELL`, `SECO`, `CONGATEC`, `TORADEX` and `VARISCITE`: industrial/embedded vendors often provide BIOS, BSP, firmware, drivers, SDKs and board-support packages. Store link-only metadata until exact product/model/version review is complete.
-- `ONLOGIC`: product support may be system-configuration-specific. Do not infer generic driver/BIOS compatibility across configurations.
-- `OLIMEX`, `PINE64`, `HARDKERNEL`, `KHADAS`, `RADXA`, `FRIENDLYELEC`, `LATTEPANDA`, `DFROBOT`, `M5STACK`, `PIMORONI` and `BEAGLEBOARD`: community docs, wikis and forums may mix official and community content. Promote only official, scoped evidence.
-- `LATTEPANDA`: DFRobot lineage/relationship needs alias review before merging records.
-- `SIFIVE`: hardware, IP cores, SDKs and RISC-V software stacks require product/IP/version scoping before canonical promotion.
+- `AUTEL`, `LAUNCH_TECH`, `TOPDON`, `INNOVA_ELECTRONICS`, `SCANTOOL_NET` and `XHORSE`: automotive diagnostics/key-programming tools may affect vehicles, immobilizers, safety systems and regulated features. Store only source metadata until exact model, software version, vehicle scope and legal/safety context are reviewed.
+- `ECOFLOW`, `BLUETTI`, `JACKERY` and `GOAL_ZERO`: power stations and solar/inverter devices may have battery, mains-voltage and firmware-update risks. Do not store firmware facts without exact model and revision scope.
+- `ROBOROCK`, `ECOVACS`, `IROBOT`, `DREAME` and `NARWAL`: robot vacuums may expose maps, camera data or account data. Store no user-home/account information.
+- `WYZE`, `EZVIZ`, `HIKVISION` and `DAHUA`: camera/security devices require privacy/security-sensitive handling. Store model metadata only and avoid account, credential, surveillance or bypass details.
+- `TUYA`, `SHELLY`, `ITEAD`, `AQARA`, `MEROSS`, `SWITCHBOT`, `YEELIGHT` and related smart-home platforms may overlap by OEM ecosystem. Use source-backed aliases and do not create second truths.
+- `UNI_T`: test-equipment downloads and firmware/software pages require product/model/version validation before canonical promotion.
 - Entries marked `OFFICIAL_URL_SEED` need fresh direct retrieval or product-line verification before promotion.
 
 ## Promotion gate
@@ -91,7 +92,7 @@ Promotion from this proposal to canonical records requires:
 
 1. Search exact name, normalized name, aliases, official domains, support URLs and canonical IDs.
 2. Add source records using the source registry fields.
-3. Verify product/model/board-level facts only from official product/model/board sources.
+3. Verify product/model-level facts only from product/model-level official sources.
 4. Preserve aliases as pointers to canonical records; do not create second truths.
 5. Keep driver, firmware, BIOS, installer and vendor-tool binaries out of the repository by default.
 6. Record review actor, validation status and rollback before canonical promotion.
