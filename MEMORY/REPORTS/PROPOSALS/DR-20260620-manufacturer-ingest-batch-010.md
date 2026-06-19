@@ -44,5 +44,5 @@ Remove the four batch-010 files and revert `/MEMORY/INDEXES/MANUFACTURER_DEDUPE_
 
 ## Open risks
 
-- Industrial embedded vendors often publish BIOS, BSP, firmware, drivers and SDKs. Keep link-only metadata until product/model/version review.
-- Maker-board wikis can mix official and community content; promotion requires official, scoped evidence.
+- Automotive diagnostics, security-camera, smart-home, battery and power products require exact model/version scoping before canonical promotion.
+- Firmware, driver, SDK and configuration-tool pages must remain link-only metadata until exact model/version evidence is reviewed.
