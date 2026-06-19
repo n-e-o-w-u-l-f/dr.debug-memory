@@ -20,7 +20,7 @@ Before adding manufacturer batch 012 or promoting any manufacturer, read:
 
 ## Batch 011 proposal-only names
 
-Sonos, Bang & Olufsen, FiiO, Creative Technology, AVerMedia, Magewell, Epiphan Video, Datavideo, Hollyland, Zhiyun, FeiyuTech, Godox, Aputure, Nanlite, SmallRig, Tilta, Manfrotto, JOBY, Elinchrom, Profoto, Nissin Digital, Atomos, FEELWORLD, Loupedeck, CalDigit.
+TSC Auto ID, SATO, Citizen Systems, BIXOLON, GoDEX, Brady, DYMO, Mettler Toledo, OHAUS, Sartorius, Thermo Fisher Scientific, Hach, Hanna Instruments, Teledyne FLIR, Extech, Snapmaker, xTool, Glowforge, Ortur, Sculpfun, Atomstack, Flashforge, QIDI Tech, Raise3D, Tiertime.
 
 ## Rules
 
