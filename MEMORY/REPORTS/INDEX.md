@@ -1,9 +1,4 @@
-# MEMORY/REPORTS/INDEX.md
-
-Status: ACTIVE_NAVIGATION_INDEX
-Updated: 2026-06-19
-Scope: Audit reports, proposal reports, validation summaries and applied-batch summaries.
-Artifact class: AUDIT_NAVIGATION
+# MEMORY/REPORTS/INDEX.md Status: ACTIVE_NAVIGATION_INDEX Updated: 2026-06-20 Scope: Audit reports, proposal reports, validation summaries and applied-batch summaries. Artifact class: AUDIT_NAVIGATION
 
 ## Read-before-work rule
 
@@ -11,6 +6,7 @@ Before resuming repository work, read `/AGENTS.md`, `/MEMORY/INDEX.md`, this fil
 
 ## Current reports
 
+- `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-001.md`
 - `/MEMORY/REPORTS/PROPOSALS/DR-20260619-manufacturer-ingest-batch-002.md`
 - `/MEMORY/REPORTS/PROPOSALS/DR-20260619-manufacturer-ingest-batch-003.md`
 
