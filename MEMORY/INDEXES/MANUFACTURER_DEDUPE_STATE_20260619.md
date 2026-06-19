@@ -53,9 +53,7 @@ Batch 007 proposal-only names: Huawei, Xiaomi, OPPO, OnePlus, vivo, Motorola Mob
 
 Batch 008 proposal-only names: Fluke, Tektronix, Keysight, RIGOL, SIGLENT, Saleae, Pico Technology, Seeed Studio, Adafruit, SparkFun, Waveshare, Espressif Systems, Nordic Semiconductor, STMicroelectronics, Texas Instruments, Microchip Technology, NXP Semiconductors, Silicon Labs, Renesas Electronics, Infineon Technologies, Quectel, u-blox, Semtech, Digi International, Bosch Sensortec.
 
-Batch 009 proposal-only names: Schneider Electric, Eaton, Vertiv, CyberPower, Tripp Lite, Siemens, Phoenix Contact, WAGO, Beckhoff Automation, Moxa, HMS Networks, Telit Cinterion, Cradlepoint, Zebra Technologies, Honeywell, Datalogic, Bluebird, Unitech, Socket Mobile, ProGlove, Autel, LAUNCH Tech, TOPDON, ScanTool.net, Hikvision.
-
-Batch 010 proposal-only names: Advantech, AAEON, ADLINK Technology, Kontron, OnLogic, Vecow, DFI, Axiomtek, Portwell, SECO, congatec, Toradex, Variscite, Olimex, PINE64, Hardkernel, Khadas, Radxa, FriendlyElec, LattePanda, DFRobot, M5Stack, Pimoroni, BeagleBoard.org, SiFive.
+Batch 009 proposal-only names: Zebra Technologies, Honeywell, Datalogic, Socket Mobile, Star Micronics, Schneider Electric, Eaton, CyberPower Systems, Vertiv, Siemens, Advantech, AAEON, Beckhoff Automation, Phoenix Contact, WAGO, Moxa, HMS Networks, Yubico, Nitrokey, Shelly, ITEAD, Aqara, Lutron, ecobee, Netatmo.
 
 ## Known conflict/cleanup note
 
@@ -63,4 +61,4 @@ Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` suc
 
 ## Next ingest rule
 
-Batch 011 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 010 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
