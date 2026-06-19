@@ -1,8 +1,14 @@
-# DR. DEBUG CHANGES.md
+# DR. DEBUG CHANGES.md Version: 0.3.4-evga-manufacturer-promotion Status: ACTIVE Scope: Repository change history for Dr. Debug /MEMORY/
 
-Version: 0.3.3-owner-admin-gate-proposal
-Status: ACTIVE
-Scope: Repository change history for Dr. Debug /MEMORY/
+# 2026-06-19
+
+## manufacturers: promote EVGA official-source profile
+
+- Promoted EVGA from the PC component manufacturer proposal batch as one reviewed manufacturer record.
+- Added `MEMORY/MANUFACTURERS/EVGA/PROFILE.md` with official homepage, support, download center and manuals references.
+- Added `MEMORY/SOURCES/EVGA/EVGA_OFFICIAL_SOURCES.md` with official source records.
+- Dedupe result: EVGA was not found in the visible canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl` content during review.
+- No driver, BIOS, firmware, installer, manual or binary was downloaded or rehosted.
 
 # 2026-06-18
 
