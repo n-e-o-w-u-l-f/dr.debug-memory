@@ -1,9 +1,21 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.4-evga-manufacturer-promotion
+Version: 0.3.5-corsair-crucial-manufacturer-promotions
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
+
+## memory(manufacturers): promote Corsair and Crucial canonical manufacturer records
+
+- Promoted Corsair as an individually reviewed PC component manufacturer from the manufacturer proposal batch.
+- Added `MEMORY/MANUFACTURERS/CORSAIR/PROFILE.md` as the Corsair canonical manufacturer profile.
+- Added `MEMORY/SOURCES/CORSAIR/CORSAIR_OFFICIAL_SOURCES.md` with official Corsair source records for home, support and downloads pages.
+- Promoted Crucial as an individually reviewed memory/storage manufacturer from the manufacturer proposal batch.
+- Added `MEMORY/MANUFACTURERS/CRUCIAL/PROFILE.md` as the Crucial canonical manufacturer profile.
+- Added `MEMORY/SOURCES/CRUCIAL/CRUCIAL_OFFICIAL_SOURCES.md` with official Crucial source records for home, support and SSD firmware/support pages.
+- Dedupe note: Corsair and Crucial were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible records such as ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital, Seagate Technology and EVGA were not duplicated.
+- G.SKILL remains review-only in this pass because direct support/download page fetches returned internal errors; the official G.SKILL home page still shows Support and Download navigation and should be retried later.
+- No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote EVGA canonical manufacturer record
 
