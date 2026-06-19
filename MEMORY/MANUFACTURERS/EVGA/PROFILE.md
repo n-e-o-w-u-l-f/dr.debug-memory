@@ -24,7 +24,7 @@ sources:
 
 ## Summary
 
-EVGA is a PC component manufacturer relevant to Dr.Debug for graphics cards, motherboards, BIOS/download references, power supplies, cooling, cases, capture/audio devices, keyboards, mice, software utilities, product manuals and support workflows.
+EVGA is a PC component manufacturer relevant to Dr.Debug for graphics cards, motherboards, power supplies, software utilities, drivers, BIOS support references, product manuals and support workflows.
 
 ## Official URLs
 
@@ -46,19 +46,19 @@ EVGA is a PC component manufacturer relevant to Dr.Debug for graphics cards, mot
 - gaming
 - peripheral
 - power_supply
-- cooling
-- case
-- audio
-- capture_device
 
 ## Evidence
 
-Official EVGA pages identify EVGA product/service navigation, support workflows, a Drivers and BIOS download center, and product manual categories for graphics cards, motherboards, power supplies and other product families.
+Official EVGA pages identify EVGA as the publisher and provide product and service navigation, support information, a Drivers and BIOS download center, and product manuals. Driver, BIOS, firmware, installer, software and manual files are not downloaded or rehosted by this record.
 
 ## Limitations
 
-Product-specific claims require exact EVGA part number or model family. Drivers, BIOS, firmware, installers and utilities are high-risk binary references and require separate source, version, checksum and model-scope review before any binary-specific record. This profile does not download or rehost binaries or manuals.
+Product-specific claims require an exact EVGA part number, product family, operating system scope and version context. Drivers, BIOS, firmware, installers and utilities are high-risk binary references and require separate source, version, checksum and model-scope review before any binary-specific record. Serial numbers, account data, emails from users, invoices and warranty-identifying data must not be stored unless essential and redacted.
 
 ## Dedupe notes
 
-Visible repository manufacturer records already include ASUS, ASRock, GIGABYTE, MSI, BIOSTAR, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital and Seagate Technology. EVGA was not found in the visible canonical manufacturers JSONL content during this review.
+Repository-visible manufacturer records already contain ASUS, ASRock, GIGABYTE, MSI, BIOSTAR, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital and Seagate Technology. EVGA was not found in the visible canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl` content during this review.
+
+## Rollback
+
+Remove this file and the paired EVGA source record, then revert the changelog entry. No binaries or rehosted artifacts are associated with this profile.
