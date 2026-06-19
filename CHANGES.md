@@ -1,25 +1,31 @@
 # DR. DEBUG CHANGES.md
-Version: 0.4.0-source-retry-relationship-review
+Version: 0.4.1-split-manufacturer-relationship-proposals
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
 
+## memory(manufacturers): split manufacturer relationship review into five proposals
+
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/RELATIONSHIPS/MP-20260619-relationship-kingston-hyperx-hp.md` for Kingston / HyperX / HP split relationship handling.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/RELATIONSHIPS/MP-20260619-relationship-crucial-micron.md` for Crucial / Micron parent-brand and transition handling.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/RELATIONSHIPS/MP-20260619-relationship-wd-sandisk-professional-gdrive.md` for Western Digital / SanDisk Professional / G-DRIVE brand-transition handling.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/RELATIONSHIPS/MP-20260619-relationship-samsung-consumer-storage.md` for Samsung Semiconductor / Samsung SSD / Samsung Memory alias-scope handling.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/RELATIONSHIPS/MP-20260619-relationship-skhynix-solidigm.md` for SK hynix / Solidigm subsidiary relationship handling.
+- No manufacturer records were promoted by this split relationship pass.
+- No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
+
 ## memory(manufacturers): record SK hynix and be quiet! source retry plus relationship review
 
 - Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-source-retry-skhynix-bequiet.md` with official-source retry results for SK hynix and be quiet!.
-- SK hynix source retry passed using official SK hynix SSD and download resources, but remains no-promotion pending SK hynix/Solidigm relationship handling and binary-scope review.
-- be quiet! source retry passed using official be quiet! home, product-material and software resources, but remains no-promotion pending alias and PSU safety review.
 - Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-manufacturer-relationship-review.md` for Kingston/HyperX/HP, Crucial/Micron, WD/SanDisk Professional/G-DRIVE, Samsung Semiconductor/Samsung SSD/Samsung Memory and SK hynix/Solidigm.
-- No manufacturer records were promoted by this review pass.
+- No manufacturer records were promoted by that review pass.
 - No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): dedupe remaining PC component seed candidates
 
-- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-storage-oem-peripheral-dedupe.md` to classify remaining PC component seed candidates into storage, OEM/platform and peripheral/controller dedupe buckets.
-- Added `MEMORY/REPORTS/DEDUP/MANUFACTURERS/DR-20260619-pc-component-batch-001-dedupe.md` with duplicate, alias-only, source-refresh, relationship-review, low-confidence, retry-required and no-action classifications.
-- No manufacturer records were promoted by this dedupe pass.
-- Left SK hynix and be quiet! as retry-required candidates before any future canonical promotion.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-storage-oem-peripheral-dedupe.md` and `MEMORY/REPORTS/DEDUP/MANUFACTURERS/DR-20260619-pc-component-batch-001-dedupe.md`.
+- No manufacturer records were promoted by that dedupe pass.
 - No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote Phanteks, Thermaltake and LIAN LI canonical records
