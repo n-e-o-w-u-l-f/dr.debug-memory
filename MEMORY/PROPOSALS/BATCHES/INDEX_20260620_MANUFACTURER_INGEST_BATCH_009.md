@@ -20,7 +20,7 @@ Before adding manufacturer batch 010 or promoting any manufacturer, read:
 
 ## Batch 009 proposal-only names
 
-Schneider Electric, Eaton, Vertiv, CyberPower, Tripp Lite, Siemens, Phoenix Contact, WAGO, Beckhoff Automation, Moxa, HMS Networks, Telit Cinterion, Cradlepoint, Zebra Technologies, Honeywell, Datalogic, Bluebird, Unitech, Socket Mobile, ProGlove, Autel, LAUNCH Tech, TOPDON, ScanTool.net, Hikvision.
+Zebra Technologies, Honeywell, Datalogic, Socket Mobile, Star Micronics, Schneider Electric, Eaton, CyberPower Systems, Vertiv, Siemens, Advantech, AAEON, Beckhoff Automation, Phoenix Contact, WAGO, Moxa, HMS Networks, Yubico, Nitrokey, Shelly, ITEAD, Aqara, Lutron, ecobee, Netatmo.
 
 ## Rules
 
