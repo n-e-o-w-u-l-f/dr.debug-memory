@@ -1,19 +1,33 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.6-known-artifacts-loop-002
+Version: 0.3.7-known-artifacts-index-reconcile
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-20
 
+## docs(memory): reconcile known-artifacts reports in index and changelog
+
+* Updated `/MEMORY/REPORTS/INDEX.md` to list known-artifacts reports 001, 002 and 003 under audit navigation.
+* Reconciled `/CHANGES.md` with applied known-artifacts report files already present on `main`.
+* No canonical records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
+* Rollback: restore the previous `/MEMORY/REPORTS/INDEX.md` and `/CHANGES.md` contents.
+
+## docs(memory): add IANA source candidate batch report 003
+
+* Added `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-003-iana-source-candidates.md` with 25 bounded IANA/IETF source-record candidates.
+* Kept all candidates report-scoped; no canonical source-registry records were created or promoted.
+* Preserved the runtime-overclaim guard that IANA service/port assignments are registry evidence only and not proof of observed service traffic.
+* No downloads, binaries, firmware, drivers, installers, manuals, archive uploads, source-registry promotions or canonical records were added.
+* Rollback: remove the report file if rolling back report 003.
+
 ## docs(memory): continue known-artifacts loop with source-registry normalization report
 
 * Added `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-002.md` as a conservative continuation report for source-registry normalization planning.
-* Reconciled `/MEMORY/REPORTS/INDEX.md` so known-artifacts reports 001 and 002 are listed under audit navigation.
-* Recorded that report 001 exists and needed index/changelog reconciliation.
+* Recorded source-registry extraction requirements and artifact group priorities for later review.
 * No canonical records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
-* Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
-* Rollback: remove the created report 002 file, remove its index entry, and revert this changelog entry. If also rolling back report 001 navigation, remove the report 001 index entry.
+* Rollback: remove the created report 002 file and revert this changelog entry.
 
 ## docs(memory): add known-artifacts loop audit report 001
 
