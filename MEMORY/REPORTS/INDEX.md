@@ -15,6 +15,7 @@ Before resuming repository work, read `/AGENTS.md`, `/MEMORY/INDEX.md`, this fil
 
 - `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-001.md`
 - `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-002.md`
+- `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-003-iana-source-candidates.md`
 
 ### Proposals
 
