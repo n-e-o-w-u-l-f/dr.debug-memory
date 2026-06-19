@@ -67,10 +67,12 @@ Batch 014 proposal-only names: ASUSTOR, TerraMaster, Promise Technology, HighPoi
 
 Batch 015 proposal-only names: Magewell, AVerMedia, Epiphan Video, BirdDog, Kiloview, Datavideo, Matrox Video, Extron, Kramer, Crestron, Q-SYS, Biamp, ClearOne, Barco, Christie Digital, Optoma, EIZO, Digital Projection, Vivitek, Huddly, Owl Labs, Lumens Digital Optics, Marshall Electronics, Bolin Technology, Vaddio.
 
+Batch 016 proposal-only names: TASCAM, Zoom Corporation, MOTU, RME, Allen & Heath, Behringer, Mackie, Universal Audio, Antelope Audio, Apogee Electronics, Audient, Solid State Logic, Avid, Korg, BOSS, Casio, Arturia, Novation, Nektar Technology, iConnectivity, IK Multimedia, Elektron, Teenage Engineering, Modal Electronics, Waldorf Music.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 016 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 017 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
