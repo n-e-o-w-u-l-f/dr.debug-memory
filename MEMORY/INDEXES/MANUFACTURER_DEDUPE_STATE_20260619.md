@@ -57,10 +57,12 @@ Batch 009 proposal-only names: Zebra Technologies, Honeywell, Datalogic, Socket 
 
 Batch 010 proposal-only names: Autel, Launch Tech, TOPDON, Innova Electronics, ScanTool.net, Xhorse, EcoFlow, BLUETTI, Jackery, Goal Zero, Roborock, ECOVACS, iRobot, Dreame, Narwal, Wyze, Govee, Meross, SwitchBot, Tuya, Yeelight, EZVIZ, Hikvision, Dahua Technology, UNI-T.
 
+Batch 011 proposal-only names: Sonos, Bang & Olufsen, FiiO, Creative Technology, AVerMedia, Magewell, Epiphan Video, Datavideo, Hollyland, Zhiyun, FeiyuTech, Godox, Aputure, Nanlite, SmallRig, Tilta, Manfrotto, JOBY, Elinchrom, Profoto, Nissin Digital, Atomos, FEELWORLD, Loupedeck, CalDigit.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 011 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 012 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
