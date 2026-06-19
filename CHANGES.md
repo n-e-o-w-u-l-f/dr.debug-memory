@@ -1,9 +1,17 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.4-manufacturer-proposal-seed-batch-002
+Version: 0.3.5-manufacturer-proposal-seed-batch-003
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
+
+## proposal(manufacturers): add broad official-source seed batch 003
+
+- Added proposal-only manufacturer seed batch `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-003.md`.
+- Updated manufacturer proposal navigation index `MEMORY/PROPOSALS/MANUFACTURERS/INDEX.md`.
+- Scope is official-source seed URLs only for 100 broad hardware manufacturers across requested supported hardware categories.
+- No canonical manufacturer records, source registry records, binaries, manuals, firmware files, external uploads or rehosting were created.
+- Rollback: remove the batch 003 proposal file and this changelog/index entry only.
 
 ## proposal(manufacturers): add broad official-source seed batch 002
 
@@ -25,19 +33,3 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Preserved that repository maintenance, merge, commit, push, status maintenance and fixed database intake belong exclusively to the owner in the chat.
 - Replaced unconditional public-write bans in Public proposal policy files with owner-gated write rules.
 - Added admin help command requirements.
-
-## Affected repository override files in this ZIP
-
-- `/AGENTS.md`
-- `/AGENTS/ACTIVE/DR_DEBUG.md`
-- `/AGENTS/ACTIVE/DR_DEBUG_MEMORY.md`
-- `/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_permission_policy_BATCH6_PROPOSAL_ONLY.md`
-- `/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_policy_BUILD4_SAFE_PROPOSAL_ONLY.md`
-- `/MEMORY/AGENTS/GLOBAL_DIRECTIVE.md`
-- `/MEMORY/AGENTS/README.md`
-- `/MEMORY/QUALITY_RULES.md`
-- `/MEMORY/SCHEMA.md`
-- `/MEMORY/LIFECYCLE.md`
-- `/MEMORY/STATUS_REGISTRY.md`
-- `/UPDATE_PROCESS.md`
-- `/CHANGES.md`
