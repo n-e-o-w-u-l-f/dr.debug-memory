@@ -57,7 +57,7 @@ Batch 009 proposal-only names: Zebra Technologies, Honeywell, Datalogic, Socket 
 
 Batch 010 proposal-only names: Autel, Launch Tech, TOPDON, Innova Electronics, ScanTool.net, Xhorse, EcoFlow, BLUETTI, Jackery, Goal Zero, Roborock, ECOVACS, iRobot, Dreame, Narwal, Wyze, Govee, Meross, SwitchBot, Tuya, Yeelight, EZVIZ, Hikvision, Dahua Technology, UNI-T.
 
-Batch 011 proposal-only names: Sonos, Bang & Olufsen, FiiO, Creative Technology, AVerMedia, Magewell, Epiphan Video, Datavideo, Hollyland, Zhiyun, FeiyuTech, Godox, Aputure, Nanlite, SmallRig, Tilta, Manfrotto, JOBY, Elinchrom, Profoto, Nissin Digital, Atomos, FEELWORLD, Loupedeck, CalDigit.
+Batch 011 proposal-only names: TSC Auto ID, SATO, Citizen Systems, BIXOLON, GoDEX, Brady, DYMO, Mettler Toledo, OHAUS, Sartorius, Thermo Fisher Scientific, Hach, Hanna Instruments, Teledyne FLIR, Extech, Snapmaker, xTool, Glowforge, Ortur, Sculpfun, Atomstack, Flashforge, QIDI Tech, Raise3D, Tiertime.
 
 ## Known conflict/cleanup note
 
