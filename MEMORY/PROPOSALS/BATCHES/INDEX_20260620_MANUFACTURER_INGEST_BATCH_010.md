@@ -20,7 +20,7 @@ Before adding manufacturer batch 011 or promoting any manufacturer, read:
 
 ## Batch 010 proposal-only names
 
-Advantech, AAEON, ADLINK Technology, Kontron, OnLogic, Vecow, DFI, Axiomtek, Portwell, SECO, congatec, Toradex, Variscite, Olimex, PINE64, Hardkernel, Khadas, Radxa, FriendlyElec, LattePanda, DFRobot, M5Stack, Pimoroni, BeagleBoard.org, SiFive.
+Autel, Launch Tech, TOPDON, Innova Electronics, ScanTool.net, Xhorse, EcoFlow, BLUETTI, Jackery, Goal Zero, Roborock, ECOVACS, iRobot, Dreame, Narwal, Wyze, Govee, Meross, SwitchBot, Tuya, Yeelight, EZVIZ, Hikvision, Dahua Technology, UNI-T.
 
 ## Rules
 
