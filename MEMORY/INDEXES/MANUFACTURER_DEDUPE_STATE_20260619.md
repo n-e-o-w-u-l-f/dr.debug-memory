@@ -1,0 +1,104 @@
+# MANUFACTURER_DEDUPE_STATE_20260619
+
+Status: ACTIVE_DEDUPE_RESUME_STATE
+Updated: 2026-06-19
+Scope: Prevent duplicate manufacturer proposals during bounded ingest loops.
+Artifact class: NAVIGATION_ONLY
+
+## Read-before-work rule
+
+Before any manufacturer ingest or promotion, read:
+
+1. `/AGENTS.md`
+2. `/MEMORY/INDEX.md`
+3. `/MEMORY/MANUFACTURERS/INDEX.md`
+4. `/MEMORY/PROPOSALS/INDEX.md`
+5. `/MEMORY/PROPOSALS/BATCHES/INDEX_20260619_MANUFACTURER_INGEST.md`
+6. This file
+
+## Existing manufacturer index names observed 2026-06-19
+
+These names were observed in `/MEMORY/MANUFACTURERS/INDEX.md` and must not be re-added as proposal seeds without explicit review/update rationale:
+
+- ASUS
+- ASRock
+- GIGABYTE
+- MSI
+- BIOSTAR
+- Intel
+- AMI
+- Insyde Software
+- AMD
+- Dell
+- HP
+- Lenovo
+- Acer
+- Samsung Semiconductor
+- Western Digital
+- Kingston Technology
+
+## Proposal-only batch names observed 2026-06-19
+
+Batch 002 proposal-only names:
+
+- Acer
+- ASUS
+- ASRock
+- GIGABYTE
+- MSI
+- Intel
+- AMD
+- NVIDIA
+- Samsung
+- Western Digital
+- Kingston
+- Crucial
+- NETGEAR
+- TP-Link
+- Ubiquiti
+- Brother
+- Canon
+- Epson
+- Logitech
+- Raspberry Pi
+- Arduino
+- Prusa Research
+- Apple
+- Microsoft
+- Sony
+
+Batch 003 proposal-only names:
+
+- Seagate
+- Synology
+- QNAP
+- Cisco
+- Juniper Networks
+- MikroTik
+- D-Link
+- Zyxel
+- Lexmark
+- Xerox
+- Ricoh
+- Kyocera Document Solutions
+- Panasonic
+- LG
+- Bose
+- Sennheiser
+- Razer
+- CORSAIR
+- Cooler Master
+- Seasonic
+- Anker
+- Garmin
+- Fairphone
+- Framework
+- StarTech.com
+
+## Known conflict/cleanup note
+
+Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
+
+## Next ingest rule
+
+Batch 004 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
