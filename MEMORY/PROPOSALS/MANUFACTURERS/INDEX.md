@@ -8,6 +8,7 @@ Scope: navigation only; not canonical manufacturer truth.
 
 - `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-pc-component-manufacturers-batch-001.md` — PC component manufacturer official-source seed batch 001; existing proposal batch in repository.
 - `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-002.md` — broad hardware manufacturer official-source seed batch 002; proposal-only, 25 candidates, official seed URLs, review required.
+- `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-003.md` — broad hardware manufacturer official-source seed batch 003; proposal-only, 100 candidates, official seed URLs, review required.
 
 ## Rules
 
