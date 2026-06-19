@@ -39,145 +39,17 @@ These names were observed in `/MEMORY/MANUFACTURERS/INDEX.md` and must not be re
 
 ## Proposal-only batch names observed 2026-06-19
 
-Batch 002 proposal-only names:
+Batch 002 proposal-only names: Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, NVIDIA, Samsung, Western Digital, Kingston, Crucial, NETGEAR, TP-Link, Ubiquiti, Brother, Canon, Epson, Logitech, Raspberry Pi, Arduino, Prusa Research, Apple, Microsoft, Sony.
 
-- Acer
-- ASUS
-- ASRock
-- GIGABYTE
-- MSI
-- Intel
-- AMD
-- NVIDIA
-- Samsung
-- Western Digital
-- Kingston
-- Crucial
-- NETGEAR
-- TP-Link
-- Ubiquiti
-- Brother
-- Canon
-- Epson
-- Logitech
-- Raspberry Pi
-- Arduino
-- Prusa Research
-- Apple
-- Microsoft
-- Sony
+Batch 003 proposal-only names: Seagate, Synology, QNAP, Cisco, Juniper Networks, MikroTik, D-Link, Zyxel, Lexmark, Xerox, Ricoh, Kyocera Document Solutions, Panasonic, LG, Bose, Sennheiser, Razer, CORSAIR, Cooler Master, Seasonic, Anker, Garmin, Fairphone, Framework, StarTech.com.
 
-Batch 003 proposal-only names:
+Batch 004 proposal-only names: Supermicro, Hewlett Packard Enterprise, IBM, Oracle, Fujitsu, NEC, Dynabook, PNY, ZOTAC, EVGA, be quiet!, Noctua, ARCTIC, SilverStone, Thermaltake, Fractal Design, NZXT, Lian Li, ViewSonic, BenQ, AOC, Wacom, Huion, XPPen, ELEGOO.
 
-- Seagate
-- Synology
-- QNAP
-- Cisco
-- Juniper Networks
-- MikroTik
-- D-Link
-- Zyxel
-- Lexmark
-- Xerox
-- Ricoh
-- Kyocera Document Solutions
-- Panasonic
-- LG
-- Bose
-- Sennheiser
-- Razer
-- CORSAIR
-- Cooler Master
-- Seasonic
-- Anker
-- Garmin
-- Fairphone
-- Framework
-- StarTech.com
+Batch 005 proposal-only names: Transcend, ADATA, SK hynix, KIOXIA, Patriot Memory, TEAMGROUP, Sabrent, Lexar, Silicon Power, AVM, Teltonika Networks, Peplink, GL.iNet, Tenda, Grandstream Networks, Yealink, Snom, Axis Communications, Reolink, Bambu Lab, Creality, Anycubic, Formlabs, UltiMaker, Goodram.
 
-Batch 004 proposal-only names:
+Batch 006 proposal-only names: Philips, TCL, Hisense, Sharp, Denon, Marantz, Yamaha, Shure, Audio-Technica, Focusrite, PreSonus, Steinberg, Native Instruments, Akai Professional, M-Audio, RODE, Blackmagic Design, DJI, GoPro, Insta360, Ring, Arlo, Belkin, Kensington, Polar.
 
-- Supermicro
-- Hewlett Packard Enterprise
-- IBM
-- Oracle
-- Fujitsu
-- NEC
-- Dynabook
-- PNY
-- ZOTAC
-- EVGA
-- be quiet!
-- Noctua
-- ARCTIC
-- SilverStone
-- Thermaltake
-- Fractal Design
-- NZXT
-- Lian Li
-- ViewSonic
-- BenQ
-- AOC
-- Wacom
-- Huion
-- XPPen
-- ELEGOO
-
-Batch 005 proposal-only names:
-
-- Transcend
-- ADATA
-- SK hynix
-- KIOXIA
-- Patriot Memory
-- TEAMGROUP
-- Sabrent
-- Lexar
-- Silicon Power
-- AVM
-- Teltonika Networks
-- Peplink
-- GL.iNet
-- Tenda
-- Grandstream Networks
-- Yealink
-- Snom
-- Axis Communications
-- Reolink
-- Bambu Lab
-- Creality
-- Anycubic
-- Formlabs
-- UltiMaker
-- Goodram
-
-Batch 006 proposal-only names:
-
-- Philips
-- TCL
-- Hisense
-- Sharp
-- Denon
-- Marantz
-- Yamaha
-- Shure
-- Audio-Technica
-- Focusrite
-- PreSonus
-- Steinberg
-- Native Instruments
-- Akai Professional
-- M-Audio
-- RODE
-- Blackmagic Design
-- DJI
-- GoPro
-- Insta360
-- Ring
-- Arlo
-- Belkin
-- Kensington
-- Polar
+Batch 007 proposal-only names: Huawei, Xiaomi, OPPO, OnePlus, vivo, Motorola Mobility, HMD Global, Honor, Nothing, Google, Meta, HTC VIVE, Valve, Pimax, Varjo, SteelSeries, Turtle Beach, Thrustmaster, Fanatec, 8BitDo, Keychron, Glorious, CHERRY, Jabra, Rapoo.
 
 ## Known conflict/cleanup note
 
@@ -185,4 +57,4 @@ Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` suc
 
 ## Next ingest rule
 
-Batch 007 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 008 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
