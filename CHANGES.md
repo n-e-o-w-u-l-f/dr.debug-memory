@@ -1,30 +1,32 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.7-noctua-coolermaster-nzxt-fractal-promotions
+Version: 0.3.8-phanteks-thermaltake-lianli-policy-proposal
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
 
+## memory(manufacturers): promote Phanteks, Thermaltake and LIAN LI canonical records
+
+- Promoted Phanteks as an individually reviewed PC component manufacturer from the manufacturer proposal batch.
+- Added `MEMORY/MANUFACTURERS/PHANTEKS/PROFILE.md` and `MEMORY/SOURCES/PHANTEKS/PHANTEKS_OFFICIAL_SOURCES.md`.
+- Promoted Thermaltake as an individually reviewed PC component, gaming-gear and TT RGB PLUS software-reference manufacturer.
+- Added `MEMORY/MANUFACTURERS/THERMALTAKE/PROFILE.md` and `MEMORY/SOURCES/THERMALTAKE/THERMALTAKE_OFFICIAL_SOURCES.md`.
+- Promoted LIAN LI as an individually reviewed PC component, L-Connect 3 and firmware-update-reference manufacturer.
+- Added `MEMORY/MANUFACTURERS/LIAN_LI/PROFILE.md` and `MEMORY/SOURCES/LIAN_LI/LIAN_LI_OFFICIAL_SOURCES.md`.
+- Added `MEMORY/POLICIES/REHOSTING-GATE-SOFTWARE-CONTROLLER-MANUALS-20260619.md` as a policy proposal defining when manuals/documentation may be prepared or hosted and when software/controller/binary artifacts remain reference-only or review-package-only.
+- Dedupe note: Phanteks, Thermaltake and LIAN LI were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible and separately promoted manufacturer records were not duplicated.
+- No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
+
 ## memory(manufacturers): promote Noctua, Cooler Master, NZXT and Fractal Design canonical records
 
-- Promoted Noctua as an individually reviewed cooling manufacturer from the manufacturer proposal batch.
-- Added `MEMORY/MANUFACTURERS/NOCTUA/PROFILE.md` and `MEMORY/SOURCES/NOCTUA/NOCTUA_OFFICIAL_SOURCES.md`.
-- Promoted Cooler Master as an individually reviewed PC component and gaming-gear manufacturer.
-- Added `MEMORY/MANUFACTURERS/COOLER_MASTER/PROFILE.md` and `MEMORY/SOURCES/COOLER_MASTER/COOLER_MASTER_OFFICIAL_SOURCES.md`.
-- Promoted NZXT as an individually reviewed PC component, gaming-PC and CAM-software-reference manufacturer.
-- Added `MEMORY/MANUFACTURERS/NZXT/PROFILE.md` and `MEMORY/SOURCES/NZXT/NZXT_OFFICIAL_SOURCES.md`.
-- Promoted Fractal Design as an individually reviewed case, cooling, PSU and documentation-reference manufacturer.
-- Added `MEMORY/MANUFACTURERS/FRACTAL_DESIGN/PROFILE.md` and `MEMORY/SOURCES/FRACTAL_DESIGN/FRACTAL_DESIGN_OFFICIAL_SOURCES.md`.
-- Dedupe note: Noctua, Cooler Master, NZXT and Fractal Design were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible records such as ASUS, ASRock, GIGABYTE, MSI, BIOSTAR, Intel, AMD, NVIDIA, Kingston Technology, Samsung Semiconductor, Western Digital, Seagate Technology, EVGA, Corsair, Crucial, G.SKILL and Seasonic were not duplicated.
+- Promoted Noctua, Cooler Master, NZXT and Fractal Design as individually reviewed manufacturer records from the manufacturer proposal batch.
+- Added their manufacturer profiles and official source records.
 - No driver, BIOS, firmware, installer, utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote G.SKILL and Seasonic canonical manufacturer records
 
-- Promoted G.SKILL as an individually reviewed PC component manufacturer from the manufacturer proposal batch after official-source retry.
-- Added `MEMORY/MANUFACTURERS/GSKILL/PROFILE.md` and `MEMORY/SOURCES/GSKILL/GSKILL_OFFICIAL_SOURCES.md`.
-- G.SKILL limitation: the direct `https://www.gskill.com/downloads` fetch returned an internal error in that tool run, so download/binary-specific records require a later retry.
-- Promoted Seasonic as an individually reviewed PSU/accessory manufacturer from the manufacturer proposal batch.
-- Added `MEMORY/MANUFACTURERS/SEASONIC/PROFILE.md` and `MEMORY/SOURCES/SEASONIC/SEASONIC_OFFICIAL_SOURCES.md`.
+- Promoted G.SKILL and Seasonic as individually reviewed manufacturer records from the manufacturer proposal batch.
+- Added their manufacturer profiles and official source records.
 - No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote Corsair and Crucial canonical manufacturer records
@@ -36,7 +38,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 ## memory(manufacturers): promote EVGA canonical manufacturer record
 
 - Promoted EVGA as a reviewed PC component manufacturer from the manufacturer proposal batch.
-- Added `MEMORY/MANUFACTURERS/EVGA/PROFILE.md` and `MEMORY/SOURCES/EVGA/EVGA_OFFICIAL_SOURCES.md`.
+- Added EVGA manufacturer profile and official source records.
 - No driver, BIOS, firmware, installer, utility, manual or other binary file was downloaded or rehosted.
 
 ## proposal(manufacturers): add PC component manufacturer seed batch
