@@ -61,10 +61,12 @@ Batch 011 proposal-only names: Fujifilm, Nikon, Leica Camera, OM Digital Solutio
 
 Batch 012 proposal-only names: Trotec Laser, Epilog Laser, Glowforge, xTool, Snapmaker, Shaper Tools, Carbide 3D, Bantam Tools, OpenBuilds, Inventables, Roland DG, Mimaki, Graphtec, Cricut, Silhouette America, Revopoint, Shining 3D, Creaform, FARO, Hexagon, Artec 3D, Flashforge, Raise3D, LulzBot, QIDI Tech.
 
+Batch 013 proposal-only names: PINE64, BeagleBoard.org, Hardkernel, Radxa, Libre Computer, Orange Pi, FriendlyELEC, Khadas, LattePanda, UDOO, DFRobot, M5Stack, Pimoroni, Pololu, Elecrow, AYANEO, GPD, ONEXPLAYER, AYN, Anbernic, Retroid, Miyoo, Analogue, Kobo, reMarkable.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 013 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 014 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
