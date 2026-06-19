@@ -2,7 +2,7 @@
 
 run_id: DD-RUN-20260620-GIGABYTE-URL-NORMALIZATION-PROPOSAL-001
 mode: OWNER_ADMIN_MODE
-repo: n-e-o-w-u-lf/dr.debug-memory
+repo: n-e-o-w-u-l-f/dr.debug-memory
 created_at: 2026-06-20
 status: PROPOSAL_ONLY
 risk: LOW
