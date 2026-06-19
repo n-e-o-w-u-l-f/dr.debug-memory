@@ -13,7 +13,7 @@ Raw crawl dumps: none
 
 ## Purpose
 
-Tenth continued bounded manufacturer-ingest batch. This batch focuses on label/POS printer vendors, laboratory/test instrument vendors, thermal imaging and desktop fabrication/laser/3D-printer manufacturers after reading the active resume/dedupe state.
+Tenth continued bounded manufacturer-ingest batch. This batch focuses on imaging, photo/video equipment, lenses, lighting, stabilizers, production monitors/recorders and camera-accessory vendors after reading the active resume/dedupe state.
 
 ## Mandatory resume/dedupe inputs for this batch
 
@@ -50,39 +50,40 @@ binary_policy: "NO_DOWNLOADS_NO_REHOSTING"
 
 | Candidate ID | Canonical name candidate | Aliases | Official home | Support/source URL | Category candidates | Source status |
 |---|---|---|---|---|---|---|
-| `TSC_AUTO_ID` | TSC Auto ID | TSC Printers, Printronix Auto ID lineage | https://www.tscprinters.com/ | https://emea.tscprinters.com/en | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `SATO` | SATO | SATO Global, SATO America, SATO Europe | https://www.sato-global.com/ | https://www.sato-global.com/support/drivers/ | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `CITIZEN_SYSTEMS` | Citizen Systems | Citizen, Citizen Printers | https://www.citizen-systems.com/ | https://www.citizen-systems.com/en/support | barcode_pos, printer_scanner, peripherals | OFFICIAL_URL_SEED |
-| `BIXOLON` | BIXOLON | Bixolon Co., Ltd. | https://bixolon.com/ | https://bixolon.com/download/ | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_URL_SEED |
-| `GODEX` | GoDEX | GoDEX International | https://www.godexintl.com/ | https://www.godexintl.com/support | barcode_pos, printer_scanner, peripherals, software_games | OFFICIAL_URL_SEED |
-| `BRADY` | Brady | Brady Corporation | https://www.bradyid.com/ | https://www.bradyid.com/support | barcode_pos, printer_scanner, industrial_pc, software_games | OFFICIAL_URL_SEED |
-| `DYMO` | DYMO | Dymo, Newell Brands DYMO | https://www.dymo.com/ | https://www.dymo.com/support | printer_scanner, barcode_pos, peripherals, software_games | OFFICIAL_URL_SEED |
-| `METTLER_TOLEDO` | Mettler Toledo | METTLER TOLEDO | https://www.mt.com/ | https://www.mt.com/home/library/software-downloads.html | test_measurement, lab_equipment, industrial_pc, software_games | OFFICIAL_SEARCH_CONFIRMED |
-| `OHAUS` | OHAUS | OHAUS Corporation | https://www.ohaus.com/ | https://www.ohaus.com/en-us/support | test_measurement, lab_equipment, software_games | OFFICIAL_URL_SEED |
-| `SARTORIUS` | Sartorius | Sartorius AG | https://www.sartorius.com/ | https://www.sartorius.com/en/service-support | test_measurement, lab_equipment, software_games | OFFICIAL_URL_SEED |
-| `THERMO_FISHER` | Thermo Fisher Scientific | Thermo Scientific, Fisher Scientific | https://www.thermofisher.com/ | https://www.thermofisher.com/support | lab_equipment, test_measurement, medical_consumer_devices, software_games | OFFICIAL_URL_SEED |
-| `HACH` | Hach | Hach Company | https://www.hach.com/ | https://support.hach.com/ | test_measurement, lab_equipment, sensors, software_games | OFFICIAL_URL_SEED |
-| `HANNA_INSTRUMENTS` | Hanna Instruments | Hanna | https://www.hannainst.com/ | https://www.hannainst.com/hanna-support | test_measurement, lab_equipment, sensors | OFFICIAL_URL_SEED |
-| `TELEDYNE_FLIR` | Teledyne FLIR | FLIR, FLIR Systems | https://www.flir.com/ | https://www.flir.com/support/ | thermal_imaging, camera_imaging, test_measurement, software_games | OFFICIAL_URL_SEED |
-| `EXTECH` | Extech | Extech Instruments, Teledyne FLIR Extech | https://www.extech.com/ | https://www.extech.com/support | test_measurement, thermal_imaging, software_games | OFFICIAL_URL_SEED |
-| `SNAPMAKER` | Snapmaker | Snapmaker 2.0, Snapmaker Artisan, Snapmaker Luban | https://www.snapmaker.com/ | https://support.snapmaker.com/hc/en-us/categories/360005617793-Downloads | 3d_printer, laser_cnc, software_games, embedded_sbc | OFFICIAL_SEARCH_CONFIRMED |
-| `XTOOL` | xTool | xTool Creative Space, Makeblock xTool | https://www.xtool.com/ | https://support.xtool.com/download | laser_cnc, software_games, camera_imaging | OFFICIAL_SEARCH_CONFIRMED |
-| `GLOWFORGE` | Glowforge | Glowforge Inc. | https://glowforge.com/ | https://support.glowforge.com/ | laser_cnc, software_games, camera_imaging | OFFICIAL_URL_SEED |
-| `ORTUR` | Ortur | Ortur Laser | https://ortur.net/ | https://ortur.net/pages/download-center | laser_cnc, software_games | OFFICIAL_URL_SEED |
-| `SCULPFUN` | Sculpfun | SCULPFUN Laser | https://www.sculpfun.com/ | https://www.sculpfun.com/pages/download | laser_cnc, software_games | OFFICIAL_URL_SEED |
-| `ATOMSTACK` | Atomstack | Atomstack Laser | https://atomstack.com/ | https://atomstack.com/pages/download | laser_cnc, software_games | OFFICIAL_URL_SEED |
-| `FLASHFORGE` | Flashforge | Zhejiang Flashforge 3D Technology | https://www.flashforge.com/ | https://flashforge.com/pages/download-center | 3d_printer, software_games | OFFICIAL_URL_SEED |
-| `QIDI_TECH` | QIDI Tech | QIDI, Qidi Technology | https://qidi3d.com/ | https://qidi3d.com/pages/software-firmware | 3d_printer, software_games | OFFICIAL_URL_SEED |
-| `RAISE3D` | Raise3D | Raise3D Technologies | https://www.raise3d.com/ | https://www.raise3d.com/download/ | 3d_printer, software_games | OFFICIAL_URL_SEED |
-| `TIERTIME` | Tiertime | Beijing Tiertime Technology, UP printers | https://www.tiertime.com/ | https://www.tiertime.com/download | 3d_printer, software_games | OFFICIAL_URL_SEED |
+| `FUJIFILM` | Fujifilm | FUJIFILM X Series, GFX | https://www.fujifilm.com/ | https://www.fujifilm-x.com/global/support/download/ | camera_imaging, software_games, firmware_metadata | OFFICIAL_SEARCH_CONFIRMED |
+| `NIKON` | Nikon | Nikon Imaging | https://www.nikon.com/ | https://downloadcenter.nikonimglib.com/ | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_SEARCH_CONFIRMED |
+| `LEICA_CAMERA` | Leica Camera | Leica | https://leica-camera.com/ | https://leica-camera.com/en-int/downloads | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_SEARCH_CONFIRMED |
+| `OM_DIGITAL_SOLUTIONS` | OM Digital Solutions | OM System, Olympus camera lineage | https://explore.omsystem.com/ | https://support.jp.omsystem.com/en/support/ | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `SIGMA` | Sigma | Sigma Corporation | https://www.sigma-global.com/ | https://www.sigma-global.com/en/support/ | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `TAMRON` | Tamron | Tamron Co., Ltd. | https://www.tamron.com/ | https://www.tamron.com/global/consumer/support/ | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `TOKINA` | Tokina | Tokina Lens | https://tokinalens.com/ | https://tokinalens.com/support/ | camera_imaging, optics | OFFICIAL_URL_SEED |
+| `SAMYANG_OPTICS` | Samyang Optics | Rokinon, Samyang | https://www.samyanglens.com/ | https://www.samyanglens.com/en/support/support.php | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `VILTROX` | Viltrox | Shenzhen Jueying Technology | https://www.viltrox.com/ | https://www.viltrox.com/support | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `ZHIYUN` | Zhiyun | ZHIYUN-Tech, Guilin Zhishen | https://www.zhiyun-tech.com/ | https://www.zhiyun-tech.com/en/support | camera_imaging, peripherals, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `FEIYUTECH` | FeiyuTech | Feiyu Technology | https://www.feiyu-tech.com/ | https://www.feiyu-tech.com/support | camera_imaging, peripherals, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `GODOX` | Godox | Godox Photo Equipment | https://www.godox.com/ | https://www.godox.com/support/ | camera_imaging, lighting, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `APUTURE` | Aputure | Aputure Imaging Industries, amaran | https://www.aputure.com/ | https://www.aputure.com/support/ | camera_imaging, lighting, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `NANLITE` | Nanlite | Nanlite Global | https://www.nanlite.com/ | https://www.nanlite.com/support | camera_imaging, lighting, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `SMALLRIG` | SmallRig | SmallRig Global | https://www.smallrig.com/ | https://www.smallrig.com/support | camera_imaging, peripherals | OFFICIAL_URL_SEED |
+| `TILTA` | Tilta | Tilta Technology | https://tilta.com/ | https://tilta.com/support/ | camera_imaging, peripherals, power_accessories | OFFICIAL_URL_SEED |
+| `ATOMOS` | Atomos | Atomos Ninja, AtomOS | https://www.atomos.com/ | https://www.atomos.com/product-support/ | camera_imaging, video_capture, software_games, firmware_metadata | OFFICIAL_SEARCH_CONFIRMED |
+| `ELINCHROM` | Elinchrom | Elinchrom LTD | https://www.elinchrom.com/ | https://support.elinchrom.com/ | camera_imaging, lighting, software_games | OFFICIAL_URL_SEED |
+| `PROFOTO` | Profoto | Profoto AB | https://profoto.com/ | https://profoto.com/support | camera_imaging, lighting, software_games, firmware_metadata | OFFICIAL_URL_SEED |
+| `MANFROTTO` | Manfrotto | Manfrotto Imaging | https://www.manfrotto.com/ | https://www.manfrotto.com/global/customer-service/ | camera_imaging, peripherals | OFFICIAL_URL_SEED |
+| `GITZO` | Gitzo | Gitzo tripods | https://www.gitzo.com/ | https://www.gitzo.com/global/customer-service/ | camera_imaging, peripherals | OFFICIAL_URL_SEED |
+| `JOBY` | JOBY | Joby GorillaPod | https://joby.com/ | https://joby.com/global/customer-service/ | camera_imaging, peripherals | OFFICIAL_URL_SEED |
+| `PEAK_DESIGN` | Peak Design | Peak Design Travel Tripod | https://www.peakdesign.com/ | https://support.peakdesign.com/ | camera_imaging, peripherals | OFFICIAL_URL_SEED |
+| `VENUS_OPTICS` | Venus Optics | Laowa | https://www.venuslens.net/ | https://www.venuslens.net/contact-us/ | camera_imaging, optics | OFFICIAL_URL_SEED |
+| `HASSELBLAD` | Hasselblad | Hasselblad AB, DJI lineage | https://www.hasselblad.com/ | https://www.hasselblad.com/support/ | camera_imaging, optics, software_games, firmware_metadata | OFFICIAL_URL_SEED |
 
 ## Per-candidate limitations
 
-- `TSC_AUTO_ID`, `SATO`, `CITIZEN_SYSTEMS`, `BIXOLON`, `GODEX`, `BRADY` and `DYMO`: printer and barcode devices often expose drivers, firmware, SDKs and label-design tools. Store link-only metadata until exact model/version scope is reviewed.
-- `METTLER_TOLEDO`, `OHAUS`, `SARTORIUS`, `THERMO_FISHER`, `HACH` and `HANNA_INSTRUMENTS`: lab and measurement devices may be regulated or calibration-sensitive. Do not store calibration, medical or compliance claims without exact model, document version and official source scope.
-- `TELEDYNE_FLIR` and `EXTECH`: thermal imaging and measurement tools may include firmware/software downloads. Store no binaries and do not generalize camera/tool facts across product families.
-- `SNAPMAKER`, `XTOOL`, `GLOWFORGE`, `ORTUR`, `SCULPFUN`, `ATOMSTACK`, `FLASHFORGE`, `QIDI_TECH`, `RAISE3D` and `TIERTIME`: 3D-printer/laser/CNC tooling often includes firmware, slicers, drivers and safety-relevant procedures. Keep link-only metadata and require exact model/version/safety review before canonical promotion.
-- `XTOOL`: distinguish xTool laser/craft equipment from Shenzhen Xtooltech automotive diagnostic products; do not merge based on name similarity.
+- `FUJIFILM`, `NIKON`, `LEICA_CAMERA`, `OM_DIGITAL_SOLUTIONS`, `SIGMA`, `TAMRON`, `SAMYANG_OPTICS`, `VILTROX`, `ZHIYUN`, `FEIYUTECH`, `GODOX`, `APUTURE`, `NANLITE`, `ATOMOS`, `PROFOTO` and `HASSELBLAD`: support pages may include firmware, camera software, lens firmware, LUTs or update utilities. Store link-only metadata until exact model/version scope is reviewed.
+- `OM_DIGITAL_SOLUTIONS`: Olympus camera lineage must be source-backed and should not create a second truth.
+- `SAMYANG_OPTICS`: Rokinon branding/region must be scoped as alias or separate regional brand only after review.
+- `ATOMOS`: monitor/recorder firmware update workflows may require formatted media and can affect devices. Do not store instructions as canonical facts without model and version validation.
+- `MANFROTTO`, `GITZO` and `JOBY`: related imaging accessory brands may share customer-service infrastructure; do not merge brands without alias registry review.
+- `HASSELBLAD`: DJI ownership/lineage requires scoped alias notes; do not merge with DJI canonical facts automatically.
 - Entries marked `OFFICIAL_URL_SEED` need fresh direct retrieval or product-line verification before promotion.
 
 ## Promotion gate
