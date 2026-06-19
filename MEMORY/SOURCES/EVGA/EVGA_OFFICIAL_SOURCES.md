@@ -17,60 +17,71 @@ sources: []
 
 # EVGA official source records
 
-## Source records
+## Scope
 
-- source_id: manufacturer-evga-home-20260619
-  title: EVGA official website
-  url: https://www.evga.com/
-  source_class: SOURCE_CLASS_A_PRIMARY
-  source_type: VENDOR_SUPPORT
-  publisher: EVGA Corporation
-  scope: EVGA manufacturer identity and official product/service navigation
-  retrieved_or_checked_at: 2026-06-19
-  claim_supported: EVGA official website provides official product, service, support, download and manual navigation.
-  limitations: Region selectors and account/service actions may vary by locale.
-  crawl_allowed: not recorded
-  license_or_usage_notes: Facts and URLs only; no copied vendor text, credentials, account data or binaries.
+Official-source records for EVGA manufacturer identity and support-resource discovery. These records store facts and URLs only. They do not download, mirror, hash, validate or rehost any driver, BIOS, firmware, installer, utility or manual file.
 
-- source_id: manufacturer-evga-support-20260619
-  title: EVGA support home
-  url: https://www.evga.com/support/
-  source_class: SOURCE_CLASS_A_PRIMARY
-  source_type: VENDOR_SUPPORT
-  publisher: EVGA Corporation
-  scope: EVGA support and warranty support workflow landing page
-  retrieved_or_checked_at: 2026-06-19
-  claim_supported: EVGA support page provides technical and warranty support workflow information.
-  limitations: The support workflow may request personal information, serial numbers or proof of purchase; such data must be redacted or excluded unless essential.
-  crawl_allowed: not recorded
-  license_or_usage_notes: Facts and URLs only; no copied vendor text, credentials, account data or binaries.
+## Records
 
-- source_id: manufacturer-evga-download-center-20260619
-  title: EVGA Download Center
-  url: https://www.evga.com/support/download/
-  source_class: SOURCE_CLASS_A_PRIMARY
-  source_type: VENDOR_SUPPORT
-  publisher: EVGA Corporation
-  scope: EVGA drivers and BIOS lookup landing page
-  retrieved_or_checked_at: 2026-06-19
-  claim_supported: EVGA download center identifies drivers and BIOS lookup categories for graphics cards, motherboards and other products.
-  limitations: Binary-specific records require exact product family, OS, version and checksum where available. This source record does not rehost or validate binaries.
-  crawl_allowed: not recorded
-  license_or_usage_notes: Facts and URLs only; no copied vendor text, credentials, account data or binaries.
+```yaml
+source_records:
+  - source_id: manufacturer-evga-home-20260619
+    url: https://www.evga.com/
+    title: EVGA - Intelligent Innovation - Official Website
+    source_class: A_PRIMARY_OFFICIAL_VENDOR
+    publisher: EVGA Corporation
+    retrieved_at: 2026-06-19
+    scope: EVGA manufacturer identity and official product/service navigation
+    versions: n/a
+    claim_supported: Official EVGA home page identifies EVGA and links product, support, Drivers and BIOS, product manuals and service resources.
+    limitations: Region-specific EVGA sites exist; locale and product availability may vary.
+    license_or_terms_note: Facts and URLs only; no copied vendor text, accounts, credentials or binaries.
+    crawl_allowed: not recorded
+    hash_if_file: n/a
 
-- source_id: manufacturer-evga-manuals-20260619
-  title: EVGA product manuals
-  url: https://www.evga.com/support/manuals/
-  source_class: SOURCE_CLASS_A_PRIMARY
-  source_type: VENDOR_SUPPORT
-  publisher: EVGA Corporation
-  scope: EVGA product manual lookup landing page
-  retrieved_or_checked_at: 2026-06-19
-  claim_supported: EVGA manuals page lists product manual categories for graphics cards, motherboards, power supplies and other EVGA product families.
-  limitations: Manual preservation or rehosting requires a separate archive gate and takedown metadata.
-  crawl_allowed: not recorded
-  license_or_usage_notes: Facts and URLs only; no copied vendor text, credentials, account data or binaries.
+  - source_id: manufacturer-evga-support-20260619
+    url: https://www.evga.com/support/
+    title: EVGA - Support - Home
+    source_class: A_PRIMARY_OFFICIAL_VENDOR
+    publisher: EVGA Corporation
+    retrieved_at: 2026-06-19
+    scope: EVGA technical and warranty support landing page
+    versions: n/a
+    claim_supported: EVGA support page provides technical support and warranty support information for EVGA products.
+    limitations: Support workflows may request serial numbers, contact information, invoice details or other personal data; such values must be redacted or omitted from Dr.Debug memory unless essential.
+    license_or_terms_note: Facts and URLs only; no copied vendor text, accounts, credentials or binaries.
+    crawl_allowed: not recorded
+    hash_if_file: n/a
 
-## Redaction and binary handling
+  - source_id: manufacturer-evga-download-center-20260619
+    url: https://www.evga.com/support/download/
+    title: EVGA - Download Center
+    source_class: A_PRIMARY_OFFICIAL_VENDOR
+    publisher: EVGA Corporation
+    retrieved_at: 2026-06-19
+    scope: EVGA Drivers and BIOS lookup landing page
+    versions: n/a
+    claim_supported: EVGA Download Center provides Drivers and BIOS lookup categories for graphics cards, motherboards and other products.
+    limitations: Binary-specific records require exact product family, part number, operating system, version and checksum where available. No binaries were downloaded or rehosted by this source record.
+    license_or_terms_note: Facts and URLs only; no copied vendor text, accounts, credentials or binaries.
+    crawl_allowed: not recorded
+    hash_if_file: n/a
 
-No passwords, tokens, account records, customer data, serial numbers, email addresses or raw crawl dumps are stored here. No driver, BIOS, firmware, installer, software utility or manual file was downloaded or rehosted.
+  - source_id: manufacturer-evga-manuals-20260619
+    url: https://www.evga.com/support/manuals/
+    title: EVGA - Support - Product Manuals
+    source_class: A_PRIMARY_OFFICIAL_VENDOR
+    publisher: EVGA Corporation
+    retrieved_at: 2026-06-19
+    scope: EVGA product manuals landing page
+    versions: n/a
+    claim_supported: EVGA manuals page lists graphics card, motherboard and other product manual categories.
+    limitations: Manual preservation or rehosting requires a separate archive gate, source URL, retrieved_at, hash, model scope, preservation rationale and takedown contact.
+    license_or_terms_note: Facts and URLs only; no copied vendor text, accounts, credentials or binaries.
+    crawl_allowed: not recorded
+    hash_if_file: n/a
+```
+
+## Redaction note
+
+No account credentials, user emails, private customer data, serial numbers, invoices, warranty identifiers, tokens or raw crawl dumps are stored in this file.
