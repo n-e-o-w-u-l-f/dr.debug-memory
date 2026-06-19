@@ -1,7 +1,7 @@
 # MANUFACTURER_DEDUPE_STATE_20260619
 
 Status: ACTIVE_DEDUPE_RESUME_STATE
-Updated: 2026-06-19
+Updated: 2026-06-20
 Scope: Prevent duplicate manufacturer proposals during bounded ingest loops.
 Artifact class: NAVIGATION_ONLY
 
@@ -37,7 +37,7 @@ These names were observed in `/MEMORY/MANUFACTURERS/INDEX.md` and must not be re
 - Western Digital
 - Kingston Technology
 
-## Proposal-only batch names observed 2026-06-19
+## Proposal-only batch names observed
 
 Batch 002 proposal-only names: Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, NVIDIA, Samsung, Western Digital, Kingston, Crucial, NETGEAR, TP-Link, Ubiquiti, Brother, Canon, Epson, Logitech, Raspberry Pi, Arduino, Prusa Research, Apple, Microsoft, Sony.
 
@@ -53,10 +53,12 @@ Batch 007 proposal-only names: Huawei, Xiaomi, OPPO, OnePlus, vivo, Motorola Mob
 
 Batch 008 proposal-only names: Fluke, Tektronix, Keysight, RIGOL, SIGLENT, Saleae, Pico Technology, Seeed Studio, Adafruit, SparkFun, Waveshare, Espressif Systems, Nordic Semiconductor, STMicroelectronics, Texas Instruments, Microchip Technology, NXP Semiconductors, Silicon Labs, Renesas Electronics, Infineon Technologies, Quectel, u-blox, Semtech, Digi International, Bosch Sensortec.
 
+Batch 009 proposal-only names: Schneider Electric, Eaton, Vertiv, CyberPower, Tripp Lite, Siemens, Phoenix Contact, WAGO, Beckhoff Automation, Moxa, HMS Networks, Telit Cinterion, Cradlepoint, Zebra Technologies, Honeywell, Datalogic, Bluebird, Unitech, Socket Mobile, ProGlove, Autel, LAUNCH Tech, TOPDON, ScanTool.net, Hikvision.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 009 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 010 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
