@@ -69,10 +69,12 @@ Batch 015 proposal-only names: Magewell, AVerMedia, Epiphan Video, BirdDog, Kilo
 
 Batch 016 proposal-only names: TASCAM, Zoom Corporation, MOTU, RME, Allen & Heath, Behringer, Mackie, Universal Audio, Antelope Audio, Apogee Electronics, Audient, Solid State Logic, Avid, Korg, BOSS, Casio, Arturia, Novation, Nektar Technology, iConnectivity, IK Multimedia, Elektron, Teenage Engineering, Modal Electronics, Waldorf Music.
 
+Batch 017 proposal-only names: Fortinet, Palo Alto Networks, SonicWall, WatchGuard, Sophos, Check Point, Netgate, Deciso, Protectli, Arista Networks, Extreme Networks, Ruckus Networks, Cambium Networks, EnGenius, DrayTek, Allied Telesis, TRENDnet, PLANET Technology, Edgecore Networks, FS, Ruijie Networks, Keenetic, Alta Labs, Lantronix, NetAlly.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 017 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 018 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
