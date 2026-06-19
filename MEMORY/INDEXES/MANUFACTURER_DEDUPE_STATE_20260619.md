@@ -55,10 +55,12 @@ Batch 008 proposal-only names: Fluke, Tektronix, Keysight, RIGOL, SIGLENT, Salea
 
 Batch 009 proposal-only names: Zebra Technologies, Honeywell, Datalogic, Socket Mobile, Star Micronics, Schneider Electric, Eaton, CyberPower Systems, Vertiv, Siemens, Advantech, AAEON, Beckhoff Automation, Phoenix Contact, WAGO, Moxa, HMS Networks, Yubico, Nitrokey, Shelly, ITEAD, Aqara, Lutron, ecobee, Netatmo.
 
+Batch 010 proposal-only names: Autel, Launch Tech, TOPDON, Innova Electronics, ScanTool.net, Xhorse, EcoFlow, BLUETTI, Jackery, Goal Zero, Roborock, ECOVACS, iRobot, Dreame, Narwal, Wyze, Govee, Meross, SwitchBot, Tuya, Yeelight, EZVIZ, Hikvision, Dahua Technology, UNI-T.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 010 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 011 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
