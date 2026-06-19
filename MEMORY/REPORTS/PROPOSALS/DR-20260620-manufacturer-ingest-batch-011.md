@@ -44,5 +44,5 @@ Remove the four batch-011 files and revert `/MEMORY/INDEXES/MANUFACTURER_DEDUPE_
 
 ## Open risks
 
-- Video/audio/creator hardware vendors often publish firmware, drivers, SDKs and control apps; keep link-only metadata until exact model/version evidence is reviewed.
-- Brand/lineage relationships such as Videndum/Manfrotto/JOBY and Creative/Sound Blaster require explicit alias review before canonical promotion.
+- Printer/barcode, lab, thermal-imaging, laser/CNC and 3D-printer devices may expose firmware, drivers, SDKs and safety-relevant update flows.
+- Firmware, driver, SDK and configuration-tool pages must remain link-only metadata until exact model/version evidence is reviewed.
