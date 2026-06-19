@@ -44,5 +44,5 @@ Remove the four batch-011 files and revert `/MEMORY/INDEXES/MANUFACTURER_DEDUPE_
 
 ## Open risks
 
-- Printer/barcode, lab, thermal-imaging, laser/CNC and 3D-printer devices may expose firmware, drivers, SDKs and safety-relevant update flows.
-- Firmware, driver, SDK and configuration-tool pages must remain link-only metadata until exact model/version evidence is reviewed.
+- Camera, lens, lighting and video-monitor vendors often publish firmware/software/LUT files. Those pages must remain link-only metadata until exact model/version evidence is reviewed.
+- Brand lineage and regional aliasing for Olympus/OM System, Rokinon/Samyang, Manfrotto/Gitzo/JOBY and Hasselblad/DJI require explicit alias review before canonical promotion.
