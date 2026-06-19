@@ -20,7 +20,7 @@ Before adding manufacturer batch 012 or promoting any manufacturer, read:
 
 ## Batch 011 proposal-only names
 
-TSC Auto ID, SATO, Citizen Systems, BIXOLON, GoDEX, Brady, DYMO, Mettler Toledo, OHAUS, Sartorius, Thermo Fisher Scientific, Hach, Hanna Instruments, Teledyne FLIR, Extech, Snapmaker, xTool, Glowforge, Ortur, Sculpfun, Atomstack, Flashforge, QIDI Tech, Raise3D, Tiertime.
+Fujifilm, Nikon, Leica Camera, OM Digital Solutions, Sigma, Tamron, Tokina, Samyang Optics, Viltrox, Zhiyun, FeiyuTech, Godox, Aputure, Nanlite, SmallRig, Tilta, Atomos, Elinchrom, Profoto, Manfrotto, Gitzo, JOBY, Peak Design, Venus Optics, Hasselblad.
 
 ## Rules
 
