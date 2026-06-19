@@ -44,5 +44,5 @@ Remove the four batch-009 files and revert `/MEMORY/INDEXES/MANUFACTURER_DEDUPE_
 
 ## Open risks
 
-- Industrial/power vendors often publish firmware, fieldbus, UPS and configuration tooling. Keep link-only metadata until product/model/version review.
-- Security-camera and automotive diagnostic vendors require privacy, safety and licensing context before canonical promotion.
+- Industrial automation and UPS/security-key devices may be production-critical or credential-sensitive.
+- Firmware, driver, SDK and configuration-tool pages must remain link-only metadata until exact model/version evidence is reviewed.
