@@ -1,20 +1,26 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.8-phanteks-thermaltake-lianli-policy-proposal
+Version: 0.3.9-storage-oem-peripheral-dedupe
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
 
+## memory(manufacturers): dedupe remaining PC component seed candidates
+
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-storage-oem-peripheral-dedupe.md` to classify remaining PC component seed candidates into storage, OEM/platform and peripheral/controller dedupe buckets.
+- Added `MEMORY/REPORTS/DEDUP/MANUFACTURERS/DR-20260619-pc-component-batch-001-dedupe.md` with duplicate, alias-only, source-refresh, relationship-review, low-confidence, retry-required and no-action classifications.
+- No manufacturer records were promoted by this dedupe pass.
+- Classified existing verified/OEM/platform records such as ASUS, ASRock, MSI, GIGABYTE, Intel, AMD and NVIDIA as duplicate/no-action for this seed batch.
+- Classified storage records such as Samsung Semiconductor Consumer Storage, Western Digital, Seagate and Kingston as source-refresh or alias/relationship-review work rather than new manufacturer records.
+- Left SK hynix and be quiet! as retry-required candidates before any future canonical promotion.
+- Left Kingston/HyperX/HP, Crucial/Micron, SK hynix/Solidigm, WD/SanDisk Professional and Samsung Semiconductor/Samsung SSD/Samsung Memory as relationship-review queues.
+- No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
+
 ## memory(manufacturers): promote Phanteks, Thermaltake and LIAN LI canonical records
 
-- Promoted Phanteks as an individually reviewed PC component manufacturer from the manufacturer proposal batch.
-- Added `MEMORY/MANUFACTURERS/PHANTEKS/PROFILE.md` and `MEMORY/SOURCES/PHANTEKS/PHANTEKS_OFFICIAL_SOURCES.md`.
-- Promoted Thermaltake as an individually reviewed PC component, gaming-gear and TT RGB PLUS software-reference manufacturer.
-- Added `MEMORY/MANUFACTURERS/THERMALTAKE/PROFILE.md` and `MEMORY/SOURCES/THERMALTAKE/THERMALTAKE_OFFICIAL_SOURCES.md`.
-- Promoted LIAN LI as an individually reviewed PC component, L-Connect 3 and firmware-update-reference manufacturer.
-- Added `MEMORY/MANUFACTURERS/LIAN_LI/PROFILE.md` and `MEMORY/SOURCES/LIAN_LI/LIAN_LI_OFFICIAL_SOURCES.md`.
-- Added `MEMORY/POLICIES/REHOSTING-GATE-SOFTWARE-CONTROLLER-MANUALS-20260619.md` as a policy proposal defining when manuals/documentation may be prepared or hosted and when software/controller/binary artifacts remain reference-only or review-package-only.
-- Dedupe note: Phanteks, Thermaltake and LIAN LI were not visible in the checked canonical `MEMORY/MANUFACTURERS/manufacturers.jsonl`; already-visible and separately promoted manufacturer records were not duplicated.
+- Promoted Phanteks, Thermaltake and LIAN LI as individually reviewed manufacturer records from the manufacturer proposal batch.
+- Added their manufacturer profiles and official source records.
+- Added a rehosting gate policy proposal for manuals, software, controllers and binaries.
 - No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote Noctua, Cooler Master, NZXT and Fractal Design canonical records
