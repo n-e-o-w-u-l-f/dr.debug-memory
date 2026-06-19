@@ -1,19 +1,25 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.9-storage-oem-peripheral-dedupe
+Version: 0.4.0-source-retry-relationship-review
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-19
+
+## memory(manufacturers): record SK hynix and be quiet! source retry plus relationship review
+
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-source-retry-skhynix-bequiet.md` with official-source retry results for SK hynix and be quiet!.
+- SK hynix source retry passed using official SK hynix SSD and download resources, but remains no-promotion pending SK hynix/Solidigm relationship handling and binary-scope review.
+- be quiet! source retry passed using official be quiet! home, product-material and software resources, but remains no-promotion pending alias and PSU safety review.
+- Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-manufacturer-relationship-review.md` for Kingston/HyperX/HP, Crucial/Micron, WD/SanDisk Professional/G-DRIVE, Samsung Semiconductor/Samsung SSD/Samsung Memory and SK hynix/Solidigm.
+- No manufacturer records were promoted by this review pass.
+- No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): dedupe remaining PC component seed candidates
 
 - Added `MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-storage-oem-peripheral-dedupe.md` to classify remaining PC component seed candidates into storage, OEM/platform and peripheral/controller dedupe buckets.
 - Added `MEMORY/REPORTS/DEDUP/MANUFACTURERS/DR-20260619-pc-component-batch-001-dedupe.md` with duplicate, alias-only, source-refresh, relationship-review, low-confidence, retry-required and no-action classifications.
 - No manufacturer records were promoted by this dedupe pass.
-- Classified existing verified/OEM/platform records such as ASUS, ASRock, MSI, GIGABYTE, Intel, AMD and NVIDIA as duplicate/no-action for this seed batch.
-- Classified storage records such as Samsung Semiconductor Consumer Storage, Western Digital, Seagate and Kingston as source-refresh or alias/relationship-review work rather than new manufacturer records.
 - Left SK hynix and be quiet! as retry-required candidates before any future canonical promotion.
-- Left Kingston/HyperX/HP, Crucial/Micron, SK hynix/Solidigm, WD/SanDisk Professional and Samsung Semiconductor/Samsung SSD/Samsung Memory as relationship-review queues.
 - No driver, BIOS, firmware, installer, controller utility, manual, PDF, image or other binary file was downloaded or rehosted.
 
 ## memory(manufacturers): promote Phanteks, Thermaltake and LIAN LI canonical records
