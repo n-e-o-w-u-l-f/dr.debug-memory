@@ -1,17 +1,11 @@
-# Manufacturer MEMORY_PROPOSAL index
+# MEMORY_PROPOSALS/MANUFACTURERS/INDEX.md
 
-Status: ACTIVE_PROPOSAL_INDEX
+Version: 0.1.0
+Status: PROPOSAL_INDEX_ONLY
 Updated: 2026-06-19
-Scope: navigation only; not canonical manufacturer truth.
 
-## Active proposal batches
+This index is navigation only and must not become a second truth.
 
-- `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-pc-component-manufacturers-batch-001.md` — PC component manufacturer official-source seed batch 001; existing proposal batch in repository.
-- `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-002.md` — broad hardware manufacturer official-source seed batch 002; proposal-only, 25 candidates, official seed URLs, review required.
-- `/MEMORY/PROPOSALS/MANUFACTURERS/MP-20260619-broad-hardware-manufacturers-batch-003.md` — broad hardware manufacturer official-source seed batch 003; proposal-only, 100 candidates, official seed URLs, review required.
-
-## Rules
-
-- Canonical manufacturer truth remains under `/MEMORY/MANUFACTURERS/` after review.
-- This index is navigation only and must not become a second truth.
-- Promotion requires source records, duplicate search, conflict review, redaction check, validation status and reviewer action.
+| proposal_id | file | status | batch | scope | review_required | rollback |
+|---|---|---|---:|---|---|---|
+| memory-proposal-manufacturers-initial-seed-20260619-batch-001 | MEMORY/PROPOSALS/MANUFACTURERS/2026-06-19_initial_seed_all_manufacturers_batch_001.md | RESEARCH_SEED | 1 | official homepage seed candidates across supported manufacturer categories | true | remove proposal batch file and this index row |
