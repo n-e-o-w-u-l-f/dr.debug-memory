@@ -63,10 +63,12 @@ Batch 012 proposal-only names: Trotec Laser, Epilog Laser, Glowforge, xTool, Sna
 
 Batch 013 proposal-only names: PINE64, BeagleBoard.org, Hardkernel, Radxa, Libre Computer, Orange Pi, FriendlyELEC, Khadas, LattePanda, UDOO, DFRobot, M5Stack, Pimoroni, Pololu, Elecrow, AYANEO, GPD, ONEXPLAYER, AYN, Anbernic, Retroid, Miyoo, Analogue, Kobo, reMarkable.
 
+Batch 014 proposal-only names: ASUSTOR, TerraMaster, Promise Technology, HighPoint Technologies, Areca Technology, OWC, CalDigit, Sonnet Technologies, Plugable, Satechi, Baseus, UGREEN, ORICO, ICY DOCK, Cable Matters, j5create, WAVLINK, Targus, Club 3D, Delock, Lindy, RaidSonic, ATEN, IOGEAR, TESmart.
+
 ## Known conflict/cleanup note
 
 Batch 002 contains names already visible in `/MEMORY/MANUFACTURERS/INDEX.md` such as Acer, ASUS, ASRock, GIGABYTE, MSI, Intel, AMD, Western Digital and Kingston. Treat these as proposal lineage/refresh candidates, not as new canonical manufacturers.
 
 ## Next ingest rule
 
-Batch 014 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
+Batch 015 and later must exclude all names above unless the action is explicitly a dedupe/merge/update proposal.
