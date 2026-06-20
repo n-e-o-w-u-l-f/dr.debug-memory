@@ -78,8 +78,7 @@ Potential matches must be linked or marked as conflicts instead of creating a se
 
 ## Canonical readiness
 
-Future installer records remain proposal-first.
-A candidate may become canonical-ready only when all of the following are true:
+Future installer records remain proposal-first. A candidate may become canonical-ready only when all of the following are true:
 
 1. Official source URL is present and scoped.
 2. Product, version, platform and architecture are sufficiently bounded.
@@ -110,5 +109,4 @@ Rollback batch id `DR-20260620-installers-loop-001` by:
 
 ## Result
 
-Installer ingestion is separated into a high-risk binary metadata loop.
-The first batch intentionally added no product/version/source candidates because official installer source URLs were not supplied.
+Installer ingestion is separated into a high-risk binary metadata loop. The first batch intentionally added no product/version/source candidates because official installer source URLs were not supplied.

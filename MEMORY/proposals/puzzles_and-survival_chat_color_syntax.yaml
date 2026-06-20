@@ -1,0 +1,24 @@
+id: puzzles_and_survival_chat_color_syntax
+family: game_chat_formatting
+category: puzzles_and_survival
+title: Puzzle and Survival Chat Color Syntax
+status: USER_VERIFIED_FIX
+confidence: medium
+validation_status: USER_CONFIRMED
+source_status: USER_PROVIDED_UNVERIFIED
+
+syntax:
+  prefix_once: "[#C9]"
+  color_block: "[aabb[#C9]ccff]"
+
+behavior:
+  - opening [#C9] required once at message start
+  - subsequent color changes use color_block only
+  - alliance chat confirmed by user
+  - state chat confirmed by user
+  - color may change per character
+  - color may change per word
+  - color may change per line
+
+example:
+  "[#C9][aabb[#C9]ccff]a[aabb[#C9]ccff]b[aabb[#C9]ccff]c"

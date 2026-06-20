@@ -52,4 +52,5 @@ Next resume point: first official-source installer metadata candidate not yet re
 ## Rollback
 
 Revert the batch id and restore the previous cursor state.
+
 For batch `DR-20260620-installers-loop-001`, rollback removes this cursor or restores the prior missing-cursor state, removes the installer report pointer from report/state indexes, and reverts the `/CHANGES.md` entry.
