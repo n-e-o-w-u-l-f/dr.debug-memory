@@ -11,6 +11,10 @@ Before resuming repository work, read `/AGENTS.md`, `/MEMORY/INDEX.md`, this fil
 
 ## Current reports
 
+### Security advisories
+
+- `/MEMORY/REPORTS/SECURITY_ADVISORIES/DR-20260620-security-advisories-loop-001.md`
+
 ### Known artifacts
 
 - `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-001.md`
