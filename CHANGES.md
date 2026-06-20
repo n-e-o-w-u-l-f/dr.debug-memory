@@ -28,6 +28,15 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-20
 
+## docs(memory): add installer metadata loop review controls
+
+* Added `/MEMORY/REPORTS/INSTALLERS/DR-20260620-installers-loop-001.md` as a review-package-only control report for installer/setup-package/software-installer/driver-installer metadata intake.
+* Added `/MEMORY/STATE/CURSORS/installers.md` as the resume cursor for installer metadata batches.
+* Updated `/MEMORY/REPORTS/INDEX.md` and `/MEMORY/STATE/INDEX.md` to expose the installer loop while preserving existing main-branch known-artifacts, proposal, support-articles, security-advisory and manufacturer state navigation.
+* No installer product/version/source candidates, canonical records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, public rehosting artifacts, deletions or destructive migrations were added.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, private logs, raw crawl dumps or binary files.
+* Rollback: remove the installer report and cursor, remove installer-loop pointers from report/state indexes, and revert this changelog entry.
+
 ## docs(memory): add support-articles source-candidate batch 001
 
 * Added `/MEMORY/PROPOSALS/BATCHES/MP-20260620-support-articles-loop-001.md` with 11 official support/help-center/troubleshooting article source candidates as proposal-only intake records.

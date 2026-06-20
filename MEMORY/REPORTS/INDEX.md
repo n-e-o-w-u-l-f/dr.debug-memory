@@ -28,6 +28,10 @@ Before resuming repository work, read `/AGENTS.md`, `/MEMORY/INDEX.md`, this fil
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-002.md`
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-003.md`
 
+### Installers
+
+- `/MEMORY/REPORTS/INSTALLERS/DR-20260620-installers-loop-001.md`
+
 ## Dedupe guard
 
 Reports summarize actions and validation. They do not promote proposal records to canonical knowledge by themselves.
