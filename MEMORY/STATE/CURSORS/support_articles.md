@@ -1,12 +1,13 @@
 # support_articles cursor
 
 Status: ACTIVE_CURSOR
-Updated: 2026-06-20
+Updated: 2026-06-21
 Cursor key: `MEMORY cursor: support_articles`
-Last applied batch: `DR-20260620-support-articles-loop-001`
-Last applied count: 11
+Last applied batch: `DR-20260621-support-articles-loop-002`
+Last applied count: 15
+Total applied count: 26
 Requested batch size: 100
-Next offset: 11
+Next offset: 26
 Canonical promotion allowed: NO
 Default policy: proposal-first; support claim limited to documented product/version/scope
 
@@ -21,4 +22,4 @@ Default policy: proposal-first; support claim limited to documented product/vers
 
 ## Rollback
 
-For `DR-20260620-support-articles-loop-001`, remove the batch/report/source-record files and restore proposal/report index entries and changelog state from the previous commit.
+For `DR-20260621-support-articles-loop-002`, remove the batch/report/source-record files and restore proposal/report index entries, changelog state and this cursor to the previous batch 001 state: last applied batch `DR-20260620-support-articles-loop-001`, total applied count 11, next offset 11.
