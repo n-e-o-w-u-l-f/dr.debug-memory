@@ -1,6 +1,6 @@
 # MEMORY/PROPOSALS/INDEX.md
 
-Version: 0.2.2
+Version: 0.2.3
 Status: ACTIVE_PROPOSAL_INDEX
 Updated: 2026-06-21
 Scope: Navigation for proposal-only memory batches and review reports.
@@ -24,6 +24,7 @@ Before adding any new proposal, read:
 - `/MEMORY/PROPOSALS/BATCHES/INDEX_20260619_MANUFACTURER_INGEST.md` — additive manufacturer-ingest batch navigation supplement.
 - `/MEMORY/PROPOSALS/BATCHES/MP-20260620-support-articles-loop-001.md` — 11 official support/help-center/troubleshooting article source candidates, status `PROPOSAL_ONLY`, no canonical promotion.
 - `/MEMORY/PROPOSALS/BATCHES/MP-20260621-support-articles-loop-002.md` — 15 official support/help-center/troubleshooting article source candidates, status `PROPOSAL_ONLY`, no canonical promotion.
+- `/MEMORY/PROPOSALS/BATCHES/MP-20260621-support-articles-loop-003.md` — 15 official support/help-center/troubleshooting article source candidates, status `PROPOSAL_ONLY`, no canonical promotion.
 
 ## Related review/status reports
 
@@ -31,6 +32,7 @@ Before adding any new proposal, read:
 - `/MEMORY/REPORTS/PROPOSALS/DR-20260619-manufacturer-ingest-batch-003.md`
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260620-support-articles-loop-001.md`
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-002.md`
+- `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-003.md`
 - `/MEMORY/STATUS/DATABASE_STATUS_20260619_MANUFACTURER_PROPOSALS.md`
 - `/MEMORY/STATUS/DATABASE_STATUS_20260619_MANUFACTURER_PROPOSALS_BATCH_003.md`
 - `/MEMORY/INDEXES/MANUFACTURER_DEDUPE_STATE_20260619.md`
