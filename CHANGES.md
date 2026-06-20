@@ -1,10 +1,26 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.9-manufacturer-source-proposal-index
+Version: 0.4.0-manufacturer-security-source-proposal-index
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-20
+
+## docs(memory): index manufacturer security-source proposal batch
+
+* Updated `/MEMORY/PROPOSALS/BATCHES/INDEX.md` to list `MF-20260620-manufacturer-security-source-batch-001.md` under manufacturer proposals.
+* Recorded the security-source batch as proposal navigation only; no canonical manufacturer record, `MEMORY/SOURCE_REGISTRY.md` import, binary, download, archive upload, raw crawl dump or rehosting artifact was added.
+* Preserved advisory-source limitation: security page existence does not prove device exposure, remediation, compatibility, safety or support without exact advisory/model/version evidence.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, Service Tags, SNIDs, private hosts, raw logs, raw crawl dumps or binary files.
+* Rollback: restore the previous `/MEMORY/PROPOSALS/BATCHES/INDEX.md` and `/CHANGES.md` contents.
+
+## docs(memory): add manufacturer security-source proposal batch
+
+* Added `/MEMORY/PROPOSALS/BATCHES/MF-20260620-manufacturer-security-source-batch-001.md` with seven official security/advisory source candidates for Acer, ASUS, Dell, HP, Microsoft/MSRC and Samsung contexts.
+* Kept the batch at `PROPOSAL_READY_FOR_REVIEW`; no canonical manufacturer records or `MEMORY/SOURCE_REGISTRY.md` records were created or promoted.
+* Preserved product-family separation for Microsoft Surface and Samsung Mobile contexts.
+* No firmware, BIOS, driver, installer, vendor-tool file, advisory archive, checksum, binary, download, archive upload or rehosting artifact was added.
+* Rollback: delete the proposal file if rolling back that pass.
 
 ## docs(memory): index manufacturer official-source proposal batch
 
