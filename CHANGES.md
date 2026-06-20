@@ -1,10 +1,20 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.9-support-articles-loop
+Version: 0.3.10-support-articles-loop
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-21
+
+## docs(memory): continue support-articles source-candidate loop batch 003
+
+* Added `/MEMORY/PROPOSALS/BATCHES/MP-20260621-support-articles-loop-003.md` with 15 official support/help-center/troubleshooting article source candidates as proposal-only intake records.
+* Added `/MEMORY/SOURCES/SUPPORT_ARTICLES/SOURCE_RECORDS_20260621_BATCH_003.json` with scoped source-record candidate metadata.
+* Added `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-003.md` and updated `/MEMORY/STATE/CURSORS/support_articles.md` for resume/rollback at offset 41.
+* Updated proposal/report navigation indexes.
+* No canonical support records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
+* Rollback: remove the created batch-003 batch/report/source-record files, restore the previous support-article cursor state, and revert this changelog/index update.
 
 ## docs(memory): continue support-articles source-candidate loop batch 002
 
