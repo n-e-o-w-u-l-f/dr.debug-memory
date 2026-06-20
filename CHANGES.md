@@ -1,5 +1,6 @@
 # DR. DEBUG CHANGES.md
-Version: 0.3.4-installer-metadata-loop
+
+Version: 0.3.9-installer-metadata-loop
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
@@ -9,10 +10,67 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 - Added `/MEMORY/REPORTS/INSTALLERS/DR-20260620-installers-loop-001.md` as a review-package-only control report for installer/setup-package/software-installer/driver-installer metadata intake.
 - Added `/MEMORY/STATE/CURSORS/installers.md` as the resume cursor for installer metadata batches.
-- Added `/MEMORY/REPORTS/INDEX.md` and `/MEMORY/STATE/INDEX.md` to expose the installer loop and its high-risk-binary metadata gate on this review branch.
+- Updated `/MEMORY/REPORTS/INDEX.md` and `/MEMORY/STATE/INDEX.md` to expose the installer loop while preserving existing main-branch known-artifacts, proposal, support-articles, security-advisory and manufacturer state navigation.
 - No installer product/version/source candidates, canonical records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, public rehosting artifacts, deletions or destructive migrations were added.
 - Redaction/static safety review recorded no secrets, credentials, customer data, serials, private logs, raw crawl dumps or binary files.
-- Rollback: remove the installer report and cursor, remove the report/state index files if they were created only for this batch, and revert this changelog entry.
+- Rollback: remove the installer report and cursor, remove installer-loop pointers from report/state indexes, and revert this changelog entry.
+
+## docs(memory): add support-articles source-candidate batch 001
+
+- Added `/MEMORY/PROPOSALS/BATCHES/MP-20260620-support-articles-loop-001.md` with 11 official support/help-center/troubleshooting article source candidates as proposal-only intake records.
+- Added `/MEMORY/SOURCES/SUPPORT_ARTICLES/SOURCE_RECORDS_20260620_BATCH_001.json` with scoped source-record candidate metadata.
+- Added `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260620-support-articles-loop-001.md` and `/MEMORY/STATE/CURSORS/support_articles.md` for resume/rollback.
+- Updated proposal/report navigation indexes.
+- No canonical support records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+- Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
+- Rollback: remove the created batch/report/source-record files, restore the previous support-article cursor state, and revert this changelog/index update.
+
+## docs(memory): reconcile known-artifacts reports in index and changelog
+
+- Updated `/MEMORY/REPORTS/INDEX.md` to list known-artifacts reports 001, 002 and 003 under audit navigation.
+- Reconciled `/CHANGES.md` with applied known-artifacts report files already present on `main`.
+- No canonical records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+- Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
+- Rollback: restore the previous `/MEMORY/REPORTS/INDEX.md` and `/CHANGES.md` contents.
+
+## docs(memory): add IANA source candidate batch report 003
+
+- Added `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-003-iana-source-candidates.md` with 25 bounded IANA/IETF source-record candidates.
+- Kept all candidates report-scoped; no canonical source-registry records were created or promoted.
+- Preserved the runtime-overclaim guard that IANA service/port assignments are registry evidence only and not proof of observed service traffic.
+- No downloads, binaries, firmware, drivers, installers, manuals, archive uploads, source-registry promotions or canonical records were added.
+- Rollback: remove the report file if rolling back report 003.
+
+## docs(memory): continue known-artifacts loop with source-registry normalization report
+
+- Added `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-002.md` as a conservative continuation report for source-registry normalization planning.
+- Recorded source-registry extraction requirements and artifact group priorities for later review.
+- No canonical records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+- Rollback: remove the created report 002 file and revert this changelog entry.
+
+## docs(memory): add known-artifacts loop audit report 001
+
+- Added `/MEMORY/REPORTS/KNOWN_ARTIFACTS/DR-20260620-known-artifacts-loop-001.md` as a conservative, resume-ready known-artifacts loop report.
+- No canonical records, broad status changes, source-registry promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, deletions or destructive migrations were added.
+- Rollback: remove the report file and revert this changelog entry.
+
+# 2026-06-19
+
+## docs(memory): add official-source manufacturer seed proposal batch 001
+
+- Added `/MEMORY/PROPOSALS/BATCHES/MP-20260619-manufacturer-seed-batch-001.md` with 25 official-source manufacturer discovery candidates as `RESEARCH_SEED` `MEMORY_PROPOSAL` entries.
+- Added `/MEMORY/PROPOSALS/BATCHES/INDEX.md` as proposal-index-only navigation for active proposal batches.
+- No canonical manufacturer records, source registry records, status promotions, binaries, downloads, archive uploads, raw crawl dumps or rehosting artifacts were added.
+- Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files.
+- Rollback: remove the created proposal batch file and proposal batch index entry, and revert this changelog entry.
+
+## docs(memory): add proposal batch review 001
+
+- Added `/MEMORY/REPORTS/PROPOSALS/DR-20260619-proposal-batch-review-001.md` with owner-gated proposal batch review results.
+- Added `/MEMORY/PROPOSALS/BATCHES/MP-20260619-next-25-proposals.md` as a conservative promotion-candidates-only next batch.
+- No canonical records, proposal statuses, source records, indexes, binaries, downloads, archive uploads or rehosting artifacts were changed.
+- Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs or raw crawl dumps.
+- Rollback: revert this changelog entry and the two added proposal/report files.
 
 # 2026-06-18
 
