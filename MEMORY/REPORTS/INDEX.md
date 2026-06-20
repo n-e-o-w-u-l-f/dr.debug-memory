@@ -26,6 +26,7 @@ Before resuming repository work, read `/AGENTS.md`, `/MEMORY/INDEX.md`, this fil
 
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260620-support-articles-loop-001.md`
 - `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-002.md`
+- `/MEMORY/REPORTS/SUPPORT_ARTICLES/DR-20260621-support-articles-loop-003.md`
 
 ## Dedupe guard
 
