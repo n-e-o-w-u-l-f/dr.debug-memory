@@ -1,10 +1,20 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.4.0-manufacturer-security-source-proposal-index
+Version: 0.4.1-security-advisories-source-seed
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-20
+
+## docs(memory): add security-advisories source seed loop 001
+
+* Added `/MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-source-seed-001.md` with 13 proposal-only official/advisory source-record candidates for later security-advisory ingestion.
+* Added `/MEMORY/REPORTS/SECURITY_ADVISORIES/DR-20260620-security-advisories-loop-001.md` with applied-batch scope, validation notes, limitations and rollback.
+* Added `/MEMORY/STATE/CURSORS/security_advisories.md` to resume from `source_seed_completed`.
+* Updated `/MEMORY/REPORTS/INDEX.md`, `/MEMORY/PROPOSALS/BATCHES/INDEX.md` and `/MEMORY/STATE/INDEX.md` as navigation-only indexes.
+* No canonical CVE/security records, status promotions, raw crawl dumps, exploit instructions, binaries, downloads, firmware, drivers, installers, archive uploads or rehosting artifacts were added.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, raw logs, exploit code, raw crawl dumps or binary files.
+* Rollback: remove the created security-advisory proposal/report/cursor files and restore the previous report/proposal/state indexes and this changelog entry.
 
 ## docs(memory): index manufacturer security-source proposal batch
 
