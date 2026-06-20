@@ -1,8 +1,18 @@
 # DR. DEBUG CHANGES.md
-
-Version: 0.3.3-owner-admin-gate-proposal
+Version: 0.3.4-installer-metadata-loop
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
+
+# 2026-06-20
+
+## docs(memory): add installer metadata loop review controls
+
+- Added `/MEMORY/REPORTS/INSTALLERS/DR-20260620-installers-loop-001.md` as a review-package-only control report for installer/setup-package/software-installer/driver-installer metadata intake.
+- Added `/MEMORY/STATE/CURSORS/installers.md` as the resume cursor for installer metadata batches.
+- Added `/MEMORY/REPORTS/INDEX.md` and `/MEMORY/STATE/INDEX.md` to expose the installer loop and its high-risk-binary metadata gate on this review branch.
+- No installer product/version/source candidates, canonical records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, public rehosting artifacts, deletions or destructive migrations were added.
+- Redaction/static safety review recorded no secrets, credentials, customer data, serials, private logs, raw crawl dumps or binary files.
+- Rollback: remove the installer report and cursor, remove the report/state index files if they were created only for this batch, and revert this changelog entry.
 
 # 2026-06-18
 
