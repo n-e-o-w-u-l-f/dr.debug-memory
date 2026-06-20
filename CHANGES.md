@@ -1,10 +1,25 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.3.8-iana-source-proposal-index
+Version: 0.3.9-manufacturer-source-proposal-index
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-20
+
+## docs(memory): index manufacturer official-source proposal batch
+
+* Updated `/MEMORY/PROPOSALS/BATCHES/INDEX.md` to list `MF-20260620-manufacturer-official-source-batch-001.md` under manufacturer proposals.
+* Recorded the manufacturer official-source batch as proposal navigation only; no canonical manufacturer record, `MEMORY/SOURCE_REGISTRY.md` import, binary, download, archive upload, raw crawl dump or rehosting artifact was added.
+* Preserved binary/rehosting guard for drivers, firmware, BIOS, installers and vendor tools.
+* Redaction/static safety review recorded no secrets, credentials, customer data, serials, Service Tags, SNIDs, private hosts, raw logs, raw crawl dumps or binary files.
+* Rollback: restore the previous `/MEMORY/PROPOSALS/BATCHES/INDEX.md` and `/CHANGES.md` contents.
+
+## docs(memory): add manufacturer official-source proposal batch
+
+* Added `/MEMORY/PROPOSALS/BATCHES/MF-20260620-manufacturer-official-source-batch-001.md` with eight official manufacturer/support/download/manual source candidates: Acer, ASUS, Dell, HP, Lenovo, Microsoft Surface, Apple and Samsung.
+* Kept the batch at `PROPOSAL_READY_FOR_REVIEW`; no canonical manufacturer records or `MEMORY/SOURCE_REGISTRY.md` records were created or promoted.
+* No direct firmware, BIOS, driver, installer or vendor-tool files were downloaded, hashed, stored or rehosted.
+* Rollback: delete the proposal file if rolling back that pass.
 
 ## docs(memory): index IANA baseline source proposal batch
 
