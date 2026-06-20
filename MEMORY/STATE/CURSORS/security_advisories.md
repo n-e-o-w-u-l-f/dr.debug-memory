@@ -2,36 +2,36 @@
 
 Status: ACTIVE
 Updated: 2026-06-20
-Current batch id: DR-20260620-security-advisories-loop-003-mozilla-mfsa-57-61
+Current batch id: DR-20260620-security-advisories-loop-004-ubuntu-usn
 Current branch: main
-Resume from: mozilla_mfsa_2026_57_61_product_scope_proposal_ready
-Last completed artifact: /MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-003.md
-Previous completed artifact: /MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-002.md
+Resume from: ubuntu_usn_8442_8449_8450_8452_8453_proposal_ready
+Last completed artifact: /MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-ubuntu-usn-batch-004.md
+Previous completed artifact: /MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-003.md
 Previous seed artifact: /MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-source-seed-001.md
-Next recommended action: next_publisher_or_mozilla_canonical_review
+Next recommended action: next_publisher_or_ubuntu_canonical_review
 Batch size requested: 5
-Batch size completed: 5 product-scoped advisory-level proposal records
+Batch size completed: 5 release/package-scoped advisory-level proposal records
 
 ## Cursor state
 
-Security-advisories loop has completed the initial proposal-first source seed, Mozilla MFSA batch 002 for MFSA 2026-52 through MFSA 2026-56, and Mozilla MFSA batch 003 for MFSA 2026-57 through MFSA 2026-61.
+Security-advisories loop has completed the initial proposal-first source seed, Mozilla MFSA batches 002 and 003, and Ubuntu USN batch 004.
 
 ## Last batch records
 
-- `MFSA-2026-57` — Firefox 152 — product-scoped proposal record.
-- `MFSA-2026-58` — Firefox ESR 140.12 — product-scoped proposal record.
-- `MFSA-2026-59` — Firefox ESR 115.37 — product-scoped proposal record.
-- `MFSA-2026-60` — Thunderbird 152 — product-scoped proposal record.
-- `MFSA-2026-61` — Thunderbird 140.12 — product-scoped proposal record.
+- `USN-8452-1` — `node-pbkdf2` — Ubuntu release/package-scoped proposal record.
+- `USN-8453-1` — `libnet-cidr-lite-perl` — Ubuntu release/package-scoped proposal record.
+- `USN-8449-1` — `ldns` package variants — Ubuntu release/package-scoped proposal record.
+- `USN-8442-1` — `kitty` / `kitty-shell-integration` — Ubuntu release/package-scoped proposal record.
+- `USN-8450-1` — `tomcat11` package variants — Ubuntu release/package-scoped proposal record.
 
 ## Next batch constraints
 
-- Dedupe by advisory-id, CVE, product, fixed version, publisher, source URL and canonical ID.
-- Do not dedupe by CVE alone because the same CVE can carry different Mozilla product/fixed-version scopes.
-- Larger cross-product CVEs must preserve product-specific fixed versions and must not merge overlapping CVEs silently.
+- Dedupe by advisory-id, CVE, package, Ubuntu release, fixed package version, publisher, source URL and canonical ID.
+- Do not dedupe by CVE alone because the same CVE can have upstream, package and release-specific distribution scopes.
+- Preserve Ubuntu Pro / ESM Apps / Legacy Support limitations where shown by the official USN page.
 - If affected/fixed version scope is missing or ambiguous, store the limitation and keep the entry proposal-only.
-- Do not create exploit instructions, proof-of-concept reproduction steps, raw Bugzilla contents, raw crawl dumps, binaries, firmware, drivers, installers or rehosting artifacts.
+- Do not create exploit instructions, proof-of-concept reproduction steps, package downloads, raw crawl dumps, binaries, firmware, drivers, installers or rehosting artifacts.
 
 ## Rollback
 
-Rollback batch id DR-20260620-security-advisories-loop-003-mozilla-mfsa-57-61 by removing `/MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-003.md`, removing `/MEMORY/REPORTS/SECURITY_ADVISORIES/DR-20260620-security-advisories-loop-003-mozilla-mfsa-57-61.md`, and restoring the previous cursor state at `mozilla_mfsa_2026_52_56_proposal_ready` with last completed artifact `/MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-002.md`.
+Rollback batch id DR-20260620-security-advisories-loop-004-ubuntu-usn by removing `/MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-ubuntu-usn-batch-004.md`, removing `/MEMORY/REPORTS/SECURITY_ADVISORIES/DR-20260620-security-advisories-loop-004-ubuntu-usn.md`, and restoring the previous cursor state at `mozilla_mfsa_2026_57_61_product_scope_proposal_ready` with last completed artifact `/MEMORY/PROPOSALS/BATCHES/MP-20260620-security-advisories-mozilla-mfsa-batch-003.md`.
