@@ -1,6 +1,5 @@
 # MEMORY/PROPOSALS/BATCHES/INDEX.md
-
-Version: 0.2.3-security-advisories-source-seed
+Version: 0.2.4-programs-seed
 Status: PROPOSAL_INDEX_ONLY
 Scope: Navigation index for MEMORY_PROPOSAL batch files.
 Artifact class: PROPOSAL_NAVIGATION
@@ -8,6 +7,10 @@ Artifact class: PROPOSAL_NAVIGATION
 This file is navigation only and must not become a second truth.
 
 ## Active proposal batches
+
+### Programs proposals
+
+- `MP-20260621-programs-seed-batch-001.md` — 100 program/application/software-tool discovery candidates; status `RESEARCH_SEED`; review required; no canonical SOFTWARE/PROGRAMS records; no versions, compatibility claims, official URL claims, binaries, installers, downloads or rehosting.
 
 ### Security advisory proposals
 
@@ -25,9 +28,8 @@ This file is navigation only and must not become a second truth.
 
 ## Notes
 
-- Canonical manufacturer facts must live in reviewed MANUFACTURERS records, not this index.
-- Source-record facts must live in reviewed `MEMORY/SOURCE_REGISTRY.md` records after explicit review/import, not this index.
-- Security advisory entries require official/vendor/advisory evidence for affected and fixed version scope where possible.
-- Alias, regional URL and source-record handling must point to canonical records after review and must not create second truths.
-- Driver, firmware, BIOS, installer and vendor-tool URLs remain high-risk binary contexts and require exact model scope, version, source, checksum if downloaded by owner workflow, backup/rollback feasibility and explicit review before any storage beyond source-link metadata.
-- Security/advisory source existence does not prove a product is affected, fixed, compatible, safe or supported; exact advisory, model, version and remediation scope remain required.
+- Canonical program facts must live in reviewed SOFTWARE/PROGRAMS records, not this index.
+- Source-record facts must live in reviewed source registry records after explicit review/import, not this index.
+- Programs that install binaries, drivers, updaters, browser extensions, package managers, remote-access tools, security tools or network analyzers require risk review before canonical import.
+- Driver, firmware, BIOS, installer and vendor-tool URLs remain high-risk binary contexts and require exact model or product scope, version, source, checksum if downloaded by owner workflow, backup/rollback feasibility and explicit review before any storage beyond source-link metadata.
+- Security/advisory source existence does not prove a product is affected, fixed, compatible, safe or supported; exact advisory, product, version and remediation scope remain required.
