@@ -5,6 +5,16 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 # 2026-06-21
 
+## docs(cleanup): consolidate CustomGPT Knowledge into active repository directives
+
+* Consolidated active CustomGPT Knowledge rules into repository-maintained directives and MEMORY governance files.
+* Added repository-wide cleanup rule: transitional proposal, manifest, validation and migration files are not canonical after relevant content is transferred into active directives, canonical MEMORY paths, indexes and CHANGES.md.
+* Defined Proposal files as working material, not end state; completed proposal content must move into the matching canonical MEMORY path.
+* Preserved Owner/Admin gates, Customer Mode limits, evidence/dedupe/redaction rules, source hierarchy, README matrix duty, unknown-device/manufacturer intake and tool-claim discipline.
+* No files were deleted in this pass.
+* No canonical MEMORY facts were promoted without source/evidence review.
+* Rollback: restore previous `UPDATE_PROCESS.md` and `CHANGES.md` versions from Git history.
+
 ## docs(policy): apply consolidated CustomGPT Knowledge v0.8.0 under MEMORY paths
 
 * Added the seven consolidated CustomGPT Knowledge files under `MEMORY/KNOWLEDGE_REPLACE/`.
