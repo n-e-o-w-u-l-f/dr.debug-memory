@@ -2,13 +2,13 @@
 
 **Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte und validierungsbewusste Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds, Quellen, Skripte und bestätigte Lösungen.
 
-Dieses Repository ist keine gewöhnliche Dokumentationsseite, sondern eine **agentenlesbare Memory-Basis** für Dr. Debug. Canonical Paths, Evidence-Level, Dedupe-Regeln, Status-Lifecycle, Source Records, Redaction und Rollback sind wichtiger als dekorative Prosa.
+Dieses Repository ist eine **agentenlesbare Memory-Basis** für Dr. Debug. Canonical Paths, Evidence-Level, Dedupe-Regeln, Status-Lifecycle, Source Records, Redaction und Rollback sind wichtiger als dekorative Prosa.
 
 ## Sicherheitsgrenze
 
 Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
 
-Vor realen Reparaturen oder Systemänderungen müssen Stromversorgung, Akkus, Garantie, Datenschutz, Datenverlust, Herstellerhinweise, Backup und Rollback geprüft werden. Hochrisiko-Bereiche wie Netzspannung, Akkus, Fahrzeuge, medizinische Geräte, Firmware-Flashing, Produktionssysteme und Remote-Zugriff benötigen zusätzliche Vorsicht.
+Vor realen Reparaturen oder Systemänderungen müssen Stromversorgung, Akkus, Garantie, Datenschutz, Datenverlust, Herstellerhinweise, Backup und Rollback geprüft werden.
 
 ## Agenten-Einstiegspunkte
 
@@ -32,12 +32,17 @@ Für CustomGPT-Knowledge-Policy gilt die konsolidierte Struktur unter [`MEMORY/K
 | [`06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`](./MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md) | Knowledge loading, retrieval, context discipline, tool contracts, audit, release, drift sync |
 | [`07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`](./MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md) | Master taxonomy pipeline, generation-/bit-hotspot, README matrix sync, schema discipline, evidence lifecycle and non-destructive legacy migration overlay |
 
-Migration references:
+## Foundation layer
 
-- [`MEMORY/MIGRATION/MIGRATION_MAP.md`](./MEMORY/MIGRATION/MIGRATION_MAP.md)
-- [`MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`](./MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md)
-- [`MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md`](./MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md)
-- [`MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json`](./MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json)
+The current non-destructive foundation layer adds schema, quality rules, source registry, proposal templates, taxonomy scaffolds, non-canonical seed proposals and release validation files. These additions are scaffolding and proposals only; they do not promote canonical records.
+
+Key files:
+
+- [`MEMORY/SCHEMA.md`](./MEMORY/SCHEMA.md)
+- [`MEMORY/QUALITY_RULES.md`](./MEMORY/QUALITY_RULES.md)
+- [`MEMORY/SOURCES/SOURCE_REGISTRY.md`](./MEMORY/SOURCES/SOURCE_REGISTRY.md)
+- [`MEMORY/TOOLS/README_MATRIX_RENDERER_SPEC.md`](./MEMORY/TOOLS/README_MATRIX_RENDERER_SPEC.md)
+- [`MEMORY/RELEASES/v0.8.1-master-pipeline/RELEASE_NOTES.md`](./MEMORY/RELEASES/v0.8.1-master-pipeline/RELEASE_NOTES.md)
 
 ## Master-Pipeline
 
@@ -67,47 +72,22 @@ Legacy-Direktiven dürfen nur dann migriert, entschärft oder ersetzt werden, we
 
 <pre>
 📂 KATEGORIE-BEZEICHNUNG                                                   📊    🕵️    💾    ⚠️    🎈    👑    ❔    💬    🛡️
-📦 Dr. Debug Wissensdatenbank Gesamt                                       0    0    0    0    0    0    0    0    0
+📦 Dr. Debug Wissensdatenbank Gesamt                                       0    5    0    0    0    0    5    0    0
 ├── 🏢 Hardware-Hersteller und Erstausrüster                               0    0    0    0    0    0    0    0    0
-├── 📱 Geräte und Hardware-Komponenten                                     0    0    0    0    0    0    0    0    0
+├── 📱 Geräte und Hardware-Komponenten                                     0    5    0    0    0    0    5    0    0
 │   ├── 🏴‍☠️ Unlizenzierte Hardware, Klone und Modifikationen                0    0    0    0    0    0    0    0    0
-│   │   ├── 🎮 Konsolen-Klone nach System-Architektur                      0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🔌 8-Bit Famiclones (Pegasus, Dendy, Micro Genius)         0    0    0    0    0    0    0    0    0
-│   │   │   └── ⌨️ 8-Bit Tastatur-Computer (Subor Family Basic)            0    0    0    0    0    0    0    0    0
-│   │   ├── 🛡️ DRM-Hardware-Umgehung (Modchips & Glitcher-Platinen)        0    0    0    0    0    0    0    0    0
-│   │   └── 🗄️ Massenspeicher-Copier & Flash-Cartridges (R4, EverDrive)    0    0    0    0    0    0    0    0    0
-│   ├── 🕹️ Spielekonsolen-Plattformen nach Epochen & Bit-Hotspots          0    0    0    0    0    0    0    0    0
+│   ├── 🕹️ Spielekonsolen-Plattformen nach Epochen & Bit-Hotspots          0    5    0    0    0    0    5    0    0
 │   │   ├── 📟 Frühe Epoche: Diskrete Logik & Erste ICs (1. Generation)    0    0    0    0    0    0    0    0    0
-│   │   ├── 📟 8-Bit Epoche: Modul-Revolution (2. & 3. Generation)         0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Atari-Systeme (Atari 2600, 7800, XEGS)                  0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Nintendo-Systeme (NES / Famicom)                        0    0    0    0    0    0    0    0    0
-│   │   │   └── 🎮 Sega-Systeme (SG-1000, Master System)                   0    0    0    0    0    0    0    0    0
-│   │   ├── 📟 16-Bit Epoche: 2D-Blütezeit (4. Generation)                 0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Nintendo-Systeme (SNES / Super Famicom)                 0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Sega-Systeme (Mega Drive / Genesis)                     0    0    0    0    0    0    0    0    0
-│   │   │   └── 🎮 SNK Corporation (Neo Geo AES / MVS)                     0    0    0    0    0    0    0    0    0
-│   │   ├── 📟 32/64-Bit Epoche: Frühe 3D-Systeme (5. Generation)          0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Sony Interactive (PlayStation / PSX)                    0    0    0    0    0    0    0    0    0
-│   │   │   ├── #️⃣ Nintendo-Systeme (Nintendo 64)                          0    0    0    0    0    0    0    0    0
-│   │   │   ├── 🎮 Sega-Systeme (Sega Saturn)                              0    0    0    0    0    0    0    0    0
-│   │   │   └── 🎮 Atari-Systeme (Atari Jaguar)                            0    0    0    0    0    0    0    0    0
+│   │   ├── 📟 8-Bit Epoche: Modul-Revolution (2. & 3. Generation)         0    2    0    0    0    0    2    0    0
+│   │   ├── 📟 16-Bit Epoche: 2D-Blütezeit (4. Generation)                 0    2    0    0    0    0    2    0    0
+│   │   ├── 📟 32/64-Bit Epoche: Frühe 3D-Systeme (5. Generation)          0    1    0    0    0    0    1    0    0
 │   │   └── 📟 Moderne Epoche: 128-Bit bis HD-Plattformen (Gen 6 bis 9)    0    0    0    0    0    0    0    0    0
 │   ├── 💻 Retro-Heimcomputer nach Architektur & Epoche                    0    0    0    0    0    0    0    0    0
-│   │   ├── 💻 Commodore Amiga (Amiga 500, 600, 1200, 4000)                0    0    0    0    0    0    0    0    0
-│   │   ├── 💻 Commodore 8-Bit Reihe (C64, C128, VC20)                     0    0    0    0    0    0    0    0    0
-│   │   └── 👾 Atari ST, Sinclair ZX Spectrum und Schneider CPC            0    0    0    0    0    0    0    0    0
 │   ├── 💻 PC- und Server-Komponenten                                      0    0    0    0    0    0    0    0    0
-│   │   ├── 🧠 Hauptprozessoren (IA-32, AMD64, Motorola 68k, ARM)          0    0    0    0    0    0    0    0    0
-│   │   ├── 🎛️ Grafikkarten & Videoschnittstellen (3dfx Voodoo / Glide)    0    0    0    0    0    0    0    0    0
-│   │   └── 🗄️ Massenspeicher & Wechsellaufwerke (ZIP, optische Drives)    0    0    0    0    0    0    0    0    0
 │   ├── 🌐 Netzwerk-Hardware, Router & NAS-Systeme                         0    0    0    0    0    0    0    0    0
 │   ├── 📺 Unterhaltungselektronik & Gebäudeautomation                     0    0    0    0    0    0    0    0    0
 │   └── 🎹 Musikproduktion, Studio- & MIDI-Peripherie                      0    0    0    0    0    0    0    0    0
 ├── 💿 Software, Betriebssysteme und Anwendungsdaten                       0    0    0    0    0    0    0    0    0
-│   ├── 💻 Betriebssystem-Umgebungen (Workbench, MS-DOS, Windows 9x)       0    0    0    0    0    0    0    0    0
-│   ├── 🛠️ Anwendungssoftware & Musikprogramme (Ableton Live)              0    0    0    0    0    0    0    0    0
-│   ├── 🕹️ Unterhaltungsmedien & Spiele (Gaming)                           0    0    0    0    0    0    0    0    0
-│   └── 🔄 Release-Management, Updates, Patches & Hotfixes                 0    0    0    0    0    0    0    0    0
 ├── 🩺 Diagnose und Schadensbehebung                                       0    0    0    0    0    0    0    0    0
 ├── 📂 Automation und Projekt-Assets                                       0    0    0    0    0    0    0    0    0
 └── 🔍 Interne Datenbank-Pipeline                                          0    0    0    0    0    0    0    0    0
@@ -124,29 +104,8 @@ Legacy-Direktiven dürfen nur dann migriert, entschärft oder ersetzt werden, we
 3. **Canonical Truth an einer Stelle:** Index-, Alias- und Mirror-Dateien sind Navigation, nicht zweite Wahrheiten.
 4. **Redaction vor Speicherung:** Keine Secrets, personenbezogenen Rohdaten oder vollständigen Rohlogs in Repository-Speicher.
 5. **Backup und Rollback vor Risiko:** Riskante Änderungen brauchen Diff, Branch/Backup, Rollback und Validation.
-6. **Validation vor Erfolgsmeldung:** Kein „fixed“, „committed“, „pushed“, „canonical“ oder „validated“ ohne beweisenden Output.
+6. **Validation vor Erfolgsmeldung:** Kein „fixed", "committed", "pushed", "canonical" oder "validated" ohne beweisenden Output.
 7. **Generation/Bit vor Hersteller:** Retro- und Konsolentaxonomie folgt Epoche und Architektur; Hersteller sind Unterzweige.
-
-## Typische Inhalte
-
-Die Memory-Datenbank kann unter anderem enthalten:
-
-- Hersteller, Geräte, Mainboards, Receiver, Smartphones, Tablets, Konsolen und Embedded-Systeme
-- Betriebssysteme, Distributionen, Programme, Pakete und Builds
-- Firmware, BIOS, Treiber, Handbücher, Manuals und Service-Unterlagen
-- Fehlermeldungen, Fehlercodes, Log-Muster und bekannte Ursachen
-- Diagnosepfade, Workarounds, Reparaturwege und bestätigte Fixes
-- Quellenregister, Indexdateien, Agenten-Direktiven, Update-Prozesse und Validierungsskripte
-
-## Mitmachen
-
-Forks und Beiträge sind willkommen, wenn sie klare Pfade, saubere Dateinamen, nachvollziehbare Quellen, getrennte bestätigte und unbestätigte Lösungen, keine unnötigen Duplikate, keine privaten Zugangsdaten, keine personenbezogenen Logs und keine gefährlichen Schritte ohne Warnhinweis enthalten.
-
-Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
-
-## Lizenzhinweis
-
-Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen. Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
 
 ---
 
