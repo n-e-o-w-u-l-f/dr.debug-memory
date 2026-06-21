@@ -1,0 +1,44 @@
+{
+  "maintenance_id": "manufacturer-loop-post-batch-017",
+  "date": "2026-06-21",
+  "status": "PATH_POLICY_BLOCKED_LOCAL_HANDOFF",
+  "repo": "n-e-o-w-u-l-f/dr.debug-memory",
+  "canonical_promotion": "none_prepare_only",
+  "files": [
+    {
+      "path": "POST_BATCH_017_MAINTENANCE_PLAN.md",
+      "sha256": "1f4d42b43600c65de538790d20f5a3c5d500edaa501bbe691f3cac4a39c92e22",
+      "bytes": 2567
+    },
+    {
+      "path": "POST_BATCH_017_CONSOLIDATED_INDEX.md",
+      "sha256": "f2a4f349234c3b25e76333780054e164f34dc79d6632f9c00dd5bbf2cb622d87",
+      "bytes": 1418
+    },
+    {
+      "path": "POST_BATCH_017_DEDUPE_ALIAS_SOURCE_MATRIX.md",
+      "sha256": "5e448a3d6ac1068e763fbaaa62f495ddf3f1a2c17d5a42c21190bca68b6226c5",
+      "bytes": 2588
+    },
+    {
+      "path": "POST_BATCH_017_VALIDATION_REPORT.md",
+      "sha256": "3f9e12bb7ba554315198c9b8fd01be8a34f54fb6a579bc80f4f9d3690cd86ac0",
+      "bytes": 1491
+    },
+    {
+      "path": "BATCH_018_CANARY_PLAN.md",
+      "sha256": "bdeb5f9be7d8a2fab06ff1decbfce1450121f7fa34e3db9266213f0720dc3e9e",
+      "bytes": 1171
+    },
+    {
+      "path": "ROLLBACK_MANIFEST.md",
+      "sha256": "6f0b6d6b437e34ed7ec74b54514614126de0b43e944fd9b60d4de19416841c55",
+      "bytes": 1036
+    },
+    {
+      "path": "NEXT_DECISION_REPORT.md",
+      "sha256": "85360b470a85ac5de8cde212980b41c830e9ee739f72ef71a3336113411c9265",
+      "bytes": 1323
+    }
+  ]
+}
