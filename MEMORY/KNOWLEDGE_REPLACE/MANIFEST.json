@@ -1,8 +1,9 @@
 {
-  "package": "drdebug_consolidated_knowledge_v0_8_0",
-  "version": "0.8.0-proposal",
+  "package": "drdebug_consolidated_knowledge_v0_8_1_master_pipeline",
+  "version": "0.8.1-master-pipeline",
   "created": "2026-06-21",
-  "purpose": "Consolidate Dr.Debug CustomGPT Knowledge files for maximum agent comprehension under repository-allowed MEMORY paths.",
+  "updated": "2026-06-21",
+  "purpose": "Consolidate Dr.Debug CustomGPT Knowledge files under repository-allowed MEMORY paths and add the v1.0.0 master taxonomy pipeline overlay.",
   "new_active_knowledge_files": [
     "MEMORY/KNOWLEDGE_REPLACE/00_WORKING_MODE.md",
     "MEMORY/KNOWLEDGE_REPLACE/01_REPOSITORY_CHANGE_WORKFLOW.md",
@@ -10,9 +11,18 @@
     "MEMORY/KNOWLEDGE_REPLACE/03_DEVICE_MANUFACTURER_INTAKE.md",
     "MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md",
     "MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md",
-    "MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md"
+    "MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md",
+    "MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md"
   ],
+  "master_overlay": "MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md",
   "migration_map": "MEMORY/MIGRATION/MIGRATION_MAP.md",
+  "tombstone_alias_registry": "MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md",
+  "readme_matrix_markers": {
+    "start": "DRDEBUG_DATABASE_STATUS_START",
+    "end": "DRDEBUG_DATABASE_STATUS_END"
+  },
   "status": "non_destructive_repository_apply",
-  "apply_boundary": "Repository write only; no deletion, no canonical promotion, no archive upload, no external upload."
+  "apply_boundary": "Repository write only; no deletion, no canonical promotion, no archive upload, no external upload.",
+  "validation": "MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md",
+  "rollback": "Revert MANIFEST.json and VALIDATION.md to the previous commit state; do not delete active Knowledge files unless a destructive migration gate is explicitly approved."
 }
