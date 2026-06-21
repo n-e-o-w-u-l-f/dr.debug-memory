@@ -6,6 +6,14 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-21
 
+### docs(readme): sync active Knowledge table with master pipeline overlay
+
+- Updated `README.md` so the active Knowledge table includes `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`.
+- Kept the README matrix markers and generation-/bit-hotspot status matrix unchanged.
+- No legacy directive files were deleted in this pass.
+- No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
+- Rollback: revert `README.md` and this `CHANGES.md` update to the previous commit state.
+
 ### docs(validation): sync manifest and validation with master pipeline overlay
 
 - Updated `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json` from the v0.8.0 seven-file package to the v0.8.1 master-pipeline package.
