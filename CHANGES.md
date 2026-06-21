@@ -6,6 +6,15 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-21
 
+### docs(validation): sync manifest and validation with master pipeline overlay
+
+- Updated `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json` from the v0.8.0 seven-file package to the v0.8.1 master-pipeline package.
+- Added `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` to the active Knowledge file list.
+- Updated `MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md` to validate eight active Knowledge files, the master overlay, README matrix markers, tombstone/alias policy and non-destructive migration limits.
+- No legacy directive files were deleted in this pass.
+- No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
+- Rollback: revert `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json`, `MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md`, and this `CHANGES.md` update to the previous commit state.
+
 ### policy(memory): add master taxonomy pipeline and generation-bit README matrix
 
 - Updated `README.md` with a generation-/bit-hotspot status matrix between `DRDEBUG_DATABASE_STATUS_START` and `DRDEBUG_DATABASE_STATUS_END`.
