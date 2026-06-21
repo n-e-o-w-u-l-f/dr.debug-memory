@@ -1,213 +1,71 @@
-<p align="center">
-  <img src="./dr_debug_banner.png" alt="Dr Debug's Mean /MEMORY/ Machine" width="100%">
-</p>
-<h1 align="center">
-    # # # # # # # # # # # # # # # # # # # # #</br>
-    # # 🛠️ &nbsp; Dr. Debug's Werkstatt &nbsp; 🛠️ # #</br>
-    # # # # # # # # # # # # # # # # # # # # #
-</h1>
+# Dr. Debug /MEMORY/
 
-<span>
-  <p align="left">Hast du auch ein defektes Gerät?</p>
-  <p align="left">Reparieren war dir immer zu schwer?</p>
-  <p align="center">Dann komm in:</p>
-  <p align="center">
-    <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>DrDebug Hardware Praxis</strong></a>
-  </p>
-  <p align="center">Sprechzeiten nach dem klick des links.</p>
-</span>
-<br><br>
+**Dr. Debug /MEMORY/** is a structured, source-aware and validation-aware technical memory base for Dr.Debug agents.
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 📊 &nbsp; Wissenstand &nbsp; 📊 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
+This repository stores diagnostic and repair knowledge for devices, systems, errors, sources, workflows, proposals, scripts and validation records. It is optimized for agent-readable maintenance: canonical paths, evidence levels, dedupe rules, status lifecycles, source records, redaction and rollback matter more than prose.
 
-<!-- DRDEBUG_DATABASE_STATUS_START -->
-<p align="left">
-  <strong>Meine Datenbank<br>beinhaltet aktuell</strong>
-</p>
+## Safety boundary
 
-| Kategorie | Anzahl |
-|---|---:|
-| Hersteller | 0 |
-| Geräte | 0 |
-| ModelNr | 0 |
-| Firmware | 0 |
-| Driver | 0 |
-| Programme | 0 |
-| Filesystems | 0 |
-| Netzwerk | 0 |
-| Builds | 0 |
-| Scripts | 0 |
-| Error Codes | 0 |
-| Lösungen | 0 |
-| Von Usern bestätigt | 0 |
+This repository is not an official repair manual and does not guarantee that any repair is safe. Before real-world repair or system changes, check power, batteries, warranty, data loss, privacy, manufacturer instructions, backup and rollback. High-risk areas such as mains voltage, batteries, vehicles, medical devices, firmware flashing, production systems and remote access require extra caution.
 
-<p align="left"><small>Last updated: 2026-06-18</small></p>
-<!-- DRDEBUG_DATABASE_STATUS_END -->
+## Agent entry points
 
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🧠 &nbsp; Dr. Debug /MEMORY/ &nbsp; 🧠 # # <br>
-  # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
-
-Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🎯 &nbsp; Was dieses Repository ist &nbsp; 🎯 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur.
-
-Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen besser zu beantworten:
-
-- Welche Fehlermeldung gehört zu welchem System, Programm, Paket, Gerät oder Dienst?
-- Welche Ursachen sind bekannt, wahrscheinlich oder historisch dokumentiert?
-- Welche Reparaturwege wurden gefunden, geprüft oder von Usern bestätigt?
-- Welche Geräte, Betriebssysteme, Programme, Pakete, Logs und Handbücher gehören zusammen?
-- Welche Quellen, Indizes und Querverweise müssen erhalten bleiben, damit Wissen nicht verloren geht?
-
-Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # ⚠️ &nbsp; Was dieses Repository nicht ist &nbsp; ⚠️ # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
-
-Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise, Agenten-Direktiven und Erfahrungswerte enthalten. Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden.
-
-Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 👥 &nbsp; Für wen ist das gedacht? &nbsp; 👥 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-#### Für ChatGPT-Agenten
-
-Agenten sollen dieses Repository lesen, bevor sie neue technische Memory-Dateien anlegen, bestehende Einträge ändern oder Rechercheergebnisse dauerhaft integrieren.
-
-Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
+Agents should read:
 
 - [`AGENTS.md`](./AGENTS.md)
-- [`/MEMORY/AGENTS/`](./MEMORY/AGENTS/)
-- [`/MEMORY/INDEX.md`](./MEMORY/INDEX.md)
-- [`/MEMORY/SCHEMA.md`](./MEMORY/SCHEMA.md)
-- [`/MEMORY/QUALITY_RULES.md`](./MEMORY/QUALITY_RULES.md)
-- [`/MEMORY/SOURCE_REGISTRY.md`](./MEMORY/SOURCE_REGISTRY.md)
-- [`/CHANGES.md`](./CHANGES.md)
-- [`/UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
+- [`UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
+- [`MEMORY/INDEX.md`](./MEMORY/INDEX.md)
+- [`MEMORY/SCHEMA.md`](./MEMORY/SCHEMA.md)
+- [`MEMORY/QUALITY_RULES.md`](./MEMORY/QUALITY_RULES.md)
+- [`MEMORY/SOURCE_REGISTRY.md`](./MEMORY/SOURCE_REGISTRY.md)
+- [`CHANGES.md`](./CHANGES.md)
 
-Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
+For CustomGPT Knowledge policy, use the consolidated v0.8.0 files stored under `MEMORY/KNOWLEDGE_REPLACE/`:
 
-<br><br>
+| Active Knowledge file | Responsibility |
+|---|---|
+| [`00_WORKING_MODE.md`](./MEMORY/KNOWLEDGE_REPLACE/00_WORKING_MODE.md) | Operating modes, admin gate, public/customer behavior, owner/admin behavior, final response discipline |
+| [`01_REPOSITORY_CHANGE_WORKFLOW.md`](./MEMORY/KNOWLEDGE_REPLACE/01_REPOSITORY_CHANGE_WORKFLOW.md) | Repository workflow, update process, branch/merge/commit planning, structure migration, artifacts/scripts/patches |
+| [`02_RESEARCH_ARCHIVE_BINARY_SOURCES.md`](./MEMORY/KNOWLEDGE_REPLACE/02_RESEARCH_ARCHIVE_BINARY_SOURCES.md) | Research, source hierarchy, archive.org preservation, firmware, drivers, BIOS, installers, manuals |
+| [`03_DEVICE_MANUFACTURER_INTAKE.md`](./MEMORY/KNOWLEDGE_REPLACE/03_DEVICE_MANUFACTURER_INTAKE.md) | Unknown devices, identifiers, manufacturer ingest, alias registry, existence classification |
+| [`04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md`](./MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md) | Evidence, validation, conflicts, dedupe, canonical truth, memory schema, menu/category resolution, status lifecycle |
+| [`05_RISK_REDACTION_PLATFORM.md`](./MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md) | Redaction, privacy, platform gate, risk, backup, rollback, remote safety |
+| [`06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`](./MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md) | Knowledge loading, retrieval, context discipline, tool contracts, audit, release, drift sync |
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📜 &nbsp; Grundprinzipien &nbsp; 📜 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
+Migration references:
 
-Dieses Repository folgt einigen einfachen Regeln:
+- [`MEMORY/MIGRATION/MIGRATION_MAP.md`](./MEMORY/MIGRATION/MIGRATION_MAP.md)
+- [`MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`](./MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md)
+- [`MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md`](./MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md)
+- [`MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json`](./MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json)
 
-1. **Quellen vor Behauptungen**  
-   Technische Aussagen sollen möglichst belegbar sein.
+## Datenbank-Stand / Wissensmatrix
 
-2. **Bestätigt ist nicht gleich gefunden**  
-   Eine Lösung gilt erst dann als bestätigt, wenn sie nachvollziehbar getestet oder von Usern als erfolgreich markiert wurde.
+_Last checked: 2026-06-21_
 
-3. **Deduplizierung vor Datenmüll**  
-   Gleiche Fehlerbilder sollen zusammengeführt, verlinkt oder sauber voneinander abgegrenzt werden.
+| Artifact class | searched_total | present_total | missing_total | orphan_total | proposal_only_total | canonical_total | asserted_unverified_total | exists_user_evidenced_total | source_confirmed_total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| manufacturers | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| devices | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| hardware IDs | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| firmware | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| BIOS | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| drivers | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| manuals/documentation | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| source records | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| proposals | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| canonical records | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| aliases/mirrors | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| orphan candidates | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-4. **Agentenlesbarkeit vor Schönschrift**  
-   Struktur, Pfade, IDs, Statusfelder, Quellen und Querverweise sind wichtiger als dekorative Prosa.
+The matrix is a navigation/status checkpoint, not a second truth. Canonical factual content must live in one canonical record path and indexes/aliases/mirrors must point to that path.
 
-5. **Sicherheit vor Aktionismus**  
-   Riskante Reparatur- oder Systemeingriffe müssen als solche erkennbar sein und dürfen nicht blind empfohlen werden.
+## Principles
 
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📂 &nbsp; Typische Inhalte &nbsp; 📂 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
-
-Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
-
-- Betriebssysteme und Distributionen
-- Linux-, macOS-, Windows-, DOS- und FreeDOS-Programme
-- Paketmanager, Pakete und Paketversionen
-- Android-Apps und Package Names
-- Geräte, Mainboards, Receiver, Smartphones, Tablets, Konsolen und Embedded-Systeme
-- Fehlermeldungen, Fehlercodes und Log-Muster
-- journalctl-, dmesg-, systemd-, kernel-, ADB-, SSH-, Git-, Pacman- und Netzwerkfehler
-- Service Manuals, Datenblätter, Handbücher, Recovery-Guides und Installationshinweise
-- bekannte Ursachen, Diagnosepfade, Workarounds und bestätigte Fixes
-- Quellenregister, Indexdateien, Agenten-Direktiven und Update-Prozesse
-
-<br><br>
-
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # &nbsp;🤝 Wie du mitmachen kannst: 🤝&nbsp; # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Du kannst dieses Repository forken und für deine eigene technische Wissensbasis anpassen.
-
-Wenn du Inhalte beitragen möchtest, achte bitte besonders auf:
-
-- klare Pfade,
-- saubere Dateinamen,
-- nachvollziehbare Quellen,
-- getrennte bestätigte und unbestätigte Lösungen,
-- keine unnötigen Duplikate,
-- keine privaten Zugangsdaten,
-- keine personenbezogenen Logs,
-- keine gefährlichen Schritte ohne Warnhinweis.
-
-Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
-
-<br><br>
-
-
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 🪪 &nbsp; Lizenzhinweis &nbsp; 🪪 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
-
-Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen.
-
-Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
-
-<br><br>
-
-
-
-<p align="left">
-  <strong>Dr Debug's Mean /MEMORY/ Machine</strong><br>
-  Debuggen. Reparieren. Erinnern. Verbessern.
-</p>
+1. Source quality before claims.
+2. Dedupe before adding records.
+3. Redaction before storage.
+4. Backup and rollback before risky change.
+5. Validation before success.
+6. No raw secrets, raw crawl dumps or unsupported canonical promotion.
+7. Public/customer mode may propose; Owner/Admin mode may apply only through authenticated gated workflows.
