@@ -1,10 +1,27 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.8.1-master-pipeline  
+Version: 0.8.2-foundation-layer  
 Status: ACTIVE  
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-21
+
+### docs(memory): add next foundation layer for schema, quality, sources and proposals
+
+- Added static master-pipeline linkcheck validation artifact.
+- Added README matrix renderer specification.
+- Added `MEMORY/SCHEMA.md` and `MEMORY/QUALITY_RULES.md`.
+- Added `MEMORY/SOURCES/SOURCE_REGISTRY.md` and source-area scaffold.
+- Added proposal templates for devices, diagnoses, source records and taxonomy nodes.
+- Added generation-/bit-hotspot scaffold README files for retro console, retro computer, diagnose, sources, proposals, aliases and indexes.
+- Added five non-canonical seed proposals for NES/Famicom, Sega Master System, SNES/Super Famicom, Sega Mega Drive/Genesis and Sony PlayStation/PSX.
+- Added release notes, validation summary and rollback plan for v0.8.1 master-pipeline foundation layer.
+- Updated `README.md` with foundation-layer navigation and proposal counts in the visible status matrix.
+- Updated `MEMORY/INDEX.md` with foundation-layer navigation.
+- No legacy directive files were deleted.
+- No canonical MEMORY records were promoted.
+- No binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
+- Rollback: revert the files listed in `MEMORY/RELEASES/v0.8.1-master-pipeline/ROLLBACK.md` to their previous commit state.
 
 ### docs(readme): sync active Knowledge table with master pipeline overlay
 
@@ -35,15 +52,3 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
 - Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files were intentionally added.
 - Rollback: revert the README, `MEMORY/INDEX.md`, `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`, `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`, `MEMORY/MIGRATION/MIGRATION_MAP.md`, and this `CHANGES.md` update to the previous commit state.
-
-### docs(policy): apply consolidated CustomGPT Knowledge v0.8.0 under MEMORY paths
-
-- Added the seven consolidated CustomGPT Knowledge files under `MEMORY/KNOWLEDGE_REPLACE/`.
-- Added migration references under `MEMORY/MIGRATION/`.
-- Updated `README.md` with the consolidated Knowledge file list, migration references and README Wissensmatrix.
-- Updated `UPDATE_PROCESS.md` and `MEMORY/INDEX.md` with consolidated Knowledge routing and README matrix duties.
-- Added `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json` and `MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md` for package validation.
-- No old Knowledge files were deleted or tombstoned in this pass.
-- No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
-- Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files were intentionally added.
-- Rollback: revert this branch commit or remove `MEMORY/KNOWLEDGE_REPLACE/`, `MEMORY/MIGRATION/`, and restore previous `README.md`, `UPDATE_PROCESS.md`, `MEMORY/INDEX.md`, and `CHANGES.md`.
