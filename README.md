@@ -1,213 +1,153 @@
-<p align="center">
-  <img src="./dr_debug_banner.png" alt="Dr Debug's Mean /MEMORY/ Machine" width="100%">
-</p>
-<h1 align="center">
-    # # # # # # # # # # # # # # # # # # # # #</br>
-    # # 🛠️ &nbsp; Dr. Debug's Werkstatt &nbsp; 🛠️ # #</br>
-    # # # # # # # # # # # # # # # # # # # # #
-</h1>
+# Dr. Debug /MEMORY/
 
-<span>
-  <p align="left">Hast du auch ein defektes Gerät?</p>
-  <p align="left">Reparieren war dir immer zu schwer?</p>
-  <p align="center">Dann komm in:</p>
-  <p align="center">
-    <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>DrDebug Hardware Praxis</strong></a>
-  </p>
-  <p align="center">Sprechzeiten nach dem klick des links.</p>
-</span>
-<br><br>
+**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte und validierungsbewusste Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds, Quellen, Skripte und bestätigte Lösungen.
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 📊 &nbsp; Wissenstand &nbsp; 📊 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
+Dieses Repository ist keine gewöhnliche Dokumentationsseite, sondern eine **agentenlesbare Memory-Basis** für Dr. Debug. Canonical Paths, Evidence-Level, Dedupe-Regeln, Status-Lifecycle, Source Records, Redaction und Rollback sind wichtiger als dekorative Prosa.
+
+## Sicherheitsgrenze
+
+Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
+
+Vor realen Reparaturen oder Systemänderungen müssen Stromversorgung, Akkus, Garantie, Datenschutz, Datenverlust, Herstellerhinweise, Backup und Rollback geprüft werden. Hochrisiko-Bereiche wie Netzspannung, Akkus, Fahrzeuge, medizinische Geräte, Firmware-Flashing, Produktionssysteme und Remote-Zugriff benötigen zusätzliche Vorsicht.
+
+## Agenten-Einstiegspunkte
+
+Agenten sollen vor Repository-Änderungen in dieser Reihenfolge lesen:
+
+1. [`AGENTS.md`](./AGENTS.md)
+2. [`UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
+3. [`MEMORY/INDEX.md`](./MEMORY/INDEX.md)
+4. taskrelevante Schema-, Quality-, Source-, Kategorie-, Proposal- oder Knowledge-Dateien
+
+Für CustomGPT-Knowledge-Policy gilt die konsolidierte Struktur unter [`MEMORY/KNOWLEDGE_REPLACE/`](./MEMORY/KNOWLEDGE_REPLACE/):
+
+| Active Knowledge file | Responsibility |
+|---|---|
+| [`00_WORKING_MODE.md`](./MEMORY/KNOWLEDGE_REPLACE/00_WORKING_MODE.md) | Operating modes, admin gate, public/customer behavior, owner/admin behavior, final response discipline |
+| [`01_REPOSITORY_CHANGE_WORKFLOW.md`](./MEMORY/KNOWLEDGE_REPLACE/01_REPOSITORY_CHANGE_WORKFLOW.md) | Repository workflow, update process, branch/merge/commit planning, structure migration, artifacts/scripts/patches |
+| [`02_RESEARCH_ARCHIVE_BINARY_SOURCES.md`](./MEMORY/KNOWLEDGE_REPLACE/02_RESEARCH_ARCHIVE_BINARY_SOURCES.md) | Research, source hierarchy, archive.org preservation, firmware, drivers, BIOS, installers, manuals |
+| [`03_DEVICE_MANUFACTURER_INTAKE.md`](./MEMORY/KNOWLEDGE_REPLACE/03_DEVICE_MANUFACTURER_INTAKE.md) | Unknown devices, identifiers, manufacturer ingest, alias registry, existence classification |
+| [`04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md`](./MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md) | Evidence, validation, conflicts, dedupe, canonical truth, memory schema, menu/category resolution, status lifecycle |
+| [`05_RISK_REDACTION_PLATFORM.md`](./MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md) | Redaction, privacy, platform gate, risk, backup, rollback, remote safety |
+| [`06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`](./MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md) | Knowledge loading, retrieval, context discipline, tool contracts, audit, release, drift sync |
+
+Migration references:
+
+- [`MEMORY/MIGRATION/MIGRATION_MAP.md`](./MEMORY/MIGRATION/MIGRATION_MAP.md)
+- [`MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`](./MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md)
+- [`MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md`](./MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md)
+- [`MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json`](./MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json)
+
+## Master-Pipeline
+
+Die Master-Pipeline führt die bisherige Knowledge-Base-Pipeline mit der generationen- und bit-orientierten Taxonomie zusammen. Für Konsolen und Retro-Plattformen gilt: **historische Generation und Bit-/CPU-/Bus-/Grafik-/Speicher-Architektur sind der primäre Klassifizierungs-Hotspot; Hersteller werden darunter eingeordnet.**
+
+Legacy-Direktiven dürfen nur dann migriert, entschärft oder ersetzt werden, wenn sie die neue Taxonomie, Dedupe, Redaction, Evidence/Status-Lifecycle, README-Sync, Rollback oder sichere Tool-Gates blockieren. Nicht überschreibbar bleiben System-/Developer-/OpenAI-Regeln, Recht/TOS/Tool-Limits, Credentials/Secrets/Privacy, Malware-/Exploit-Grenzen, Wahrheitspflicht, Owner/Admin-Gate, Redaction, Dedupe, Source/Evidence und Rollback/Validation.
 
 <!-- DRDEBUG_DATABASE_STATUS_START -->
 <p align="left">
   <strong>Meine Datenbank<br>beinhaltet aktuell</strong>
 </p>
 
-| Kategorie | Anzahl |
-|---|---:|
-| Hersteller | 0 |
-| Geräte | 0 |
-| ModelNr | 0 |
-| Firmware | 0 |
-| Driver | 0 |
-| Programme | 0 |
-| Filesystems | 0 |
-| Netzwerk | 0 |
-| Builds | 0 |
-| Scripts | 0 |
-| Error Codes | 0 |
-| Lösungen | 0 |
-| Von Usern bestätigt | 0 |
+**Spalten-Legende:**
+* **📁 Kategorie:** Der jeweilige Datentyp in der Wissensdatenbank.
+* **📊 Anzahl:** Die Gesamtzahl der aktuell erfassten Einträge.
+* **🕵️ Gesucht:** Einträge, die für Recherche oder Vervollständigung vorgemerkt sind.
+* **💾 Vorh. (Vorhanden):** Bereits erfolgreich in die Datenbank integrierte Datensätze.
+* **⚠️ Fehlt:** Bekannte Lücken oder benötigte Informationen, die noch importiert werden müssen.
+* **🎈 Waise:** Einträge ohne aktive Verknüpfung oder übergeordnetes System.
+* **👑 Kanon. (Kanonisch):** Bereinigte Standard-Einträge ohne Duplikate.
+* **❔ Unverif. (Unverifiziert):** Automatisch importierte oder noch ungeprüfte Datenbestände.
+* **💬 User-Evid. (User-Evidenz):** Durch Erfahrungsberichte untermauerte Daten.
+* **🛡️ Bestätigt:** Durch Dr. Debug Review oder vertrauenswürdige Primärquellen verifizierte Einträge.
 
-<p align="left"><small>Last updated: 2026-06-18</small></p>
+<details>
+<summary><strong>📊 Vollständige Status-Matrix anzeigen</strong></summary>
+
+<pre>
+📂 KATEGORIE-BEZEICHNUNG                                                   📊    🕵️    💾    ⚠️    🎈    👑    ❔    💬    🛡️
+📦 Dr. Debug Wissensdatenbank Gesamt                                       0    0    0    0    0    0    0    0    0
+├── 🏢 Hardware-Hersteller und Erstausrüster                               0    0    0    0    0    0    0    0    0
+├── 📱 Geräte und Hardware-Komponenten                                     0    0    0    0    0    0    0    0    0
+│   ├── 🏴‍☠️ Unlizenzierte Hardware, Klone und Modifikationen                0    0    0    0    0    0    0    0    0
+│   │   ├── 🎮 Konsolen-Klone nach System-Architektur                      0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🔌 8-Bit Famiclones (Pegasus, Dendy, Micro Genius)         0    0    0    0    0    0    0    0    0
+│   │   │   └── ⌨️ 8-Bit Tastatur-Computer (Subor Family Basic)            0    0    0    0    0    0    0    0    0
+│   │   ├── 🛡️ DRM-Hardware-Umgehung (Modchips & Glitcher-Platinen)        0    0    0    0    0    0    0    0    0
+│   │   └── 🗄️ Massenspeicher-Copier & Flash-Cartridges (R4, EverDrive)    0    0    0    0    0    0    0    0    0
+│   ├── 🕹️ Spielekonsolen-Plattformen nach Epochen & Bit-Hotspots          0    0    0    0    0    0    0    0    0
+│   │   ├── 📟 Frühe Epoche: Diskrete Logik & Erste ICs (1. Generation)    0    0    0    0    0    0    0    0    0
+│   │   ├── 📟 8-Bit Epoche: Modul-Revolution (2. & 3. Generation)         0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Atari-Systeme (Atari 2600, 7800, XEGS)                  0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Nintendo-Systeme (NES / Famicom)                        0    0    0    0    0    0    0    0    0
+│   │   │   └── 🎮 Sega-Systeme (SG-1000, Master System)                   0    0    0    0    0    0    0    0    0
+│   │   ├── 📟 16-Bit Epoche: 2D-Blütezeit (4. Generation)                 0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Nintendo-Systeme (SNES / Super Famicom)                 0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Sega-Systeme (Mega Drive / Genesis)                     0    0    0    0    0    0    0    0    0
+│   │   │   └── 🎮 SNK Corporation (Neo Geo AES / MVS)                     0    0    0    0    0    0    0    0    0
+│   │   ├── 📟 32/64-Bit Epoche: Frühe 3D-Systeme (5. Generation)          0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Sony Interactive (PlayStation / PSX)                    0    0    0    0    0    0    0    0    0
+│   │   │   ├── #️⃣ Nintendo-Systeme (Nintendo 64)                          0    0    0    0    0    0    0    0    0
+│   │   │   ├── 🎮 Sega-Systeme (Sega Saturn)                              0    0    0    0    0    0    0    0    0
+│   │   │   └── 🎮 Atari-Systeme (Atari Jaguar)                            0    0    0    0    0    0    0    0    0
+│   │   └── 📟 Moderne Epoche: 128-Bit bis HD-Plattformen (Gen 6 bis 9)    0    0    0    0    0    0    0    0    0
+│   ├── 💻 Retro-Heimcomputer nach Architektur & Epoche                    0    0    0    0    0    0    0    0    0
+│   │   ├── 💻 Commodore Amiga (Amiga 500, 600, 1200, 4000)                0    0    0    0    0    0    0    0    0
+│   │   ├── 💻 Commodore 8-Bit Reihe (C64, C128, VC20)                     0    0    0    0    0    0    0    0    0
+│   │   └── 👾 Atari ST, Sinclair ZX Spectrum und Schneider CPC            0    0    0    0    0    0    0    0    0
+│   ├── 💻 PC- und Server-Komponenten                                      0    0    0    0    0    0    0    0    0
+│   │   ├── 🧠 Hauptprozessoren (IA-32, AMD64, Motorola 68k, ARM)          0    0    0    0    0    0    0    0    0
+│   │   ├── 🎛️ Grafikkarten & Videoschnittstellen (3dfx Voodoo / Glide)    0    0    0    0    0    0    0    0    0
+│   │   └── 🗄️ Massenspeicher & Wechsellaufwerke (ZIP, optische Drives)    0    0    0    0    0    0    0    0    0
+│   ├── 🌐 Netzwerk-Hardware, Router & NAS-Systeme                         0    0    0    0    0    0    0    0    0
+│   ├── 📺 Unterhaltungselektronik & Gebäudeautomation                     0    0    0    0    0    0    0    0    0
+│   └── 🎹 Musikproduktion, Studio- & MIDI-Peripherie                      0    0    0    0    0    0    0    0    0
+├── 💿 Software, Betriebssysteme und Anwendungsdaten                       0    0    0    0    0    0    0    0    0
+│   ├── 💻 Betriebssystem-Umgebungen (Workbench, MS-DOS, Windows 9x)       0    0    0    0    0    0    0    0    0
+│   ├── 🛠️ Anwendungssoftware & Musikprogramme (Ableton Live)              0    0    0    0    0    0    0    0    0
+│   ├── 🕹️ Unterhaltungsmedien & Spiele (Gaming)                           0    0    0    0    0    0    0    0    0
+│   └── 🔄 Release-Management, Updates, Patches & Hotfixes                 0    0    0    0    0    0    0    0    0
+├── 🩺 Diagnose und Schadensbehebung                                       0    0    0    0    0    0    0    0    0
+├── 📂 Automation und Projekt-Assets                                       0    0    0    0    0    0    0    0    0
+└── 🔍 Interne Datenbank-Pipeline                                          0    0    0    0    0    0    0    0    0
+</pre>
+</details>
+
+<p align="left"><small>Last updated: 2026-06-21</small></p>
 <!-- DRDEBUG_DATABASE_STATUS_END -->
 
-<br><br>
+## Grundprinzipien
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🧠 &nbsp; Dr. Debug /MEMORY/ &nbsp; 🧠 # # <br>
-  # # # # # # # # # # # # # # # # # # # #
-</h3>
+1. **Quellen vor Behauptungen:** Technische Aussagen brauchen nachvollziehbare Quellen oder einen klaren Evidenzstatus.
+2. **Dedupe vor Datenmüll:** Gleiche Fehlerbilder, Geräte, IDs, Quellen und Checksummen werden vor Neuanlage gesucht.
+3. **Canonical Truth an einer Stelle:** Index-, Alias- und Mirror-Dateien sind Navigation, nicht zweite Wahrheiten.
+4. **Redaction vor Speicherung:** Keine Secrets, personenbezogenen Rohdaten oder vollständigen Rohlogs in Repository-Speicher.
+5. **Backup und Rollback vor Risiko:** Riskante Änderungen brauchen Diff, Branch/Backup, Rollback und Validation.
+6. **Validation vor Erfolgsmeldung:** Kein „fixed“, „committed“, „pushed“, „canonical“ oder „validated“ ohne beweisenden Output.
+7. **Generation/Bit vor Hersteller:** Retro- und Konsolentaxonomie folgt Epoche und Architektur; Hersteller sind Unterzweige.
 
-**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
+## Typische Inhalte
 
-Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk.
+Die Memory-Datenbank kann unter anderem enthalten:
 
-<br><br>
+- Hersteller, Geräte, Mainboards, Receiver, Smartphones, Tablets, Konsolen und Embedded-Systeme
+- Betriebssysteme, Distributionen, Programme, Pakete und Builds
+- Firmware, BIOS, Treiber, Handbücher, Manuals und Service-Unterlagen
+- Fehlermeldungen, Fehlercodes, Log-Muster und bekannte Ursachen
+- Diagnosepfade, Workarounds, Reparaturwege und bestätigte Fixes
+- Quellenregister, Indexdateien, Agenten-Direktiven, Update-Prozesse und Validierungsskripte
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🎯 &nbsp; Was dieses Repository ist &nbsp; 🎯 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
+## Mitmachen
 
-Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur.
+Forks und Beiträge sind willkommen, wenn sie klare Pfade, saubere Dateinamen, nachvollziehbare Quellen, getrennte bestätigte und unbestätigte Lösungen, keine unnötigen Duplikate, keine privaten Zugangsdaten, keine personenbezogenen Logs und keine gefährlichen Schritte ohne Warnhinweis enthalten.
 
-Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen besser zu beantworten:
+Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
 
-- Welche Fehlermeldung gehört zu welchem System, Programm, Paket, Gerät oder Dienst?
-- Welche Ursachen sind bekannt, wahrscheinlich oder historisch dokumentiert?
-- Welche Reparaturwege wurden gefunden, geprüft oder von Usern bestätigt?
-- Welche Geräte, Betriebssysteme, Programme, Pakete, Logs und Handbücher gehören zusammen?
-- Welche Quellen, Indizes und Querverweise müssen erhalten bleiben, damit Wissen nicht verloren geht?
+## Lizenzhinweis
 
-Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
+Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen. Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
 
-<br><br>
+---
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # ⚠️ &nbsp; Was dieses Repository nicht ist &nbsp; ⚠️ # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
-
-Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise, Agenten-Direktiven und Erfahrungswerte enthalten. Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden.
-
-Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 👥 &nbsp; Für wen ist das gedacht? &nbsp; 👥 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-#### Für ChatGPT-Agenten
-
-Agenten sollen dieses Repository lesen, bevor sie neue technische Memory-Dateien anlegen, bestehende Einträge ändern oder Rechercheergebnisse dauerhaft integrieren.
-
-Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
-
-- [`AGENTS.md`](./AGENTS.md)
-- [`/MEMORY/AGENTS/`](./MEMORY/AGENTS/)
-- [`/MEMORY/INDEX.md`](./MEMORY/INDEX.md)
-- [`/MEMORY/SCHEMA.md`](./MEMORY/SCHEMA.md)
-- [`/MEMORY/QUALITY_RULES.md`](./MEMORY/QUALITY_RULES.md)
-- [`/MEMORY/SOURCE_REGISTRY.md`](./MEMORY/SOURCE_REGISTRY.md)
-- [`/CHANGES.md`](./CHANGES.md)
-- [`/UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
-
-Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📜 &nbsp; Grundprinzipien &nbsp; 📜 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
-
-Dieses Repository folgt einigen einfachen Regeln:
-
-1. **Quellen vor Behauptungen**  
-   Technische Aussagen sollen möglichst belegbar sein.
-
-2. **Bestätigt ist nicht gleich gefunden**  
-   Eine Lösung gilt erst dann als bestätigt, wenn sie nachvollziehbar getestet oder von Usern als erfolgreich markiert wurde.
-
-3. **Deduplizierung vor Datenmüll**  
-   Gleiche Fehlerbilder sollen zusammengeführt, verlinkt oder sauber voneinander abgegrenzt werden.
-
-4. **Agentenlesbarkeit vor Schönschrift**  
-   Struktur, Pfade, IDs, Statusfelder, Quellen und Querverweise sind wichtiger als dekorative Prosa.
-
-5. **Sicherheit vor Aktionismus**  
-   Riskante Reparatur- oder Systemeingriffe müssen als solche erkennbar sein und dürfen nicht blind empfohlen werden.
-
-<br><br>
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📂 &nbsp; Typische Inhalte &nbsp; 📂 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
-
-Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
-
-- Betriebssysteme und Distributionen
-- Linux-, macOS-, Windows-, DOS- und FreeDOS-Programme
-- Paketmanager, Pakete und Paketversionen
-- Android-Apps und Package Names
-- Geräte, Mainboards, Receiver, Smartphones, Tablets, Konsolen und Embedded-Systeme
-- Fehlermeldungen, Fehlercodes und Log-Muster
-- journalctl-, dmesg-, systemd-, kernel-, ADB-, SSH-, Git-, Pacman- und Netzwerkfehler
-- Service Manuals, Datenblätter, Handbücher, Recovery-Guides und Installationshinweise
-- bekannte Ursachen, Diagnosepfade, Workarounds und bestätigte Fixes
-- Quellenregister, Indexdateien, Agenten-Direktiven und Update-Prozesse
-
-<br><br>
-
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # &nbsp;🤝 Wie du mitmachen kannst: 🤝&nbsp; # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Du kannst dieses Repository forken und für deine eigene technische Wissensbasis anpassen.
-
-Wenn du Inhalte beitragen möchtest, achte bitte besonders auf:
-
-- klare Pfade,
-- saubere Dateinamen,
-- nachvollziehbare Quellen,
-- getrennte bestätigte und unbestätigte Lösungen,
-- keine unnötigen Duplikate,
-- keine privaten Zugangsdaten,
-- keine personenbezogenen Logs,
-- keine gefährlichen Schritte ohne Warnhinweis.
-
-Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
-
-<br><br>
-
-
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 🪪 &nbsp; Lizenzhinweis &nbsp; 🪪 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
-
-Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen.
-
-Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
-
-<br><br>
-
-
-
-<p align="left">
-  <strong>Dr Debug's Mean /MEMORY/ Machine</strong><br>
-  Debuggen. Reparieren. Erinnern. Verbessern.
-</p>
+Dr Debug's Mean /MEMORY/ Machine  
+Debuggen. Reparieren. Erinnern. Verbessern.
