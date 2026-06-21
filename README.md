@@ -7,16 +7,17 @@
     # # # # # # # # # # # # # # # # # # # # #
 </h1>
 
-<span>
-  <p align="left">Hast du auch ein defektes Gerät?</p>
-  <p align="left">Reparieren war dir immer zu schwer?</p>
-  <p align="center">Dann komm in:</p>
-  <p align="center">
+<div align="left">
+  <p>Hast du auch ein defektes Gerät?</p>
+  <p>Reparieren war dir immer zu schwer?</p>
+  <p>Dann komm in:</p>
+  <p>
     <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>DrDebug Hardware Praxis</strong></a>
   </p>
-  <p align="center">Sprechzeiten nach dem klick des links.</p>
-</span>
-<br><br>
+  <p>Sprechzeiten nach dem klick des links.</p>
+</div>
+
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # <br>
@@ -48,7 +49,7 @@
 <p align="left"><small>Last updated: 2026-06-18</small></p>
 <!-- DRDEBUG_DATABASE_STATUS_END -->
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # # # <br>
@@ -60,7 +61,7 @@
 
 Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk.
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # # # # # <br>
@@ -80,7 +81,7 @@ Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen
 
 Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # # # # # # # # # # <br>
@@ -94,7 +95,7 @@ Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise,
 
 Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # # # # # <br>
@@ -119,7 +120,7 @@ Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
 
 Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # <br>
@@ -144,7 +145,7 @@ Dieses Repository folgt einigen einfachen Regeln:
 5. **Sicherheit vor Aktionismus**  
    Riskante Reparatur- oder Systemeingriffe müssen als solche erkennbar sein und dürfen nicht blind empfohlen werden.
 
-<br><br>
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # <br>
@@ -165,8 +166,7 @@ Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
 - bekannte Ursachen, Diagnosepfade, Workarounds und bestätigte Fixes
 - Quellenregister, Indexdateien, Agenten-Direktiven und Update-Prozesse
 
-<br><br>
-
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # # # # # # # # <br>
@@ -189,9 +189,7 @@ Wenn du Inhalte beitragen möchtest, achte bitte besonders auf:
 
 Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
 
-<br><br>
-
-
+---
 
 <h3 align="left">
   # # # # # # # # # # # # # # # # <br>
@@ -202,9 +200,6 @@ Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur,
 Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen.
 
 Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
-
-<br><br>
-
 
 
 <p align="left">
