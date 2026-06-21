@@ -26,27 +26,17 @@
 </h3>
 
 <!-- DRDEBUG_DATABASE_STATUS_START -->
-<p align="left">
-  <strong>Meine Datenbank<br>beinhaltet aktuell</strong>
-</p>
-
-| Kategorie | Anzahl |
-|---|---:|
-| Hersteller | 0 |
-| Geräte | 0 |
-| ModelNr | 0 |
-| Firmware | 0 |
-| Driver | 0 |
-| Programme | 0 |
-| Filesystems | 0 |
-| Netzwerk | 0 |
-| Builds | 0 |
-| Scripts | 0 |
-| Error Codes | 0 |
-| Lösungen | 0 |
-| Von Usern bestätigt | 0 |
-
-<p align="left"><small>Last updated: 2026-06-18</small></p>
+<!-- Managed README database-status block: replace only the content between DRDEBUG_DATABASE_STATUS markers. -->
+| Area | Status | Count / Result | Last checked | Notes |
+|---|---|---:|---|---|
+| Next-100 roadmap report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md` |
+| Four 25-item batch plan | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/PROPOSALS/BATCHES/MP-20260619-next-four-25-step-batches.md` |
+| Validation gate report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/VALIDATION/VR-20260619-next-100-roadmap-gate-report.md` |
+| Next actions report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/NEXT_ACTIONS/NA-20260619-next-3-directions.md` |
+| Canonical promotions from this package | BLOCKED | 0 | 2026-06-21 | No item is marked `PROMOTION_READY` by this package. |
+| Local clone grep / CI-like static checks | REQUIRED_BEFORE_PROMOTION | 0 | 2026-06-21 | Must be run locally before any later promotion. |
+| Binaries / downloads / rehosting | NOT_INCLUDED | 0 | 2026-06-21 | No binary download, raw crawl dump, manual rehosting or public rehosting is included. |
+| README update mode | MARKER_BLOCK_ONLY | 1 | 2026-06-21 | Only this marked block may be replaced; the rest of `README.md` must be preserved. |
 <!-- DRDEBUG_DATABASE_STATUS_END -->
 
 ---

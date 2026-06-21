@@ -1,9 +1,22 @@
 # DR. DEBUG CHANGES.md
-Version: 0.8.3-programs-seed-batch-001
+
+Version: 0.8.4-next-100-roadmap-report
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-21
+
+### docs(admin): add next 100 safe maintenance roadmap gate reports
+
+- Added `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md` as a bounded 100-step maintenance roadmap.
+- Added `MEMORY/PROPOSALS/BATCHES/MP-20260619-next-four-25-step-batches.md` as four 25-item gate-checked review batches.
+- Added `MEMORY/REPORTS/VALIDATION/VR-20260619-next-100-roadmap-gate-report.md` as the validation gate report for this safe subset.
+- Added `MEMORY/REPORTS/NEXT_ACTIONS/NA-20260619-next-3-directions.md` with the next three work directions and next three concrete items.
+- No canonical MEMORY records were promoted.
+- No binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, login/paywall bypasses, force-pushes, history rewrites, destructive deletes or broad reclassifications were added.
+- Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs or private local paths were intentionally added.
+- Validation: repository gate/dry-run checks were performed in chat; local-clone grep, CI-like checks and complete duplicate scan remain required before any promotion.
+- Rollback: revert the four added roadmap/report files and this `CHANGES.md` entry.
 
 ### docs(memory): add programs seed proposal batch 001
 
@@ -57,7 +70,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - Added `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` as the non-destructive master directive for taxonomy, evidence lifecycle, README matrix sync, rollback and Owner/Admin gates.
 - Updated `MEMORY/INDEX.md` to reference `07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` as part of the consolidated Knowledge routing.
 - Updated `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md` to mark legacy Knowledge directives as tombstone/alias references instead of deleting them.
-- Updated `MEMORY/MIGRATION/MIGRATION_MAP.md` to document tombstone/alias handling and the new `07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` overlay.
+- Updated `MEMORY/MIGRATION/MIGRATION_MAP.md` to document tombstone/alias handling and the new `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` overlay.
 - No legacy directive files were deleted in this pass.
 - No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
 - Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files were intentionally added.
