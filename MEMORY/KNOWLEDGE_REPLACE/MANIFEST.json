@@ -1,0 +1,18 @@
+{
+  "package": "drdebug_consolidated_knowledge_v0_8_0",
+  "version": "0.8.0-proposal",
+  "created": "2026-06-21",
+  "purpose": "Consolidate Dr.Debug CustomGPT Knowledge files for maximum agent comprehension under repository-allowed MEMORY paths.",
+  "new_active_knowledge_files": [
+    "MEMORY/KNOWLEDGE_REPLACE/00_WORKING_MODE.md",
+    "MEMORY/KNOWLEDGE_REPLACE/01_REPOSITORY_CHANGE_WORKFLOW.md",
+    "MEMORY/KNOWLEDGE_REPLACE/02_RESEARCH_ARCHIVE_BINARY_SOURCES.md",
+    "MEMORY/KNOWLEDGE_REPLACE/03_DEVICE_MANUFACTURER_INTAKE.md",
+    "MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md",
+    "MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md",
+    "MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md"
+  ],
+  "migration_map": "MEMORY/MIGRATION/MIGRATION_MAP.md",
+  "status": "non_destructive_repository_apply",
+  "apply_boundary": "Repository write only; no deletion, no canonical promotion, no archive upload, no external upload."
+}
