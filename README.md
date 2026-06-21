@@ -1,70 +1,33 @@
 <p align="center">
   <img src="./dr_debug_banner.png" alt="Dr Debug's Mean /MEMORY/ Machine" width="100%">
 </p>
+<h1 align="center">
+    # # # # # # # # # # # # # # # # # # # # #</br>
+    # # 🛠️ &nbsp; Dr. Debug's Werkstatt &nbsp; 🛠️ # #</br>
+    # # # # # # # # # # # # # # # # # # # # #
+</h1>
 
----
+<span>
+  <p align="left">Hast du auch ein defektes Gerät?</p>
+  <p align="left">Reparieren war dir immer zu schwer?</p>
+  <p align="center">Dann komm in:</p>
+  <p align="center">
+    <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>DrDebug Hardware Praxis</strong></a>
+  </p>
+  <p align="center">Sprechzeiten nach dem klick des links.</p>
+</span>
+<br><br>
 
-# # # # # # # # # # # # # # # #
-# Dr. Debug's Werkstatt #
-# # # # # # # # # # # # # # # #
+<h3 align="left">
+  # # # # # # # # # # # # # # # # <br>
+  # # 📊 &nbsp; Wissenstand &nbsp; 📊 # # <br>
+  # # # # # # # # # # # # # # # #
+</h3>
 
-Hast du auch ein defektes Gerät? Möchtest du ein Gerät reparieren lassen? Oder einfach über Technik philosophieren, planen, debuggen und neue Ideen sortieren?
-
-Dann komm in:
-
-<p align="center">
-  <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>Dr. Debug's Werkstatt</strong></a>
-</p>
-
-Dort geht es um Reparatur, Diagnose, technische Planung, Fehlersuche, Geräteanalyse, kreative Werkstattideen und den Aufbau einer langfristig nützlichen technischen Memory-Basis.
-
----
-
-# # # # # # # # # # # # #
-# Dr. Debug /MEMORY/ #
-# # # # # # # # # # # # #
-
-**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
-
-Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk, das ChatGPT-Agenten dabei helfen soll, technische Probleme schneller, sauberer und nachvollziehbarer einzugrenzen.
-
-Menschen dürfen diese Datenbank lesen. Der praktische Nutzen für Menschen besteht vor allem darin, das Repository zu **forken**, die **Agenten-Anweisungen zu lesen**, passende Direktiven zu kopieren oder eigene Dr.-Debug-Memory-Strukturen daraus abzuleiten.
-
----
-
-# # # # # # # # # # # # # # #
-# Was dieses Repository ist #
-# # # # # # # # # # # # # # #
-
-Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur.
-
-Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen besser zu beantworten:
-
-- Welche Fehlermeldung gehört zu welchem System, Programm, Paket, Gerät oder Dienst?
-- Welche Ursachen sind bekannt, wahrscheinlich oder historisch dokumentiert?
-- Welche Reparaturwege wurden gefunden, geprüft oder von Usern bestätigt?
-- Welche Geräte, Betriebssysteme, Programme, Pakete, Logs und Handbücher gehören zusammen?
-- Welche Quellen, Indizes und Querverweise müssen erhalten bleiben, damit Wissen nicht verloren geht?
-
-Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
-
----
-
-# # # # # # # # # # # # # # # # # # #
-# Was dieses Repository nicht ist #
-# # # # # # # # # # # # # # # # # # #
-
-Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
-
-Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise, Agenten-Direktiven und Erfahrungswerte enthalten. Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden.
-
-Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
-
----
 <!-- DRDEBUG_DATABASE_STATUS_START -->
-# Datenbank-Stand
-
-Meine Datenbank beinhaltet aktuell:
+<p align="left">
+  <strong>Meine Datenbank<br>beinhaltet aktuell</strong>
+</p>
 
 | Kategorie | Anzahl |
 |---|---:|
@@ -82,28 +45,64 @@ Meine Datenbank beinhaltet aktuell:
 | Lösungen | 0 |
 | Von Usern bestätigt | 0 |
 
-_Last updated: 2026-06-18_
+<p align="left"><small>Last updated: 2026-06-18</small></p>
 <!-- DRDEBUG_DATABASE_STATUS_END -->
 
----
+<br><br>
 
-# # # # # # # # # # # # # #
-# Für wen ist das gedacht? #
-# # # # # # # # # # # # # #
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # # # <br>
+  # # 🧠 &nbsp; Dr. Debug /MEMORY/ &nbsp; 🧠 # # <br>
+  # # # # # # # # # # # # # # # # # # # #
+</h3>
 
-## Für Menschen
+**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
 
-Menschen können dieses Repository nutzen, um:
+Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk.
 
-- die Struktur zu verstehen,
-- Agenten-Anweisungen zu lesen oder zu kopieren,
-- das Repository zu forken,
-- eigene technische Memory-Datenbanken aufzubauen,
-- Quellen, Korrekturen oder bessere Strukturvorschläge beizutragen.
+<br><br>
 
-Der Inhalt ist bewusst nicht wie ein normales Handbuch geschrieben. Viele Dateien sind für Agenten, Indexierung, Deduplizierung, Quellenpflege und strukturierte Wiederverwendung optimiert.
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # # # # # <br>
+  # # 🎯 &nbsp; Was dieses Repository ist &nbsp; 🎯 # # <br>
+  # # # # # # # # # # # # # # # # # # # # # #
+</h3>
 
-## Für ChatGPT-Agenten
+Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur.
+
+Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen besser zu beantworten:
+
+- Welche Fehlermeldung gehört zu welchem System, Programm, Paket, Gerät oder Dienst?
+- Welche Ursachen sind bekannt, wahrscheinlich oder historisch dokumentiert?
+- Welche Reparaturwege wurden gefunden, geprüft oder von Usern bestätigt?
+- Welche Geräte, Betriebssysteme, Programme, Pakete, Logs und Handbücher gehören zusammen?
+- Welche Quellen, Indizes und Querverweise müssen erhalten bleiben, damit Wissen nicht verloren geht?
+
+Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
+
+<br><br>
+
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # # # # # # # # # # <br>
+  # # ⚠️ &nbsp; Was dieses Repository nicht ist &nbsp; ⚠️ # # <br>
+  # # # # # # # # # # # # # # # # # # # # # # # # # # #
+</h3>
+
+Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
+
+Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise, Agenten-Direktiven und Erfahrungswerte enthalten. Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden.
+
+Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
+
+<br><br>
+
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # # # # # <br>
+  # # 👥 &nbsp; Für wen ist das gedacht? &nbsp; 👥 # # <br>
+  # # # # # # # # # # # # # # # # # # # # # #
+</h3>
+
+#### Für ChatGPT-Agenten
 
 Agenten sollen dieses Repository lesen, bevor sie neue technische Memory-Dateien anlegen, bestehende Einträge ändern oder Rechercheergebnisse dauerhaft integrieren.
 
@@ -120,9 +119,13 @@ Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
 
 Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
 
-# # # # # # # # # # # #
-# Grundprinzipien #
-# # # # # # # # # # # #
+<br><br>
+
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # <br>
+  # # 📜 &nbsp; Grundprinzipien &nbsp; 📜 # # <br>
+  # # # # # # # # # # # # # # # # # #
+</h3>
 
 Dieses Repository folgt einigen einfachen Regeln:
 
@@ -141,11 +144,13 @@ Dieses Repository folgt einigen einfachen Regeln:
 5. **Sicherheit vor Aktionismus**  
    Riskante Reparatur- oder Systemeingriffe müssen als solche erkennbar sein und dürfen nicht blind empfohlen werden.
 
----
+<br><br>
 
-# # # # # # # # # # # # #
-# Typische Inhalte #
-# # # # # # # # # # # # #
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # <br>
+  # # 📂 &nbsp; Typische Inhalte &nbsp; 📂 # # <br>
+  # # # # # # # # # # # # # # # # # #
+</h3>
 
 Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
 
@@ -160,11 +165,14 @@ Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
 - bekannte Ursachen, Diagnosepfade, Workarounds und bestätigte Fixes
 - Quellenregister, Indexdateien, Agenten-Direktiven und Update-Prozesse
 
----
+<br><br>
 
-# # # # # # # # # # # # # # # #
-# Wie du mitmachen kannst #
-# # # # # # # # # # # # # # # #
+
+<h3 align="left">
+  # # # # # # # # # # # # # # # # # # # # # # # <br>
+  # # &nbsp;🤝 Wie du mitmachen kannst: 🤝&nbsp; # # <br>
+  # # # # # # # # # # # # # # # # # # # # # # #
+</h3>
 
 Du kannst dieses Repository forken und für deine eigene technische Wissensbasis anpassen.
 
@@ -181,19 +189,25 @@ Wenn du Inhalte beitragen möchtest, achte bitte besonders auf:
 
 Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
 
----
+<br><br>
 
-# # # # # # # # # #
-# Lizenzhinweis #
-# # # # # # # # # #
+
+
+<h3 align="left">
+  # # # # # # # # # # # # # # # # <br>
+  # # 🪪 &nbsp; Lizenzhinweis &nbsp; 🪪 # # <br>
+  # # # # # # # # # # # # # # # #
+</h3>
 
 Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen.
 
 Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
 
----
+<br><br>
 
-<p align="center">
+
+
+<p align="left">
   <strong>Dr Debug's Mean /MEMORY/ Machine</strong><br>
   Debuggen. Reparieren. Erinnern. Verbessern.
 </p>
