@@ -1,10 +1,20 @@
 # DR. DEBUG CHANGES.md
-
-Version: 0.8.2-foundation-layer  
-Status: ACTIVE  
+Version: 0.8.3-programs-seed-batch-001
+Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-21
+
+### docs(memory): add programs seed proposal batch 001
+
+- Added `MEMORY/PROPOSALS/BATCHES/MP-20260621-programs-seed-batch-001.md` with 100 proposal-only program/application/software-tool discovery candidates.
+- Updated `MEMORY/PROPOSALS/BATCHES/INDEX.md` with a Programs proposals section.
+- Added `MEMORY/STATE/CURSORS/programs.md` with `next_offset: 100`.
+- Used `MEMORY/SOURCES/SOURCE_REGISTRY.md` as the source-review context for later canonical import.
+- No canonical SOFTWARE/PROGRAMS records were promoted.
+- No versions, compatibility claims, official URL claims, binaries, installers, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
+- Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs or local paths were intentionally added.
+- Rollback: revert `MEMORY/PROPOSALS/BATCHES/MP-20260621-programs-seed-batch-001.md`, `MEMORY/PROPOSALS/BATCHES/INDEX.md`, `MEMORY/STATE/CURSORS/programs.md` and this `CHANGES.md` update to the previous commit state.
 
 ### docs(memory): add next foundation layer for schema, quality, sources and proposals
 
@@ -51,4 +61,4 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 - No legacy directive files were deleted in this pass.
 - No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
 - Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files were intentionally added.
-- Rollback: revert the README, `MEMORY/INDEX.md`, `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`, `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`, `MEMORY/MIGRATION/MIGRATION_MAP.md`, and this `CHANGES.md` update to the previous commit state.
+- Rollback: revert the README, `MEMORY/INDEX.md`, `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`, `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`, `MEMORY/MIGRATION/MIGRATION_MAP.md`, and this `CHANGES.md` update to their previous commit state.
