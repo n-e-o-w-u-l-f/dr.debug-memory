@@ -43,7 +43,7 @@ Migration references:
 
 _Last checked: 2026-06-21_
 
-| Artifact class | searched_total | present_total | missing_total | orphan_total | proposal_only_total | canonical_total | asserted_unverified_total | exists_user_evidenced_total | source_confirmed_total |
+| class | searched | present | missing | orphan | proposal only | canonical | asserted unverified | user evidenced | source confirmed |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | manufacturers | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
 | devices | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
