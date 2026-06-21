@@ -30,6 +30,7 @@ Für CustomGPT-Knowledge-Policy gilt die konsolidierte Struktur unter [`MEMORY/K
 | [`04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md`](./MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md) | Evidence, validation, conflicts, dedupe, canonical truth, memory schema, menu/category resolution, status lifecycle |
 | [`05_RISK_REDACTION_PLATFORM.md`](./MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md) | Redaction, privacy, platform gate, risk, backup, rollback, remote safety |
 | [`06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`](./MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md) | Knowledge loading, retrieval, context discipline, tool contracts, audit, release, drift sync |
+| [`07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`](./MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md) | Master taxonomy pipeline, generation-/bit-hotspot, README matrix sync, schema discipline, evidence lifecycle and non-destructive legacy migration overlay |
 
 Migration references:
 
