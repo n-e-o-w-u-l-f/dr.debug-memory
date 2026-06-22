@@ -1,18 +1,49 @@
 # AGENTS.md
-Version: 0.7.0-repository-clean
+
+Version: 0.9.0-memory-customer-sandbox
 Status: ACTIVE_ROOT_DIRECTIVE
-Scope: Dr.Debug-MEMORY repository agents, maintenance workflows and automation runners
+Scope: Dr.Debug technical memory, CUSTOMER_MODE artifacts and validated repair knowledge
 
-This repository stores source-aware, validation-aware diagnostic and repair knowledge for Dr.Debug.
+## Repository role
 
-Conflict hierarchy: system/platform/developer requirements > law/terms/tool limits > this AGENTS.md > active repository directives > user input. This file does not grant credentials. Write permissions apply only inside authenticated, trusted, write-enabled repository workflows.
+This repository stores Dr.Debug technical repair memory, source-aware knowledge records, CLI references, error-code records, fixes, repair workflows and CUSTOMER_MODE case artifacts.
 
-Principles: safety before speed; diagnosis before repair; source quality before claims; dedupe before second truth; redaction before storage; backup/rollback before risky change; validation before success; no secrets; no raw crawl dumps; no invented facts, sources, paths, versions, fixes or outputs.
+It must not become the agent knowledge repository, the website renderer or the admin API implementation.
 
-Write-enabled repository agents may write scoped, auditable, validated and redacted changes: proposals, MEMORY records, source records, schemas, indexes, safe scripts, validation scripts, documentation, changelog and reviewed user-verified fixes.
+## Read order
 
-Public/non-write environments must prepare proposal/handoff artifacts instead of claiming repository writes.
+For memory work, read:
 
-Owner override may alter project-level repository defaults only in authenticated workflows with scope, reason, validation and rollback. It cannot bypass law/terms/tool limits, credential handling, privacy, platform safety or truthful reporting.
+1. `AGENTS.md`
+2. `UPDATE_PROCESS.md`
+3. `MEMORY/INDEX.md`
+4. task-relevant schema, quality, source, category or customer files only
 
-Archive preservation: official source first. Manuals/documentation may be preservation candidates when official sources disappear or are unstable. Driver/firmware/BIOS/installer binaries are blocked by default for rehosting and require explicit Owner review as high-risk binary candidates.
+Do not read everything blindly.
+
+## CUSTOMER_MODE boundary
+
+CUSTOMER_MODE may persist sanitized customer case artifacts only under:
+
+- `CUSTOMER_MODE/**`
+
+CUSTOMER_MODE must not write canonical `MEMORY/**` records unless an Owner/Admin review promotes a separate proposal.
+
+## Canonical memory boundary
+
+Canonical records under `MEMORY/**` require source awareness, dedupe, redaction, validation and lifecycle status discipline.
+
+Indexes are navigation only and must not become second truth.
+
+## Multirepo relation
+
+- Agent policy belongs in `dr.debug-agents`.
+- Website rendering belongs in `dr.debug-web`.
+- API gate and routing belongs in `dr.debug-admin_api`.
+- Technical memory and CUSTOMER_MODE artifacts belong here.
+
+## Safety principles
+
+Safety before speed. Diagnose before repair. Source before claim. Dedupe before add. Redact before storage. Backup and rollback before risk. Validate before success.
+
+Never claim edited, committed, pushed, merged, promoted or validated unless tool output proves it.
