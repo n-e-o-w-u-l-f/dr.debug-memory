@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "by_category": {
+      "PROTOCOLS": 11,
+      "REGISTRIES": 4,
+      "SECURITY": 2
+    },
+    "by_file": {
+      "MEMORY/PROTOCOLS/application_protocol_diagnostics_seed_batch8.jsonl": 7,
+      "MEMORY/PROTOCOLS/protocol_diagnostic_matrix_batch9.jsonl": 4,
+      "MEMORY/REGISTRIES/registry_import_targets_batch9.jsonl": 4,
+      "MEMORY/SECURITY/tls_registry_policy_notes_batch9.jsonl": 2
+    },
+    "by_topic": {
+      "PROTOCOL_DIAGNOSTIC": 2,
+      "REGISTRY_IMPORT_TARGET": 10,
+      "SECURITY_TLS_REGISTRY_POLICY": 5
+    }
+  },
+  "date": "2026-06-23",
+  "decisions": {
+    "CANONICAL_WRITE": 0,
+    "PROMOTION_READY": 0,
+    "SAFE_DELETE_CANDIDATE": 0
+  },
+  "recommended_next_action": "Review protocol diagnostics, registry import targets and TLS registry policy notes against official source records before any canonical promotion.",
+  "repository": "n-e-o-w-u-l-f/dr.debug-memory",
+  "scope": "PROTOCOLS 2 + REGISTRIES 1 + SECURITY 1 BATCH files",
+  "status": "STAGING_SUMMARY_ONLY_NOT_CANONICAL",
+  "validation": {
+    "input_files": 4,
+    "mapped_records": 17,
+    "parse_errors": 0
+  }
+}
