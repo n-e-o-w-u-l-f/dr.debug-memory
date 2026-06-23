@@ -29,10 +29,17 @@
 <!-- Managed README database-status block: replace only the content between DRDEBUG_DATABASE_STATUS markers. -->
 | Area | Status | Count / Result | Last checked | Notes |
 |---|---|---:|---|---|
-| Next-100 roadmap report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md` |
+| BATCH memory artifacts | PRESENT_INDEXED_REVIEW_REQUIRED | 162 files | 2026-06-23 | Current BATCH file count across MEMORY. Indexed in MEMORY/INDEX; later schema/status review required. No safe delete candidates identified. |
+| BATCH duplicate filename check | PASS | 0 duplicates | 2026-06-23 | Filename-level duplicate check returned no duplicate names. |
+| BATCH audit report | STATIC_CHECK | 1 | 2026-06-23 | `MEMORY/REPORTS/AUDIT/AR-20260623-batch-memory-index-sync.md` |
+| BATCH proposal lineage | REVIEW_LINEAGE | 59 files | 2026-06-23 | `MEMORY/PROPOSALS/**`; retain as proposal/review lineage unless canonical replacement is proven. |
+| BATCH reports | REVIEW_LINEAGE | 20 files | 2026-06-23 | `MEMORY/REPORTS/**`; includes audit/report evidence. |
+| BATCH status records | REVIEW_LINEAGE | 15 files | 2026-06-23 | `MEMORY/STATUS/**`; retain as status history. |
+| BATCH canonical-ish category files | INDEX_COVERAGE_REQUIRED | 68 files | 2026-06-23 | Outside PROPOSALS/REPORTS/STATUS; requires MEMORY/INDEX coverage and later schema/status review. |
 | Four 25-item batch plan | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/PROPOSALS/BATCHES/MP-20260619-next-four-25-step-batches.md` |
 | Validation gate report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/VALIDATION/VR-20260619-next-100-roadmap-gate-report.md` |
 | Next actions report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/NEXT_ACTIONS/NA-20260619-next-3-directions.md` |
+| Next-100 roadmap report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md` |
 | Canonical promotions from this package | BLOCKED | 0 | 2026-06-21 | No item is marked `PROMOTION_READY` by this package. |
 | Local clone grep / CI-like static checks | REQUIRED_BEFORE_PROMOTION | 0 | 2026-06-21 | Must be run locally before any later promotion. |
 | Binaries / downloads / rehosting | NOT_INCLUDED | 0 | 2026-06-21 | No binary download, raw crawl dump, manual rehosting or public rehosting is included. |

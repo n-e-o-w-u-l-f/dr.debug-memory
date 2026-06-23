@@ -77,3 +77,37 @@ When Knowledge/MEMORY is searched, changed, or a proposal/candidate is created, 
 ## Taxonomy hotspot
 
 For retro consoles and related historical platforms, the primary classification hotspot is historical generation plus bit-/CPU-/bus-/graphics-/memory architecture. Manufacturer branches are subordinate navigation nodes unless a task-specific schema says otherwise.
+
+## BATCH / bulk-memory audit navigation
+
+Status: ACTIVE_NAVIGATION
+Last checked: 2026-06-23
+
+Current BATCH file count: 162.
+
+Navigation:
+
+- Audit report: `MEMORY/REPORTS/AUDIT/AR-20260623-batch-memory-index-sync.md`
+- Proposal batches: `MEMORY/PROPOSALS/BATCHES/`
+- Manufacturer proposal batches: `MEMORY/PROPOSALS/MANUFACTURERS/`
+- Proposal review reports: `MEMORY/REPORTS/PROPOSALS/`
+- Status records: `MEMORY/STATUS/`
+- Category batch records requiring index/schema review:
+  - `MEMORY/ANDROID/`
+  - `MEMORY/DEVICE_IDENTIFIERS/`
+  - `MEMORY/FIRMWARE/`
+  - `MEMORY/HARDWARE/`
+  - `MEMORY/MANUFACTURERS/`
+  - `MEMORY/NETWORKING/`
+  - `MEMORY/PROTOCOLS/`
+  - `MEMORY/REGISTRIES/`
+  - `MEMORY/REPAIR/`
+  - `MEMORY/RETRO/`
+  - `MEMORY/RUNS/`
+  - `MEMORY/SCHEMAS/`
+  - `MEMORY/SECURITY/`
+  - `MEMORY/SOFTWARE/`
+  - `MEMORY/SOURCES/`
+
+Deletion rule: no BATCH artifact is currently a safe delete candidate. Deletion requires duplicate proof, canonical replacement path, reference grep, README/MEMORY index update and rollback note.
+
