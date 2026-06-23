@@ -1,0 +1,47 @@
+{
+  "counts": {
+    "by_category": {
+      "ANDROID": 115,
+      "DEVICE_IDENTIFIERS": 14,
+      "FIRMWARE": 7
+    },
+    "by_file": {
+      "MEMORY/ANDROID/android_build_and_recovery_rules_batch9.jsonl": 3,
+      "MEMORY/ANDROID/android_build_recovery_sources_batch5.jsonl": 7,
+      "MEMORY/ANDROID/aosp_version_api_seed_batch7.jsonl": 15,
+      "MEMORY/ANDROID/custom_rom_recovery_projects_seed_batch4.jsonl": 3,
+      "MEMORY/ANDROID/samsung_firmware_build_taxonomy_batch5.md": 1,
+      "MEMORY/ANDROID/samsung_open_source_observed_seed_batch7.jsonl": 14,
+      "MEMORY/ANDROID/samsung_open_source_seed_examples_batch5.jsonl": 3,
+      "MEMORY/ANDROID/twrp_oem_index_seed_batch7.jsonl": 69,
+      "MEMORY/DEVICE_IDENTIFIERS/device_identifier_authorities_batch5.jsonl": 5,
+      "MEMORY/DEVICE_IDENTIFIERS/device_identifier_expansion_batch4.jsonl": 5,
+      "MEMORY/DEVICE_IDENTIFIERS/device_identifier_import_targets_batch6.jsonl": 4,
+      "MEMORY/FIRMWARE/firmware_terminology_expansion_batch5.md": 1,
+      "MEMORY/FIRMWARE/lvfs_fwupd_firmware_metadata_seed_batch7.jsonl": 6
+    },
+    "by_topic": {
+      "ANDROID_AOSP": 19,
+      "ANDROID_RECOVERY_ROM": 81,
+      "ANDROID_SAMSUNG": 17,
+      "DEVICE_IDENTIFIER_AUTHORITY": 7,
+      "FIRMWARE_LVFS_FWUPD": 8,
+      "FIRMWARE_TERMINOLOGY": 4
+    }
+  },
+  "date": "2026-06-23",
+  "decisions": {
+    "CANONICAL_WRITE": 0,
+    "PROMOTION_READY": 0,
+    "SAFE_DELETE_CANDIDATE": 0
+  },
+  "recommended_next_action": "Split later normalization into Android source-backed records, firmware/LVFS-fwupd records, and device identifier authority/import-target records.",
+  "repository": "n-e-o-w-u-l-f/dr.debug-memory",
+  "scope": "ANDROID 8 + FIRMWARE 2 + DEVICE_IDENTIFIERS 3 BATCH files",
+  "status": "STAGING_SUMMARY_ONLY_NOT_CANONICAL",
+  "validation": {
+    "input_files": 13,
+    "mapped_records": 136,
+    "parse_errors": 0
+  }
+}
