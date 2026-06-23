@@ -1,0 +1,62 @@
+{
+  "date": "2026-06-23",
+  "decisions": {
+    "CANONICAL_WRITE": 0,
+    "KEEP_AS_RUN_LINEAGE": 3,
+    "PROMOTION_READY": 0,
+    "SAFE_DELETE_CANDIDATE": 0
+  },
+  "recommended_next_action": "Keep RUNS files as lineage/index material. Do not promote them as canonical factual memory.",
+  "records": [
+    {
+      "bytes": 5679,
+      "canonical_write": false,
+      "has_batch_marker": true,
+      "has_gate_marker": true,
+      "has_review_queue_marker": true,
+      "index_decision": "KEEP_AS_RUN_LINEAGE_DO_NOT_PROMOTE",
+      "lineage_class": "RUN_GATE_LINEAGE",
+      "lines": 99,
+      "mapping_status": "LINEAGE_INDEX_DECISION_ONLY_NOT_CANONICAL",
+      "promotion_ready": false,
+      "safe_delete_candidate": false,
+      "source_file": "MEMORY/RUNS/DEVICES/2026-06-20_memory_loop_devices_by_manufacturer_batch_100_gate.md"
+    },
+    {
+      "bytes": 8665,
+      "canonical_write": false,
+      "has_batch_marker": true,
+      "has_gate_marker": false,
+      "has_review_queue_marker": true,
+      "index_decision": "KEEP_AS_RUN_LINEAGE_DO_NOT_PROMOTE",
+      "lineage_class": "RUN_REVIEW_QUEUE_LINEAGE",
+      "lines": 119,
+      "mapping_status": "LINEAGE_INDEX_DECISION_ONLY_NOT_CANONICAL",
+      "promotion_ready": false,
+      "safe_delete_candidate": false,
+      "source_file": "MEMORY/RUNS/DEVICES/2026-06-20_memory_loop_devices_by_manufacturer_batch_100_review_queue_001.md"
+    },
+    {
+      "bytes": 5075,
+      "canonical_write": false,
+      "has_batch_marker": true,
+      "has_gate_marker": true,
+      "has_review_queue_marker": true,
+      "index_decision": "KEEP_AS_RUN_LINEAGE_DO_NOT_PROMOTE",
+      "lineage_class": "RUN_GATE_LINEAGE",
+      "lines": 111,
+      "mapping_status": "LINEAGE_INDEX_DECISION_ONLY_NOT_CANONICAL",
+      "promotion_ready": false,
+      "safe_delete_candidate": false,
+      "source_file": "MEMORY/RUNS/MANUFACTURERS/2026-06-20_memory_loop_manufacturers_batch_100_gate.md"
+    }
+  ],
+  "repository": "n-e-o-w-u-l-f/dr.debug-memory",
+  "scope": "3 RUNS BATCH lineage files",
+  "status": "LINEAGE_INDEX_DECISION_ONLY_NOT_CANONICAL",
+  "validation": {
+    "input_files": 3,
+    "read_errors": 0,
+    "reviewed_files": 3
+  }
+}
