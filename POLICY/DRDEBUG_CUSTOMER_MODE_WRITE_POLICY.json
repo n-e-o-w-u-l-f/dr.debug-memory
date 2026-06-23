@@ -1,0 +1,44 @@
+{
+  "policy_id": "drdebug_customer_mode_write_policy",
+  "version": "0.1.0",
+  "status": "proposal_active_contract",
+  "repo": "n-e-o-w-u-l-f/dr.debug-memory",
+  "mode": "CUSTOMER_MODE",
+  "purpose": "Allow structured customer-mode artifacts while preventing canonical promotion and unsafe writes.",
+  "allowed_paths": [
+    "CUSTOMER_MODE/DIAGNOSIS/**",
+    "CUSTOMER_MODE/ERROR_CODES/**",
+    "CUSTOMER_MODE/ERROR_DESCRIPTION/**",
+    "CUSTOMER_MODE/INSTALLER/**",
+    "CUSTOMER_MODE/FIXES/DRAFTS/**",
+    "CUSTOMER_MODE/VALIDATED_WORKFLOW/**",
+    "docs/drdebug/**"
+  ],
+  "denied_paths": [
+    ".github/**",
+    ".git/**",
+    "MEMORY/**",
+    "SCHEMA/**",
+    "SOURCE_REGISTRY/**",
+    "QUALITY_RULES/**",
+    "secrets/**",
+    "**/.env",
+    "**/*token*",
+    "**/*secret*",
+    "**/*password*"
+  ],
+  "requires": [
+    "verified_repo_remote",
+    "target_path",
+    "reason",
+    "dry_run_before_write",
+    "redaction_check",
+    "no_raw_secret_storage",
+    "no_canonical_promotion_without_owner_review"
+  ],
+  "notes": [
+    "CUSTOMER_MODE may create diagnostic and workflow artifacts.",
+    "OWNER_ADMIN_MODE is still required for canonical memory promotion.",
+    "This file is a repository policy contract; admin_api must enforce it to affect tool writes."
+  ]
+}
