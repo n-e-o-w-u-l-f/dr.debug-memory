@@ -1,0 +1,51 @@
+{
+  "date": "2026-06-23",
+  "decisions": {
+    "NETWORKING_CANONICAL_WRITE": 0,
+    "PROMOTION_READY": 0,
+    "SAFE_DELETE_CANDIDATE": 0
+  },
+  "input_files": [
+    "MEMORY/NETWORKING/dhcp_parameters_seed_batch7.jsonl",
+    "MEMORY/NETWORKING/dns_parameters_seed_batch7.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch8_part_001.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch8_part_002.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch8_part_003.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch8_part_004.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch8_part_005.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_001.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_002.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_003.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_004.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_005.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_006.jsonl",
+    "MEMORY/NETWORKING/IANA/iana_service_port_diagnostic_slots_batch9_part_007.jsonl",
+    "MEMORY/NETWORKING/iana_ip_protocol_numbers_batch7.jsonl",
+    "MEMORY/NETWORKING/iana_port_range_policy_batch9.jsonl",
+    "MEMORY/NETWORKING/iana_service_port_diagnostic_slots_batch6_5000.jsonl",
+    "MEMORY/NETWORKING/iana_service_port_diagnostic_slots_batch7_2500_9999.jsonl",
+    "MEMORY/NETWORKING/icmp_parameters_seed_batch7.jsonl",
+    "MEMORY/NETWORKING/linux_network_component_diagnostics_batch7.jsonl",
+    "MEMORY/NETWORKING/network_diagnostics_matrix_batch5.md",
+    "MEMORY/NETWORKING/network_error_families_seed_batch4.jsonl",
+    "MEMORY/NETWORKING/network_error_signatures_batch5.jsonl",
+    "MEMORY/NETWORKING/network_foundations_seed_batch5.jsonl",
+    "MEMORY/NETWORKING/network_protocols_seed_batch4.jsonl",
+    "MEMORY/NETWORKING/network_standards_expansion_batch6.jsonl",
+    "MEMORY/NETWORKING/service_ports_seed_batch4.jsonl",
+    "MEMORY/NETWORKING/special_purpose_address_space_seed_batch7.jsonl",
+    "MEMORY/NETWORKING/tls_parameters_seed_batch7.jsonl"
+  ],
+  "recommended_next_action": "Refine dedupe extraction into smaller topic-specific mappings before any canonical NETWORKING promotion.",
+  "repository": "n-e-o-w-u-l-f/dr.debug-memory",
+  "scope": "29 NETWORKING BATCH files",
+  "status": "STAGING_SUMMARY_ONLY_NOT_CANONICAL",
+  "validation": {
+    "duplicate_dedupe_keys_observed": 4,
+    "full_mapping_committed": false,
+    "full_mapping_reason_not_committed": "Full row-level mapping was 90M / 131541 lines, too large for an audit artifact.",
+    "input_files": 29,
+    "mapped_records_observed_locally": 131541,
+    "parse_errors": 0
+  }
+}
