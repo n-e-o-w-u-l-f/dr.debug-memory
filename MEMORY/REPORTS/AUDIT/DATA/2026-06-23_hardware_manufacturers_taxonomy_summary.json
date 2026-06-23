@@ -1,0 +1,34 @@
+{
+  "counts": {
+    "by_category": {
+      "HARDWARE": 11,
+      "MANUFACTURERS": 22
+    },
+    "by_file": {
+      "MEMORY/HARDWARE/network_component_families_batch5.jsonl": 6,
+      "MEMORY/HARDWARE/network_components_seed_batch4.jsonl": 5,
+      "MEMORY/MANUFACTURERS/manufacturer_device_category_map_batch4.jsonl": 18,
+      "MEMORY/MANUFACTURERS/manufacturer_research_methods_batch5.jsonl": 4
+    },
+    "by_topic": {
+      "HARDWARE_COMPONENT_FAMILY": 11,
+      "MANUFACTURER_DEVICE_CATEGORY_MAP": 18,
+      "MANUFACTURER_RESEARCH_METHOD": 4
+    }
+  },
+  "date": "2026-06-23",
+  "decisions": {
+    "CANONICAL_WRITE": 0,
+    "PROMOTION_READY": 0,
+    "SAFE_DELETE_CANDIDATE": 0
+  },
+  "recommended_next_action": "Review component taxonomy and manufacturer method/category records separately before any canonical promotion.",
+  "repository": "n-e-o-w-u-l-f/dr.debug-memory",
+  "scope": "HARDWARE 2 + MANUFACTURERS 2 BATCH files",
+  "status": "STAGING_SUMMARY_ONLY_NOT_CANONICAL",
+  "validation": {
+    "input_files": 4,
+    "mapped_records": 33,
+    "parse_errors": 0
+  }
+}
