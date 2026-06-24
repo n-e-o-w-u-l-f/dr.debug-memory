@@ -72,3 +72,4 @@ Next resume cursor: `MEMORY cursor: known_artifacts/report-001-complete; next=so
 ## Next safe action
 
 Run a targeted follow-up loop for one family at a time, preferably `manufacturer proposal batches`, `source registry normalization`, or `IANA registry-derived imports`, with explicit affected files and no broad status changes unless the destructive/broad-reclassification gate is intentionally provided.
+| Consolidated batch import lineage | `MEMORY/REPORTS/AUDIT/BATCH_IMPORT_SUMMARY.md` | BATCH_IMPORT_SUMMARY | INTERNAL_REPO_METADATA | REVIEW_INDEX | Legacy batch manifest/readme/source artifacts are consolidated here; do not treat removed batch files as active content sources. |
