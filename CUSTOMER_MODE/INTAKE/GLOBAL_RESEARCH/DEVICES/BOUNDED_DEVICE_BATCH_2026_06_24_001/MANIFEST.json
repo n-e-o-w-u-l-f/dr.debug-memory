@@ -1,0 +1,31 @@
+{
+  "artifact_id": "device_source_candidate_batch_001_2026_06_24",
+  "created_at": "2026-06-24",
+  "mode": "OWNER_ADMIN_MODE",
+  "status": "PROPOSAL_ONLY",
+  "scope": "metadata-only device/source candidate intake",
+  "limits": {
+    "device_source_candidates": 10,
+    "max_urls_per_candidate": 6,
+    "max_depth": 1,
+    "binary_downloads": false,
+    "archive_upload": false,
+    "canonical_promotion": false
+  },
+  "actuals": {
+    "device_source_candidates_recorded": 10,
+    "crawler_executed": false,
+    "binary_downloaded": false,
+    "archive_upload_performed": false,
+    "canonical_promotion_performed": false,
+    "raw_crawl_dump_stored": false
+  },
+  "files": [
+    "README.md",
+    "SOURCE_CANDIDATES.csv",
+    "VALIDATION.md",
+    "MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "rollback": "Revert or delete CUSTOMER_MODE/INTAKE/GLOBAL_RESEARCH/DEVICES/BOUNDED_DEVICE_BATCH_2026_06_24_001/"
+}
