@@ -1,0 +1,4 @@
+manufacturer,official_home_url,support_url,downloads_url,manuals_url,security_url,source_class,retrieved_at,notes
+Dell,https://www.dell.com/,https://www.dell.com/support/home/en-us,https://www.dell.com/support/home/en-us?app=drivers,https://www.dell.com/support/kbdoc/en-us/000133505/manuals-and-documentation-for-your-dell-product,,official_vendor,2026-06-24,"Drivers and manuals discovery seed only; product/model scoping required."
+Lenovo,https://www.lenovo.com/,https://support.lenovo.com/us/en,https://support.lenovo.com/us/en,https://support.lenovo.com/us/en,,official_vendor,2026-06-24,"Support portal includes drivers/software and documentation discovery seed; product/model scoping required."
+HP,https://www.hp.com/,https://support.hp.com/us-en,https://support.hp.com/us-en/drivers,https://support.hp.com/us-en,https://support.hp.com/us-en/security-bulletins,official_vendor,2026-06-24,"Official support and drivers seed only; product/model scoping required."
