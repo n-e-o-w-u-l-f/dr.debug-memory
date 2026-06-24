@@ -1,10 +1,7 @@
 path	size_bytes
-README_IMPORTANT_BATCH7.md	576
-README_IMPORTANT_BATCH8.md	1309
 RESEARCH_BACKLOG_BATCH7.md	923
 RESEARCH_BACKLOG_BATCH8.md	943
 SHA256SUMS.txt	30716
-SOURCES_RESEARCHED_BATCH7.md	2413
 MEMORY/ANDROID/aosp_version_api_seed_batch7.jsonl	6149
 MEMORY/ANDROID/samsung_open_source_observed_seed_batch7.jsonl	8615
 MEMORY/ANDROID/twrp_oem_index_seed_batch7.jsonl	33717
@@ -27,16 +24,9 @@ REPORTS/batch8_summary.md	1054
 SCRIPTS/validate_batch7.py	1208
 SCRIPTS/validate_batch8.py	1360
 dr_debug_memory_research_batch6_2026-06-18/MANIFEST.json	26500
-dr_debug_memory_research_batch6_2026-06-18/MANIFEST_BATCH5.json	389
-dr_debug_memory_research_batch6_2026-06-18/MANIFEST_BATCH6.json	47829
 dr_debug_memory_research_batch6_2026-06-18/README_IMPORTANT.md	1893
-dr_debug_memory_research_batch6_2026-06-18/README_IMPORTANT_BATCH5.md	1484
-dr_debug_memory_research_batch6_2026-06-18/README_IMPORTANT_BATCH6.md	1493
 dr_debug_memory_research_batch6_2026-06-18/RESEARCH_BACKLOG_BATCH5.md	1287
 dr_debug_memory_research_batch6_2026-06-18/SHA256SUMS.txt	23057
-dr_debug_memory_research_batch6_2026-06-18/SOURCES_RESEARCHED_BATCH4.md	2412
-dr_debug_memory_research_batch6_2026-06-18/SOURCES_RESEARCHED_BATCH5.md	3024
-dr_debug_memory_research_batch6_2026-06-18/SOURCES_RESEARCHED_BATCH6.md	3029
 dr_debug_memory_research_batch6_2026-06-18/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_permission_policy_BATCH6_PROPOSAL_ONLY.md	1707
 dr_debug_memory_research_batch6_2026-06-18/AGENTS/PROPOSALS/dr_debug_public_unknown_entity_policy_BUILD4_SAFE_PROPOSAL_ONLY.md	1830
 dr_debug_memory_research_batch6_2026-06-18/IMPORTED_PREVIOUS_BATCHES/previous_batches_manifest.json	748
@@ -157,4 +147,3 @@ dr_debug_memory_research_batch6_2026-06-18/SCRIPTS/set_repo_file_modes.sh	454
 dr_debug_memory_research_batch6_2026-06-18/SCRIPTS/validate_batch6.py	1214
 dr_debug_memory_research_batch6_2026-06-18/SCRIPTS/validate_jsonl.py	792
 dr_debug_memory_research_batch6_2026-06-18/STATE/research_state_batch6.json	629
-MANIFESTS/batch8_additions_manifest.json	1198

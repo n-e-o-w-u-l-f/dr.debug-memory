@@ -1,8 +1,0 @@
-{
-  "package": "dr_debug_memory_research_batch5_2026-06-18",
-  "created_at": "2026-06-17T23:55:15.555012+00:00",
-  "mode": "PUBLIC_SAFE_PROPOSAL_ONLY",
-  "based_on": "dr_debug_memory_research_batch4_2026-06-18",
-  "file_count": 117,
-  "notes": "Batch 5 extends Batch 4 with networking, device identifiers, Android/Samsung build taxonomy, repair sources and retro hardware source seeds."
-}
