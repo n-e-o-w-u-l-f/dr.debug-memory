@@ -1,0 +1,31 @@
+{
+  "artifact_id": "manufacturer_source_record_batch_001_2026_06_24",
+  "created_at": "2026-06-24",
+  "mode": "OWNER_ADMIN_MODE",
+  "status": "PROPOSAL_ONLY",
+  "scope": "metadata-only manufacturer official source record intake",
+  "limits": {
+    "max_manufacturers": 10,
+    "max_urls_per_manufacturer": 6,
+    "max_depth": 1,
+    "binary_downloads": false,
+    "archive_upload": false,
+    "canonical_promotion": false
+  },
+  "actuals": {
+    "manufacturers_recorded": 10,
+    "crawler_executed": false,
+    "binary_downloaded": false,
+    "archive_upload_performed": false,
+    "canonical_promotion_performed": false,
+    "raw_crawl_dump_stored": false
+  },
+  "files": [
+    "README.md",
+    "SOURCE_RECORDS.csv",
+    "VALIDATION.md",
+    "MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "rollback": "Revert or delete CUSTOMER_MODE/INTAKE/GLOBAL_RESEARCH/MANUFACTURERS/MASSDUMP_50_BATCH/BOUNDED_BATCH_2026_06_24_001/"
+}
