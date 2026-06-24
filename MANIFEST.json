@@ -476,11 +476,6 @@
       "path": "SCRIPTS/validate_jsonl.py",
       "bytes": 727,
       "sha256": "fa9049f584ece7b79fd9c7c5fba961153a3fd9f765bafb8c4a51a85a6e52c46c"
-    },
-    {
-      "path": "SOURCES_RESEARCHED_BATCH4.md",
-      "bytes": 2412,
-      "sha256": "5dfbfed58465e60eb7663999e116d4d9bcb537d5c02e3f4fa1965bcbf5486245"
     }
   ]
 }

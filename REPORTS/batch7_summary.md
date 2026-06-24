@@ -54,6 +54,5 @@ ZIP-Erzeugung setzt:
 - MEMORY/FIRMWARE/lvfs_fwupd_firmware_metadata_seed_batch7.jsonl
 - MEMORY/SCHEMAS/network_identifier_record_schema_batch7.json
 - REPORTS/batch7_summary.md
-- SOURCES_RESEARCHED_BATCH7.md
 - RESEARCH_BACKLOG_BATCH7.md
 - SCRIPTS/validate_batch7.py
