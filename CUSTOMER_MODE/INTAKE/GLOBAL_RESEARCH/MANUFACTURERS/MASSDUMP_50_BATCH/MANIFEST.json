@@ -1,0 +1,23 @@
+{
+  "artifact_id": "manufacturer_massdump_50_batch_safe_replacement_2026_06_24",
+  "created_at": "2026-06-24",
+  "mode_requested": "OWNER_ADMIN_MODE",
+  "requested_apply_executed": false,
+  "safe_artifact_written": true,
+  "scope": "manufacturer support/manual/driver/firmware source discovery",
+  "risk": "high if run as unbounded massdump; low for this metadata-only artifact",
+  "files": [
+    "ABORTED_UNBOUNDED_APPLY.md",
+    "BOUNDED_SOURCE_RECORD_WORKFLOW.md",
+    "SOURCE_SEEDS.csv",
+    "MANIFEST.json",
+    "VALIDATION.md"
+  ],
+  "external_actions_performed": {
+    "crawler_executed": false,
+    "binary_downloaded": false,
+    "archive_upload": false,
+    "canonical_promotion": false
+  },
+  "rollback": "Revert or delete this artifact directory."
+}
