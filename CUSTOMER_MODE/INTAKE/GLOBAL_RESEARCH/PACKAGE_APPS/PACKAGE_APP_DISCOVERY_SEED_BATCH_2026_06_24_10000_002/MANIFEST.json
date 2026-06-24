@@ -1,0 +1,37 @@
+{
+  "artifact_id": "package_app_discovery_seed_batch_10000_002_2026_06_24",
+  "created_at": "2026-06-24",
+  "status": "PROPOSAL_ONLY",
+  "continuation_from": "PACKAGE_APP_DISCOVERY_SEED_BATCH_2026_06_24_10000",
+  "actual_records": 10000,
+  "ecosystems_or_app_areas": 100,
+  "focus_dimensions": 100,
+  "scope": "metadata-only package and app discovery-query seed intake continuation",
+  "repository_write_performed": true,
+  "repository_write_scope": "CUSTOMER_MODE proposal envelope only",
+  "full_csv_written_to_repo": false,
+  "full_csv_size_bytes": 7041611,
+  "local_zip_size_bytes": 285259,
+  "external_actions_performed": {
+    "install_executed": false,
+    "binary_downloaded": false,
+    "container_image_pulled": false,
+    "archive_upload": false,
+    "canonical_promotion": false
+  },
+  "files_in_repo_envelope": [
+    "README.md",
+    "VALIDATION.md",
+    "MANIFEST.json",
+    "SHA256SUMS.txt",
+    "APPLY_NOTE.md"
+  ],
+  "full_local_artifact_files": [
+    "README.md",
+    "PACKAGE_APP_DISCOVERY_SEEDS.csv",
+    "VALIDATION.md",
+    "MANIFEST.json",
+    "SHA256SUMS.txt"
+  ],
+  "rollback": "Delete CUSTOMER_MODE/INTAKE/GLOBAL_RESEARCH/PACKAGE_APPS/PACKAGE_APP_DISCOVERY_SEED_BATCH_2026_06_24_10000_002/ or revert the commit containing it."
+}
