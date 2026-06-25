@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-06-25",
+  "status": "PROPOSAL_ONLY",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "5119bd2faefa71cbc34e9a45b288fbd10dd6e6fd7f2277d8fb147abcfb6b30b9",
+      "bytes": 2258
+    },
+    {
+      "path": "cdnjs_library_matrix.yml",
+      "sha256": "19568da55e2ddb80b03023e8f42427a69a0f91bcecd25dbdfff891e181ca493c",
+      "bytes": 14116
+    },
+    {
+      "path": "cdnjs_source_records.yml",
+      "sha256": "2865a0f5fadeb31687a0bf9f7faeebaa4b58db8ea50886a0a674e7ef9e56c412",
+      "bytes": 1610
+    },
+    {
+      "path": "rollback.md",
+      "sha256": "6d134d80afbf0d9d60acb53b1e257657336454b12fd3bb1a5d42680ad64a0f02",
+      "bytes": 483
+    },
+    {
+      "path": "scripts/cdnjs_full_scan.py",
+      "sha256": "b46c6bea79496953dbc83868ddc8500df464cff32537c1f06298c93cdf4f6281",
+      "bytes": 1690
+    },
+    {
+      "path": "validation.md",
+      "sha256": "e900987b7c0ae5c8cb288fe99b3428af1b4350cdb792b54db17951de98fe3244",
+      "bytes": 867
+    },
+    {
+      "path": "webviewer_cdnjs_usage.md",
+      "sha256": "a48b50e875f3ff181e04ef7f4068abe707761ed0340f6638dc40ea4f89b39a36",
+      "bytes": 1384
+    }
+  ]
+}
