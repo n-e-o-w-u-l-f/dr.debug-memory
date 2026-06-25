@@ -64,6 +64,8 @@ Wichtige Bereiche:
 - `MEMORY/INDEXES/endpoint_count_matrix.md`
 - `MEMORY/INDEXES/endpoint_count_rules.md`
 - `MEMORY/SCANNERS/count_scan_rules.md`
+- `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`
+- `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`
 - `MEMORY/SOURCES/SOURCE_REGISTRY.md`
 - `CHANGES.md`
 
