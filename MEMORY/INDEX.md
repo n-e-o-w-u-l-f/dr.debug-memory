@@ -1,6 +1,6 @@
 # MEMORY/INDEX.md
 
-Version: 0.8.3-endpoint-count-index-sync
+Version: 0.8.4-endpoint-count-validation-sync
 Status: ACTIVE_INDEX
 Last checked: 2026-06-25
 Canonical families: MANUFACTURERS, HARDWARE, DEVICES, DEVICE_IDENTIFIERS, SPECS, FIRMWARE, DRIVERS, MANUALS, OPERATING_SYSTEMS, BUILDS, SOFTWARE, PROGRAMS, ERROR_CODES, FIXES, PATCHES, REPAIR, NETWORKING, PROTOCOLS, SOURCES, SECURITY, SCRIPTS, TEMPLATES, STATE, INDEXES, SCANNERS.
@@ -44,8 +44,10 @@ Last checked: 2026-06-25
 Canonical status: planning/count index only; no canonical MEMORY records are promoted by these files.
 
 - Matrix: `MEMORY/INDEXES/endpoint_count_matrix.md`
-- Rules: `MEMORY/INDEXES/endpoint_count_rules.md`
-- Scanner planning: `MEMORY/SCANNERS/count_scan_rules.md`
+- Count rules: `MEMORY/INDEXES/endpoint_count_rules.md`
+- Scanner planning rules: `MEMORY/SCANNERS/count_scan_rules.md`
+- Implemented scanner script: `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`
+- Validation report: `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`
 - Quality gates: `MEMORY/QUALITY_RULES.md`
 - README status matrix: `README.md`
 - Changelog: `CHANGES.md`
@@ -58,11 +60,12 @@ Count summary:
 - endpoint style: flat global count matrix
 - count model: global dataset collections with filterable relations
 - deep paths: filters and relations, not duplicated visible endpoints
+- validation status: `PASS_STATIC_CHECK`
 - prohibited endpoint forms: `_GLOBAL` prefixes, duplicate names, metadata-only endpoints, relationship-only endpoints, canonical IDs, packaging-only endpoints, regional-edition-only endpoints and game-/console-/vendor-specific prefix explosions
 
 Repository routing:
 
-- `dr.debug-memory`: matrix, rules, scanner planning, quality gates and README/INDEX status
+- `dr.debug-memory`: matrix, rules, scanner planning, scanner script, validation report, quality gates and README/INDEX status
 - `dr.debug-web`: public matrix view and optional visual/category presentation
 - `dr.debug-agents`: agent routing/prompt policy if needed
 - `dr.debug-admin_api`: future scanner execution and admin-gated count automation if implemented
