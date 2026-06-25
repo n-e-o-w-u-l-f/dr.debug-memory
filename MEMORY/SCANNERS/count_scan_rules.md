@@ -1,9 +1,9 @@
 # Count Scan Rules
 
-Version: 0.1.0
+Version: 0.1.1
 Status: ACTIVE_SCANNER_RULE_DRAFT
 Last checked: 2026-06-25
-Scope: scanner planning for Dr.Debug visible endpoint-count matrix
+Scope: scanner planning and implemented validator routing for Dr.Debug visible endpoint-count matrix
 
 ## Scanner objective
 
@@ -19,6 +19,18 @@ The scanner must report:
 - path-specific prefix explosion candidates
 - markdown table validity
 - repo routing and policy warnings
+
+## Implemented scanner
+
+Current implemented script:
+
+- `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`
+
+Current report path:
+
+- `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`
+
+The previously planned `tools/count_endpoint_matrix_scan.py` path is not used because the repository write path-policy rejected `tools/` for this admin workflow. Scanner code for this pass is stored under `MEMORY/SCANNERS/`.
 
 ## Required checks
 
@@ -49,15 +61,13 @@ The scanner must report:
 9. Confirm each row has status `COUNT_SCAN_REQUIRED` until a scanner produces tool-backed counts.
 10. Confirm no binary download, raw crawl dump, copyrighted manual mirror or installer payload is part of scan output.
 
-## Suggested pseudo-command
+## Re-run command
 
 ```sh
-python3 tools/count_endpoint_matrix_scan.py \
+python3 MEMORY/SCANNERS/count_endpoint_matrix_scan.py \
   --matrix MEMORY/INDEXES/endpoint_count_matrix.md \
-  --rules MEMORY/INDEXES/endpoint_count_rules.md \
   --status COUNT_SCAN_REQUIRED \
-  --fail-on-duplicates \
-  --fail-on-global-prefix \
+  --expected-count 67 \
   --report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md
 ```
 
@@ -68,13 +78,16 @@ validation:
   matrix_path: MEMORY/INDEXES/endpoint_count_matrix.md
   required_columns_present: true
   visible_endpoint_rows: 67
+  expected_visible_endpoint_rows: 67
   duplicate_names: []
   forbidden_global_prefixes: []
   metadata_only_candidates: []
   relationship_only_candidates: []
   prefix_explosion_candidates: []
+  bad_status_rows: []
   markdown_table_valid: true
-  status: COUNT_SCAN_REQUIRED
+  required_status: COUNT_SCAN_REQUIRED
+  result: PASS_STATIC_CHECK
 ```
 
 ## Safety limits
