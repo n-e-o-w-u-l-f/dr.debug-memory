@@ -1,6 +1,6 @@
 # Endpoint Count Matrix Scan Report
 
-Version: 0.1.0
+Version: 0.1.1
 Status: PASS_STATIC_CHECK
 Last checked: 2026-06-25
 Matrix path: `MEMORY/INDEXES/endpoint_count_matrix.md`
@@ -61,10 +61,11 @@ python3 MEMORY/SCANNERS/count_endpoint_matrix_scan.py \
 
 ## README/INDEX/CHANGES consistency check
 
-- `MEMORY/INDEX.md`: contains endpoint count matrix navigation.
-- `CHANGES.md`: contains endpoint count matrix planning and index-sync entries.
-- `README.md`: public status block still requires a later targeted README-only sync that preserves the existing public-facing README layout.
+- `README.md`: public `Wissensstand` block includes endpoint matrix planning and `PASS_STATIC_CHECK` validation report visibility.
+- `MEMORY/INDEX.md`: contains endpoint count matrix navigation, implemented scanner script and validation report links.
+- `MEMORY/SCANNERS/count_scan_rules.md`: re-run command points to `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`, not the rejected `tools/` path.
+- `CHANGES.md`: documents endpoint matrix planning, index sync, scanner/report creation and README visibility sync.
 
 ## Rollback
 
-Remove this report and revert the related `CHANGES.md` entry. If the scanner script is removed, also revert the `MEMORY/SCANNERS/count_endpoint_matrix_scan.py` entry from the changelog.
+Revert this report to version 0.1.0 or remove it with the related scanner/changelog entries if the endpoint-count matrix planning package is rolled back.
