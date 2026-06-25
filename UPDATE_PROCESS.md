@@ -1,6 +1,8 @@
 # UPDATE_PROCESS.md
-Version: 0.8.0-consolidated-knowledge
+
+Version: 0.8.1-endpoint-count-matrix
 Status: ACTIVE
+Last checked: 2026-06-25
 
 ## Required read order
 
@@ -27,6 +29,24 @@ Before any write:
 13. Document validation and rollback.
 14. Commit/push only when tool output proves authenticated write success.
 
+## Endpoint count matrix update gate
+
+For endpoint taxonomy, count matrix, scanner planning or public endpoint routing changes:
+
+1. Use flat global count matrix style.
+2. Required table columns are `Bereich`, `Wissen`, `User`, `Admin`, `Recherche`, `Status`.
+3. New or changed visible endpoint rows start with `COUNT_SCAN_REQUIRED` until scanner/tool output proves counts.
+4. Deep taxonomy paths are represented as filters and relations, not duplicated as visible endpoints.
+5. Reject `_GLOBAL` visible prefixes.
+6. Reject duplicate visible names after normalization.
+7. Reject metadata-only endpoints.
+8. Reject relationship-only endpoints.
+9. Reject game-, console-, vendor- or regional-prefix explosion.
+10. Keep HTTP as a protocol record under `Netzwerkprotokolle`; visible HTTP subcollections may include versions, methods, status codes, headers and standards.
+11. Keep Smart-TV as feature/software class, not panel technology.
+12. Do not mirror copyrighted manuals, download binaries or perform unbounded crawls.
+13. Update `MEMORY/INDEXES/endpoint_count_matrix.md`, `MEMORY/INDEXES/endpoint_count_rules.md`, `MEMORY/SCANNERS/count_scan_rules.md`, `MEMORY/QUALITY_RULES.md`, `README.md`, `CHANGES.md` and this file when this policy changes.
+
 ## Structure migration
 
 If a path is moved, renamed, split, merged, deprecated or replaced, update Markdown links, indexes, menus, aliases, schema references, source-registry scope fields, AGENTS/Knowledge references, README links, CHANGES links, UPDATE_PROCESS links, scripts, templates, manifests, validation paths and archive metadata where relevant.
@@ -45,9 +65,9 @@ Cleanup bedeutet:
 4. CHANGES.md mit Zielzustand und Rollback aktualisieren,
 5. keine zweite Wahrheit behalten.
 
-Historie alter CustomGPT-Knowledge-Strukturen muss nicht als aktives Repository-Wissen erhalten bleiben.
+Historie alter CustomGPT-Knowledge-Strukturen muss nicht als aktives Repository-Wissen erhalten bleiben. Proposal-Dateien sind Arbeitsmaterial, nicht Endzustand.
 
-Proposal-Dateien sind Arbeitsmaterial, nicht Endzustand. Wenn ein Proposal fertig ist, wird sein Inhalt in den passenden Wissensstand übertragen:
+Wenn ein Proposal fertig ist, wird sein Inhalt in den passenden Wissensstand übertragen:
 
 - Hersteller → `MEMORY/MANUFACTURERS/...`
 - Geräte → `MEMORY/DEVICES/...`
@@ -71,4 +91,4 @@ Active replacement files are stored under `MEMORY/KNOWLEDGE_REPLACE/`:
 - `MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md`
 - `MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`
 
-Do not keep the old `00_*.md` through `18_*.md` and `99_FINAL.md` files active in CustomGPT Knowledge alongside these replacements. Repository deletion/tombstoning of old files requires the destructive migration gate if those files exist.
+Do not keep the old `00_*.md` through `18_*.md` and `99_FINAL.md` files active in CustomGPT Knowledge alongside these replacements.
