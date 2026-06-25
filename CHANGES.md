@@ -1,10 +1,19 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.8.4-endpoint-count-matrix
+Version: 0.8.5-endpoint-count-index-sync
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-25
+
+### docs(memory): index endpoint count matrix navigation
+
+* Updated `MEMORY/INDEX.md` to add endpoint count matrix navigation for `MEMORY/INDEXES/endpoint_count_matrix.md`, `MEMORY/INDEXES/endpoint_count_rules.md` and `MEMORY/SCANNERS/count_scan_rules.md`.
+* Preserved the existing foundation, scaffold, seed proposal, release, migration, BATCH audit and Linux manpages navigation sections.
+* Kept endpoint count data as navigation/planning only; no canonical MEMORY records were promoted.
+* No binaries, downloads, raw crawl dumps, copyrighted manual mirrors, archive uploads, public rehosting artifacts, force-pushes, history rewrites or destructive deletes were added.
+* Validation: static link/reference check confirmed the endpoint matrix file exists on `main`; README already references the endpoint matrix/rules/scanner planning; required visible endpoint matrix status remains `COUNT_SCAN_REQUIRED`.
+* Rollback: revert `MEMORY/INDEX.md` and this `CHANGES.md` update to the previous commit state.
 
 ### feat(memory): add global endpoint count matrix planning
 
@@ -72,8 +81,8 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 * Added `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` as the non-destructive master directive for taxonomy, evidence lifecycle, README matrix sync, rollback and Owner/Admin gates.
 * Updated `MEMORY/INDEX.md` to reference `07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` as part of the consolidated Knowledge routing.
 * Updated `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md` to mark legacy Knowledge directives as tombstone/alias references instead of deleting them.
-* Updated `MEMORY/MIGRATION/MIGRATION_MAP.md` to document tombstone/alias handling and the new `07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` overlay.
+* Updated `MEMORY/MIGRATION/MIGRATION_MAP.md` to document tombstone/alias handling and the new `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md` overlay.
 * No legacy directive files were deleted in this pass.
-* No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, rehosting artifacts, force-pushes or destructive migrations were added.
+* No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps or binary files were intentionally added.
 * Redaction/static safety review: no secrets, credentials, customer data, serials, raw logs, raw crawl dumps or binary files were intentionally added.
 * Rollback: revert the README, `MEMORY/INDEX.md`, `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`, `MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md`, `MEMORY/MIGRATION/MIGRATION_MAP.md`, and this `CHANGES.md` update to the previous commit state.
