@@ -1,10 +1,20 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.8.5-endpoint-count-index-sync
+Version: 0.8.6-endpoint-count-validator
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
 
 ## 2026-06-25
+
+### test(memory): add endpoint count matrix scanner and validation report
+
+* Added `MEMORY/SCANNERS/count_endpoint_matrix_scan.py` as a read-only validator for `MEMORY/INDEXES/endpoint_count_matrix.md` after `tools/` was rejected by repository path policy.
+* Added `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md` with the first static validation report for the endpoint-count matrix.
+* Validation scope: required columns, visible endpoint row count, duplicate normalized names, forbidden `_GLOBAL` prefix, metadata-only candidates, relationship-only candidates, path-specific prefix explosions and required row status `COUNT_SCAN_REQUIRED`.
+* Result: `PASS_STATIC_CHECK` for 67 visible endpoint rows, 0 duplicate normalized names, no forbidden `_GLOBAL` prefixes and required columns present.
+* README/INDEX/CHANGES consistency check: `MEMORY/INDEX.md` and `CHANGES.md` contain endpoint references; `README.md` still needs a later targeted README-only sync that preserves the existing public-facing README layout.
+* No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, copyrighted manual mirrors, public rehosting artifacts, force-pushes, history rewrites or destructive deletes were added.
+* Rollback: remove `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`, remove `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`, and revert this `CHANGES.md` entry.
 
 ### docs(memory): index endpoint count matrix navigation
 
