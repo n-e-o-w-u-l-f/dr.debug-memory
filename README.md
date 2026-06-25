@@ -1,74 +1,41 @@
-<p align="center">
-  <img src="./dr_debug_banner.png" alt="Dr Debug's Mean /MEMORY/ Machine" width="100%">
-</p>
-<h1 align="center">
-    # # # # # # # # # # # # # # # # # # # # #</br>
-    # # 🛠️ &nbsp; Dr. Debug's Werkstatt &nbsp; 🛠️ # #</br>
-    # # # # # # # # # # # # # # # # # # # # #
-</h1>
+# Dr. Debug's Werkstatt
 
-<div align="left">
-  <p>Hast du auch ein defektes Gerät?</p>
-  <p>Reparieren war dir immer zu schwer?</p>
-  <p>Dann komm in:</p>
-  <p>
-    <a href="https://chatgpt.com/g/g-6a277f8eea4081919dc68e814902b055-dr-debug"><strong>DrDebug Hardware Praxis</strong></a>
-  </p>
-  <p>Sprechzeiten nach dem klick des links.</p>
-</div>
+Hast du auch ein defektes Gerät? Reparieren war dir immer zu schwer?
+
+Dr. Debug /MEMORY/ ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
 
 ---
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 📊 &nbsp; Wissenstand &nbsp; 📊 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
+## Wissensstand
 
-<!-- DRDEBUG_DATABASE_STATUS_START -->
-<!-- Managed README database-status block: replace only the content between DRDEBUG_DATABASE_STATUS markers. -->
 | Area | Status | Count / Result | Last checked | Notes |
 |---|---|---:|---|---|
+| Endpoint count matrix | COUNT_SCAN_REQUIRED | 67 visible rows | 2026-06-25 | Flat global endpoint matrix in `MEMORY/INDEXES/endpoint_count_matrix.md`; scanner rules in `MEMORY/SCANNERS/count_scan_rules.md`. |
+| Endpoint count rules | ACTIVE_COUNT_RULE_DRAFT | 1 | 2026-06-25 | No `_GLOBAL` prefix, no duplicate names, no metadata-only endpoints, no relationship-only endpoints, no path-specific prefix explosion. |
+| Endpoint scanner planning | ACTIVE_SCANNER_RULE_DRAFT | 1 | 2026-06-25 | Counts require a later tool-backed scan before promotion from `COUNT_SCAN_REQUIRED`. |
 | BATCH memory artifacts | PRESENT_INDEXED_REVIEW_REQUIRED | 162 files | 2026-06-23 | Current BATCH file count across MEMORY. Indexed in MEMORY/INDEX; later schema/status review required. No safe delete candidates identified. |
 | BATCH duplicate filename check | PASS | 0 duplicates | 2026-06-23 | Filename-level duplicate check returned no duplicate names. |
-| BATCH audit report | STATIC_CHECK | 1 | 2026-06-23 | `MEMORY/REPORTS/AUDIT/AR-20260623-batch-memory-index-sync.md` |
+| BATCH audit report | STATIC_CHECK | 1 | 2026-06-23 | `MEMORY/REPORTS/AUDIT/AR-20260623-batch-memory-index-sync.md`. |
 | BATCH proposal lineage | REVIEW_LINEAGE | 59 files | 2026-06-23 | `MEMORY/PROPOSALS/**`; retain as proposal/review lineage unless canonical replacement is proven. |
 | BATCH reports | REVIEW_LINEAGE | 20 files | 2026-06-23 | `MEMORY/REPORTS/**`; includes audit/report evidence. |
 | BATCH status records | REVIEW_LINEAGE | 15 files | 2026-06-23 | `MEMORY/STATUS/**`; retain as status history. |
 | BATCH canonical-ish category files | INDEX_COVERAGE_REQUIRED | 68 files | 2026-06-23 | Outside PROPOSALS/REPORTS/STATUS; requires MEMORY/INDEX coverage and later schema/status review. |
-| Four 25-item batch plan | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/PROPOSALS/BATCHES/MP-20260619-next-four-25-step-batches.md` |
-| Validation gate report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/VALIDATION/VR-20260619-next-100-roadmap-gate-report.md` |
-| Next actions report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/NEXT_ACTIONS/NA-20260619-next-3-directions.md` |
-| Next-100 roadmap report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md` |
+| Four 25-item batch plan | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/PROPOSALS/BATCHES/MP-20260619-next-four-25-step-batches.md`. |
+| Validation gate report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/VALIDATION/VR-20260619-next-100-roadmap-gate-report.md`. |
+| Next actions report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/REPORTS/NEXT_ACTIONS/NA-20260619-next-3-directions.md`. |
+| Next-100 roadmap report | REPORT_ONLY | 1 | 2026-06-21 | `MEMORY/ROADMAPS/RM-20260619-next-100-safe-steps.md`. |
 | Canonical promotions from this package | BLOCKED | 0 | 2026-06-21 | No item is marked `PROMOTION_READY` by this package. |
 | Local clone grep / CI-like static checks | REQUIRED_BEFORE_PROMOTION | 0 | 2026-06-21 | Must be run locally before any later promotion. |
 | Binaries / downloads / rehosting | NOT_INCLUDED | 0 | 2026-06-21 | No binary download, raw crawl dump, manual rehosting or public rehosting is included. |
-| README update mode | MARKER_BLOCK_ONLY | 1 | 2026-06-21 | Only this marked block may be replaced; the rest of `README.md` must be preserved. |
-<!-- DRDEBUG_DATABASE_STATUS_END -->
+| README update mode | MATRIX_SECTION | 1 | 2026-06-25 | README matrix updated for endpoint-count planning. |
 
 ---
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🧠 &nbsp; Dr. Debug /MEMORY/ &nbsp; 🧠 # # <br>
-  # # # # # # # # # # # # # # # # # # # #
-</h3>
+## Dr. Debug /MEMORY/
 
-**Dr. Debug /MEMORY/** ist eine strukturierte, quellenbasierte Wissensdatenbank für technische Fehlerbilder, Geräte, Fehlermeldungen, Reparaturwege, Diagnosen, Workarounds und bestätigte Lösungen.
+Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur. Ziel ist eine agentenlesbare Memory-Basis für Reparatur-, Diagnose- und Planungsfragen.
 
-Dieses Repository ist nicht als gewöhnliche Dokumentationsseite gedacht. Es ist eine **agentenlesbare Memory-Basis** für Dr. Debug: ein wachsendes Nachschlagewerk.
-
----
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 🎯 &nbsp; Was dieses Repository ist &nbsp; 🎯 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Dieses Repository sammelt und ordnet technische Erinnerungen in einer dauerhaft wartbaren Struktur.
-
-Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen besser zu beantworten:
+Die Datenbank soll unter anderem helfen zu beantworten:
 
 - Welche Fehlermeldung gehört zu welchem System, Programm, Paket, Gerät oder Dienst?
 - Welche Ursachen sind bekannt, wahrscheinlich oder historisch dokumentiert?
@@ -76,81 +43,59 @@ Ziel ist eine Datenbasis, die einem Agenten hilft, unter anderem folgende Fragen
 - Welche Geräte, Betriebssysteme, Programme, Pakete, Logs und Handbücher gehören zusammen?
 - Welche Quellen, Indizes und Querverweise müssen erhalten bleiben, damit Wissen nicht verloren geht?
 
-Die Datenbank soll langfristig dabei helfen, aus einem einfachen Gespräch heraus auch komplexe Reparatur-, Diagnose- und Planungsfragen nachvollziehbar zu strukturieren.
+## Was dieses Repository nicht ist
 
----
+Dieses Repository ist keine offizielle Reparaturanleitung, kein Ersatz für Fachpersonal und keine Garantie, dass ein Gerät gefahrlos repariert werden kann.
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # ⚠️ &nbsp; Was dieses Repository nicht ist &nbsp; ⚠️ # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
+Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden. Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
 
-Dieses Repository ist **keine offizielle Reparaturanleitung**, **kein Ersatz für Fachpersonal** und **keine Garantie**, dass ein Gerät gefahrlos repariert werden kann.
-
-Die Inhalte können technische Hinweise, historische Fehlerbilder, Querverweise, Agenten-Direktiven und Erfahrungswerte enthalten. Vor jeder realen Reparatur müssen Risiken, Stromversorgung, Garantie, Datenschutz, Sicherheit und Herstellerhinweise geprüft werden.
-
-Besonders bei Netzteilen, Akkus, Hochspannung, Fahrzeugen, medizinischen Geräten, sicherheitskritischen Systemen oder Geräten mit Brand-/Explosionsgefahr gilt: nicht blind ausführen, sondern zuerst prüfen, absichern und im Zweifel Fachpersonal einbeziehen.
-
----
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # 👥 &nbsp; Für wen ist das gedacht? &nbsp; 👥 # # <br>
-  # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-#### Für ChatGPT-Agenten
+## Für ChatGPT-Agenten
 
 Agenten sollen dieses Repository lesen, bevor sie neue technische Memory-Dateien anlegen, bestehende Einträge ändern oder Rechercheergebnisse dauerhaft integrieren.
 
-Wichtige Bereiche können je nach Repository-Stand unter anderem sein:
+Wichtige Bereiche:
 
-- [`AGENTS.md`](./AGENTS.md)
-- [`/MEMORY/AGENTS/`](./MEMORY/AGENTS/)
-- [`/MEMORY/INDEX.md`](./MEMORY/INDEX.md)
-- [`/MEMORY/SCHEMA.md`](./MEMORY/SCHEMA.md)
-- [`/MEMORY/QUALITY_RULES.md`](./MEMORY/QUALITY_RULES.md)
-- [`/MEMORY/SOURCE_REGISTRY.md`](./MEMORY/SOURCE_REGISTRY.md)
-- [`/CHANGES.md`](./CHANGES.md)
-- [`/UPDATE_PROCESS.md`](./UPDATE_PROCESS.md)
+- `AGENTS.md`
+- `UPDATE_PROCESS.md`
+- `MEMORY/INDEX.md`
+- `MEMORY/SCHEMA.md`
+- `MEMORY/QUALITY_RULES.md`
+- `MEMORY/INDEXES/endpoint_count_matrix.md`
+- `MEMORY/INDEXES/endpoint_count_rules.md`
+- `MEMORY/SCANNERS/count_scan_rules.md`
+- `MEMORY/SOURCES/SOURCE_REGISTRY.md`
+- `CHANGES.md`
 
 Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
 
----
+## Endpoint count matrix policy
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📜 &nbsp; Grundprinzipien &nbsp; 📜 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
+The endpoint count matrix uses a flat global visible collection model. Deep paths are filters and relations, not duplicated visible endpoints.
 
-Dieses Repository folgt einigen einfachen Regeln:
+Example path:
 
-1. **Quellen vor Behauptungen**  
-   Technische Aussagen sollen möglichst belegbar sein.
+`Geräte > Konsolen > Retro-Konsolen > Sega > Mega Drive > Spiele > Sonic the Hedgehog`
 
-2. **Bestätigt ist nicht gleich gefunden**  
-   Eine Lösung gilt erst dann als bestätigt, wenn sie nachvollziehbar getestet oder von Usern als erfolgreich markiert wurde.
+Correct count resolution:
 
-3. **Deduplizierung vor Datenmüll**  
-   Gleiche Fehlerbilder sollen zusammengeführt, verlinkt oder sauber voneinander abgegrenzt werden.
+- count `Geräte`, `Geräteklassen`, `Hersteller`, `Produktcodes`, `Handbücher`, `Cover`, `Screenshots`, `Reviews`, `Bekannte-Fehler`, `Mods`, `Versionen-Revisionen`, `Emulatoren`, `Fan-Übersetzungen` and `Modding-Tools` globally;
+- link platform/manufacturer/game as filterable relation metadata;
+- do not create game-/console-specific endpoint explosions.
 
-4. **Agentenlesbarkeit vor Schönschrift**  
-   Struktur, Pfade, IDs, Statusfelder, Quellen und Querverweise sind wichtiger als dekorative Prosa.
+TV rule: TVs branch by device class, display technology, smart capability, operating system, tuner, firmware and repair data. Smart-TV is a feature/software class, not a panel technology.
 
-5. **Sicherheit vor Aktionismus**  
-   Riskante Reparatur- oder Systemeingriffe müssen als solche erkennbar sein und dürfen nicht blind empfohlen werden.
+Network rule: HTTP is counted as a protocol record under `Netzwerkprotokolle`; useful visible HTTP endpoints include versions, methods, status codes, headers and standards.
 
----
+## Grundprinzipien
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # <br>
-  # # 📂 &nbsp; Typische Inhalte &nbsp; 📂 # # <br>
-  # # # # # # # # # # # # # # # # # #
-</h3>
+1. Quellen vor Behauptungen.
+2. Bestätigt ist nicht gleich gefunden.
+3. Deduplizierung vor Datenmüll.
+4. Agentenlesbarkeit vor Schönschrift.
+5. Sicherheit vor Aktionismus.
+6. Zählmatrix vor Crawl: sichtbare Endpunkte erst planen, dann scannen, dann prüfen.
 
-Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
+## Typische Inhalte
 
 - Betriebssysteme und Distributionen
 - Linux-, macOS-, Windows-, DOS- und FreeDOS-Programme
@@ -163,43 +108,6 @@ Die Memory-Datenbank kann unter anderem folgende Arten von Einträgen enthalten:
 - bekannte Ursachen, Diagnosepfade, Workarounds und bestätigte Fixes
 - Quellenregister, Indexdateien, Agenten-Direktiven und Update-Prozesse
 
----
+## Lizenzhinweis
 
-<h3 align="left">
-  # # # # # # # # # # # # # # # # # # # # # # # <br>
-  # # &nbsp;🤝 Wie du mitmachen kannst: 🤝&nbsp; # # <br>
-  # # # # # # # # # # # # # # # # # # # # # # #
-</h3>
-
-Du kannst dieses Repository forken und für deine eigene technische Wissensbasis anpassen.
-
-Wenn du Inhalte beitragen möchtest, achte bitte besonders auf:
-
-- klare Pfade,
-- saubere Dateinamen,
-- nachvollziehbare Quellen,
-- getrennte bestätigte und unbestätigte Lösungen,
-- keine unnötigen Duplikate,
-- keine privaten Zugangsdaten,
-- keine personenbezogenen Logs,
-- keine gefährlichen Schritte ohne Warnhinweis.
-
-Gute Beiträge verbessern nicht nur einzelne Dateien, sondern auch die Struktur, Indizes, Querverweise und Update-Regeln der gesamten `/MEMORY/`.
-
----
-
-<h3 align="left">
-  # # # # # # # # # # # # # # # # <br>
-  # # 🪪 &nbsp; Lizenzhinweis &nbsp; 🪪 # # <br>
-  # # # # # # # # # # # # # # # #
-</h3>
-
-Falls eine [`LICENSE`](./LICENSE)-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen.
-
-Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
-
-
-<p align="left">
-  <strong>Dr Debug's Mean /MEMORY/ Machine</strong><br>
-  Debuggen. Reparieren. Erinnern. Verbessern.
-</p>
+Falls eine `LICENSE`-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen. Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
