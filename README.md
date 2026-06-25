@@ -13,6 +13,7 @@ Dr. Debug /MEMORY/ ist eine strukturierte, quellenbasierte Wissensdatenbank für
 | Endpoint count matrix | COUNT_SCAN_REQUIRED | 67 visible rows | 2026-06-25 | Flat global endpoint matrix in `MEMORY/INDEXES/endpoint_count_matrix.md`; scanner rules in `MEMORY/SCANNERS/count_scan_rules.md`. |
 | Endpoint count rules | ACTIVE_COUNT_RULE_DRAFT | 1 | 2026-06-25 | No `_GLOBAL` prefix, no duplicate names, no metadata-only endpoints, no relationship-only endpoints, no path-specific prefix explosion. |
 | Endpoint scanner planning | ACTIVE_SCANNER_RULE_DRAFT | 1 | 2026-06-25 | Counts require a later tool-backed scan before promotion from `COUNT_SCAN_REQUIRED`. |
+| Endpoint count validation report | PASS_STATIC_CHECK | 1 | 2026-06-25 | `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`; scanner script in `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`. |
 | BATCH memory artifacts | PRESENT_INDEXED_REVIEW_REQUIRED | 162 files | 2026-06-23 | Current BATCH file count across MEMORY. Indexed in MEMORY/INDEX; later schema/status review required. No safe delete candidates identified. |
 | BATCH duplicate filename check | PASS | 0 duplicates | 2026-06-23 | Filename-level duplicate check returned no duplicate names. |
 | BATCH audit report | STATIC_CHECK | 1 | 2026-06-23 | `MEMORY/REPORTS/AUDIT/AR-20260623-batch-memory-index-sync.md`. |
@@ -27,7 +28,7 @@ Dr. Debug /MEMORY/ ist eine strukturierte, quellenbasierte Wissensdatenbank für
 | Canonical promotions from this package | BLOCKED | 0 | 2026-06-21 | No item is marked `PROMOTION_READY` by this package. |
 | Local clone grep / CI-like static checks | REQUIRED_BEFORE_PROMOTION | 0 | 2026-06-21 | Must be run locally before any later promotion. |
 | Binaries / downloads / rehosting | NOT_INCLUDED | 0 | 2026-06-21 | No binary download, raw crawl dump, manual rehosting or public rehosting is included. |
-| README update mode | MATRIX_SECTION | 1 | 2026-06-25 | README matrix updated for endpoint-count planning. |
+| README update mode | MATRIX_SECTION | 1 | 2026-06-25 | README matrix updated for endpoint-count planning and validation report visibility. |
 
 ---
 
