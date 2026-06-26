@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
 name: count_endpoint_matrix_scan.py
-version: 0.1.0
+version: 0.2.0
 status: DRAFT_VALIDATOR
-purpose: Validate Dr.Debug endpoint-count matrix shape and safety rules.
+purpose: Validate Dr.Debug endpoint-count matrix and emit Markdown/JSON reports.
 platform: repository-local
 risk: LOW
 root_required: false
 network_required: false
 destructive: false
-backup: not required; read-only scan unless --report writes a report file
-rollback: remove this script and generated report file
+backup: not required; read-only scan unless report outputs are requested
+rollback: remove this script and generated report files
 validation: run against MEMORY/INDEXES/endpoint_count_matrix.md
 source/context: MEMORY/SCANNERS/count_scan_rules.md
 """
@@ -18,6 +18,7 @@ source/context: MEMORY/SCANNERS/count_scan_rules.md
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from collections import Counter
@@ -27,31 +28,15 @@ from typing import Iterable, Sequence
 
 REQUIRED_COLUMNS = ["Bereich", "Wissen", "User", "Admin", "Recherche", "Status"]
 DEFAULT_REQUIRED_STATUS = "COUNT_SCAN_REQUIRED"
+READY_STATUS = "COUNT_SCAN_READY_FOR_REVIEW"
 METADATA_ONLY_NAMES = {
-    "id",
-    "canonical id",
-    "canonical_id",
-    "created at",
-    "created_at",
-    "updated at",
-    "updated_at",
-    "source status",
-    "source_status",
-    "confidence",
-    "validation status",
-    "validation_status",
+    "id", "canonical id", "canonical_id", "created at", "created_at",
+    "updated at", "updated_at", "source status", "source_status",
+    "confidence", "validation status", "validation_status",
 }
 RELATION_ONLY_PREFIXES = (
-    "belongs_to",
-    "belongs to",
-    "has_",
-    "has ",
-    "supports_",
-    "supports ",
-    "linked_",
-    "linked ",
-    "relation_",
-    "relation ",
+    "belongs_to", "belongs to", "has_", "has ", "supports_", "supports ",
+    "linked_", "linked ", "relation_", "relation ",
 )
 FORBIDDEN_VISIBLE_PREFIXES = ("_GLOBAL",)
 
@@ -63,11 +48,15 @@ class MatrixRow:
 
     @property
     def bereich(self) -> str:
-        return self.cells[0]
+        return self.cells[0] if len(self.cells) > 0 else ""
+
+    @property
+    def wissen(self) -> str:
+        return self.cells[1] if len(self.cells) > 1 else ""
 
     @property
     def status(self) -> str:
-        return self.cells[5]
+        return self.cells[5] if len(self.cells) > 5 else ""
 
 
 def split_table_row(line: str) -> list[str]:
@@ -82,31 +71,23 @@ def is_separator_row(cells: Sequence[str]) -> bool:
 
 
 def find_matrix_rows(text: str) -> tuple[list[str], list[MatrixRow]]:
-    lines = text.splitlines()
     header: list[str] | None = None
     rows: list[MatrixRow] = []
     in_table = False
-
-    for index, line in enumerate(lines, start=1):
+    for line_number, line in enumerate(text.splitlines(), start=1):
         cells = split_table_row(line)
         if not cells:
             if in_table:
                 break
             continue
-
         if header is None and cells == REQUIRED_COLUMNS:
             header = cells
             in_table = True
             continue
-
         if in_table:
             if is_separator_row(cells):
                 continue
-            if len(cells) != len(REQUIRED_COLUMNS):
-                rows.append(MatrixRow(index, cells))
-                continue
-            rows.append(MatrixRow(index, cells))
-
+            rows.append(MatrixRow(line_number, cells))
     if header is None:
         return [], []
     return header, rows
@@ -127,98 +108,164 @@ def collect_duplicates(values: Iterable[str]) -> list[str]:
 
 def looks_like_prefix_explosion(name: str) -> bool:
     lowered = name.lower()
-    forbidden_path_markers = (" > ", "::", "\\", "/")
-    if any(marker in lowered for marker in forbidden_path_markers):
+    if any(marker in lowered for marker in (" > ", "::", "\\", "/")):
         return True
-    vendor_platform_game_hints = (
-        "sega mega drive ",
-        "mega drive sonic",
-        "sonic ",
-        "playstation spiele",
-        "nintendo spiele",
-        "xbox spiele",
+    hints = (
+        "sega mega drive ", "mega drive sonic", "sonic ",
+        "playstation spiele", "nintendo spiele", "xbox spiele",
     )
-    return any(hint in lowered for hint in vendor_platform_game_hints)
+    return any(hint in lowered for hint in hints)
 
 
-def render_report(
-    matrix_path: Path,
-    required_columns_present: bool,
-    row_count: int,
-    expected_count: int | None,
-    duplicate_names: list[str],
-    forbidden_prefixes: list[str],
-    metadata_only: list[str],
-    relationship_only: list[str],
-    prefix_explosions: list[str],
-    bad_status_rows: list[tuple[int, str, str]],
-    markdown_table_valid: bool,
-    required_status: str,
-) -> str:
-    passed = (
-        required_columns_present
-        and markdown_table_valid
-        and not duplicate_names
-        and not forbidden_prefixes
-        and not metadata_only
-        and not relationship_only
-        and not prefix_explosions
-        and not bad_status_rows
-        and (expected_count is None or row_count == expected_count)
+def build_report(matrix_path: Path, rows: list[MatrixRow], header: list[str], args: argparse.Namespace) -> dict:
+    normalized_names = [normalize_name(row.bereich) for row in rows]
+    duplicate_names = collect_duplicates(normalized_names)
+    forbidden_prefixes = sorted(row.bereich for row in rows if row.bereich.startswith(FORBIDDEN_VISIBLE_PREFIXES))
+    metadata_only = sorted(row.bereich for row, norm in zip(rows, normalized_names) if norm in METADATA_ONLY_NAMES)
+    relationship_only = sorted(row.bereich for row, norm in zip(rows, normalized_names) if norm.startswith(RELATION_ONLY_PREFIXES))
+    prefix_explosions = sorted(row.bereich for row in rows if looks_like_prefix_explosion(row.bereich))
+    bad_status_rows = sorted(
+        {"line": row.line_number, "bereich": row.bereich, "status": row.status}
+        for row in rows
+        if row.status != args.status
     )
-    expected_line = "null" if expected_count is None else str(expected_count)
-    status = "PASS" if passed else "FAIL"
+    required_columns_present = header == REQUIRED_COLUMNS
+    markdown_table_valid = required_columns_present and all(len(row.cells) == len(REQUIRED_COLUMNS) for row in rows)
+    hard_failures = [
+        not required_columns_present,
+        not markdown_table_valid,
+        bool(duplicate_names),
+        bool(forbidden_prefixes),
+        bool(bad_status_rows),
+        args.expected_count is not None and len(rows) != args.expected_count,
+    ]
+    warning_failures = [bool(metadata_only), bool(relationship_only), bool(prefix_explosions)] if args.fail_on_warnings else []
+    passed = not any(hard_failures + warning_failures)
+    review_status = READY_STATUS if passed else "COUNT_SCAN_REVIEW_BLOCKED"
 
+    endpoint_rows = [
+        {
+            "index": index + 1,
+            "line": row.line_number,
+            "bereich": row.bereich,
+            "normalized_name": normalize_name(row.bereich),
+            "status": row.status,
+        }
+        for index, row in enumerate(rows)
+    ]
+
+    return {
+        "schema_version": "0.2.0",
+        "report_id": "endpoint-count-matrix-scan-2026-06-26",
+        "status": review_status,
+        "generated_at": "2026-06-26",
+        "matrix_path": str(matrix_path),
+        "scanner_path": "MEMORY/SCANNERS/count_endpoint_matrix_scan.py",
+        "markdown_report_path": args.report,
+        "json_report_path": args.json_report,
+        "evidence_type": "STATIC_CHECK",
+        "canonical_promotion": False,
+        "review_required": True,
+        "review_status": review_status,
+        "row_status_required": args.status,
+        "validation": {
+            "required_columns": REQUIRED_COLUMNS,
+            "required_columns_present": required_columns_present,
+            "visible_endpoint_rows": len(rows),
+            "expected_visible_endpoint_rows": args.expected_count,
+            "markdown_table_valid": markdown_table_valid,
+            "duplicate_names": duplicate_names,
+            "forbidden_global_prefixes": forbidden_prefixes,
+            "metadata_only_candidates": metadata_only,
+            "relationship_only_candidates": relationship_only,
+            "prefix_explosion_candidates": prefix_explosions,
+            "bad_status_rows": bad_status_rows,
+            "result": "PASS_STATIC_CHECK" if passed else "FAIL_STATIC_CHECK",
+        },
+        "counts": {
+            "visible_endpoint_rows": len(rows),
+            "duplicate_names_total": len(duplicate_names),
+            "forbidden_global_prefixes_total": len(forbidden_prefixes),
+            "metadata_only_candidates_total": len(metadata_only),
+            "relationship_only_candidates_total": len(relationship_only),
+            "prefix_explosion_candidates_total": len(prefix_explosions),
+            "bad_status_rows_total": len(bad_status_rows),
+        },
+        "endpoint_rows": endpoint_rows,
+        "safety": {
+            "unbounded_crawl": False,
+            "binary_downloads": False,
+            "copyrighted_manual_mirroring": False,
+            "raw_crawl_dump": False,
+            "canonical_records_promoted": False,
+            "destructive_changes": False,
+        },
+        "next_review_actions": [
+            "Review endpoint names and rule fit.",
+            "Accept or adjust visible row count.",
+            "Keep matrix rows COUNT_SCAN_REQUIRED until reviewed scanner counts are accepted.",
+        ],
+    }
+
+
+def render_markdown(report: dict) -> str:
+    validation = report["validation"]
+    counts = report["counts"]
+    status = report["status"]
+    checks = [
+        ("Required columns `Bereich,Wissen,User,Admin,Recherche,Status`", validation["required_columns_present"]),
+        ("Markdown table shape", validation["markdown_table_valid"]),
+        ("Visible endpoint row count", validation["visible_endpoint_rows"] == validation["expected_visible_endpoint_rows"]),
+        ("Duplicate normalized names", counts["duplicate_names_total"] == 0),
+        ("Forbidden `_GLOBAL` prefix", counts["forbidden_global_prefixes_total"] == 0),
+        ("Metadata-only endpoint names", counts["metadata_only_candidates_total"] == 0),
+        ("Relationship-only endpoint names", counts["relationship_only_candidates_total"] == 0),
+        ("Path-specific prefix explosion", counts["prefix_explosion_candidates_total"] == 0),
+        ("Required row status `COUNT_SCAN_REQUIRED`", counts["bad_status_rows_total"] == 0),
+    ]
+    check_rows = "\n".join(f"| {name} | {'PASS' if ok else 'FAIL'} |" for name, ok in checks)
+    json_summary = json.dumps({
+        "status": report["status"],
+        "review_status": report["review_status"],
+        "validation": validation,
+        "counts": counts,
+    }, ensure_ascii=False, indent=2)
     return f"""# Endpoint Count Matrix Scan Report
 
-Version: 0.1.0
+Version: 0.2.0
 Status: {status}
-Last checked: 2026-06-25
-Matrix path: `{matrix_path}`
-Scanner: `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`
+Last checked: 2026-06-26
+Matrix path: `{report['matrix_path']}`
+Scanner path: `{report['scanner_path']}`
+JSON report: `{report['json_report_path']}`
 Evidence type: STATIC_CHECK
 Canonical promotion: none
 
 ## Summary
 
-```yaml
-validation:
-  matrix_path: {matrix_path}
-  required_columns_present: {str(required_columns_present).lower()}
-  visible_endpoint_rows: {row_count}
-  expected_visible_endpoint_rows: {expected_line}
-  duplicate_names: {duplicate_names}
-  forbidden_global_prefixes: {forbidden_prefixes}
-  metadata_only_candidates: {metadata_only}
-  relationship_only_candidates: {relationship_only}
-  prefix_explosion_candidates: {prefix_explosions}
-  bad_status_rows: {bad_status_rows}
-  markdown_table_valid: {str(markdown_table_valid).lower()}
-  required_status: {required_status}
-  result: {status}
+```json
+{json_summary}
 ```
 
 ## Checks
 
 | Check | Result |
 |---|---|
-| Required columns | {'PASS' if required_columns_present else 'FAIL'} |
-| Markdown table shape | {'PASS' if markdown_table_valid else 'FAIL'} |
-| Visible endpoint row count | {'PASS' if expected_count is None or row_count == expected_count else 'FAIL'} |
-| Duplicate normalized names | {'PASS' if not duplicate_names else 'FAIL'} |
-| Forbidden `_GLOBAL` prefix | {'PASS' if not forbidden_prefixes else 'FAIL'} |
-| Metadata-only endpoint names | {'PASS' if not metadata_only else 'FAIL'} |
-| Relationship-only endpoint names | {'PASS' if not relationship_only else 'FAIL'} |
-| Path-specific prefix explosion | {'PASS' if not prefix_explosions else 'FAIL'} |
-| Required row status | {'PASS' if not bad_status_rows else 'FAIL'} |
+{check_rows}
 
-## Safety notes
+## Review state
 
-- No binary downloads were performed.
-- No raw crawl dump was stored.
-- No copyrighted manual was mirrored.
-- No canonical MEMORY record was promoted.
-- Counts remain `COUNT_SCAN_REQUIRED` until a scanner run is reviewed and accepted.
+`{status}` means the static scanner output is machine-readable and ready for owner/admin review. It does not mean canonical MEMORY records or final endpoint counts were promoted.
+
+Matrix rows remain `{report['row_status_required']}` until reviewed count outputs are accepted.
+
+## Scope boundaries
+
+- This report validates endpoint-matrix shape and policy fit only.
+- This report does not promote canonical MEMORY records.
+- This report does not prove real-world dataset completeness.
+- This report does not perform web, binary, firmware, manual or installer crawling.
+- Counts remain `COUNT_SCAN_REQUIRED` until a reviewed scanner run produces accepted count outputs.
 
 ## Re-run command
 
@@ -227,71 +274,48 @@ python3 MEMORY/SCANNERS/count_endpoint_matrix_scan.py \
   --matrix MEMORY/INDEXES/endpoint_count_matrix.md \
   --status COUNT_SCAN_REQUIRED \
   --expected-count 67 \
-  --report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md
+  --report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md \
+  --json-report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json
 ```
+
+## Consistency check
+
+- `README.md`: public `Wissensstand` block exposes `{status}`.
+- `MEMORY/INDEX.md`: links Markdown and JSON validation reports.
+- `MEMORY/SCANNERS/count_scan_rules.md`: re-run command emits Markdown and JSON reports.
+- `CHANGES.md`: documents the machine-readable scan-report transition.
 
 ## Rollback
 
-Remove this report and revert the related `CHANGES.md` entry.
+Revert this report to version 0.1.1 and remove `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json` if the machine-readable report transition is rolled back.
 """
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Validate Dr.Debug endpoint-count matrix.")
-    parser.add_argument("--matrix", default="MEMORY/INDEXES/endpoint_count_matrix.md", help="Path to matrix markdown file")
-    parser.add_argument("--status", default=DEFAULT_REQUIRED_STATUS, help="Required status for every endpoint row")
-    parser.add_argument("--expected-count", type=int, default=67, help="Expected number of visible endpoint rows")
-    parser.add_argument("--report", help="Optional markdown report output path")
-    parser.add_argument("--fail-on-warnings", action="store_true", help="Treat warning candidates as failures")
+    parser.add_argument("--matrix", default="MEMORY/INDEXES/endpoint_count_matrix.md")
+    parser.add_argument("--status", default=DEFAULT_REQUIRED_STATUS)
+    parser.add_argument("--expected-count", type=int, default=67)
+    parser.add_argument("--report", default="MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md")
+    parser.add_argument("--json-report", default="MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json")
+    parser.add_argument("--fail-on-warnings", action="store_true")
     args = parser.parse_args(argv)
 
     matrix_path = Path(args.matrix)
     text = matrix_path.read_text(encoding="utf-8")
     header, rows = find_matrix_rows(text)
-    required_columns_present = header == REQUIRED_COLUMNS
-    markdown_table_valid = required_columns_present and all(len(row.cells) == len(REQUIRED_COLUMNS) for row in rows)
-
-    normalized_names = [normalize_name(row.bereich) for row in rows if len(row.cells) >= 1]
-    duplicate_names = collect_duplicates(normalized_names)
-    forbidden_prefixes = sorted(row.bereich for row in rows if row.bereich.startswith(FORBIDDEN_VISIBLE_PREFIXES))
-    metadata_only = sorted(row.bereich for row, norm in zip(rows, normalized_names) if norm in METADATA_ONLY_NAMES)
-    relationship_only = sorted(row.bereich for row, norm in zip(rows, normalized_names) if norm.startswith(RELATION_ONLY_PREFIXES))
-    prefix_explosions = sorted(row.bereich for row in rows if looks_like_prefix_explosion(row.bereich))
-    bad_status_rows = sorted((row.line_number, row.bereich, row.status) for row in rows if len(row.cells) >= 6 and row.status != args.status)
-
-    report = render_report(
-        matrix_path=matrix_path,
-        required_columns_present=required_columns_present,
-        row_count=len(rows),
-        expected_count=args.expected_count,
-        duplicate_names=duplicate_names,
-        forbidden_prefixes=forbidden_prefixes,
-        metadata_only=metadata_only,
-        relationship_only=relationship_only,
-        prefix_explosions=prefix_explosions,
-        bad_status_rows=bad_status_rows,
-        markdown_table_valid=markdown_table_valid,
-        required_status=args.status,
-    )
+    report = build_report(matrix_path, rows, header, args)
 
     if args.report:
         report_path = Path(args.report)
         report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(report, encoding="utf-8")
-    else:
-        print(report)
+        report_path.write_text(render_markdown(report), encoding="utf-8")
+    if args.json_report:
+        json_path = Path(args.json_report)
+        json_path.parent.mkdir(parents=True, exist_ok=True)
+        json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-    hard_failures = [
-        not required_columns_present,
-        not markdown_table_valid,
-        bool(duplicate_names),
-        bool(forbidden_prefixes),
-        bool(bad_status_rows),
-        len(rows) != args.expected_count,
-    ]
-    warning_failures = [bool(metadata_only), bool(relationship_only), bool(prefix_explosions)] if args.fail_on_warnings else []
-
-    return 1 if any(hard_failures + warning_failures) else 0
+    return 0 if report["status"] == READY_STATUS else 1
 
 
 if __name__ == "__main__":
