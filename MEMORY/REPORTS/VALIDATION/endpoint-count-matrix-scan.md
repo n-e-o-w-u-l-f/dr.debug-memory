@@ -1,10 +1,11 @@
 # Endpoint Count Matrix Scan Report
 
-Version: 0.1.1
-Status: PASS_STATIC_CHECK
-Last checked: 2026-06-25
+Version: 0.2.0
+Status: COUNT_SCAN_READY_FOR_REVIEW
+Last checked: 2026-06-26
 Matrix path: `MEMORY/INDEXES/endpoint_count_matrix.md`
 Scanner path: `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`
+JSON report: `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json`
 Evidence type: STATIC_CHECK
 Canonical promotion: none
 
@@ -24,8 +25,17 @@ validation:
   bad_status_rows: []
   markdown_table_valid: true
   required_status: COUNT_SCAN_REQUIRED
-  result: PASS_STATIC_CHECK
+  static_result: PASS_STATIC_CHECK
+  review_status: COUNT_SCAN_READY_FOR_REVIEW
 ```
+
+## Machine-readable report
+
+The machine-readable scan output is stored at:
+
+- `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json`
+
+It includes stable count fields under `counts`, validation arrays under `validation`, safety flags under `safety`, and review routing fields `review_required` / `review_status`.
 
 ## Checks
 
@@ -40,6 +50,13 @@ validation:
 | Relationship-only endpoint names | PASS |
 | Path-specific prefix explosion | PASS |
 | Required row status `COUNT_SCAN_REQUIRED` | PASS |
+| JSON report emitted | PASS |
+
+## Review state
+
+`COUNT_SCAN_READY_FOR_REVIEW` means the static scanner output is machine-readable and ready for owner/admin review. It does not mean canonical MEMORY records or final endpoint counts were promoted.
+
+Matrix rows remain `COUNT_SCAN_REQUIRED` until reviewed count outputs are accepted.
 
 ## Scope boundaries
 
@@ -56,16 +73,17 @@ python3 MEMORY/SCANNERS/count_endpoint_matrix_scan.py \
   --matrix MEMORY/INDEXES/endpoint_count_matrix.md \
   --status COUNT_SCAN_REQUIRED \
   --expected-count 67 \
-  --report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md
+  --report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md \
+  --json-report MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json
 ```
 
-## README/INDEX/CHANGES consistency check
+## Consistency check
 
-- `README.md`: public `Wissensstand` block includes endpoint matrix planning and `PASS_STATIC_CHECK` validation report visibility.
-- `MEMORY/INDEX.md`: contains endpoint count matrix navigation, implemented scanner script and validation report links.
-- `MEMORY/SCANNERS/count_scan_rules.md`: re-run command points to `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`, not the rejected `tools/` path.
-- `CHANGES.md`: documents endpoint matrix planning, index sync, scanner/report creation and README visibility sync.
+- `README.md`: public `Wissensstand` block exposes `COUNT_SCAN_READY_FOR_REVIEW`.
+- `MEMORY/INDEX.md`: links Markdown and JSON validation reports.
+- `MEMORY/SCANNERS/count_scan_rules.md`: re-run command emits Markdown and JSON reports.
+- `CHANGES.md`: documents the machine-readable scan-report transition.
 
 ## Rollback
 
-Revert this report to version 0.1.0 or remove it with the related scanner/changelog entries if the endpoint-count matrix planning package is rolled back.
+Revert this report to version 0.1.1 and remove `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.json` if the machine-readable report transition is rolled back.
