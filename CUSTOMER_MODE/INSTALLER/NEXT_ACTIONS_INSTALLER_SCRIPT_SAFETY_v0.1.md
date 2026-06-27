@@ -2,6 +2,7 @@
 
 Status: PROPOSAL_CLOSEOUT_DRY_RUN  
 Created: 2026-06-27  
+Updated: 2026-06-27  
 Scope: Closeout of written TODO items for installer-script safety proposals.
 
 ## Source files reviewed
@@ -10,13 +11,15 @@ Scope: Closeout of written TODO items for installer-script safety proposals.
 - `CUSTOMER_MODE/INSTALLER/DIRECTIVE_INSTALLER_SCRIPT_SAFETY_v0.1_PROPOSAL.md`
 - `CUSTOMER_MODE/INSTALLER/AI_PROMPT_DATABASE_DIRECTIVE_v0.1_PROPOSAL.md`
 - `CUSTOMER_MODE/INSTALLER/VALIDATION_INSTALLER_SCRIPT_SAFETY_v0.1.md`
+- `CUSTOMER_MODE/INSTALLER/PLACEHOLDER_NORMALIZATION_PATCH_v0.1.md`
+- `CUSTOMER_MODE/INSTALLER/TEMPLATES/install_safety_diagnose_template.sh`
 - `AGENTS.md`
 - `UPDATE_PROCESS.md`
 - `MEMORY/INDEX.md`
 - `CUSTOMER_MODE/INDEX.md`
 - `README.md`
 
-## Closed / prepared in this review bundle
+## Closed / prepared in review bundles
 
 1. Source records prepared in `SOURCE_RECORDS_INSTALLER_SCRIPT_SAFETY_v0.1.md`.
 2. Prompt database schema prepared in `PROMPT_DATABASE_SCHEMA_v0.1_PROPOSAL.md`.
@@ -24,6 +27,8 @@ Scope: Closeout of written TODO items for installer-script safety proposals.
 4. AI-family prompt skeletons prepared under `PROMPT_DATABASE/AI/`.
 5. Read-only installer diagnosis template prepared under `TEMPLATES/install_safety_diagnose_template.sh`.
 6. Placeholder normalization patch plan prepared in `PLACEHOLDER_NORMALIZATION_PATCH_v0.1.md`.
+7. Preferred normalized directive prepared in `DIRECTIVE_INSTALLER_SCRIPT_SAFETY_v0.1.1_PROPOSAL.md`.
+8. Static syntax check for `install_safety_diagnose_template.sh` passed with `sh -n` locally.
 
 ## Items that must remain blocked until more evidence exists
 
@@ -39,8 +44,8 @@ Keep the current work as CUSTOMER_MODE proposal/review material. Do not promote 
 
 ## Next safe apply batch
 
-Apply this closeout bundle only after exact Owner/Admin `--apply` command. Do not merge into MEMORY/KNOWLEDGE_REPLACE until the promotion checklist is complete.
+Apply the v0.1.1 normalization bundle only after exact Owner/Admin `--apply` command. Do not merge into MEMORY/KNOWLEDGE_REPLACE until the promotion checklist is complete.
 
 ## Rollback
 
-Remove the newly added closeout/source/prompt/template/patch files under `CUSTOMER_MODE/INSTALLER/` if superseded or rejected. Existing v0.1 proposal files remain untouched by this bundle.
+Remove the newly added v0.1.1 directive and validation note, then restore this file and README to the prior version if the normalization bundle is rejected. Existing v0.1 proposal files remain untouched by this bundle.
