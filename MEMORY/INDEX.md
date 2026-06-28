@@ -1,8 +1,9 @@
 # MEMORY/INDEX.md
 
-Version: 0.8.5-endpoint-count-json-review
+Version: 0.8.6-autodidactic-error-learning-v0.2
 Status: ACTIVE_INDEX
-Last checked: 2026-06-26
+Last checked: 2026-06-28
+
 Canonical families: MANUFACTURERS, HARDWARE, DEVICES, DEVICE_IDENTIFIERS, SPECS, FIRMWARE, DRIVERS, MANUALS, OPERATING_SYSTEMS, BUILDS, SOFTWARE, PROGRAMS, ERROR_CODES, FIXES, PATCHES, REPAIR, NETWORKING, PROTOCOLS, SOURCES, SECURITY, SCRIPTS, TEMPLATES, STATE, INDEXES, SCANNERS.
 
 Index files are navigation only and must not become second truth.
@@ -24,6 +25,7 @@ Index files are navigation only and must not become second truth.
 - `MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md`
 - `MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md`
 - `MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md`
+- `MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md`
 
 ## Foundation layer
 
@@ -126,22 +128,24 @@ Navigation:
 - Manufacturer proposal batches: `MEMORY/PROPOSALS/MANUFACTURERS/`
 - Proposal review reports: `MEMORY/REPORTS/PROPOSALS/`
 - Status records: `MEMORY/STATUS/`
-- Category batch records requiring index/schema review:
-  - `MEMORY/ANDROID/`
-  - `MEMORY/DEVICE_IDENTIFIERS/`
-  - `MEMORY/FIRMWARE/`
-  - `MEMORY/HARDWARE/`
-  - `MEMORY/MANUFACTURERS/`
-  - `MEMORY/NETWORKING/`
-  - `MEMORY/PROTOCOLS/`
-  - `MEMORY/REGISTRIES/`
-  - `MEMORY/REPAIR/`
-  - `MEMORY/RETRO/`
-  - `MEMORY/RUNS/`
-  - `MEMORY/SCHEMAS/`
-  - `MEMORY/SECURITY/`
-  - `MEMORY/SOFTWARE/`
-  - `MEMORY/SOURCES/`
+
+Category batch records requiring index/schema review:
+
+- `MEMORY/ANDROID/`
+- `MEMORY/DEVICE_IDENTIFIERS/`
+- `MEMORY/FIRMWARE/`
+- `MEMORY/HARDWARE/`
+- `MEMORY/MANUFACTURERS/`
+- `MEMORY/NETWORKING/`
+- `MEMORY/PROTOCOLS/`
+- `MEMORY/REGISTRIES/`
+- `MEMORY/REPAIR/`
+- `MEMORY/RETRO/`
+- `MEMORY/RUNS/`
+- `MEMORY/SCHEMAS/`
+- `MEMORY/SECURITY/`
+- `MEMORY/SOFTWARE/`
+- `MEMORY/SOURCES/`
 
 Deletion rule: no BATCH artifact is currently a safe delete candidate.
 
