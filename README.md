@@ -29,6 +29,7 @@ Dr. Debug /MEMORY/ ist eine strukturierte, quellenbasierte Wissensdatenbank für
 | Local clone grep / CI-like static checks | REQUIRED_BEFORE_PROMOTION | 0 | 2026-06-21 | Must be run locally before any later promotion. |
 | Binaries / downloads / rehosting | NOT_INCLUDED | 0 | 2026-06-21 | No binary download, raw crawl dump, manual rehosting or public rehosting is included. |
 | README update mode | MATRIX_SECTION | 1 | 2026-06-26 | README matrix updated for endpoint-count planning, JSON validation output and review-ready status visibility. |
+| CustomGPT Knowledge behavior guard | ACTIVE_KNOWLEDGE_REPLACEMENT | 1 file | 2026-06-28 | `MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md`; autodidactic repeat-error prevention, agent loop, attachment intake and self-error database. |
 
 ---
 
@@ -70,15 +71,14 @@ Wichtige Bereiche:
 - `MEMORY/SOURCES/SOURCE_REGISTRY.md`
 - `CHANGES.md`
 
-Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert. Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
+Agenten sollen keine Vollständigkeit behaupten, wenn keine vollständige Primärquelle existiert.
+Neue Daten müssen nachvollziehbar, dedupliziert, quellenbezogen und agentenlesbar eingepflegt werden.
 
 ## Endpoint count matrix policy
 
 The endpoint count matrix uses a flat global visible collection model. Deep paths are filters and relations, not duplicated visible endpoints.
 
-Example path:
-
-`Geräte > Konsolen > Retro-Konsolen > Sega > Mega Drive > Spiele > Sonic the Hedgehog`
+Example path: `Geräte > Konsolen > Retro-Konsolen > Sega > Mega Drive > Spiele > Sonic the Hedgehog`
 
 Correct count resolution:
 
@@ -114,4 +114,5 @@ Network rule: HTTP is counted as a protocol record under `Netzwerkprotokolle`; u
 
 ## Lizenzhinweis
 
-Falls eine `LICENSE`-Datei vorhanden ist, gilt diese. Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen. Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
+Falls eine `LICENSE`-Datei vorhanden ist, gilt diese.
+Falls keine Lizenzdatei vorhanden ist, bedeutet die öffentliche Sichtbarkeit des Repositories nicht automatisch, dass Inhalte frei weiterverwendet werden dürfen. Forks, Zitate, Quellenverweise und eigene Ableitungen sollten immer sauber und respektvoll mit den ursprünglichen Inhalten umgehen.
