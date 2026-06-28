@@ -1,8 +1,19 @@
 # DR. DEBUG CHANGES.md
 
-Version: 0.8.8-endpoint-count-json-review
+Version: 0.8.9-autodidactic-error-learning-v0.2
 Status: ACTIVE
 Scope: Repository change history for Dr. Debug /MEMORY/
+
+## 2026-06-28
+
+### docs(memory): promote autodidactic error learning v0.2 guard
+
+* Consolidated `MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md` as the single Knowledge-Replacement point for autodidactic repeat-error prevention, proposal/canonical/write loop, attachment intake, self-error database guidance and Markdown artifact integrity.
+* Updated `MEMORY/INDEX.md` and `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json` to include `08_AUTODIDACTIC_ERROR_LEARNING.md` in the active Knowledge-Replacement set.
+* Updated `README.md` knowledge matrix with the CustomGPT Knowledge behavior guard row.
+* Avoided creating a second canonical truth such as `08_AGENT_LOOP_SELF_ERROR_DIRECTIVE.md`.
+* Validation: Owner/Admin gate, repository status check, source/dedupe review, path-policy dry-run and authenticated write output.
+* Rollback: revert `MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md`, `MEMORY/INDEX.md`, `MEMORY/KNOWLEDGE_REPLACE/MANIFEST.json`, `README.md`, `CHANGES.md` to the previous commit state.
 
 ## 2026-06-26
 
@@ -36,7 +47,7 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 * Added `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md` with the first static validation report for the endpoint-count matrix.
 * Validation scope: required columns, visible endpoint row count, duplicate normalized names, forbidden `_GLOBAL` prefix, metadata-only candidates, relationship-only candidates, path-specific prefix explosions and required row status `COUNT_SCAN_REQUIRED`.
 * Result: `PASS_STATIC_CHECK` for 67 visible endpoint rows, 0 duplicate normalized names, no forbidden `_GLOBAL` prefixes and required columns present.
-* No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, copyrighted manual mirrors, public rehosting artifacts, force-pushes, history rewrites or destructive deletes were added.
+* No binaries, downloads, raw crawl dumps, copyrighted manual mirrors, archive uploads, public rehosting artifacts, force-pushes, history rewrites or destructive deletes were added.
 * Rollback: remove `MEMORY/SCANNERS/count_endpoint_matrix_scan.py`, remove `MEMORY/REPORTS/VALIDATION/endpoint-count-matrix-scan.md`, and revert this `CHANGES.md` entry.
 
 ### docs(memory): index endpoint count matrix navigation
@@ -58,4 +69,4 @@ Scope: Repository change history for Dr. Debug /MEMORY/
 * Updated `UPDATE_PROCESS.md` with the endpoint-count matrix update gate.
 * No canonical MEMORY records, status promotions, binaries, downloads, archive uploads, raw crawl dumps, copyrighted manual mirrors, rehosting artifacts, force-pushes or destructive migrations were added.
 * Validation: static matrix validation checked 67 visible endpoint rows, 0 duplicate names, no `_GLOBAL` prefixes and required table columns present.
-* Rollback: revert `MEMORY/INDEXES/endpoint_count_matrix.md`, `MEMORY/INDEXES/endpoint_count_rules.md`, `MEMORY/SCANNERS/count_scan_rules.md`, `MEMORY/QUALITY_RULES.md`, `README.md`, `UPDATE_PROCESS.md` and this `CHANGES.md` update to the previous commit state.
+* Rollback: revert `MEMORY/INDEXES/endpoint_count_matrix.md`, `MEMORY/INDEXES/endpoint_count_rules.md`, `MEMORY/SCANNERS/count_scan_rules.md`, `MEMORY/QUALITY_RULES.md`, `README.md`, `UPDATE_PROCESS.md` and this `CHANGES.md` update to their previous states.
