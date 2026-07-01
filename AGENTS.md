@@ -1,49 +1,16 @@
 # AGENTS.md
 
-Version: 0.9.0-memory-customer-sandbox
+Version: 1.0.0-sollstand-v08.2
 Status: ACTIVE_ROOT_DIRECTIVE
-Scope: Dr.Debug technical memory, CUSTOMER_MODE artifacts and validated repair knowledge
+GitHub target: doktor-debug/memory
+Internal identifier: Dr.Debug-MEMORY
 
-## Repository role
+Dr.Debug-MEMORY is the canonical technical knowledge base. It stores devices, manufacturers, brands, software, drivers, firmware, identifiers, evidence, scanners, repair/security/lifecycle/compatibility relations, proposals and indexes.
 
-This repository stores Dr.Debug technical repair memory, source-aware knowledge records, CLI references, error-code records, fixes, repair workflows and CUSTOMER_MODE case artifacts.
+Read order: AGENTS.md, UPDATE_PROCESS.md, MEMORY/INDEX.md if present, then task-relevant schema/source/index/canonical/proposal files.
 
-It must not become the agent knowledge repository, the website renderer or the admin API implementation.
+CUSTOMER_MODE may write evidence-bound records into MEMORY only when user evidence exists, private data is redacted, evidence_ref/source_status/confidence/review_status are set and no canonical conflict exists.
 
-## Read order
+FILE_SCANNER and BOOK_SCANNER are staging areas. They do not automatically create canonical truth.
 
-For memory work, read:
-
-1. `AGENTS.md`
-2. `UPDATE_PROCESS.md`
-3. `MEMORY/INDEX.md`
-4. task-relevant schema, quality, source, category or customer files only
-
-Do not read everything blindly.
-
-## CUSTOMER_MODE boundary
-
-CUSTOMER_MODE may persist sanitized customer case artifacts only under:
-
-- `CUSTOMER_MODE/**`
-
-CUSTOMER_MODE must not write canonical `MEMORY/**` records unless an Owner/Admin review promotes a separate proposal.
-
-## Canonical memory boundary
-
-Canonical records under `MEMORY/**` require source awareness, dedupe, redaction, validation and lifecycle status discipline.
-
-Indexes are navigation only and must not become second truth.
-
-## Multirepo relation
-
-- Agent policy belongs in `dr.debug-agents`.
-- Website rendering belongs in `dr.debug-web`.
-- API gate and routing belongs in `dr.debug-admin_api`.
-- Technical memory and CUSTOMER_MODE artifacts belong here.
-
-## Safety principles
-
-Safety before speed. Diagnose before repair. Source before claim. Dedupe before add. Redact before storage. Backup and rollback before risk. Validate before success.
-
-Never claim edited, committed, pushed, merged, promoted or validated unless tool output proves it.
+Never store secrets. Never claim write/push/import without tool output.
