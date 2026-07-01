@@ -1,0 +1,30 @@
+{
+  "package": "drdebug_consolidated_knowledge_v0_8_1_master_pipeline",
+  "version": "0.8.2-autodidactic-error-learning-v0.2",
+  "created": "2026-06-21",
+  "updated": "2026-06-28",
+  "purpose": "Consolidate Dr.Debug CustomGPT Knowledge files under repository-allowed MEMORY paths and include the autodidactic error-learning, agent-loop and self-error database guard.",
+  "new_active_knowledge_files": [
+    "MEMORY/KNOWLEDGE_REPLACE/00_WORKING_MODE.md",
+    "MEMORY/KNOWLEDGE_REPLACE/01_REPOSITORY_CHANGE_WORKFLOW.md",
+    "MEMORY/KNOWLEDGE_REPLACE/02_RESEARCH_ARCHIVE_BINARY_SOURCES.md",
+    "MEMORY/KNOWLEDGE_REPLACE/03_DEVICE_MANUFACTURER_INTAKE.md",
+    "MEMORY/KNOWLEDGE_REPLACE/04_EVIDENCE_SCHEMA_DEDUP_MEMORY.md",
+    "MEMORY/KNOWLEDGE_REPLACE/05_RISK_REDACTION_PLATFORM.md",
+    "MEMORY/KNOWLEDGE_REPLACE/06_KNOWLEDGE_TOOL_SYNC_AUDIT.md",
+    "MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md",
+    "MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md"
+  ],
+  "master_overlay": "MEMORY/KNOWLEDGE_REPLACE/07_MASTER_KNOWLEDGE_BASE_PIPELINE.md",
+  "autodidactic_error_learning_guard": "MEMORY/KNOWLEDGE_REPLACE/08_AUTODIDACTIC_ERROR_LEARNING.md",
+  "migration_map": "MEMORY/MIGRATION/MIGRATION_MAP.md",
+  "tombstone_alias_registry": "MEMORY/MIGRATION/OLD_FILES_TO_REMOVE_OR_TOMBSTONE.md",
+  "readme_matrix_markers": {
+    "start": "DRDEBUG_DATABASE_STATUS_START",
+    "end": "DRDEBUG_DATABASE_STATUS_END"
+  },
+  "status": "non_destructive_repository_apply_with_08_autodidactic_agent_loop_guard",
+  "apply_boundary": "Repository write only; no deletion, no archive upload, no external upload.",
+  "validation": "MEMORY/KNOWLEDGE_REPLACE/VALIDATION.md",
+  "rollback": "Revert MANIFEST.json and related README/INDEX/CHANGES/08 updates to the previous commit state; do not delete active Knowledge files unless a destructive migration gate is explicitly approved."
+}
